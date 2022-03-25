@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Atas de reuniões</title>
+</head>
+<body>
+        <div style="margin-left: 25%; border: 2px solid black; border-radius: 15px 15px 15px ;width:35%;">
+            <div style="margin-left:5%; margin-bottom: 2%; margin-top:2%; margin-right: 2%;"
+                <h3>Qual reunião você gostaria de ver?</h3>
+                <select id="selecionarReuniao"> 
+                    <option disabled selected> Selecione a data </option>
+                    <option value="1"> 25/03/2022</option>
+                </select>
+                <br><br>
+                <center>
+                <button onclick="mostrarReuniao()"> Ver reunião</button>
+                </center> 
+                <br><br>
+                <div id="mostrarDados">
+
+                </div>
+            </div>
+        </div>
+</body>
+</html>
+<script>
+    function mostrarReuniao(){
+        var valorReuniao = selecionarReuniao.value;
+        if(valorReuniao==1){
+            mostrarDados.innerHTML+=`
+            <h2> Ata da reunião do dia 25/03/2022 </h2>
+            <b> Participantes: </b> 
+            Rafael Alves,
+            João Gabriel,
+            Guilherme Augusto,
+            Kelvin,
+            Brayan Coelho.
+                <br><br>
+            <b> Membros não participantes: </b>Pedro Antônio (justificado)<br> <br>
+            <b> Relatório: </b> Para esta reunião, foi abordado o tema referente a organização semanal do<br> backlog e delimitação de tarefas para cada integrante do grupo.<br><br>
+            <b> Assuntos pendentes: </b> Estruturação do site; Feedback geral referente a documentação e os demais feitos
+            <br><br><b>Quanto tempo de reunião: </b> 25min.
+            <hr>
+            
+
+            ` 
+
+        }
+    }
+
+</script>
