@@ -1,22 +1,22 @@
--- Criando o banco EcoTech
-CREATE DATABASE EcoTech;
+-- Criando o banco dbEcometer
+CREATE DATABASE dbEcometer;
 
 -- Selecionando o banco EcoTech
-USE EcoTech;
+USE dbEcometer;
 
 -- Criando a tabela EnderecoEmpresa
 CREATE TABLE tbEnderecoEmpresa (
-	idEnderecoEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+    iddEnderecoEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     cepEnderecoEmpresa CHAR (9),
     ruaEnderecoEmpresa VARCHAR (100),
-    numEnderecoEmpresa VARCHAR (8),
+    numEnderecoEmpresa VARCHAR (4),
     bairroEnderecoEmpresa VARCHAR (80),
     cidadeEnderecoEmpresa VARCHAR (80)
 );
 
 -- Criando a tabela Empresa
 CREATE TABLE tbEmpresa (
-	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+    idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     nomeEmpresa VARCHAR (80),
     cnpjEmpresa CHAR (18),
     idEnderecoEmpresa INT, -- Será a chave estrangeira que ligará a tabela de enredeço e a tabela empresa
@@ -25,7 +25,7 @@ CREATE TABLE tbEmpresa (
 
 -- Criando a tabela Lixeira
 CREATE TABLE tbLixeira (
-	idLixeira INT PRIMARY KEY AUTO_INCREMENT,
+    idLixeira INT PRIMARY KEY AUTO_INCREMENT,
     tipoLixeira VARCHAR (20), -- Pode ser radioativa, etc. Adicionei 20
     capacidadeLixeira VARCHAR (20), -- Não entendi. Retorna valores numéricos ou de strings (cheios, médio,etc)? Adicionei pra 20 considerando 2° hipotese
     nivelLixeira INT,
@@ -63,4 +63,4 @@ INSERT INTO tbLixeira (tipoLixeira, capacidadeLixeira, nivelLixeira, localizacao
 SELECT * FROM tbEnderecoEmpresa;
 SELECT * FROM tbEmpresa;
 SELECT * FROM tbLixeira;
-            
+           
