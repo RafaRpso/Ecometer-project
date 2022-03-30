@@ -6,11 +6,16 @@ body{
     border-radius:5px;
     width: 50vw;
     height:35%;
-    margin-left:2vw;
     padding:2vh;
+    justify-content: center;
+    margin-left: 1vw;
+    margin-right:1vw;
 }
+
 #guardaCaixas{
     display:flex;
+    justify-content: center;
+    justify-content: space-between;
 }
 .cabecalhoCaixa span{ 
     font-size: 20px;
@@ -26,4 +31,14 @@ body{
     width:100%;
     height: 5vh;
     border: none;
+}
+.listaFuncoes ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+.listaFuncoes li{
+    margin-top:2vw;
+    color:#272727
 }
