@@ -1,0 +1,10 @@
+.caixaPreco{
+    border: 2px solid black;
+    border-radius:5px;
+    width: 50vw;
+    height:35%;
+    margin-left:2vw;
+}
+#guardaCaixas{
+    display:flex;
+}
