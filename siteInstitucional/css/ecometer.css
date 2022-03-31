@@ -116,6 +116,9 @@ inicio footer */
   
 }
 
+
+/* caixa branca formulario */
+
 .contentForm {
 
     background-color: white;
@@ -131,11 +134,16 @@ inicio footer */
     margin: 10px;
 }
 
+
+ /* titulo formulario */
 .titForm{
 
     font-size: 40px;
 
 }
+
+
+/* estilização input */
 
 .contentForm input{
     border: 3px solid gold;
@@ -143,12 +151,23 @@ inicio footer */
     padding: 10px;
     border-radius: 25px;
 }
+
+/* esqueceu a senha */
+
 .esqSenha{
     font-weight: bold;
     font-size: 12px;
     margin: 10px;
 }
 
+/* 
+remover estilização do link */
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* botão login */
 .btLogin{   
     font: 700 20px;
     margin-top: 25px;
@@ -160,3 +179,4 @@ inicio footer */
     width: 100px;
 }
 
+/* fim login */
