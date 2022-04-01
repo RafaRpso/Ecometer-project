@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <title>Cadastre-se</title>
+
+    <div class="content" id="dadosCadastrais">
+        <div class="container">
+            <h2> Faça aqui o seu cadastro </h2>
+            <hr>
+            Nome da empresa<br>
+            <input type="text" name="" id="nomeEmpresa">
+            <br>
+            Nome do representante<br>
+            <input type="text" name="" id="nomeRepresentante">
+            <br>
+           CNPJ da empresa<br>
+            <input type="text" name="" id="cnpjEmpresaInp">
+            <br>
+            Email de contato<br>
+            <input type="" name="" id="emailEmpresa"><br>
+            Senha de login<br>
+            <input type="password" name="" id="senhaEmpresa"><br>
+            Confirme a senha<br>
+            <input type="password" name="" id="confirmaSenhaEmpresa"><br>
+            <button onclick="confirmarCadastro()">
+                Cadastrar
+            </button>
+        </div>
+    </div>
+
+    <div id="confirmarDados">
+
+
+    </div>
+   
+</body>
+</html>
+<script>
+
+    var nomeUsuario=nomeRepresentante.value;
+    var nomeEmpresa=nomeEmpresa.value;
+    var cnpjEmpresa=cnpjEmpresaInp.value;
+    var emailContato=emailEmpresa.value;
+    var senha=senhaEmpresa.value;
+    var senhaConfirmada=confirmaSenhaEmpresa.value;
+
+    function confirmarCadastro(){
+        if(senha!=senhaConfirmada){
+            alert("As senhas são distintas.")
+        }
+        else{
+            confirmarDados.innerHTML= `
+        <div class="content">
+        <div class="container">
+            <h2> Confirme os seus dados cadastrais</h2>
+            <hr>
+            Nome da empresa: ${nomeEmpresa}<br>
+            
+            Nome do representante: ${nomeUsuario}<br>
+           CNPJ da empresa: ${cnpjEmpresa} <br>
+            Email de contato: ${emailContato}
+           
+            <input type="password" name="" id="emailEmpresa"><br>
+            <button onclick="efetuarCadastro()">
+                Finalizar cadastro
+            </button>
+        </div>
+    </div>`
+    dadosCadastrais.style.display='none';
+        }
+        
+
+
+    }
+    function efetuarCadastro(){
+        if(cnpjEmpresa!=Number(cnpjEmpresa)){
+            alert("Use apenas números no CNPJ")
+        }
+        else if(nomeRepresentante==Number(nomeRepresentante)){
+            alert("O nome não pode ser algo numérico")
+        }
+        else{
+            alert('Cadastro feito! (:')
+        }
+        
+    }
+</script>
