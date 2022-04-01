@@ -1,0 +1,12 @@
+Cores tema site:
+	1. Verde: #73e67d
+	2. Vermelho: #B22126
+	3. Azul: ##2B3F98
+	4. Gradiente:  (  Verde: #94D57B, Amarelo: #C1DA6C );
+	5. Branco   
+	6. Preto
+
+	Fonte: Poppins
+	Botoes: Verde e preto
+	Footer: Preto 
+
