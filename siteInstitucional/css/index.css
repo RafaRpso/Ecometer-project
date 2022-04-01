@@ -1,16 +1,44 @@
+*{
+    padding:0;
+    margin:0;
+}
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-
+.corpoPagina{
+    display:flex;
+    flex-direction: column;
+}
+.navBar{
+    font-weight: bold;
+    display:flex;
+    text-align: center;
+    justify-content: center;
+}
 .header {
     background-color: rgb(255, 255, 255);
     display: flex;
-    list-style: none;
-    align-items: center;
-    justify-content: space-around;
-}
+    align-items:center;
 
+    border-bottom:1px solid rgb(160, 160, 160);
+    padding:2vh;
+}
+.elementosNav li{
+    font-size: 20px;
+}
+.elementosNav{
+    display: flex;
+    width:100%;
+    height:100%;
+    justify-content: center;
+}
+.login img{
+    width:20px;
+}
+#imagemEntrar{
+    justify-content: right;
+}
 ul {
     display: flex;
     list-style: none;
@@ -21,8 +49,63 @@ li {
 
     margin-right: 55px;
 }
+.elementosBanner{
+    background-image: url("https://w0.peakpx.com/wallpaper/557/875/HD-wallpaper-green-leaves-texture-background-with-green-leaves-ecology-environment-green-leaves-leaves-background.jpg");
+    width:100%;
+    height:80vh;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 2px solid rgb(110, 119, 111);
+    
+}
+.blocoTexto{
+    width:45%;
+    height:25vh;
+    justify-content: left;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.23);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    color:rgb(243, 243, 243);
+}
+.blocoTexto p{
+    color:rgb(209, 209, 209);
+}
+.blocoTexto h1{
+    font-size: 50px;
+}
+.botoesTexto{
+    width:40%;
+    display:flex;
+    justify-content: space-between;
+    margin-top:5%;
 
+}
+.botoesTexto button{
+    width:40%;
+    height:7vh;
+    border-radius: 15px;
+    border: none;
 
+}
+.destaque{
+    color:rgb(115, 230, 125);
+}
+#botaoCadastro{
+    background-color:rgb(115, 230, 125);
+}
+#botaoLogin{
+    background-color: black;
+    color:white;
+}
+.ajusteTamanho img{
+    width:25vw;
+    border-radius: 90px;
+}
 
 .sobre {
     color: #B22126;
@@ -52,161 +135,66 @@ li {
 
     font-weight: bold;
 }
-
-.imagemFundo {
-    position: absolute;
-    background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1613&q=80');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top center;
-    height: 100vh;
-    width: 100vw;
-    opacity: 90%;
-}
-
-.mensagemPrincipal {
-    position: relative;
-    padding-top: 80px;
-    padding-left: 100px;
-    color: #a8dda8;
-    font-size: 80;
-}
-
-.mensagemSegundaria {
-    position: relative;
-    color: #a8dda8;
-    font-size: 25;
-    padding-top: 50px;
-}
-
-
-/* 
-inicio footer */
-.footer{
-    background-color: rgb(247, 228, 205);
-
-    height: 80px;
-    color: black;
-    display: flex;
-    font-size: 25px;
-    justify-content: center;
-}
-
-.footer .container{
+.elementosCorpo{
+    justify-content: space-evenly;
     align-items: center;
+    display:flex;
+    width:100%;
+    height:80%;
+    border:2px solid red;
 }
+.elementosCorpo h3{
+    font-size: 60px;
+}
+.elementosCorpo p{
+    font-size: 25px;
+}
+.elementosCorpo img{
+    width:35%;
+    height:30vw;
+    border: 5px solid rgb(208, 214, 194);
+    border-radius:80px;
+}
+.textoCorpo{
+    width:35%;
+    padding: 30px;
+    text-align: center;
+    border: 2px solid yellow;
+}
+.textoCorpo p{
+    margin-top: 5%;
+}
+.box h3{
+    text-align: center;
+}
+.box p{
+    text-align: center;
 
-/* fim footer */
-
-
-/* inicio login */
-
-.dvInicial {
-    background-image: linear-gradient(to right, #94D57B, #C1DA6C);
-    height: 100%;
+}
+.elementosContexto{
+    display: flex;
+    justify-content: space-around;
+    width:100%;
+    height:100%;
+    border: 2px solid red;
+}
+.container {
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-content: space-around;
-
-}
-
-.container {
- 
-    width: 80%;
-    margin: 50px;
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-content: space-around;
   
 }
-
-
-/* caixa branca formulario */
-
-.contentForm {
-
-    background-color: white;
-    height: 500px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    color: black;
-    align-items: center;
-    border-radius: 20px;
-    font-size: 25px;
-
-    margin: 10px;
-}
-
-
- /* titulo formulario */
-.titForm{
-
-    font-size: 36px;
-
-}
-.contentForm h4{
-    font-size:20px;
-}
-
-/* estilização input */
-
-.contentForm input{
-    border: 2px solid rgb(255, 233, 106);
-    text-align: center;
-    padding: 10px;
-    border-radius: 25px;
-}
-#linhaSeparacao{
-    width:50%;
-    height:0.1px;
-    border-bottom:0.1px solid rgb(114, 114, 114);
-}
-/* esqueceu a senha */
-
-.esqSenha{
-    color:rgb(85, 85, 85);
-    font-size: 12px;
-
-}
-.esqSenha a{
-    font-weight: bold;
-}
-
-/* 
-remover estilização do link */
-a{
-    text-decoration: none;
-    color: black;
-}
-
-/* botão login */
-.btLogin{   
-    font: 700 20px;
-    margin-top: 25px;
-    padding: 5px;
-    cursor: pointer;   
-    border: none;
-    background-color: #52d183;
-    border-radius: 20px;
-    height: 40px;
-    width: 100px;
-}
-
-/* fim login */
-
-.conteudoCentralizado{
+#elemento1{
+    margin-top: 5%;
     display:flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height:70%;
+    flex-direction: column;
 }
 
-.conteudoCentralizado input{
-    margin: 10% auto;
-}
-.tituloForm{
-    font-size:20px;
+.box{
+    width:33%;
+    border-radius: 15px;
+    padding:30px;
 }
