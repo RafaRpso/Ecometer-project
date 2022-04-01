@@ -1,9 +1,10 @@
 body {
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .header {
-    background-color: rgb(247, 228, 205);
+    background-color: rgb(255, 255, 255);
     display: flex;
     list-style: none;
     align-items: center;
@@ -43,9 +44,13 @@ li {
 
 .entrar {
     color: white;
-    background-color: black;
-    border-radius: 20%;
+    background-color: rgb(9, 9, 9);
+    border-radius: 35%;
+    width:5%;
+    height: 5vh;
     border-bottom: 15px;
+
+    font-weight: bold;
 }
 
 .imagemFundo {
@@ -130,7 +135,7 @@ inicio footer */
     align-items: center;
     border-radius: 20px;
     font-size: 25px;
-    font-family: monospace;
+
     margin: 10px;
 }
 
@@ -138,26 +143,35 @@ inicio footer */
  /* titulo formulario */
 .titForm{
 
-    font-size: 40px;
+    font-size: 36px;
 
 }
-
+.contentForm h4{
+    font-size:20px;
+}
 
 /* estilização input */
 
 .contentForm input{
-    border: 3px solid gold;
+    border: 2px solid rgb(255, 233, 106);
     text-align: center;
     padding: 10px;
     border-radius: 25px;
 }
-
+#linhaSeparacao{
+    width:50%;
+    height:0.1px;
+    border-bottom:0.1px solid rgb(114, 114, 114);
+}
 /* esqueceu a senha */
 
 .esqSenha{
-    font-weight: bold;
+    color:rgb(85, 85, 85);
     font-size: 12px;
-    margin: 10px;
+
+}
+.esqSenha a{
+    font-weight: bold;
 }
 
 /* 
@@ -173,10 +187,26 @@ a{
     margin-top: 25px;
     padding: 5px;
     cursor: pointer;   
-    border: 3px solid #1DA551;
+    border: none;
+    background-color: #52d183;
     border-radius: 20px;
     height: 40px;
     width: 100px;
 }
 
 /* fim login */
+
+.conteudoCentralizado{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:70%;
+}
+
+.conteudoCentralizado input{
+    margin: 10% auto;
+}
+.tituloForm{
+    font-size:20px;
+}
