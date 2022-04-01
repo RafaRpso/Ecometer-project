@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <link rel="stylesheet" href="css/faq.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class='escolhaProblema'>
+        <div class="container">
+            <div class="elementosSelecao">
+                <h4> Escolha o seu problema</h4>
+            <select id="selecionarProblemaSelect">
+                <option value="1">Não consigo entrar no dashboard</option>
+                <option value="2">Não entendo o dashboard</option>
+                <option value="3">Gostaria de entrar em contato</option>
+                <option value="4">Não consegui fazer o meu login</option>
+                <option value="5">Não consegui fazer o meu cadastro</option>
+            </select>
+            <button onclick="selecionarProblema()">
+                Ver resolução
+            </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class='mostrarProblema'>
+        <div class="container">
+            <div class="elementosSelecao">
+                <h4 id="nomeProblema"></h4>
+                <div id="instrucoesParaResolver">
+     
+                </div>
+              
+
+            </div>
+        </div>
+    </div>
+
+</html>
+<script>
+    var problema=selecionarProblemaSelect.value
+    function selecionarProblema(){
+        if(problema==1){
+            nomeProblema.innerHTML = 'Não consigo entrar no dashboard';
+
+            instrucoesParaResolver.innerHTML= `
+                  <ul>
+                        <li>
+                            Faça o seu cadastro na tela <a> Cadastro</a>
+                        </li>
+                        <li>
+                            Efetue a compra do nosso produto na tela de <a>Preços</a> 
+                        </li>
+                        <li>
+                            Acesse o token recebido por email
+                        </li>
+                        <li>
+                            Abra a página do dashboard
+                        </li>
+                   </ul>
+                `
+        }
+        if(selecionarProblemaSelect.value==2){
+            nomeProblema.innerHTML = 'Não entendo o dashboard';
+
+        instrucoesParaResolver.innerHTML= `
+            <ul>
+                <li>
+                    No menu lateral, temos xx xx xxxxx
+                </li>
+                <li>
+                  Na parte superior, temos xx xx xx
+                </li>
+                <li>
+                   No meio, temos xx xx xx
+                </li>
+                <li>
+                   Os graficos mostram xx xx xx
+                </li>
+          </ul>
+    `
+        }
+        if(selecionarProblemaSelect.value==3){
+            nomeProblema.innerHTML = 'Gostaria de entrar em contato';
+
+        instrucoesParaResolver.innerHTML= `
+            <ul>
+                <li>
+                   E-mail: jorge@jorgemail.com
+
+                </li>
+                <li>
+                    Telefone: 4002-8922, 2555-9284
+                </li>
+                <li>
+                   Para abrir um token, clique aqui: <button> Token </button>
+                </li>
+
+          </ul>
+    `
+        }
+        if(selecionarProblemaSelect.value==4){
+            nomeProblema.innerHTML = 'Não consegui fazer o meu login';
+
+        instrucoesParaResolver.innerHTML= `
+            <ul>
+                <li>
+                    Faça o seu cadastro na tela <a> Cadastro</a>
+                </li>
+                <li>
+                    Efetue a compra do nosso produto na tela de <a>Preços</a> 
+                </li>
+                <li>
+                    Acesse o token recebido por email
+                </li>
+                <li>
+                    Abra a página do dashboard
+                </li>
+          </ul>
+    `
+        }
+        if(selecionarProblemaSelect.value==5){
+            nomeProblema.innerHTML = 'Não consegui fazer o meu cadastro';
+
+        instrucoesParaResolver.innerHTML= `
+            <ul>
+                <li>
+                    Faça o seu cadastro na tela <a> Cadastro</a>
+                </li>
+                <li>
+                    Efetue a compra do nosso produto na tela de <a>Preços</a> 
+                </li>
+                <li>
+                    Acesse o token recebido por email
+                </li>
+                <li>
+                    Abra a página do dashboard
+                </li>
+          </ul>
+    `
+        }
+    }
+</script>

@@ -1,0 +1,44 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+.elementosSelecao select{
+    border-radius: 15px;
+    background-color:white;
+    padding:3px;
+    width:30%;
+}
+.container{
+    width:100%;
+    padding:0;
+    margin:0;
+    display:flex;
+}
+.elementosSelecao{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    height: 225px;
+}
+.escolhaProblema .elementosSelecao{
+    border:2px solid black;
+    border-radius: 25px;
+}
+.mostrarProblema{
+    margin-top: 5%;
+}
+ .container .elementosSelecao h4{
+    font-size: 24px;
+}
+.mostrarProblema .container .elementosSelecao P{
+    font-size: 18px;
+}
+.container li{
+    list-style: decimal;
+}
