@@ -55,7 +55,9 @@ li {
 .elementosBanner{
     background-image: url("https://w0.peakpx.com/wallpaper/557/875/HD-wallpaper-green-leaves-texture-background-with-green-leaves-ecology-environment-green-leaves-leaves-background.jpg");
     width:100%;
-    height:80vh;
+    height:80%;
+    padding-top: 8%;
+    padding-bottom: 8%;
     display:flex;
     align-items: center;
     justify-content: space-evenly;
@@ -63,7 +65,7 @@ li {
     
 }
 .blocoTexto{
-    width:45vh;
+    width:45%;
     height: 80%;
     justify-content: left;
     padding: 40px;
@@ -184,6 +186,11 @@ li {
 
 }
 .textoCorpo p{
+    font-size: 3vh;
+    margin-top: 5%;
+}
+.textoCorpo h3{
+    font-size: 6vh;
     margin-top: 5%;
 }
 .box h3{
@@ -213,7 +220,11 @@ li {
     padding:0;
 
 }
+.boxes{
+    display:flex;
+    justify-content: center;
 
+}
 .elementosContexto{
     border-bottom:2px solid white;
     color:white;
