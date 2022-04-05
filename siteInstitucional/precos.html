@@ -7,10 +7,36 @@
     <link rel="stylesheet" href="css/preco.css">
     <title>Preços</title>
 </head>
-<body>
-    <h3> Planos </h3>
-    <div id='guardaCaixas'>
+<body>  <div class="header">
+    <div class="logo"><h1>Ecometer</h1></div>
+    <div class='elementosNav'>
+        <ul class="navBar">
+            <li class="liNav">Sobre</li>
+            <li class="liNav">Simulador Financeiro</li>
+            <li class="liNav">Contato</li>
 
+        </ul>
+    </div>
+    <div class='elementosNav' id="imagemEntrar">
+        <ul class="navBar">
+            <li class="login">
+                <img src="http://cdn.onlinewebfonts.com/svg/img_227643.png">
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+<!-- fim navbar -->
+<div class="container">
+    <div class="apresentacao">
+        <h3 class="tituloPlanos"> Planos </h3>
+        <p class="descricao">Nossos planos de produto (: </p>
+        <span class="alinhamento"></span>
+    </div>
+
+    
+    <div id='guardaCaixas'>
         <div class="caixaPreco">
             <div class="cabecalhoCaixa">
                 <span>Plano Starter</span><br>
@@ -19,7 +45,7 @@
             <div class="valorCaixa">
                 R$ 360,00/mês
             </div>
-            <button class="botaoComprar">Obter o plano mensal</button>
+            <button class="botaoComprar" id="botao1">Obter o plano mensal</button>
             <hr>
             <div class="listaFuncoes">
                 <ul>
@@ -49,7 +75,7 @@
             <div class="valorCaixa">
                 R$ 360,00/mês
             </div>
-            <button class="botaoComprar">Obter o plano mensal</button>
+            <button class="botaoComprar" id='botao2'>Obter o plano mensal</button>
             <hr>
                 <div class="listaFuncoes">
                 <ul>
@@ -78,7 +104,7 @@
             <div class="valorCaixa">
                 R$ 360,00/mês
             </div>
-            <button class="botaoComprar">Obter o plano mensal</button>
+            <button class="botaoComprar" id="botao3">Obter o plano mensal</button>
             <hr>
             <div class="listaFuncoes">
                 <ul>
@@ -99,7 +125,7 @@
         </div>
 
 
-        <div class="caixaPreco">
+        <div class="caixaPreco" id="ultimo">
             <div class="cabecalhoCaixa">
                 <span>Plano Total</span><br>
                 <p>Pague mensalmente nossas taxas de manutenção e dados
@@ -107,7 +133,7 @@
             <div class="valorCaixa">
                 R$ 360,00/mês
             </div>
-            <button class="botaoComprar">Obter o plano mensal</button>
+            <button class="botaoComprar" id="botao4">Obter o plano mensal</button>
             <hr>
             <div class="listaFuncoes">
             <ul>
@@ -128,6 +154,7 @@
             </ul>
             </div>
         </div>
+    </div>
     </div>
 <!-- Brandão falou que tá ok-->
 </body>
