@@ -5,62 +5,49 @@
     --color_yellow:#ecea44;
 
 }
+.liNav {
+    margin-right: 50px;
+  
+}
+.login img{
+    width:20px;
+}
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+.navBar {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    justify-content: space-between;
 }
 
 .header {
     background-color: rgb(255, 255, 255);
     display: flex;
-    list-style: none;
-    align-items: center;
-    justify-content: space-around;
+    align-items:center;
+
+    border-bottom:1px solid rgb(160, 160, 160);
+    padding:2vh;
 }
 
-ul {
+.elementosNav li{
+    font-size: 20px;
+}
+
+#ultimo{
+    margin:0;
+}
+.alinhamento{
+    border-bottom: 1px solid rgb(107, 107, 107);
+    width:50%;
+    margin:20px;
+    
+}
+.elementosNav{
     display: flex;
-    list-style: none;
-    text-align: center;
+    width:100%;
+    height:100%;
+    justify-content: center;
 }
-
-li {
-
-    margin-right: 55px;
-}
-
-
-
-.sobre {
-    color: #B22126;
-    font-family: arial;
-    font-size: 17px;
-}
-
-.simulador {
-    color: #2B3F98;
-    font-family: arial;
-    font-size: 17px;
-}
-
-.contato {
-    color: #15562C;
-    font-family: arial;
-    font-size: 17px;
-}
-
-.entrar {
-    color: white;
-    background-color: rgb(9, 9, 9);
-    border-radius: 35%;
-    width:5%;
-    height: 5vh;
-    border-bottom: 15px;
-
-    font-weight: bold;
-}
-
 .imagemFundo {
     background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1613&q=80');
     background-repeat: no-repeat;
@@ -160,14 +147,15 @@ inicio footer */
 /* estilização input */
 
 .contentForm input{
-    border: 2px solid rgb(255, 233, 106);
+    border: none;
+    background-color: #dadada;
     text-align: center;
     padding: 10px;
+    width:100%;
     border-radius: 25px;
 }
 #linhaSeparacao{
     width:50%;
-    height:0.1px;
     border-bottom:0.1px solid rgb(114, 114, 114);
 }
 /* esqueceu a senha */
@@ -200,7 +188,13 @@ a{
     border-radius: 20px;
     height: 40px;
     width: 100px;
+    font-weight: bold;
 }
+.btLogin:hover{
+    background-color:white;
+    border:1px solid black;
+    transition:300ms;
+}   
 
 /* fim login */
 

@@ -19,6 +19,15 @@
     text-align: center;
     justify-content: center;
 }
+#sobre{
+    color: var(--color_red)
+}
+#simulador{
+    color: #264413;
+}
+#contato{
+    color: #6e5d2d
+}
 .header {
     background-color: rgb(255, 255, 255);
     display: flex;
@@ -63,6 +72,8 @@
     margin-right: 50px;
   
 }
+
+
 .apresentacao{
     width:100%;
     display:flex;
@@ -79,7 +90,7 @@
     border-radius:5px;
     width: 50vw;
     height:35%;
-    padding:2vh;
+    padding:4vh;
     margin-right: 5vw;
     
 }

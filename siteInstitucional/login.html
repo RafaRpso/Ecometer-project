@@ -12,17 +12,25 @@
 
     <!-- inicio navbar -->
     <div class="header">
-        <div class="logo">
-            <h1>Logo</h1>
+        <div class="logo"><h1>Ecometer</h1></div>
+        <div class='elementosNav'>
+            <ul class="navBar">
+                <li class="liNav" id="sobre">Sobre</li>
+                <li class="liNav" id="simulador">Simulador Financeiro</li>
+                <li class="liNav" id="contato">Contato</li>
+    
+            </ul>
         </div>
-        <ul class="navBar">
-            <li class="sobre">Sobre</li>
-            <li class="simulador">Simulador Financeiro</li>
-            <li class="contato">Contato</li>
-        </ul>
-        <button class="entrar" type="submit">Entrar</button>
+        <div class='elementosNav' id="imagemEntrar">
+            <ul class="navBar">
+                <li class="login">
+                    <img src="http://cdn.onlinewebfonts.com/svg/img_227643.png">
+                </li>
+            </ul>
+        </div>
+        
     </div>
-
+    
     <!-- fim navbar -->
 
     <!-- inicio do corpo da pagina -->
@@ -35,11 +43,11 @@
                 </div>
                 <div class="conteudoCentralizado">
                     <div class='tituloForm'>E-mail</div>
-                    <input type="text" placeholder="Insira o E-mail">
+                    <input type="text" id='emailUsuario'placeholder="Insira o E-mail">
                     <div class='tituloForm'>Senha</div>
                     <input type="password" placeholder="Insira a sua senha">
                     <span class="esqSenha">Esqueceu a sua senha? <a href="recuperarSenha.html">Clique aqui</a></span>
-                    <button class="btLogin">Entrar</button>
+                    <button class="btLogin" onclick="verificarValores()">Entrar</button>
 
 
                 </div>
@@ -65,3 +73,10 @@
 </body>
 
 </html>
+<script>
+    function verificarValores(){
+        email = emailUsuario.value;
+        if(email.indexOf('@')==-1) return alert("Email inválido.")
+        
+    }
+</script>

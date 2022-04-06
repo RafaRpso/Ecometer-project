@@ -12,7 +12,7 @@
             <h2> Faça aqui o seu cadastro </h2>
             <hr>
             Nome da empresa<br>
-            <input type="text" name="" id="nomeEmpresa">
+            <input type="text" name="" id="nomeEmpresaInp">
             <br>
             Nome do representante<br>
             <input type="text" name="" id="nomeRepresentante">
@@ -20,12 +20,17 @@
            CNPJ da empresa<br>
             <input type="text" name="" id="cnpjEmpresaInp">
             <br>
+            <div class="alinhamento"></div>
             Email de contato<br>
             <input type="" name="" id="emailEmpresa"><br>
-            Senha de login<br>
-            <input type="password" name="" id="senhaEmpresa"><br>
-            Confirme a senha<br>
-            <input type="password" name="" id="confirmaSenhaEmpresa"><br>
+            Selecione o plano<br><br>
+            <select name="" id="planos">
+                <option value="">Plano mensal/R$360</option>
+                <option value="">Plano semestral/R$360</option>
+                <option value="">Plano anual/R$360</option>
+                <option value="">Plano anual VIP/R$360</option>
+            </select><br>
+          
             <button onclick="confirmarCadastro()">
                 Cadastrar
             </button>
@@ -42,40 +47,46 @@
 <script>
 
     var nomeUsuario=nomeRepresentante.value;
-    var nomeEmpresa=nomeEmpresa.value;
+    var nomeEmpresa=nomeEmpresaInp.value;
     var cnpjEmpresa=cnpjEmpresaInp.value;
     var emailContato=emailEmpresa.value;
-    var senha=senhaEmpresa.value;
-    var senhaConfirmada=confirmaSenhaEmpresa.value;
 
     function confirmarCadastro(){
-        if(senha!=senhaConfirmada){
-            alert("As senhas são distintas.")
-        }
-        else{
-            confirmarDados.innerHTML= `
-        <div class="content">
-        <div class="container">
-            <h2> Confirme os seus dados cadastrais</h2>
-            <hr>
-            Nome da empresa: ${nomeEmpresa}<br>
+        nomeUsuario=nomeRepresentante.value;
+        nomeEmpresa=nomeEmpresaInp.value;
+        cnpjEmpresa=cnpjEmpresaInp.value;
+        emailContato=emailEmpresa.value;
+
+        if(nomeUsuario==''||nomeEmpresa==''||cnpjEmpresa==''||emailContato=='') return alert("Campos vazios.")
+        if(nomeUsuario==Number(nomeUsuario)) return alert('Coloque apenas números no nome do usuário');
+        if(cnpjEmpresa!=Number(cnpjEmpresa)) return alert('Insira apenas números no CNPJ')
+        if(emailContato.indexOf('@')==-1) return alert("Insira um email válido");
+          
+        confirmarDados.innerHTML= `
+            <div class="content">
+            <div class="container">
+                <h2> Confirme os seus dados cadastrais</h2>
+                <hr>
+                Nome da empresa: ${nomeEmpresa}<br>
+                
+                Nome do representante: ${nomeUsuario}<br>
+            CNPJ da empresa: ${cnpjEmpresa} <br>
+                Email de contato: ${emailContato}
             
-            Nome do representante: ${nomeUsuario}<br>
-           CNPJ da empresa: ${cnpjEmpresa} <br>
-            Email de contato: ${emailContato}
-           
-            <input type="password" name="" id="emailEmpresa"><br>
-            <button onclick="efetuarCadastro()">
-                Finalizar cadastro
-            </button>
-        </div>
-    </div>`
-    dadosCadastrais.style.display='none';
-        }
+                <br><br>
+               <button onclick="efetuarCadastro()">
+                <a href='dashboard.html'>   Finalizar cadastro </a>
+                </button>
+            </div>
+        </div>`
+
+
+        dadosCadastrais.style.display='none';
+    }
         
 
 
-    }
+    
     function efetuarCadastro(){
         if(cnpjEmpresa!=Number(cnpjEmpresa)){
             alert("Use apenas números no CNPJ")
