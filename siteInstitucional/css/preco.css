@@ -5,6 +5,10 @@
     --color_yellow:#ecea44;
 
 }
+body{
+    margin: 0 auto;
+    padding: 0;
+}
 a{
     text-decoration: none;
     color:rgb(61, 61, 61);
@@ -96,18 +100,21 @@ a:hover{
     margin:0 auto;
 }
 .caixaPreco{
-    border: 1px solid black;
+
     border-radius:5px;
     width: 50vw;
     height:35%;
     padding:4vh;
     margin-right: 5vw;
+    background-color: white;
     
 }
 
 #guardaCaixas{
     padding:50px;
     display:flex;
+ background-image: linear-gradient(to right, #94D57B, #C1DA6C);
+    ;
 
 }
 .cabecalhoCaixa span{ 

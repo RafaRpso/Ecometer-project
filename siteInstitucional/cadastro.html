@@ -52,10 +52,10 @@
             <input type="" name="" id="emailEmpresa"><br>
             Selecione o plano<br><br>
             <select name="" id="planos">
-                <option value="">Plano mensal/R$360</option>
-                <option value="">Plano semestral/R$360</option>
-                <option value="">Plano anual/R$360</option>
-                <option value="">Plano anual VIP/R$360</option>
+                <option value="Plano Mensal">Plano mensal/R$360</option>
+                <option value="Plano Semestral">Plano semestral/R$360</option>
+                <option value="Plano anual">Plano anual/R$360</option>
+                <option value="Plano anual PRO">Plano anual PRO/R$360</option>
             </select><br>
           
             <button onclick="confirmarCadastro()">
@@ -83,9 +83,9 @@
         nomeEmpresa=nomeEmpresaInp.value;
         cnpjEmpresa=cnpjEmpresaInp.value;
         emailContato=emailEmpresa.value;
-
+        planoEscolha= planos.value
         if(nomeUsuario==''||nomeEmpresa==''||cnpjEmpresa==''||emailContato=='') return alert("Campos vazios.")
-        if(nomeUsuario==Number(nomeUsuario)) return alert('Coloque apenas números no nome do usuário');
+        if(nomeUsuario==Number(nomeUsuario)) return alert('Insira apenas letras no nome do usuário');
         if(cnpjEmpresa!=Number(cnpjEmpresa)) return alert('Insira apenas números no CNPJ')
         if(emailContato.indexOf('@')==-1) return alert("Insira um email válido");
           
@@ -94,15 +94,15 @@
             <div class="container">
                 <h2> Confirme os seus dados cadastrais</h2>
                 <hr>
-                Nome da empresa: ${nomeEmpresa}<br>
+                Nome da empresa: ${nomeEmpresa}<br><br>
                 
-                Nome do representante: ${nomeUsuario}<br>
-            CNPJ da empresa: ${cnpjEmpresa} <br>
-                Email de contato: ${emailContato}
-            
+                Nome do representante: ${nomeUsuario}<br><br>
+            CNPJ da empresa: ${cnpjEmpresa} <br><br>
+                Email de contato: ${emailContato}<br><br>
+                Plano escolhido: ${planoEscolha}
                 <br><br>
                <button onclick="efetuarCadastro()">
-                <a href='dashboard.html'>   Finalizar cadastro </a>
+                <a href='dashboard.html' id='finaliza'>   Finalizar cadastro </a>
                 </button>
             </div>
         </div>`
