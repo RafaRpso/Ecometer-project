@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contato</title>
+    <link rel="stylesheet" href="css/contato.css">
 </head>
 <body>
-     
     <div class="header">
-        <div class="logo"><h1>Ecometer</h1></div>
+    
+  
+        <div class="logo"><h1><a href="index.html">Ecometer</a></h1></div>
         <div class='elementosNav'>
             <ul class="navBar">
                 <li class="liNav" id="sobre"><a href='sobre.html'>Sobre</a></li>
@@ -24,9 +26,39 @@
                     <img src="http://cdn.onlinewebfonts.com/svg/img_227643.png">
                 </li>
             </ul>
-        </div>
+
         
     </div>
-    <h1> Dashboard </h1>
+<!-- fim nav -->
+</div>
+<div class="content" id="dadosCadastrais">
+    <div class="elementoContatos">
+        <h2> Faça aqui o seu cadastro </h2>
+        <div class="alinhamento"></div>
+        <hr>
+        Nome da empresa<br>
+        <input type="text" name="" id="nomeEmpresaInp">
+        <br>
+        Nome do representante<br>
+        <input type="text" name="" id="nomeRepresentante">
+        <br>
+        Email<br>
+        <input type="text" name="" id="emailUsuario">
+        <br>
+        Mensagem<br>
+        <input type="text" name="" id="mensagem">
+        <br>
+  
+        <button onclick="confirmarCadastro()">
+            Enviar 
+        </button>
+    </div>
+</div>
+
+<div id="confirmarDados">
+
+
+</div>
+
 </body>
 </html>

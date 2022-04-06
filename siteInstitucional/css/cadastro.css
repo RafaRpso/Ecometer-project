@@ -5,6 +5,81 @@
     --color_yellow:#ecea44;
 
 }
+body{
+    margin:0;
+    padding:0;
+}
+.container{
+    margin-top:5%;
+}
+.corpoPagina{
+    display:flex;
+    flex-direction: column;
+}
+
+#sobre{
+    color: var(--color_red)
+}
+#simulador{
+    color: #264413;
+}
+#contato{
+    color: #6e5d2d
+}
+.header {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items:center;
+    border-bottom: 1px solid grey;
+    justify-content: space-between;
+    padding:2vh;
+}
+.elementosNav li{
+    font-size: 20px;
+}
+
+#ultimo{
+    margin:0;
+}
+.alinhamento{
+    border-bottom: 1px solid rgb(107, 107, 107);
+    width:50%;
+    margin:20px;
+    
+}
+.elementosNav{
+
+    display: flex;
+    width:100%;
+    height:100%;
+    justify-content: center;
+}
+.login img{
+    width:20px;
+}
+#imagemEntrar{
+    justify-content: right;
+}
+.navBar {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.liNav {
+    margin-right: 50px;
+  
+}a{
+    text-decoration: none;
+    color:rgb(61, 61, 61);
+}
+a:hover{
+    color: var(--color_green);
+    transition: 500ms;
+}
+
 
 .content{
     width:100%;
@@ -13,6 +88,7 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    background-image: linear-gradient(to right, #94D57B, #C1DA6C);
 }
 .alinhamento{
     width:60%;
@@ -21,7 +97,6 @@
 }
 
 .content .container{
-    border: 1px solid rgb(0, 0, 0);
     border-radius: 20px;
     width:40%;
     height:100%;
@@ -30,6 +105,8 @@
     justify-content: center;
     align-items: center;
     padding:15px;
+    background-color: white;
+    margin-bottom: 5vh;
 }
 .content .container input{
     width:35%;
@@ -47,6 +124,11 @@
     border-radius: 25px;
     border: none;
     background-color: var(--color_green);
+}
+.content .container button:hover{
+    border:1px solid black;
+    background-color: white;
+    transition: 300ms;
 }
 #planos{
     padding:5px;
