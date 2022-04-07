@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Calculadora Financeira</title>
+    <link rel="stylesheet" href="css/calc.css">
+</head>
+
+<body>
+
+    <!-- inicio navbar -->
+    <div class="header">
+
+        <div class="logo">
+            <h1>Ecometer</h1>
+        </div>
+        <div class='elementosNav'>
+            <ul class="navBar">
+                <li class="sobre">Sobre</li>
+                <li class="simulador">Simulador Financeiro</li>
+                <li class="contato">Contato</li>
+
+            </ul>
+        </div>
+        <div class='elementosNav' id="imagemEntrar">
+            <ul class="navBar">
+                <li class="login">
+                    <img src="http://cdn.onlinewebfonts.com/svg/img_227643.png">
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- fim navbar -->
+
+    <div class="banner">
+        <div class="container">
+
+            <!-- Card de conteudo -->
+            <div class="cardD">
+
+                <h2>Simulador Financeiro</h2>
+                <div class="alinhamento"></div>
+
+
+                <h4>Insira o volume de lixo coletado durante 1 ano</h4>
+                <input type="text" id="toneladaLixo" placeholder="Volume Lixo em Toneladas">
+                <button onclick="calc_money_vol()">Calcular</button>
+
+            </div>
+
+        </div>
+
+        <div class="apresentar">
+            <div class="container">
+                <div class="apresentarResultado">
+                 
+                    <b>O Valor que poderia ser Arrecadado é de cerca de:</b>
+                  <div class="resultado">
+                      <div id="divApresentar"></div>
+                  </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+    <div class="container">
+            <div class="elementosFooter">
+                Todos os direitos reservados. &copy; 2022
+            </div>
+        </div>
+    </div>
+ 
+
+</body>
+
+</html>
+<script>
+
+
+    function calc_money_vol() {
+        var semana = 0;
+        var mes = 0;
+        var ano = 0;
+
+        /* recebe o lixo em toneladas  e converte para kg*/
+        var tLixo = toneladaLixo.value;
+        var kgLixo = tLixo * 1000;
+
+        semana = (kgLixo * 0.5) * 7;
+        mes = (kgLixo * 0.5) * 30;
+        ano = (kgLixo * 0.5) * 365;
+       
+
+        divApresentar.innerHTML = semana + " Por Semana<br>";
+        divApresentar.innerHTML += mes + " Por Mês<br>";
+        divApresentar.innerHTML += ano + " Por Ano";
+
+        
+       /*  span_val_lixo1.innerHTML = `R$${(inp_vol_lixo.value * 0.5) *365} por ano!`;
+        */ 
+        divApresentar.style.display = 'block'
+    }
+
+
+</script>
