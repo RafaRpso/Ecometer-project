@@ -26,65 +26,7 @@ a:hover{
     display:flex;
     flex-direction: column;
 }
-.navBar{
-    font-weight: bold;
-    display:flex;
-    text-align: center;
-    justify-content: center;
-}
- #sobre{
-    color: var(--color_red) !
-}
-#simulador{
-    color: #264413 ;
-}
-#contato{
-    color: #6e5d2d 
-}
-.header {
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    align-items:center;
 
-    border-bottom:1px solid rgb(160, 160, 160);
-    padding:2vh;
-}
-.elementosNav li{
-    font-size: 20px;
-}
-
-#ultimo{
-    margin:0;
-}
-.alinhamento{
-    border-bottom: 1px solid rgb(107, 107, 107);
-    width:50%;
-    margin:20px;
-    
-}
-.elementosNav{
-    display: flex;
-    width:100%;
-    height:100%;
-    justify-content: center;
-}
-.login img{
-    width:20px;
-}
-#imagemEntrar{
-    justify-content: right;
-}
-.navBar {
-    display: flex;
-    list-style: none;
-    text-align: center;
-    justify-content: space-between;
-}
-
-.liNav {
-    margin-right: 50px;
-  
-}
 
 
 /* fim navbar */ 

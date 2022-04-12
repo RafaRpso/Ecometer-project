@@ -149,6 +149,9 @@ a:hover{
     border-radius: 25px;
     margin-top:10px;
 }
+#toneladaLixo{
+    margin-bottom:5%;
+}
 .content .container button{
     font-weight: bold;
     font-size: 90%;
