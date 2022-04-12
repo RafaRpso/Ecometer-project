@@ -92,11 +92,14 @@ body{
     display: flex;
     list-style: none;
     text-align: center;
-    justify-content: space-between;
+    width:100%;
+
+    justify-content: flex-end;
     font-weight: bold;
 }
 
 .liNav {
+
     margin-right: 50px;
   
 }a{
