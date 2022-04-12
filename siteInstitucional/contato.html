@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato</title>
-   <link rel="stylesheet" href="css/contato.css"> 
+   <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
     <div class="header">
@@ -32,7 +32,7 @@
 <!-- fim nav -->
 </div>
 <div class="content" id="dadosCadastrais">
-    <div class="elementoContatos">
+    <div class="container">
         <h2> Envie sua mensagem </h2>
         <div class="alinhamento"></div>
         <hr>
@@ -48,16 +48,17 @@
         Mensagem<br>
       <br>
         <textarea id="mensagem" class="inputMensagem"name="" id="" cols="30" rows="10"></textarea>
-        <button onclick="confirmarCadastro()">
+        <button onclick="confirmarMensagem()">
             Enviar 
         </button>
     </div>
 </div>
 
-<div id="confirmarDados">
-
-
-</div>
 
 </body>
 </html>
+<script>
+    function confirmarMensagem(){
+        alert('Sua mensagem foi enviada! Em até 3 dias estaremos retornando')
+    }
+</script>
