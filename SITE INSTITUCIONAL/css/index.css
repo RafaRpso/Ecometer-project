@@ -1,59 +1,74 @@
 *{
-    padding:0;
     margin:0;
+    padding:0;
 }
+
 :root{
-    font-family:'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  
     --color_green:#73e67d;
     --color_red:#f56b76;
     --color_yellow:#ecea44;
-    font-size: 20px;
+       font-family:'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        --color_green:#73e67d;
+        --color_red:#f56b76;
+        --color_yellow:#ecea44;
+        font-size: 20px;
+    
+    }
+
+    body::-webkit-scrollbar {
+        width: 12px;   
+   
+                 
+    }
+      body::-webkit-scrollbar-track {
+        background: rgb(224, 224, 224); 
+       
+      }
+    
+      body::-webkit-scrollbar-thumb {
+        background-color: #346751;  
+        margin: 2 auto;   
+        border-radius: 20px;    
+           /* roundness of the scroll thumb */
+    
+    }
+    /* Isso aqui é pra deixar a scrollbar combinando */
+body{
+    margin:0;
+    padding:0;
+}
+.container{
+    margin-top:0%;
+}
+#finaliza:hover{
+    color:black;
 
 }
-a{
-    text-decoration: none;
-    color:rgb(61, 61, 61);
-}
-a:hover{
-    color: var(--color_green);
-    transition: 500ms;
-}
-.imagemLogin{
-    width:25px;
-}
-
 .corpoPagina{
     display:flex;
     flex-direction: column;
 }
-.navBar{
-    font-weight: bold;
-    display:flex;
-    width:100%;
-    text-align: center;
-    justify-content: space-around;
- 
-}
- #sobre{
-    color: var(--color_red) !
+
+#sobre{
+    color: var(--color_red)
 }
 #simulador{
-    color: #264413 ;
+    color: #264413;
 }
 #contato{
-    color: #6e5d2d 
+    color: #6e5d2d
 }
 .header {
     background-color: rgb(255, 255, 255);
     display: flex;
     align-items:center;
-    justify-content: center;
-    border-bottom:1px solid rgb(160, 160, 160);
-    padding:3vh;
-    font-size:16px;
+    border-bottom: 1px solid grey;
+    justify-content: space-between;
+    padding:2vh;
 }
 .elementosNav li{
-    font-size: 22px;
+    font-size: 20px;
 }
 
 #ultimo{
@@ -66,10 +81,11 @@ a:hover{
     
 }
 .elementosNav{
+
     display: flex;
     width:100%;
-    height: 5vh;
-    ;
+    height:100%;
+    justify-content: center;
 }
 .login img{
     width:20px;
@@ -80,14 +96,26 @@ a:hover{
 .navBar {
     display: flex;
     list-style: none;
-    align-items: center;
+    text-align: center;
+    width:100%;
 
+    justify-content: flex-end;
+    font-weight: bold;
 }
 
 .liNav {
+
     margin-right: 50px;
   
+}a{
+    text-decoration: none;
+    color:rgb(61, 61, 61);
 }
+a:hover{
+    color: var(--color_green);
+    transition: 500ms;
+}
+
 
 .elementosBanner{
     background-image: url("https://w0.peakpx.com/wallpaper/557/875/HD-wallpaper-green-leaves-texture-background-with-green-leaves-ecology-environment-green-leaves-leaves-background.jpg");
@@ -123,7 +151,7 @@ a:hover{
     text-align: center;
 }
 #elemento2{
-    background-image: linear-gradient(to right, #94D57B, #C1DA6C);
+    background-image: linear-gradient(to bottom, #94D57B, #C1DA6C);
     margin-top: 5%;
     padding:5%;
 
@@ -258,6 +286,7 @@ a:hover{
 
 }
 .boxes{
+    padding:15px;
     display:flex;
     justify-content: center;
 
@@ -327,6 +356,15 @@ a:hover{
     border: none;
     margin-top:10%;
  
+}
+
+#gastos{
+  
+    background-image: linear-gradient(to top, rgb(90, 158, 73), #C1DA6C);;
+    color:black;
+}
+#gastos p{
+    border:none;
 }
 #simuladorBotao{
     background-color: #000000;

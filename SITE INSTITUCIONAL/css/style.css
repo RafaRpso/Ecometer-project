@@ -1,3 +1,4 @@
+<<<<<<< HEAD:siteInstitucional/css/cadastro.css
 :root {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     --color_green: #73e67d;
@@ -13,6 +14,45 @@ body {
 
 .container {
     margin-top: 5%;
+=======
+:root{
+  
+    --color_green:#73e67d;
+    --color_red:#f56b76;
+    --color_yellow:#ecea44;
+       font-family:'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        --color_green:#73e67d;
+        --color_red:#f56b76;
+        --color_yellow:#ecea44;
+        font-size: 20px;
+    
+    }
+
+    body::-webkit-scrollbar {
+        width: 12px;   
+   
+                 
+    }
+      body::-webkit-scrollbar-track {
+        background: rgb(224, 224, 224); 
+       
+      }
+    
+      body::-webkit-scrollbar-thumb {
+        background-color: #346751;  
+        margin: 2 auto;   
+        border-radius: 20px;    
+           /* roundness of the scroll thumb */
+    
+    }
+    /* Isso aqui é pra deixar a scrollbar combinando */
+body{
+    margin:0;
+    padding:0;
+}
+.container{
+    margin-top:0%;
+>>>>>>> 6140f2e69233d33b300f5780f31ed07aff81e1da:SITE INSTITUCIONAL/css/style.css
 }
 
 #finaliza:hover {
@@ -81,11 +121,14 @@ body {
     display: flex;
     list-style: none;
     text-align: center;
-    justify-content: space-between;
+    width:100%;
+
+    justify-content: flex-end;
     font-weight: bold;
 }
 
 .liNav {
+
     margin-right: 50px;
 
 }
@@ -117,10 +160,18 @@ a:hover {
     margin: 15px;
 }
 
+<<<<<<< HEAD:siteInstitucional/css/cadastro.css
 .content .container {
     border-radius: 20px;
     width: 40%;
     height: 100%;
+=======
+.content .container{
+    margin-top:5%;
+    border-radius: 20px;
+    width:40%;
+    height:50%;
+>>>>>>> 6140f2e69233d33b300f5780f31ed07aff81e1da:SITE INSTITUCIONAL/css/style.css
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -130,6 +181,7 @@ a:hover {
     margin-bottom: 5vh;
 }
 
+<<<<<<< HEAD:siteInstitucional/css/cadastro.css
 .content .container .cadTxt{
     font-size: 20px;
     margin: 5px;
@@ -139,6 +191,11 @@ a:hover {
 .content .container input {
     width: 35%;
     padding: 10px;
+=======
+.content .container input{
+    width:35%;
+    padding:10px;
+>>>>>>> 6140f2e69233d33b300f5780f31ed07aff81e1da:SITE INSTITUCIONAL/css/style.css
     border: none;
     background-color: rgb(218, 218, 218);
     border-radius: 25px;
@@ -175,5 +232,23 @@ a:hover {
 
 a {
     text-decoration: none;
+<<<<<<< HEAD:siteInstitucional/css/cadastro.css
     color: black;
+=======
+    color:black;
+}
+#mensagem{
+
+    padding:15px;
+    display:block;
+    border-radius: 25px;
+    border: none;
+    width:40%;
+    margin-bottom:5% ;
+    background-color: rgb(221, 221, 221);
+    margin-top:3%;
+    height:20vh;
+
+    
+>>>>>>> 6140f2e69233d33b300f5780f31ed07aff81e1da:SITE INSTITUCIONAL/css/style.css
 }
