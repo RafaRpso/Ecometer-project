@@ -1,8 +1,8 @@
 # projeto-pi-2sprint
 Atual grupo: 
   1. Rafael Alves 
-  2. Pedro Antônio
-  3. João Gabriel 
-  4. Guilherme Augusto
-  5. Kelvin
-  6. Brayan Coelho
+  2. João Gabriel 
+  3. Guilherme Augusto
+  4. Kelvin
+  5. Brayan Coelho
+  6. Pedro Antônio (Infelizmente saiu do projeto, mas foi responsável pela documentação)
