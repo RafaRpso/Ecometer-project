@@ -15,6 +15,12 @@
                     <option disabled selected> Selecione a data </option>
                     <option value="1"> 25/03/2022</option>
                     <option value="2"> 28/03/2022</option>
+                    <option value="3"> 04/04/2022</option>
+                    <option value="4"> 04/04/2022</option>
+                    <option value="5"> 05/04/2022</option> 
+                    <option value="6"> 08/04/2022</option>   
+                    <option value="7"> 09/04/2022</option>
+                    <option value="8"> 12/04/2022</option>
                 </select>
                 <br><br>
                 <center>
@@ -53,7 +59,7 @@
             ` 
 
         }
-        if(valorReuniao==2){
+        else if(valorReuniao==2){
             mostrarDados.innerHTML+=`
             <h2> Ata da reunião do dia 28/03/2022 </h2>
             <b> Participantes: </b> 
@@ -72,7 +78,119 @@
             
 
             ` 
+        }
+        else if(valorReuniao==3){
+            mostrarDados.innerHTML+=`
+            <h2> Ata da reunião do dia 04/04/2022 </h2>
+            <b> Participantes: </b> 
+            Rafael Alves,
+            João Gabriel,
+            Guilherme Augusto,
+            Matheus Gomes,
+            Brayan Coelho,
+            Kelvin Guimarães.
+                <br><br>
+            <b> Membros não participantes: Pedro Antônio<br> <br>
+            <b> Relatório: </b>  Para essa reunião, foi abordado a checagem das tarefas.<br><br>
+            <b> Assuntos pendentes: </b> Criação do site; Desenvolvimento da documentação; Mudança de logotipo e cores
+            <br><br><b>Quanto tempo de reunião: </b> 5 minutos e 48 segundos.
+            <hr>
+            
 
+            ` 
+        }
+        else if(valorReuniao==4){
+            mostrarDados.innerHTML+=`
+            <h2> Ata da reunião do dia 05/04/2022 </h2>
+            <b> Participantes: </b> 
+            Rafael Alves,
+            Pedro Antônio,
+            Guilherme Augusto,
+            Matheus Gomes,
+            Brayan Coelho
+                <br><br>
+            <b> Membros não participantes: João Gabriel (Justificado),Kelvin Guimarães (justificado). <br> <br>
+            <b> Relatório: </b>  Para essa reunião, foi abordado a checagem das tarefas e algumasmudançasno product backlog.<br><br>
+            <b> Assuntos pendentes: </b> Criação do site; 
+            <br><br><b>Quanto tempo de reunião: </b> 8 minutos e 43 segundos.
+            <hr>
+            
+
+            ` 
+        }
+        else if(valorReuniao==5){
+            mostrarDados.innerHTML+=`
+            <h2> Ata da reunião do dia 05/04/2022 </h2>
+            <b> Participantes: </b> 
+            Rafael Alves,
+            Guilherme Augusto,
+            Matheus Gomes,
+            Brayan Coelho,
+            Kelvin Guimarães.
+                <br><br>
+            <b> Membros não participantes: Pedro Antônio, João Gabriel (Justificado)<br> <br>
+            <b> Relatório: </b>  Para essa reunião, foi abordado a refaturação do código, do projeto e a aplicação dos feedbacks do professor e dos colegas.<br><br>
+            <b> Assuntos pendentes: </b> Mudança no backlog, diagrama técnico, refaturação do css; 
+            <br><br><b>Quanto tempo de reunião: </b> 45 minutos
+            <hr>
+            
+
+            ` 
+        }
+        else if(valorReuniao==6){
+            mostrarDados.innerHTML+=`
+            <h2> Ata da reunião do dia 05/04/2022 </h2>
+            <b> Participantes: </b> 
+            Rafael Alves,
+            Guilherme Augusto,
+            Matheus Gomes,
+            Brayan Coelho,
+                <br><br>
+            <b> Membros não participantes: Pedro Antônio (saiu da faculdade), Kelvin Guimarães, João Gabriel (Justificado)<br> <br>
+            <b> Relatório: </b>  Para essa reunião, foi acompanhado as tarefas do product backlog<br><br>
+            <b> Assuntos pendentes: </b> Criação do site, refaturação do css, diagrama técnico; 
+            <br><br><b>Quanto tempo de reunião: </b> 3 minutos
+            <hr>
+            
+
+            ` 
+        }
+        else if(valorReuniao==7){
+            mostrarDados.innerHTML+=`
+            <h2> Ata da reunião do dia 05/04/2022 </h2>
+            <b> Participantes: </b> 
+            Rafael Alves,
+            Guilherme Augusto,
+            Matheus Gomes,
+            Brayan Coelho.
+            
+                <br><br>
+            <b> Membros não participantes: Pedro Antônio (saiu da faculdade), Kelvin Guimarães, João Gabriel, <br> <br>
+            <b> Relatório: </b>  Para essa reunião, foi acompanhado as tarefas do product backlog, em especial, o Banco de dados e sua modelagem.<br><br>
+            <b> Assuntos pendentes: </b> Criação do dashboard, refaturação do css.
+            <br><br><b>Quanto tempo de reunião: </b> 6 minutos e 41 segundos
+            <hr>
+            
+
+            ` 
+        }
+        else if(valorReuniao==8){
+            mostrarDados.innerHTML+=`
+            <h2> Ata da reunião do dia 05/04/2022 </h2>
+            <b> Participantes: </b> 
+            Rafael Alves,
+            Guilherme Augusto,
+            Matheus Gomes.
+            
+                <br><br>
+            <b> Membros não participantes: Pedro Antônio (saiu da faculdade), Kelvin Guimarães, João Gabriel, Brayan Coelho.<br> <br>
+            <b> Relatório: </b>  Para essa reunião, foi acompanhado as tarefas do product backlog, em especial, o diagrama técnico e seus elementos.<br><br>
+            <b> Assuntos pendentes: </b> Criação do dashboard, refaturação do css.
+            <br><br><b>Quanto tempo de reunião: </b> 7 minutos e 33 segundos
+            <hr>
+            
+
+            ` 
         }
     }
 
