@@ -1,64 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato</title>
-   <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
+
 <body>
+
+    <!-- inicio navbar -->
     <div class="header">
-    
-  
-        <div class="logo"><h1><a href="index.html">Ecometer</a></h1></div>
+
+
+        <div class="logo">
+            <h1><a href="index.html">Ecometer</a></h1>
+        </div>
         <div class='elementosNav'>
             <ul class="navBar">
                 <li class="liNav" id="sobre"><a href='sobre.html'>Sobre</a></li>
                 <li class="liNav" id="simulador"><a href="sim_financeiro.html">Simulador Financeiro</a></li>
                 <li class="liNav" id="contato"><a href="contato.html">Contato</a></li>
-    
-            </ul>
-        </div>
-        <div class='elementosNav' id="imagemEntrar">
-            <ul class="navBar">
                 <li class="login">
-                    <img src="http://cdn.onlinewebfonts.com/svg/img_227643.png">
+                    <a href="login.html">
+                        <img src="http://cdn.onlinewebfonts.com/svg/img_227643.png">
+                    </a>
                 </li>
             </ul>
+        </div>
 
-        
+
     </div>
-<!-- fim nav -->
-</div>
-<div class="content" id="dadosCadastrais">
-    <div class="container">
-        <h2> Envie sua mensagem </h2>
-        <div class="alinhamento"></div>
-        <hr>
-        Nome da empresa<br>
-        <input class="inputMensagem" type="text" name="" id="nomeEmpresaInp">
-        <br>
-        Nome do representante<br>
-        <input class="inputMensagem" type="text" name="" id="nomeRepresentante">
-        <br>
-        Email<br>
-        <input class="inputMensagem" type="text" name="" id="emailUsuario">
-        <br>
-        Mensagem<br>
-      <br>
-        <textarea id="mensagem" class="inputMensagem"name="" id="" cols="30" rows="10"></textarea>
-        <button onclick="confirmarMensagem()">
-            Enviar 
-        </button>
+
+
+    <!-- fim navbar -->
+
     </div>
-</div>
+    <div class="content" id="dadosCadastrais">
+        <div class="container">
+            <h2> Envie sua mensagem </h2>
+            <div class="alinhamento"></div>
+            <hr>
+            Nome da empresa<br>
+            <input class="inputMensagem" type="text" name="" id="nomeEmpresaInp">
+            <br>
+            Nome do representante<br>
+            <input class="inputMensagem" type="text" name="" id="nomeRepresentante">
+            <br>
+            Email<br>
+            <input class="inputMensagem" type="text" name="" id="emailUsuario">
+            <br>
+            Mensagem<br>
+            <br>
+            <textarea id="mensagem" class="inputMensagem" name="" id="" cols="30" rows="10"></textarea>
+            <button onclick="confirmarMensagem()">
+                Enviar
+            </button>
+        </div>
+    </div>
 
 
 </body>
+
 </html>
 <script>
-    function confirmarMensagem(){
+    function confirmarMensagem() {
         alert('Sua mensagem foi enviada! Em até 3 dias estaremos retornando')
     }
 </script>
