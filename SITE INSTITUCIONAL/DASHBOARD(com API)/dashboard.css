@@ -1,0 +1,211 @@
+:root {
+
+    --color-green: #73e67d;
+    --color-red: #f56b76;
+    --color-blue: #4f44ec;
+    --color-nav: rgb(61, 61, 61);
+    --color-scroll: #346751;
+    --color-white: #f3f3f3;
+    --color-black: rgb(7, 7, 7);
+    --hover-button-green: #4a9e51;
+    --hover-button-black: #252525;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    font-family: 'Poppins';
+}
+
+/*Configurações menu lateral*/
+#menuLateral {
+
+    width: 7%;
+    height: 100vh;
+    background-color: var(--color-green);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#alignLateral {
+    padding-top: 20px;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#menuBurger img {
+    width: 38px;
+}
+
+#mainLateral {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#mainLateral img {
+    width: 30px;
+}
+
+#signout {
+    padding-bottom: 20px;
+}
+
+#signout img {
+    width: 38px;
+}
+
+/*fim menu lateral*/
+
+#main {
+    width: 100%;
+}
+
+/*header config*/
+#header {
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#logo {
+    display: flex;
+    align-items: baseline;
+}
+
+/*parte dos graficos*/
+
+#dashMain {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    background-color: var(--color-white);
+}
+
+#fr1,
+#fr3 {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#fr2 {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+/*fr1*/
+#lixeirasAtivas {
+    width: 80%;
+    height: 30%;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#graficoPizza {
+
+    width: 80%;
+    height: 60%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+/*fr2*/
+#mainGraph {
+    width: 100%;
+    height: 45%;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#liveGraph {
+    width: 100%;
+    height: 40%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#piso1, #piso2, #piso3 {
+    background-image: url('assets/planta\ 1.jpg');
+    background-size: 420px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: right;
+}
+
+#piso1 {
+    background-image: url('assets/planta\ 2.jpg');
+}
+#piso2 {
+    background-image: url('assets/planta\ 1.jpg');
+}
+#piso3 {
+    background-image: url('assets/planta\ 3.jpg');
+}
+
+
+/*fr3*/
+
+#change {
+    width: 80%;
+    height: 30%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#change button {
+    height: 50px;
+    width: 80%;
+    border-radius: 10px;
+
+
+}
+
+
+#alertas {
+    width: 80%;
+    height: 60%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#amarelo {
+    background-color: yellow;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#vermelho {
+    background-color: red;
+    border-radius: 10px;
+    padding: 5px;
+}
