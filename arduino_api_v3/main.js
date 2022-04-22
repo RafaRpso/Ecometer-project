@@ -1,7 +1,6 @@
 const serialport = require('serialport'); // chamo módulo serialport
 const express = require('express'); //chamo módulo express
 const mysql = require('mysql2'); // chamo módulo mysql2
-
 const SERIAL_BAUD_RATE = 9600; //delay
 const SERVIDOR_PORTA = 3000; //porta para localhost
 const HABILITAR_OPERACAO_INSERIR = false; //proteção para inserção de dados
@@ -9,7 +8,6 @@ const HABILITAR_OPERACAO_INSERIR = false; //proteção para inserção de dados
 
 /*  BANCO MYSQL2 */ 
 const serial = async ( 
-  
     /* A variable that stores the values of the humidity sensor. */
     valoresDht11Umidade,
     valoresDht11Temperatura,
@@ -30,8 +28,6 @@ const serial = async (
 
 
     /* ARDUINO*/ 
-
-
     const portas = await serialport.SerialPort.list(); //busca portas do arduino 
     const portaArduino = portas.find((porta) => porta.vendorId == 2341 && porta.productId == 43);
     if (!portaArduino) { //se a porta não for encontrada, faça 
@@ -39,7 +35,8 @@ const serial = async (
     }
 
 
-    const arduino = new serialport.SerialPort(
+
+    const arduino = new serialport.SerialPort( 
         {
             path: portaArduino.path, //qual o local? 
             baudRate: SERIAL_BAUD_RATE //define os valores do arduino, aqui é a constante lá em cima 
@@ -50,6 +47,7 @@ const serial = async (
         console.log(`A leitura do arduino foi iniciada na porta ${portaArduino.path} utilizando Baud Rate de ${SERIAL_BAUD_RATE}`);
     });
 
+/* Reading the data from the serial port and storing it in the variable `data`. */
 
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
     
@@ -93,6 +91,7 @@ const servidor = ( //definicao da func. servidor com os valores dos sensores
 ) => {
     const app = express(); //recebe funcao express
 
+
 /* A middleware that allows the server to respond to requests from other domains. */
 //age como intermediario
     app.use((request, response, next) => { //resposta do servidor 
@@ -126,6 +125,7 @@ const servidor = ( //definicao da func. servidor com os valores dos sensores
 }
 
 //ðefinicoes das constantes como vetor
+/* A self-invoking function. */
 (async () => {
     const valoresDht11Umidade = [];
     const valoresDht11Temperatura = [];
