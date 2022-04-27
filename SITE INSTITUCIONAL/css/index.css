@@ -18,25 +18,26 @@
 
 body::-webkit-scrollbar {
     width: 12px;
-
+/* Define tamanho do scroolbar (12px de largura) */
 
 }
 
 body::-webkit-scrollbar-track {
     background: rgb(224, 224, 224);
-
+/* Define o fundo do scrollbar */
 }
 
 body::-webkit-scrollbar-thumb {
     background-color: #346751;
     margin: 2 auto;
     border-radius: 20px;
-    /* roundness of the scroll thumb */
+/* Define a corzinha da navbar */
 
 }
 
 /* Isso aqui é pra deixar a scrollbar combinando */
 body {
+    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
 }

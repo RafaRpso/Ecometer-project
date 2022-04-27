@@ -17,9 +17,30 @@
 }
 body {
     margin: 0;
-
+    scroll-behavior: smooth;
     font-family: 'Poppins';
 }
+
+
+body::-webkit-scrollbar {
+    width: 12px;
+
+
+}
+
+body::-webkit-scrollbar-track {
+    background: rgb(224, 224, 224);
+
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #346751;
+    margin: 2 auto;
+    border-radius: 20px;
+
+
+}
+
 select{ 
     border-radius:15px;
     background-color:white;
