@@ -21,6 +21,7 @@ body {
 select{ 
     border-radius:15px;
     background-color:white;
+    margin: 5px;
 }
 #main{ 
     margin-left: 7%;
@@ -79,7 +80,10 @@ select{
 #main {
     width: 100%;
 }
-
+.subtitulo{ 
+    font-weight: bold;
+    font-size: 26px;
+}
 .kapis{ 
     display:flex;
     justify-content: space-around;
@@ -108,7 +112,7 @@ select{
     padding: 8px ;
     border-radius: 10px;
     width: 100%;
-    height: 30%;
+    height: 20%;
     background-color: white;
     text-align: center;
     display: flex;
@@ -132,13 +136,22 @@ select{
     font-size: 24px;
 }
 #mainGraph{ 
-    display:block; 
-    height: 50%;
-
-    
-    
+    display:flex; 
+    height: 55%;
+    width:100%;
+    justify-content: center;
 }
+.botoesMapa{ 
+    display:flex;
+    flex-direction: row;
+    width: 60%;
+    justify-content: space-around;
+}
+#mapa{ 
+    
+    width:90%;
 
+}
 .botao{
     border: none;
     border-radius:15px;
@@ -183,18 +196,20 @@ select{
 .alinhar{ 
     display:flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .alinhamento{ 
+    margin: 12px;
     padding:5px;
     border-bottom: 2px solid rgb(132, 132, 132);
     width:30%;
 }
 .avisoGrafico{ 
-    display:flex;
+
     border: 2px solid rgb(129, 129, 129);
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+
+    text-align: center;
     width:15%;
 
     border-radius:25px;
@@ -222,7 +237,7 @@ select{
 }
 
 #fr2 {
-    width: 40%;
+    width: 60%;
 }
 
 
