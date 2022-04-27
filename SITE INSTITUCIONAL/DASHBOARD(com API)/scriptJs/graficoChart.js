@@ -205,6 +205,7 @@
     //piso 1
 
     const dataPiso1 = {
+
         datasets: [{
             label: 'Limites',
             data: [{
@@ -225,24 +226,28 @@
             backgroundColor: 'black'
         },
         {
+           
             label: 'Kits',
             data: [{
+                
                 x: 4,
                 y: 3.4
-            }
-
+            }, 
             ],  /* alterar ponteiro do lixo */
             backgroundColor: '#101099',
-            pointRadius: 7
-
+            pointRadius: 7,
+ 
+          
         }
-        ],
+        ], 
     };
     const configPiso1 = {
         type: 'scatter',
         data: dataPiso1,
         options: {
+            onClick: zap, 
             scales: {
+                
                 x: {
                     type: 'linear',
                     position: 'bottom'
@@ -287,6 +292,7 @@
             ],
             backgroundColor: '#FFA1A1',
             pointRadius: 5
+
         }
         ],
     };
@@ -294,6 +300,7 @@
         type: 'scatter',
         data: dataPiso2,
         options: {
+            onClick: zap, 
             scales: {
                 x: {
                     type: 'linear',
@@ -347,6 +354,7 @@
         type: 'scatter',
         data: dataPiso3,
         options: {
+            onClick: zap, 
             scales: {
                 x: {
                     type: 'linear',
@@ -442,4 +450,8 @@
         else if(qualKit.value=="4"){ //kit4  - todos  
           
         }
+    }
+//funcao para mostrar os graficos do kit (chamada la em cima )
+    function zap(){
+        alert("Solteira?")
     }
