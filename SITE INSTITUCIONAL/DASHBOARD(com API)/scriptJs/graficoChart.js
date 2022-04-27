@@ -19,8 +19,8 @@
         labels: labelsMes,
         datasets: [{
             label: 'Média Mensal',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: '#548d44',
+            borderColor: '#548d44',
             data: [2.4, 2.4, 2.3, 2.3, 2.2, 2.3, 2.4, 2.3, 2.5, 2.4, 2.4, 2.5],
         }]
     };
@@ -94,26 +94,26 @@
         labels: labelsDia,
         datasets: [{
             label: 'Plástico',
-            backgroundColor: 'red',
-            borderColor: 'red',
+            backgroundColor: '#FFA1A1',
+            borderColor: '#FFA1A1',
             data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 3.5, 3.7],
         },
         {
             label: 'Papel',
-            backgroundColor: 'blue',
-            borderColor: 'blue',
+            backgroundColor: '#b1bbe7',
+            borderColor: '#b1bbe7',
             data: [0, 0, 0, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 2.9, 3.2, 3.6, 3.7],
         },
         {
             label: 'Metal',
-            backgroundColor: 'yellow',
-            borderColor: 'yellow',
+            backgroundColor: '#F9FFA4',
+            borderColor: '#F9FFA4',
             data: [0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1],
         },
         {
             label: 'Vidro',
-            backgroundColor: 'green',
-            borderColor: 'green',
+            backgroundColor: '#B4FF9F',
+            borderColor: '#B4FF9F',
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 1.2],
         }
         ]
@@ -143,10 +143,10 @@
             label: 'Tipos de lixo',
             data: [30, 40, 20, 10],
             backgroundColor: [
-                'red',
-                'blue',
-                'yellow',
-                'green'
+                '#FFA1A1',
+                '#b1bbe7',
+                '#F9FFA4',
+                '#B4FF9F'
             ],
             hoverOffset: 4
         }]
@@ -174,10 +174,10 @@
             label: 'Tipos de lixo',
             data: [30, 40, 20, 10],
             backgroundColor: [
-                'red',
-                'blue',
-                'yellow',
-                'green'
+                '#FFA1A1',
+                '#b1bbe7',
+                '#F9FFA4',
+                '#B4FF9F'
             ],
             hoverOffset: 4
         }
@@ -232,8 +232,8 @@
             }
 
             ],  /* alterar ponteiro do lixo */
-            backgroundColor: 'red',
-            pointRadius: 5
+            backgroundColor: '#101099',
+            pointRadius: 7
 
         }
         ],
@@ -285,7 +285,7 @@
             }
 
             ],
-            backgroundColor: 'red',
+            backgroundColor: '#FFA1A1',
             pointRadius: 5
         }
         ],
@@ -338,7 +338,7 @@
             }
 
             ],
-            backgroundColor: 'red',
+            backgroundColor: '#FFA1A1',
             pointRadius: 5
         }
         ],

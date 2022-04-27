@@ -131,3 +131,12 @@
             aviso4.style.display='block'
         }
     }
+
+    function ocultarNavbar(){ 
+        menuLateral.style.display='none'
+        //arrumar footer
+        footerDash.style.marginLeft='0%'
+        footerDash.style.width='100%'
+        //arrumar main
+        main.style.marginLeft='0%'
+    }

@@ -12,10 +12,12 @@
 }
 
 
-
+.tudo{ 
+    display:flex;
+}
 body {
     margin: 0;
-    display: flex;
+
     font-family: 'Poppins';
 }
 select{ 
@@ -23,10 +25,20 @@ select{
     background-color:white;
     margin: 5px;
 }
+footer{ 
+    margin-top:15px;
+    display:flex;
+    flex-direction: column;
+    margin-left: 7%;
+    text-align: center;
+    width:93%; /* subtrai a margen xd */ 
+    background-color: #252525;
+    color:white;
+}
 #main{ 
     margin-left: 7%;
+    height: 80%;
 }
-
 #mensal{ 
     width:100%
 }
@@ -85,6 +97,7 @@ select{
     font-size: 26px;
 }
 .kapis{ 
+    margin-top:5%;
     display:flex;
     justify-content: space-around;
     height:25%;
