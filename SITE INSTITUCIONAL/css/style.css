@@ -160,7 +160,7 @@ a:hover {
 }
 
 .content .container input {
-    width: 50%;
+    width: 35%;
     padding: 10px;
     border: none;
     background-color: rgb(218, 218, 218);
@@ -180,7 +180,6 @@ a:hover {
     border-radius: 25px;
     border: none;
     background-color: var(--color_green);
-    margin-top: 20px;
 }
 
 .content .container button:hover {
@@ -214,8 +213,57 @@ a {
 
 
 }
-
-.textoForms{
-    margin: 10px;
-    font-size: 24px;
+.footerBranco .footer {
+    background-color: #f3f3f3;
 }
+
+.footerVerde .footer{
+    background-color: #73e67d;
+}
+
+.footer {
+    
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+#navegar h2, #ouvidoria h2, #conta h2{
+    text-decoration: underline ;
+}
+
+.footer h1 {
+    margin-left: 120px;
+}
+
+.footer ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.footer li {
+    
+    margin-top: 20px;
+}
+
+#elementosFooter {
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+
+    
+
+}
+
+#alinhamento {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
