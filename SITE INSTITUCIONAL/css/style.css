@@ -180,6 +180,7 @@ a:hover {
     border-radius: 25px;
     border: none;
     background-color: var(--color_green);
+    margin-top: 20px;
 }
 
 .content .container button:hover {
@@ -212,4 +213,9 @@ a {
     height: 20vh;
 
 
+}
+
+.textoForms{
+    margin: 10px;
+    font-size: 24px;
 }

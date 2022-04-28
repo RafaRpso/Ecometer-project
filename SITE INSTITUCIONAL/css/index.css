@@ -366,6 +366,19 @@ a:hover{
 .box h3 {
     font-size: 45px;
 }
+/* Tentativa de alinhamento */
+#alinhar1.box h3 {
+    text-align: center;
+    padding-top: 60px;
+}
+
+#gastos.box h3{
+    padding-top: 0px;
+}
+
+#alinhar2.box h3{
+    padding-top: 30px;
+}
 
 .elementosCompra {
     display: flex;
