@@ -31,7 +31,7 @@
         graph.style.display = 'none'
         mapa.style.display = 'block'
         mediaLocal.innerHTML= 'Localização das Lixeiras'
-        maingraph.style.width='100%'
+        mainGraph.style.width='100%'
 
 
     }
@@ -47,6 +47,7 @@
         mediaLocal.innerHTML= 'Média de lotação '
 
     }
+
 
     function trocaPiso() {
         if (slct_piso.value == 1) {
@@ -131,3 +132,14 @@
             aviso4.style.display='block'
         }
     }
+ 
+    function ocultarNavbar(){ 
+        menuLateral.style.display='none'
+        //arrumar footer
+        footerDash.style.marginLeft='0%'
+        footerDash.style.width='100%'
+        //arrumar main
+        main.style.marginLeft='0%'
+    }
+ 
+
