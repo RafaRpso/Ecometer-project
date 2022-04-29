@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<!--
+  grafico estatico = valor de todas as lixeiras / numero de lixeiras
+  grafico em tempo real = vai utilizar apenas um valor: o do alerta
+  grafico em pizza = vai indicar qual tipo de lixeira tem certa quantidade de lixo
+  grafico de localização = vai indicar aonde estão cada lixeira
+-->
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <title>Dashboard</title>
+</head>
+
+<body>
+  <div class="tudo">
+
+    
+    <div id="menuLateral">
+        <div id="alignLateral">
+            <div id="menuBurger">
+                <img src="Icones/menu-burger-free-icon-font.png" onclick="ocultarNavbar()" alt="">
+            </div>
+            <div id="mainLateral">
+                <a href=""> <img src="Icones/user-free-icon-font.png" alt=""></a>
+                <a href=""><img src="Icones/settings-free-icon-font.png" alt=""></a>
+                <a href=""><img src="Icones/comment-alt-free-icon-font.png" alt=""></a>
+                <a href=""><img src="Icones/bell-free-icon-font.png" alt=""></a>
+            </div>
+
+        </div>
+        <div id="signout">
+            <a href=""><img src="Icones/sign-out-free-icon-font.png" alt=""></a>
+        </div>
+    </div>
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <h1>Ecometer</h1>
+                <p>dashboard</p>
+            </div>
+        </div>
+        <div class="kapis">
+            <div class="kapiGrafico" id="verKits" onclick="trocaMapa()">
+                <span class="tituloKapi"> Kits Ativos </span> 
+                <span class="subtitulo"> 3 </span>
+
+            </div><div class="kapiGrafico">
+                <span class="tituloKapi"> Toneladas/dia </span> 
+                <span class="subtitulo"> 5 </span>
+            </div><div  class="kapiGrafico">
+                <span class="tituloKapi"> Toneladas/mês </span> 
+                <span class="subtitulo"> 25 </span>
+            </div>
+        </div>
+        <div class="alinhar">
+            <div class="alinhamento"></div>
+            <h1> Alerta </h1>
+            <p id="condicaoKit"> </p>
+        </div>
+    
+
+        <div class="avisos">
+        
+            <div class="avisoGrafico" id="aviso1">
+                <h3>Vazio</h3>
+            
+            </div><div class="avisoGrafico" id="aviso2">
+                <h3>Pouco cheio</h3>
+           
+            </div><div  class="avisoGrafico" id="aviso3">
+                <h3>Quase cheio</h3>
+      
+            </div>
+            <div  class="avisoGrafico" id="aviso4">
+                <h3>Lotado!</h3>
+         
+            </div>
+        </div>
+        <!--Onde vão ficar todos os gráficos-->
+        <div id="dashMain">
+            <div id="fr1" class="colunasDash">
+               
+                <div id="graficoPizza" class="cardGrafico">
+                    Selecione o gráfico<select id="slct_pie" onchange="trocaPie()">
+                        <option value="1">Barra</option>
+                        <option value="2">Pizza</option>
+                    </select>
+                    <canvas id="tipo_lotacao_bar"  style="display: none;"></canvas>
+                    <canvas id="tipo_lotacao_pie"></canvas>
+                </div>
+            </div>
+            <div id="fr2" class="colunasDash">
+                
+
+                <div id="mainGraph" class="cardGrafico">
+    
+
+                    
+                    <p id="textoParagrafo"><span id="intervalo_exib">Intervalo de Exibição:</span> <span id="piso_exib"
+                        style="display: none;">Andar:</span>
+                    <select name="" id="slct_graph" onchange="troca()">
+                        <option value="1">Mensal</option>
+                        <option value="2">Semanal</option>
+                        <option value="3">Ultimas 13H</option>
+                    </select>
+                    
+                    <select name="" id="slct_piso" onchange="trocaPiso()" style="display: none;">
+                        <option value="1">Piso 1</option>
+                        <option value="2">Piso 2</option>
+                        <option value="3">Piso 3</option>
+                    </select>
+
+                </p>
+                    <b id="mediaLocal"> Média de lotação</b>
+                    <div id="graph">
+                        <canvas id="mensal"></canvas>
+                        <canvas id="semanal" style="display: none;"></canvas>
+                        <canvas id="diario" style="display: none;"></canvas>
+                    </div>
+                    <!--este é o canvas do mapa-->
+                    <div id="mapa" style="display: none;">
+                        <canvas id="piso1"></canvas>
+                        <canvas id="piso2" style="display:none; "></canvas>
+                        <canvas id="piso3" style="display:none; "></canvas>
+                    </div> 
+                    <div class="alinhamento"></div>
+                    <div class="botoesMapa">
+                        <button onclick="trocaGraph()" class="botao">Gráfico</button>
+                        <button onclick="trocaMapa()" class="botao">Mapa</button>
+                    </div>
+
+                </div>
+              
+            </div>
+            <div id="fr3" class="colunasDash">
+                <div id="alertas" class="cardGrafico">
+                    <h2>Selecione o Kit </h2>
+                   <select name="" id="qualKit" onchange="selecaoKitAlerta()">
+                        <option value="0">-- SELECIONAR O KIT --</option>
+                       <option value="1">Kit 1</option>
+                       <option value="2">Kit 2 </option>
+                       <option value="3">Kit 3</option>
+                       <option value='4'>Todos</option>
+                   </select>
+
+                   <div class="alinhamento"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+</div>
+<footer id="footerDash">
+ Todos os direitos reservados ao zap! 
+</footer >
+   
+</body>
+
+</html>
+<script src="scriptJs/graficoChart.js"> 
+//Tá tudo no scriptJS/, tava uma zona isso aqui. 
+</script> 
+
+<script src="scriptJs/validacaoSite.js"> 
+    </script> 
+    

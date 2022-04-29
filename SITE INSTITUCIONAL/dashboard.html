@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<!--
+  grafico estatico = valor de todas as lixeiras / numero de lixeiras
+  grafico em tempo real = vai utilizar apenas um valor: o do alerta
+  grafico em pizza = vai indicar qual tipo de lixeira tem certa quantidade de lixo
+  grafico de localização = vai indicar aonde estão cada lixeira
+-->
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+  
+
+    
+    <div id="menuLateral">
+        <div id="alignLateral">
+            <div id="menuBurger">
+                <img src="Icones/menu-burger-free-icon-font.png" alt="">
+            </div>
+            <div id="mainLateral">
+                <a href=""> <img src="Icones/user-free-icon-font.png" alt=""></a>
+                <a href=""><img src="Icones/settings-free-icon-font.png" alt=""></a>
+                <a href=""><img src="Icones/comment-alt-free-icon-font.png" alt=""></a>
+                <a href=""><img src="Icones/bell-free-icon-font.png" alt=""></a>
+            </div>
+
+        </div>
+        <div id="signout">
+            <a href=""><img src="Icones/sign-out-free-icon-font.png" alt=""></a>
+        </div>
+    </div>
+    <div id="main">
+        <div id="header">
+            <div id="logo">
+                <h1>Ecometer</h1>
+                <p>dashboard</p>
+            </div>
+        </div>
+        <div class="kapis">
+            <div class="kapiGrafico" id="verKits" onclick="trocaMapa()">
+                <span class="tituloKapi"> Titulo </span> 
+            </div><div class="kapiGrafico">
+                <span class="tituloKapi"> Titulo </span> 
+            </div><div  class="kapiGrafico">
+                <span class="tituloKapi"> Titulo </span> 
+            </div>
+        </div>
+        <div class="alinhar">
+            <div class="alinhamento"></div>
+        </div>
+      
+        <div class="avisos">
+            <div class="avisoGrafico" id="aviso1">
+                <h3>Lorem Ipsum</h3>
+                <h1>3</h1>
+            </div><div class="avisoGrafico" id="aviso2">
+                <h3>Lorem Ipsum</h3>
+                <h1>3</h1>
+            </div><div  class="avisoGrafico" id="aviso3">
+                <h3>Lorem Ipsum</h3>
+                <h1>3</h1>
+            </div>
+            <div  class="avisoGrafico" id="aviso4">
+                <h3>Lorem Ipsum</h3>
+                <h1>3</h1>
+            </div>
+        </div>
+        <!--Onde vão ficar todos os gráficos-->
+        <div id="dashMain">
+            <div id="fr1" class="colunasDash">
+               
+                <div id="graficoPizza" class="cardGrafico">
+                    Selecione o gráfico<select id="slct_pie" onchange="trocaPie()">
+                        <option value="1">Barra</option>
+                        <option value="2">Pizza</option>
+                    </select>
+                    <canvas id="tipo_lotacao_bar"  style="display: none;"></canvas>
+                    <canvas id="tipo_lotacao_pie"></canvas>
+                </div>
+            </div>
+            <div id="fr2" class="colunasDash">
+                
+
+                <div id="mainGraph" class="cardGrafico">
+    
+
+                    
+                    <p id="textoParagrafo"><span id="intervalo_exib">Intervalo de Exibição:</span> <span id="piso_exib"
+                        style="display: none;">Andar:</span>
+                    <select name="" id="slct_graph" onchange="troca()">
+                        <option value="1">Mensal</option>
+                        <option value="2">Semanal</option>
+                        <option value="3">Ultimas 13H</option>
+                    </select>
+                    
+                    <select name="" id="slct_piso" onchange="trocaPiso()" style="display: none;">
+                        <option value="1">Piso 1</option>
+                        <option value="2">Piso 2</option>
+                        <option value="3">Piso 3</option>
+                    </select>
+
+                </p>
+                    <b id="mediaLocal"> Média de lotação</b>
+                    <div id="graph">
+                        <canvas id="mensal"></canvas>
+                        <canvas id="semanal" style="display: none;"></canvas>
+                        <canvas id="diario" style="display: none;"></canvas>
+                    </div>
+                    <!--este é o canvas do mapa-->
+                    <div id="mapa" style="display: none;">
+                        <canvas id="piso1"></canvas>
+                        <canvas id="piso2" style="display:none; "></canvas>
+                        <canvas id="piso3" style="display:none; "></canvas>
+                    </div>
+                    <button onclick="trocaGraph()" class="botao">Gráfico</button>
+                    <button onclick="trocaMapa()" class="botao">Mapa</button>
+                </div>
+              
+            </div>
+            <div id="fr3" class="colunasDash">
+                <div id="alertas" class="cardGrafico">
+                    <h2>Selecione o Kit </h2>
+                   <select name="" id="">
+                        <option value="">-- SELECIONAR O KIT --</option>
+                       <option value="">Kit 1</option>
+                       <option value="">Kit 2 </option>
+                       <option value="">Kit 2 </option>
+                   </select>
+
+                   <div class="alinhamento"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</body>
+
+</html>
+<script>
+
+    function troca() {
+
+        if (slct_graph.value == 1) {
+            mensal.style.display = 'block'
+            semanal.style.display = 'none'
+            diario.style.display = 'none'
+        }
+
+        if (slct_graph.value == 2) {
+            mensal.style.display = 'none'
+            semanal.style.display = 'block'
+            diario.style.display = 'none'
+        }
+
+        if (slct_graph.value == 3) {
+            mensal.style.display = 'none'
+            semanal.style.display = 'none'
+            diario.style.display = 'block'
+        }
+    }
+
+    function trocaMapa() {
+
+        intervalo_exib.style.display = 'none';
+        piso_exib.style.display = 'block';
+        slct_graph.style.display = 'none'
+        slct_piso.style.display = 'block';
+        graph.style.display = 'none'
+        mapa.style.display = 'block'
+        mediaLocal.innerHTML= 'Localização das Lixeiras'
+  
+
+
+    }
+
+    function trocaGraph() {
+
+        intervalo_exib.style.display = 'block';
+        piso_exib.style.display = 'none';
+        slct_graph.style.display = 'block'
+        slct_piso.style.display = 'none';
+        graph.style.display = 'block'
+        mapa.style.display = 'none'
+        mediaLocal.innerHTML= 'Média de lotação '
+
+    }
+
+    function trocaPiso() {
+        if (slct_piso.value == 1) {
+            piso1.style.display = 'block'
+            piso2.style.display = 'none'
+            piso3.style.display = 'none'
+        }
+
+        if (slct_piso.value == 2) {
+            piso1.style.display = 'none'
+            piso2.style.display = 'block'
+            piso3.style.display = 'none'
+        }
+
+        if (slct_piso.value == 3) {
+            piso1.style.display = 'none'
+            piso2.style.display = 'none'
+            piso3.style.display = 'block'
+        }
+    }
+
+
+
+    function trocaPie() {
+        if (slct_pie.value == 1) {
+            graficoPizza.style.height = "25%"
+            tipo_lotacao_bar.style.display = 'block'
+            tipo_lotacao_pie.style.display = 'none'
+        }
+
+        if (slct_pie.value == 2) {
+            graficoPizza.style.height = "45%"
+            tipo_lotacao_bar.style.display = 'none'
+            tipo_lotacao_pie.style.display = 'block'
+        }
+    }
+
+    function amarelo() {
+        alert('O local está ideal para a coleta')
+        alertas.innerHTML += `<span style id="amarelo">Ideal para a coleta - tal horas</span>`
+    }
+
+    function vermelho() {
+        alert('ALERTA - AS LIXEIRAS ESTÃO LOTANDO')
+        alertas.innerHTML += `<span style id="vermelho">LOTANDO - tal horas</span>`
+    }
+
+
+    //grafico mensal
+    const labelsMes = [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'Novembro',
+        'Dezembro'
+    ];
+
+    const dataMes = {
+        labels: labelsMes,
+        datasets: [{
+            label: 'Média Mensal',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [2.4, 2.4, 2.3, 2.3, 2.2, 2.3, 2.4, 2.3, 2.5, 2.4, 2.4, 2.5],
+        }]
+    };
+
+    const configMes = {
+        type: 'line',
+        data: dataMes,
+        options: {}
+    };
+
+    const myChartMes = new Chart(
+        document.getElementById('mensal'),
+        configMes
+    );
+    //grafico semanal
+
+    const labelsSem = [
+
+        'Segunda',
+        'Terça',
+        'Quarta',
+        'Quinta',
+        'Sexta',
+        'Sábado',
+        'Domingo'
+
+    ];
+
+    const dataSem = {
+        labels: labelsSem,
+        datasets: [{
+            label: 'Média Semanal',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [2.1, 2.1, 2.3, 2.2, 2.4, 2.5, 2.5],
+        }]
+    };
+
+    const configSem = {
+        type: 'line',
+        data: dataSem,
+        options: {}
+    };
+
+    const myChartSem = new Chart(
+        document.getElementById('semanal'),
+        configSem
+    );
+
+    //graph ultimas 24H
+
+    const labelsDia = [
+        '09:00',
+        '10:00',
+        '11:00',
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00'
+
+    ];
+
+    const dataDia = {
+        labels: labelsDia,
+        datasets: [{
+            label: 'Plástico',
+            backgroundColor: 'red',
+            borderColor: 'red',
+            data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 3.5, 3.7],
+        },
+        {
+            label: 'Papel',
+            backgroundColor: 'blue',
+            borderColor: 'blue',
+            data: [0, 0, 0, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 2.9, 3.2, 3.6, 3.7],
+        },
+        {
+            label: 'Metal',
+            backgroundColor: 'yellow',
+            borderColor: 'yellow',
+            data: [0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1],
+        },
+        {
+            label: 'Vidro',
+            backgroundColor: 'green',
+            borderColor: 'green',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 1.2],
+        }
+        ]
+    };
+
+    const configDia = {
+        type: 'line',
+        data: dataDia,
+        options: {}
+    };
+
+    const myChartDia = new Chart(
+        document.getElementById('diario'),
+        configDia
+    );
+
+    //gráfico pizza
+
+    const dataPie = {
+        labels: [
+            'Plastico',
+            'Papel',
+            'Metal',
+            'Vidro'
+        ],
+        datasets: [{
+            label: 'Tipos de lixo',
+            data: [30, 40, 20, 10],
+            backgroundColor: [
+                'red',
+                'blue',
+                'yellow',
+                'green'
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    const configPie = {
+        type: 'doughnut',
+        data: dataPie,
+    };
+
+    const myChartPie = new Chart(
+        document.getElementById('tipo_lotacao_pie'),
+        configPie
+    );
+    //grafico barra
+
+    const dataBar = {
+        labels: [
+            'Plastico',
+            'Papel',
+            'Metal',
+            'Vidro'
+        ],
+        datasets: [{
+            label: 'Tipos de lixo',
+            data: [30, 40, 20, 10],
+            backgroundColor: [
+                'red',
+                'blue',
+                'yellow',
+                'green'
+            ],
+            hoverOffset: 4
+        }
+        ],
+
+
+    };
+
+    const configBar = {
+        type: 'bar',
+        data: dataBar,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        },
+    };
+    const myChartBar = new Chart(
+        document.getElementById('tipo_lotacao_bar'),
+        configBar
+    );
+    //grafico mapa
+    //piso 1
+
+    const dataPiso1 = {
+        datasets: [{
+            label: 'Limites',
+            data: [{
+                x: 0,
+                y: 0
+            }, {
+                x: 0,
+                y: 10
+            }, {
+                x: 10,
+                y: 10
+            }, {
+                x: 10,
+                y: 0
+            },
+
+            ],
+            backgroundColor: 'black'
+        },
+        {
+            label: 'Kits',
+            data: [{
+                x: 4,
+                y: 3.4
+            }
+
+            ],  /* alterar ponteiro do lixo */
+            backgroundColor: 'red',
+            pointRadius: 5
+
+        }
+        ],
+    };
+    const configPiso1 = {
+        type: 'scatter',
+        data: dataPiso1,
+        options: {
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom'
+                }
+            }
+        }
+    };
+
+    const myChartPiso1 = new Chart(
+        document.getElementById('piso1'),
+        configPiso1
+    );
+
+    //piso 2
+
+    const dataPiso2 = {
+        datasets: [{
+            label: 'Limites',
+            data: [{
+                x: 0,
+                y: 0
+            }, {
+                x: 0,
+                y: 10
+            }, {
+                x: 10,
+                y: 10
+            }, {
+                x: 10,
+                y: 0
+            },
+            ],
+            backgroundColor: 'black'
+        },
+        {
+            label: 'Kits',
+            data: [{
+                x: 2,
+                y: 3.8
+            }
+
+            ],
+            backgroundColor: 'red',
+            pointRadius: 5
+        }
+        ],
+    };
+    const configPiso2 = {
+        type: 'scatter',
+        data: dataPiso2,
+        options: {
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom'
+                }
+            }
+        }
+    };
+
+    const myChartPiso2 = new Chart(
+        document.getElementById('piso2'),
+        configPiso2
+    );
+
+    //piso 3
+
+    const dataPiso3 = {
+        datasets: [{
+            label: 'Limites',
+            data: [{
+                x: 0,
+                y: 0
+            }, {
+                x: 0,
+                y: 10
+            }, {
+                x: 10,
+                y: 10
+            }, {
+                x: 10,
+                y: 0
+            },
+
+            ],
+            backgroundColor: 'black'
+        },
+        {
+            label: 'Kits',
+            data: [{
+                x: 4,
+                y: 2.5
+            }
+
+            ],
+            backgroundColor: 'red',
+            pointRadius: 5
+        }
+        ],
+    };
+    const configPiso3 = {
+        type: 'scatter',
+        data: dataPiso3,
+        options: {
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom'
+                }
+            }
+        }
+    };
+
+    const myChartPiso3 = new Chart(
+        document.getElementById('piso3'),
+        configPiso3
+    );
+
+    //grafico tempo real
+    var contextoChave = document.getElementById('chave').getContext('2d');
+    contextoChave.canvas.width = 1000;
+    contextoChave.canvas.height = 300;
+    var chave = new Chart(
+        contextoChave,
+        {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Chave',
+                    type: 'line',
+                    borderColor: ['#ffd902'],
+                    backgroundColor: ['#ffe135']
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        distribution: 'series',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Chave'
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                animation: {
+                    duration: 0
+                }
+            }
+        }
+    );
+    var paginacao = {};
+    var tempo = {};
+    function obterDados(grafico, endpoint) {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
+        http.send(null);
+        var valores = JSON.parse(http.responseText);
+        if (paginacao[endpoint] == null) {
+            paginacao[endpoint] = 0;
+        }
+        if (tempo[endpoint] == null) {
+            tempo[endpoint] = 0;
+        }
+
+        if (valores > 0) {
+            alert('ALERTA - AS LIXEIRAS ESTÃO LOTANDO')
+            alertas.innerHTML += `<span style id="vermelho">LOTANDO - tal horas</span>`
+        }
+
+        //funçôes gerais
+
+    }
+</script>

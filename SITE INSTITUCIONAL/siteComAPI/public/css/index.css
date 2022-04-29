@@ -18,26 +18,25 @@
 
 body::-webkit-scrollbar {
     width: 12px;
-/* Define tamanho do scroolbar (12px de largura) */
+
 
 }
 
 body::-webkit-scrollbar-track {
     background: rgb(224, 224, 224);
-/* Define o fundo do scrollbar */
+
 }
 
 body::-webkit-scrollbar-thumb {
     background-color: #346751;
     margin: 2 auto;
     border-radius: 20px;
-/* Define a corzinha da navbar */
+    /* roundness of the scroll thumb */
 
 }
 
 /* Isso aqui é pra deixar a scrollbar combinando */
 body {
-    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
 }
@@ -430,47 +429,10 @@ a:hover{
 }
 
 .footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 3vh;
     background-color: #73e67d;
-    width: 100%;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
-}
 
-#navegar h2, #ouvidoria h2, #conta h2{
-    text-decoration: underline ;
-}
-
-.footer h1 {
-    margin-left: 120px;
-}
-
-.footer ul {
-    list-style: none;
-    margin-top: 30px;
-}
-
-.footer li {
-    
-    margin-top: 20px;
-}
-
-#elementosFooter {
-    width: 100%;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-around;
-
-    
-
-}
-
-#alinhamento {
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
 }

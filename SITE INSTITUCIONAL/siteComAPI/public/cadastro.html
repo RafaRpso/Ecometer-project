@@ -44,7 +44,17 @@
 
     </div>
 
+<<<<<<< HEAD:SITE INSTITUCIONAL/siteComAPI/public/cadastro.html
+
+    <!-- fim navbar -->
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+=======
     <!-- fim navbar  -->
+>>>>>>> 5a1d88c23dd22c3f8a6cc023f25f9206e1727503:SITE INSTITUCIONAL/cadastro.html
 
     </div>
     <div class="content" id="dadosCadastrais">
@@ -81,8 +91,18 @@
                 <option value="Plano anual PRO">Plano anual PRO/R$360</option>
             </select>
 
-            <button onclick="confirmarCadastro()">Cadastrar</button>
+            <button onclick="cadastrar()">Cadastrar</button>
         </div>
+    </div>
+
+    <div id="div_aguardar" class="loading-div">
+        <img src="./assets/circle-loading.gif" id="loading-gif">
+    </div>
+    <div id="div_erros_login"></div>
+
+    <div id="confirmarDados">
+
+
     </div>
 
     <div id="confirmarDados">
@@ -128,56 +148,93 @@
 
 </html>
 <script>
-    var nomeUsuario = nomeRepresentante.value;
-    var nomeEmpresa = nomeEmpresaInp.value;
-    var cnpjEmpresa = cnpjEmpresaInp.value;
-    var emailContato = emailEmpresa.value;
+    function cadastrar() {
+        
+        
 
-    function confirmarCadastro() {
-        nomeUsuario = nomeRepresentante.value;
-        nomeEmpresa = nomeEmpresaInp.value;
-        cnpjEmpresa = cnpjEmpresaInp.value;
-        emailContato = emailEmpresa.value;
-        planoEscolha = planos.value
-        if (nomeUsuario == '' || nomeEmpresa == '' || cnpjEmpresa == '' || emailContato == '') return alert(
-            "Campos vazios.")
-        if (nomeUsuario == Number(nomeUsuario)) return alert('Insira apenas letras no nome do usuário');
-        if (cnpjEmpresa != Number(cnpjEmpresa)) return alert('Insira apenas números no CNPJ')
-        if (emailContato.indexOf('@') == -1) return alert("Insira um email válido");
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeEmpresaVar = nomeEmpresaInp.value;
+        var cnpjEmpresaVar = cnpjEmpresaInp.value;
+        var telefoneVar = telefone.value;
+        var emailVar = emailEmpresa.value;
+        var senhaVar = senha.value;
+        var confirmacaoSenhaVar = confSenha.value;
+        if (nomeEmpresaVar == Number(nomeEmpresaVar)) return alert('Insira apenas letras no nome da empresa');
+        if (cnpjEmpresaVar != Number(cnpjEmpresaVar)) return alert('Insira apenas números no CNPJ')
+        if (telefoneVar != Number(telefoneVar)) return alert('Insira apenas números no telefone')
 
-        confirmarDados.innerHTML = `
-            <div class="content">
-            <div class="container">
-                <h2> Confirme os seus dados cadastrais</h2>
-                <hr>
-                Nome da empresa: ${nomeEmpresa}<br><br>
-                
-                Nome do representante: ${nomeUsuario}<br><br>
-            CNPJ da empresa: ${cnpjEmpresa} <br><br>
-                Email de contato: ${emailContato}<br><br>
-                Plano escolhido: ${planoEscolha}
-                <br><br>
-               <button onclick="efetuarCadastro()">
-                <a href='dashboard.html' id='finaliza'>   Finalizar cadastro </a>
-                </button>
-            </div>
-        </div>`
+        if (nomeEmpresaVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || telefoneVar == "" || cnpjEmpresaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
 
+            
+            return false;
+        }
+        
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+        
 
-        dadosCadastrais.style.display = 'none';
-    }
-
-
-
-
-    function efetuarCadastro() {
-        if (cnpjEmpresa != Number(cnpjEmpresa)) {
-            alert("Use apenas números no CNPJ")
-        } else if (nomeRepresentante == Number(nomeRepresentante)) {
-            alert("O nome não pode ser algo numérico")
-        } else {
-            alert('Cadastro feito! (:')
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
         }
 
+        if (senhaVar != confirmacaoSenhaVar) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "As senhas inseridas devem ser iguais para prosseguir!";
+            
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 50000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeEmpresaServer: nomeEmpresaVar,
+                cnpjEmpresaServer: cnpjEmpresaVar,
+                telefoneServer: telefoneVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+                
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                window.location = "login.html";
+                limparFormulario();
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
     }
 </script>
