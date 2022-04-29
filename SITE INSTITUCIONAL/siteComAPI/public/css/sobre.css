@@ -1,0 +1,213 @@
+:root {
+
+    --color_green: #73e67d;
+    --color_red: #f56b76;
+    --color_yellow: #ecea44;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --color_green: #73e67d;
+    --color_red: #f56b76;
+    --color_yellow: #ecea44;
+    font-size: 20px;
+
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+
+
+}
+
+body::-webkit-scrollbar-track {
+    background: rgb(224, 224, 224);
+
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #346751;
+    margin: 2 auto;
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+
+}
+
+/* Isso aqui Ã© pra deixar a scrollbar combinando */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 0%;
+}
+
+#finaliza:hover {
+    color: black;
+
+}
+
+.corpoPagina {
+    display: flex;
+    flex-direction: column;
+}
+
+#sobre {
+    color: var(--color_red)
+}
+
+#simulador {
+    color: #264413;
+}
+
+#contato {
+    color: #6e5d2d
+}
+
+.header {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items:center;
+    border-bottom: 1px solid grey;
+    justify-content: space-between;
+    padding:2vh;
+}
+.elementosNav li{
+    font-size: 20px;
+}
+
+#ultimo{
+    margin:0;
+}
+.alinhamento{
+    border-bottom: 1px solid rgb(107, 107, 107);
+    width:50%;
+    margin:20px;
+    
+}
+.elementosNav{
+
+    display: flex;
+    width:100%;
+    height:100%;
+    justify-content: center;
+}
+.login img{
+    width:20px;
+}
+#imagemEntrar{
+
+    justify-content: right;
+}
+.navBar {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    width:100%;
+
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
+.liNav {
+
+    margin-right: 50px;
+  
+
+}
+
+a {
+    text-decoration: none;
+    color:rgb(61, 61, 61);
+}
+a:hover{
+    color: var(--color_green);
+    transition: 500ms;
+}
+
+
+.informacoes{
+    background-color: #a3e4aa;
+}
+
+.sobre {
+    display: flex;
+    padding: 60px;
+    font-size: 50px;
+    justify-content: center;
+}
+
+.textoSobre{
+    padding: 30px;
+
+}
+
+/*/ fim sobre /*/
+
+.sobreEquipe{
+    padding: 60px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.equipeEnvolvida{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 10%;
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.imagemEquipe{
+    height: 100px;
+}
+
+
+.pessoas{
+    display: flex;
+    margin-top: 40px;
+}
+
+.nuvemInfo{
+    margin-left: 30px;
+    width: 220px;
+    height: auto;
+    border: 2px solid rgb(107, 107, 107);
+    border-radius: 10px;
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+#imagemEquipe{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}   
+    /*/ fim equipe /*/
+
+.ajuda{
+    display: flex;
+    padding: 80px;
+    background-color: #a3e4aa;
+    justify-content: space-around;
+}
+
+.nuvemAjuda{
+    border-radius: 15px;
+    border: 2px solid black;
+    text-align: center;
+    padding: 20px;
+
+}
+
+#botaoAjuda {
+    width: 75%;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 45px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: #000000;
+    border: none;
+    margin-bottom: 20px;
+}
+
+    
