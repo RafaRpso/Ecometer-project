@@ -1,0 +1,317 @@
+:root {
+
+    --color-green: #73e67d;
+    --color-red: #f56b76;
+    --color-blue: #4f44ec;
+    --color-nav: rgb(61, 61, 61);
+    --color-scroll: #346751;
+    --color-white: #f3f3f3;
+    --color-black: rgb(7, 7, 7);
+    --hover-button-green: #4a9e51;
+    --hover-button-black: #252525;
+}
+
+
+
+body {
+    margin: 0;
+    display: flex;
+    font-family: 'Poppins';
+}
+select{ 
+    border-radius:15px;
+    background-color:white;
+}
+#main{ 
+    margin-left: 7%;
+}
+
+#mensal{ 
+    width:100%
+}
+/*Configurações menu lateral*/
+#menuLateral {
+    position: fixed;
+    width: 7%;
+    height: 100vh;
+    background-color: var(--color-green);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+#alignLateral {
+    padding-top: 20px;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#menuBurger img {
+    width: 38px;
+}
+
+#mainLateral {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#mainLateral img {
+    width: 30px;
+}
+
+#signout {
+    padding-bottom: 20px;
+}
+
+#signout img {
+    width: 38px;
+}
+
+/*fim menu lateral*/
+
+#main {
+    width: 100%;
+}
+
+.kapis{ 
+    display:flex;
+    justify-content: space-around;
+    height:25%;
+    width:91.5vw;
+    align-items: center;
+}
+/*header config*/
+#header {
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid rgb(160, 160, 160);
+}
+
+#logo {
+    display: flex;
+    align-items: baseline;
+}
+
+/*parte dos graficos*/
+/* bordas e alterações nos cards da div */ 
+.cardGrafico{
+    box-shadow: 0px 5px 5px #b9b9b9;
+    padding: 8px ;
+    border-radius: 10px;
+    width: 100%;
+    height: 30%;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.kapiGrafico{ 
+    display: flex;
+    flex-direction: column;
+    padding:5px;
+    box-shadow: 0px 5px 5px #b9b9b9;
+    width:20%;
+    height:12vh;
+    text-align: center;
+    border-radius: 25px;
+    border: 2px solid rgb(95, 95, 95);
+}
+.tituloKapi{ 
+    font-weight: bold;
+    font-size: 24px;
+}
+#mainGraph{ 
+    display:block; 
+    height: 50%;
+
+    
+    
+}
+
+.botao{
+    border: none;
+    border-radius:15px;
+    background-color: var(--color-green);
+    color:black; 
+    border: 2px solid rgb(97, 97, 97);
+    font-weight: bold;
+    width:25%;
+    
+}
+
+/* avisos */ 
+#aviso1{ 
+    background-color: #B4FF9F;
+    
+}
+
+#aviso2{ 
+    background-color: #F9FFA4;
+    
+}
+
+#aviso3{
+    background-color: #FFD59E;
+}
+
+#aviso4{
+    background-color: #FFA1A1;
+}
+
+.botao:hover{ 
+    transition: 300ms;
+    color:black;
+    background-color: var(--color-green);
+}
+
+.avisos{
+    padding:15px;
+    display:flex;
+    justify-content: space-around;
+}
+.alinhar{ 
+    display:flex;
+    justify-content: center;
+}
+.alinhamento{ 
+    padding:5px;
+    border-bottom: 2px solid rgb(132, 132, 132);
+    width:30%;
+}
+.avisoGrafico{ 
+    display:flex;
+    border: 2px solid rgb(129, 129, 129);
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width:15%;
+
+    border-radius:25px;
+}
+#dashMain {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    background-color: var(--color-white);
+}
+
+.colunasDash{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    margin-top:5%;
+}
+
+#verKits:hover{
+    background-color: #e3e3e3;
+    transition:500ms;
+}
+
+#fr2 {
+    width: 40%;
+}
+
+
+/*fr1*/
+#lixeirasAtivas {
+    width: 80%;
+    height: 30%;
+}
+
+#graficoPizza {
+    width: 80%;
+    height: 45%;
+}
+#textoParagrafo{ 
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/*fr2*/
+#graph{
+   width:90%;
+}
+#liveGraph {
+    margin-top:5%;
+    width: 100%;
+    height: 40%;
+}
+
+#piso1, #piso2, #piso3 {
+    background-image: url('assets/planta\ 1.jpg');
+    background-size: 420px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: right;
+}
+
+#piso1 {
+    background-image: url('assets/planta\ 2.jpg');
+}
+#piso2 {
+    background-image: url('assets/planta\ 1.jpg');
+}
+#piso3 {
+    background-image: url('assets/planta\ 3.jpg');
+}
+
+
+/*fr3*/
+
+#change {
+    width: 80%;
+    height: 30%;
+    background-color: white;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#change button {
+    height: 50px;
+    width: 80%;
+  
+
+
+}
+
+
+#alertas {
+    width: 80%;
+    background-color: white;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#amarelo {
+    background-color: yellow;
+  
+    padding: 5px;
+}
+
+#vermelho {
+    background-color: red;
+  
+    padding: 5px;
+}

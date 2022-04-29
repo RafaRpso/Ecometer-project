@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" class="footerBranco">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+   
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/universal.css">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <title>Cadastre-se</title>
+
+</head>
+
+<body>
+
+
+    <!-- inicio navbar -->
+    <div class="header">
+
+
+        <div class="logo">
+            <h1><a href="index.html">Ecometer</a></h1>
+        </div>
+        <div class='elementosNav'>
+            <ul class="navBar">
+                <li class="liNav" id="sobre"><a href='sobre.html'>Sobre</a></li>
+                <li class="liNav" id="simulador"><a href="sim_financeiro.html">Simulador Financeiro</a></li>
+                <li class="liNav" id="preco"><a href="precos.html">Preços</a></li>
+                <li class="liNav" id="contato"><a href="contato.html">Contato</a></li>
+                <li class="login">
+                    <a href="login.html">
+                        <img src="http://cdn.onlinewebfonts.com/svg/img_227643.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+<<<<<<< HEAD:SITE INSTITUCIONAL/siteComAPI/public/cadastro.html
+
+    <!-- fim navbar -->
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+=======
+    <!-- fim navbar  -->
+>>>>>>> 5a1d88c23dd22c3f8a6cc023f25f9206e1727503:SITE INSTITUCIONAL/cadastro.html
+
+    </div>
+    <div class="content" id="dadosCadastrais">
+        <div class="container">
+            <!-- (EMP)Cadastro com Nome empresa, CNPJ, Email contato, telefone, senha, Método de pagamento (SELECT) -->
+
+            <h2> Faça aqui o seu cadastro </h2>
+            <div class="alinhamento"></div>
+            <hr>
+      
+            <div class="textoForms">Nome da empresa</div>
+            <input type="text" name="" id="nomeEmpresaInp">
+
+            <div class="textoForms">CNPJ da empresa</div>
+            <input type="text" name="" id="cnpjEmpresaInp">
+
+            <div class="textoForms">Telefone </div>
+            <input type="text" name="" id="telefone">
+
+            <div class="textoForms">Email de contato</div>
+            <input type="email" name="" id="emailEmpresa">
+
+            <div class="textoForms">Senha</div>
+            <input type="password" name="" id="senha">
+
+            <div class="textoForms">Confirmar Senha</div>
+            <input type="password" name="" id="confSenha">
+
+            <div class="textoForms">Selecione o plano</div>
+            <select name="" id="planos">
+                <option value="Plano Mensal">Plano mensal/R$360</option>
+                <option value="Plano Semestral">Plano semestral/R$360</option>
+                <option value="Plano anual">Plano anual/R$360</option>
+                <option value="Plano anual PRO">Plano anual PRO/R$360</option>
+            </select>
+
+            <button onclick="cadastrar()">Cadastrar</button>
+        </div>
+    </div>
+
+    <div id="div_aguardar" class="loading-div">
+        <img src="./assets/circle-loading.gif" id="loading-gif">
+    </div>
+    <div id="div_erros_login"></div>
+
+    <div id="confirmarDados">
+
+
+    </div>
+
+    <div id="confirmarDados">
+
+
+    </div>
+
+    <div class="footer">
+        <h1>Ecometer</h1>
+        <div id="alinhamento">
+
+            <div id="elementosFooter">
+
+                <div id="navegar">
+                    <h2>Navegar</h2>
+                    <ul>
+                        <li>Sobre</li>
+                        <li>Contato</li>
+                        <li>Simulador Financeiro</li>
+                    </ul>
+                </div>
+                <div id="Ouvidoria">
+                    <h2>Ouvidoria</h2>
+                    <ul>
+                        <li>0800 9875</li>
+                        <li>0800 9614</li>
+                    </ul>
+                </div>
+                <div id="conta">
+                    <h2>Conta</h2>
+                    <ul>
+                        <li>Log-in</li>
+                        <li>Cadastro</li>
+                        <li>Recuperar Senha</li>
+                    </ul>
+                </div>
+            </div>
+            <p>Todos os direitos reservados&copy;</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    function cadastrar() {
+        
+        
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeEmpresaVar = nomeEmpresaInp.value;
+        var cnpjEmpresaVar = cnpjEmpresaInp.value;
+        var telefoneVar = telefone.value;
+        var emailVar = emailEmpresa.value;
+        var senhaVar = senha.value;
+        var confirmacaoSenhaVar = confSenha.value;
+        if (nomeEmpresaVar == Number(nomeEmpresaVar)) return alert('Insira apenas letras no nome da empresa');
+        if (cnpjEmpresaVar != Number(cnpjEmpresaVar)) return alert('Insira apenas números no CNPJ')
+        if (telefoneVar != Number(telefoneVar)) return alert('Insira apenas números no telefone')
+
+        if (nomeEmpresaVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || telefoneVar == "" || cnpjEmpresaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
+
+            
+            return false;
+        }
+        
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+        
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        if (senhaVar != confirmacaoSenhaVar) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "As senhas inseridas devem ser iguais para prosseguir!";
+            
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 50000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeEmpresaServer: nomeEmpresaVar,
+                cnpjEmpresaServer: cnpjEmpresaVar,
+                telefoneServer: telefoneVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+                
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                window.location = "login.html";
+                limparFormulario();
+                
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+</script>
