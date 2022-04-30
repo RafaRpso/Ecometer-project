@@ -73,6 +73,8 @@
 </body>
 
 </html>
+
+
 <script>
     function entrar() {
 
@@ -116,8 +118,11 @@
                     sessionStorage.NOME_USUARIO = json.nomeEmpresa;
                     sessionStorage.ID_USUARIO = json.id;
 
+                    
                     setTimeout(function () {
+                        //rota para o dash
                         window.location = "./dashboard/dashboard.html";
+                    
                     }, 1000); // apenas para exibir o loading
 
                 });
