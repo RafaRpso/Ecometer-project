@@ -164,6 +164,7 @@ function intermediaria(){
     kit = qualKit.value ; 
     verKit(kit)
     selecaoKitAlerta(kit)
+    return 0 ;
 }
 
 

@@ -431,7 +431,7 @@ function clickHandler(myChartPiso, userClick){
 //define o aparecimento dos gráficos no kit . 
 function verKit(kit) {     // pega o valor do kit que é fornecido pela função intermediaria, ou seja, o kit dessa função é o do select
     if (kit == 1)  {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
-        intermediaria()
+        
         graphKit.style.display=  'flex'
         textoKit.innerHTML = "Kit 1"
         const labelsSem = [
@@ -469,7 +469,7 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
 
     }
     else if (kit == 2 ){ 
-        intermediaria()
+        
         graphKit.style.display=  'flex'
         textoKit.innerHTML = "Kit 2"
         const labelsSem = [
@@ -509,7 +509,7 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
 
 
     else if (kit == 3){ 
-        intermediaria()
+        
         graphKit.style.display=  'flex'
         textoKit.innerHTML = "Kit 3"
 
