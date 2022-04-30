@@ -17,6 +17,11 @@ a {
     color: rgb(61, 61, 61);
 }
 
+
+.descricao{ 
+    margin-bottom: 2%;
+}
+
 a:hover {
     color: var(--color_green);
     transition: 500ms;

@@ -102,8 +102,7 @@ function vermelho() {
 // quando selecionar o kit de lixo, demonstrar o alerta abaixo e acima 
 
 function selecaoKitAlerta(kit) {
-    var kitInput = qualKit.value 
-    if (kit== 0) return alert("Selecione um kit válido ") //retorna e encerra a função
+    var kitInput = qualKit.value; 
 
     if (kit== "1" || kitInput == 1) { // kit 1 - cheio  
         graphKit.style.display=  'flex'
