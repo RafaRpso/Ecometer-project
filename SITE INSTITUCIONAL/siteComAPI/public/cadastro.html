@@ -144,9 +144,9 @@
 
 </html>
 <script>
-    function validacao(nome, cnpj, telefone, email, senha, confirmacaoSenha){ 
+    function validacao(nome, cnpj, email, senha, confirmacaoSenha){ 
         //verificação nome 
-        if(nome==""||senha==""||telefone==""||email==""||senha==""||confirmacaoSenha=="") { 
+        if(nome==""||senha==""|| email==""||senha==""||confirmacaoSenha=="") { 
             alert("Um dos campos está vazio. ")
         }
         else if(nome==Number(nome)) { 
@@ -163,16 +163,6 @@
         else if(cnpj!=Number(cnpj)){ 
             alert("Insira apenas caractéres válidos no CNPJ: Hà um caractere inválido.")
         }
-
-        //verificao Telefone
-        if (telefone.length < 10 ) { 
-            alert("Insira um tamanho de telefone válido: Existem números a mais. ")
-        }
-        else if( telefone != Number(telefone )) { 
-            alert("Insira um telefone válido: Caractere inválido detectedo")
-        }
-
-
 
         //verificacao email contato 
         if(email.indexOf('@') == -1 ){ 
@@ -204,13 +194,14 @@
         // Agora vá para o método fetch logo abaixo
         var nomeEmpresaVar = nomeEmpresaInp.value;
         var cnpjEmpresaVar = cnpjEmpresaInp.value;
-        var telefoneVar = telefone.value;
         var emailVar = emailEmpresa.value;
         var senhaVar = senha.value;
         var confirmacaoSenhaVar = confSenha.value;
-
-        validacao(nomeEmpresaVar, cnpjEmpresaVar, telefoneVar, emailVar, senhaVar, confirmacaoSenhaVar )
-     
+/* 
+        validacao(nomeEmpresaVar, cnpjEmpresaVar, telefoneVar,emailVar, senhaVar, confirmacaoSenhaVar )
+       */   
+        validacao(nomeEmpresaVar, cnpjEmpresaVar, emailVar, senhaVar, confirmacaoSenhaVar )
+      
 
 
         // Enviando o valor da nova input
@@ -224,7 +215,6 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeEmpresaServer: nomeEmpresaVar,
                 cnpjEmpresaServer: cnpjEmpresaVar,
-                telefoneServer: telefoneVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar
                 

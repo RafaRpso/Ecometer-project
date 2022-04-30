@@ -22,8 +22,8 @@ var mySqlConfig = {
     host: "localhost",
     user: "root",
     database: "ecometer",
-    password: "",
-};
+    password: "matheus",
+};//colocar a senha do seu WORKBENCH
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js

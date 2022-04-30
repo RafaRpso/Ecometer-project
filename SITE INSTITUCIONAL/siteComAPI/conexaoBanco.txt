@@ -1,0 +1,14 @@
+src/database/config.js --> adicionar a senha do WORKBENCH
+
+src/database/script-tabelas.sql - > copiar o codigo do banco de dados e colar no SEU WORKBENCH.
+
+usuario.js -> todas as rotas
+
+src/controllers/usuarioController.js --> recebe e verifica os campos para realizar login e cadastro
+
+src/models/usuarioModel.js - > realizam os inserts de cadastro eo select do login login
+
+
+public/login/ cadastro -> enviam/realizam a leitura   dos dados
+
+
