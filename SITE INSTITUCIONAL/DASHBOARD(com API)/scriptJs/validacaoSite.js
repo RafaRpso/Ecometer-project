@@ -102,37 +102,44 @@ function vermelho() {
 // quando selecionar o kit de lixo, demonstrar o alerta abaixo e acima 
 
 function selecaoKitAlerta() {
-    if (qualKit.value == 0) return alert("Selecione um kit válido ") //retorna e encerra a função
+    kit = qualKit.value ; 
+    
+    if (kit== 0) return alert("Selecione um kit válido ") //retorna e encerra a função
 
-    if (qualKit.value == "1") { // kit 1 - cheio  
+    if (kit== "1") { // kit 1 - cheio  
+        
         alert("AVISO. ESTE KIT ESTÁ LOTADO.")
         condicaoKit.innerHTML = "<b> O Kit 1 está LOTADO! </b>"
         aviso1.style.display = 'none'
         aviso2.style.display = 'none'
         aviso3.style.display = 'none'
         aviso4.style.display = 'block'
+        verKit(kit)
     }
-    else if (qualKit.value == "2") { // kit 2 - qUASE VAZIO  
+    else if (kit== "2") { // kit 2 - qUASE VAZIO  
 
         condicaoKit.innerHTML = "<b> O kit 2 está quase vazio! </b>"
         aviso1.style.display = 'none'
         aviso2.style.display = 'block'
         aviso3.style.display = 'none'
         aviso4.style.display = 'none'
+        verKit(kit)
     }
-    else if (qualKit.value == "3") { //kit3  - vazio 
+    else if (kit== "3") { //kit3  - vazio 
         condicaoKit.innerHTML = "<b> O kit 3 está vazio </b>"
         aviso1.style.display = 'block'
         aviso2.style.display = 'none'
         aviso3.style.display = 'none'
         aviso4.style.display = 'none'
+        verKit(kit)
     }
-    else if (qualKit.value == "4") { //kit3  - vazio 
+    else if (kit== "4") { //kit3  - vazio 
         condicaoKit.innerHTML = null
         aviso1.style.display = 'block'
         aviso2.style.display = 'block'
         aviso3.style.display = 'block'
         aviso4.style.display = 'block'
+        verKit(kit)
     }
 }
 
@@ -144,5 +151,12 @@ function ocultarNavbar() {
     //arrumar main
     main.style.marginLeft = '0%'
 }
+
+
+function ocultarKit() { 
+    graphKit.style.display = "none" ; 
+}
+
+
 
 

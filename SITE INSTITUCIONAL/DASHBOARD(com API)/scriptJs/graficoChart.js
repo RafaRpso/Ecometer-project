@@ -190,6 +190,7 @@
         type: 'bar',
         data: dataBar,
         options: {
+            
             scales: {
                 y: {
                     beginAtZero: true
@@ -229,13 +230,13 @@
            
             label: 'Kits',
             data: [{
-                
+        
                 x: 4,
                 y: 3.4
             }, 
             ],  /* alterar ponteiro do lixo */
             backgroundColor: '#101099',
-            pointRadius: 7,
+            pointRadius: 7, 
  
           
         }
@@ -245,7 +246,7 @@
         type: 'scatter',
         data: dataPiso1,
         options: {
-            onClick: zap, 
+    
             scales: {
                 
                 x: {
@@ -261,7 +262,13 @@
         configPiso1
     );
 
-    //piso 2
+
+
+     // serve para pegar o gráfico e o click dele. addEventListener é lsitador de eventos que aconteceram dentro do myChartPiso1.canvas
+myChartPiso1.canvas.addEventListener('click', (e) => {
+    clickHandler(myChartPiso1, e)
+}) // adiciona um novo evento no canvas que funciona com click
+
 
     const dataPiso2 = {
         datasets: [{
@@ -285,13 +292,13 @@
         {
             label: 'Kits',
             data: [{
-                x: 2,
-                y: 3.8
+                x: 6,
+                y: 6.9
             }
 
             ],
-            backgroundColor: '#FFA1A1',
-            pointRadius: 5
+            backgroundColor: '#101099',
+            pointRadius: 7, 
 
         }
         ],
@@ -300,7 +307,7 @@
         type: 'scatter',
         data: dataPiso2,
         options: {
-            onClick: zap, 
+          
             scales: {
                 x: {
                     type: 'linear',
@@ -314,6 +321,12 @@
         document.getElementById('piso2'),
         configPiso2
     );
+
+
+    myChartPiso2.canvas.addEventListener('click', (e) => {
+        clickHandler(myChartPiso2, e)
+    }) // adiciona um novo evento no canvas que funciona com click
+    
 
     //piso 3
 
@@ -345,8 +358,8 @@
             }
 
             ],
-            backgroundColor: '#FFA1A1',
-            pointRadius: 5
+            backgroundColor: '#101099',
+            pointRadius: 7, 
         }
         ],
     };
@@ -354,7 +367,7 @@
         type: 'scatter',
         data: dataPiso3,
         options: {
-            onClick: zap, 
+       
             scales: {
                 x: {
                     type: 'linear',
@@ -369,46 +382,12 @@
         configPiso3
     );
 
-    //grafico tempo real
-    var contextoChave = document.getElementById('chave').getContext('2d');
-    contextoChave.canvas.width = 1000;
-    contextoChave.canvas.height = 300;
-    var chave = new Chart(
-        contextoChave,
-        {
-            type: 'line',
-            data: {
-                datasets: [{
-                    label: 'Chave',
-                    type: 'line',
-                    borderColor: ['#ffd902'],
-                    backgroundColor: ['#ffe135']
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        distribution: 'series',
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }],
-                    yAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Chave'
-                        },
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                },
-                animation: {
-                    duration: 0
-                }
-            }
-        }
-    );
+
+    myChartPiso3.canvas.addEventListener('click', (e) => {
+        clickHandler(myChartPiso3, e)
+    }) // adiciona um novo evento no canvas que funciona com click
+    
+   
     var paginacao = {};
     var tempo = {};
     function obterDados(grafico, endpoint) {
@@ -433,26 +412,157 @@
     }
 
 
- // joao, insere as mudancas nos graficos aqui ! comentei direitinho pra vc c:, boa sortte meu patrão
+//ffuncao que pega coordenada do mapa 
+function clickHandler(myChartPiso, userClick){ 
 
-    function selecaoMudancaGrafico(){ 
+    var { canvas } = myChartPiso ;  // faz com que canvas receba todos os valores do chartpiso1
+    console.log(canvas)
+    var distancia = canvas.getBoundingClientRect();  // pega a distancia das bordas da tela inteira, de modo que so pega o ocmponente per si https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+    var x = userClick.clientX - distancia.left; // valor x recebe o click da funcao abaixo menos a distancia da margin left
+    var y = userClick.clientY - distancia.top;   // valor y recebe o click da funcao abaixo menos a distancia da margin top 
+    console.log("X: "+ x)
+    console.log("Y: "+ y) 
+    alertKit(x,y)
+}
+
+
+
+
+//define o aparecimento dos gráficos no kit . 
+function verKit(kit) { 
+    if (kit == 1)  { 
+        graphKit.style.display=  'flex'
+        textoKit.innerHTML = "Kit 1"
         
 
-        if(qualKit.value=="1"){ // kit 1 - cheio  
-           
-        }
-        else if(qualKit.value=="2"){ // kit 2 - Pouco cheio  
-           
-        }
-        else if(qualKit.value=="3"){ //kit3  - vazio 
-           
-        }
-        else if(qualKit.value=="4"){ //kit4  - todos  
-          
-        }
+        const labelsSem = [
+
+            'Segunda',
+            'Terça',
+            'Quarta',
+            'Quinta',
+            'Sexta',
+            'Sábado',
+            'Domingo'
+    
+        ];
+    
+        const dataSem = {
+            labels: labelsSem,
+            datasets: [{
+                label: 'Média Semanal',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [2.1, 2.1, 2.3, 2.2, 2.4, 2.5, 2.5],
+            }]
+        };
+    
+        const configSem = {
+            type: 'line',
+            data: dataSem,
+            options: {}
+        };
+    
+        const myChartSem = new Chart(
+            document.getElementById('kitIndividual'),
+            configSem
+        );
+
     }
-//funcao para mostrar os graficos do kit (chamada la em cima )
-    function zap(){
-        alert("Solteira?")
+    else if (kit == 2 ){ 
       
+        graphKit.style.display=  'flex'
+        textoKit.innerHTML = "Kit 2"
+        const labelsSem = [
+
+            'Segunda',
+            'Terça',
+            'Quarta',
+            'Quinta',
+            'Sexta',
+            'Sábado',
+            'Domingo'
+    
+        ];
+    
+        const dataSem = {
+            labels: labelsSem,
+            datasets: [{
+                label: 'Média Semanal',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [4.1, 1.2, 3.1, 2.2, 2.2, 1.2, 3.5],
+            }]
+        };
+    
+        const configSem = {
+            type: 'line',
+            data: dataSem,
+            options: {}
+        };
+    
+        const myChartSem = new Chart(
+            document.getElementById('kitIndividual'),
+            configSem
+        );
+
     }
+
+
+    else if (kit == 3){ 
+      
+        graphKit.style.display=  'flex'
+        textoKit.innerHTML = "Kit 3"
+
+        const labelsSem = [
+
+            'Segunda',
+            'Terça',
+            'Quarta',
+            'Quinta',
+            'Sexta',
+            'Sábado',
+            'Domingo'
+    
+        ];
+    
+        const dataSem = {
+            labels: labelsSem,
+            datasets: [{
+                label: 'Média Semanal',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [4.1, 1.2, 3.1, 2.2, 2.2, 1.2, 3.5],
+            }]
+        };
+    
+        const configSem = {
+            type: 'line',
+            data: dataSem,
+            options: {}
+        };
+    
+        const myChartSem = new Chart(
+            document.getElementById('kitIndividual'),
+            configSem
+        );
+    }
+}
+// insere graficos aqui
+function alertKit(userx, usery) {
+    piso = slct_piso.value ;  // qual o piso escolhido? 
+    kit = qualKit.value ; 
+        if( ( piso==1 ) && (userx>100 && userx<300) && (usery>90 && usery<190)) { 
+        verKit(piso)
+        }
+
+       else if( ( piso == 2) &&  (userx>250&& userx<400) && (usery>40 && usery<160)) { 
+        verKit(piso)
+        }
+
+       else if( ( piso == 3 ) &&(userx>160 && userx<300) && (usery>90 && usery<200) )  { 
+        verKit(piso)
+        }    
+     
+    
+}

@@ -21,7 +21,6 @@ body {
     font-family: 'Poppins';
 }
 
-
 body::-webkit-scrollbar {
     width: 12px;
 
@@ -371,6 +370,7 @@ footer{
     justify-content: center;
     align-items: center;
     width:100%;
+    display:none;
 }
 #graficoKitAparece{
     display: flex;

@@ -115,9 +115,9 @@
         <!-- Gráfico que aparece quando a lixeira é selecionada no mapa-->
             <div id="graphKit">
                 <div id="graficoKitAparece" >
-                    <h1> Kit X </h1>
+                    <h1 id="textoKit"> Kit X </h1>
                     <div class="graficoKit">
-                        <canvas> </canvas>
+                        <canvas id="kitIndividual"> </canvas>
                     </div>
                   <button onclick="ocultarKit() " class="botao"> Ocultar</button>
                 
@@ -165,7 +165,7 @@
                 <div id="fr3" class="colunasDash">
                     <div id="alertas" class="cardGrafico">
                         <h2>Selecione o Kit </h2>
-                        <select name="" id="qualKit" onchange="selecaoKitAlerta()">
+                        <select name="" id="qualKit" onchange="selecaoKitAlerta(), verKit()">
                             <option value="0">-- SELECIONAR O KIT --</option>
                             <option value="1">Kit 1</option>
                             <option value="2">Kit 2 </option>
