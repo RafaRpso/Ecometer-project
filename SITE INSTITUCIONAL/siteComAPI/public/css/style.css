@@ -105,6 +105,9 @@ body {
 
 #loginForm {
     border-bottom: 1px solid rgb(107, 107, 107);
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
 }
 #imagemEntrar {
     justify-content: right;
@@ -195,6 +198,10 @@ a:hover {
     border: 1px solid black;
     background-color: white;
     transition: 300ms;
+}
+
+textarea {
+    resize: none;
 }
 
 #planos {
