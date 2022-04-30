@@ -165,11 +165,35 @@
         }
 
         //verificao Telefone
-        if (telefone.length != 11 || telefone.length != 10 ) { 
+        if (telefone.length < 10 ) { 
             alert("Insira um tamanho de telefone válido: Existem números a mais. ")
         }
         else if( telefone != Number(telefone )) { 
             alert("Insira um telefone válido: Caractere inválido detectedo")
+        }
+
+
+
+        //verificacao email contato 
+        if(email.indexOf('@') == -1 ){ 
+            alert("Insira um email válido: Faltando @")
+        }
+        else if(email.indexOf('.com') == -1 ){ 
+            alert("Insira um email válido: Faltando .com")
+        }
+
+
+
+
+
+        //verificacao senha 
+        if(senha.length<8 ){ 
+            alert("Senha não preenche os requisitos de segurança: Tenha pelo menos algum 8 caracteres")
+        } 
+        // se eu por de caracteres vou ter que usar vetor, vai ficar mt complexo
+
+        if(senha!=confirmacaoSenha){ 
+            alert("A senha confirmada está diferente da senha inserida.")
         }
     }
     function cadastrar() {
