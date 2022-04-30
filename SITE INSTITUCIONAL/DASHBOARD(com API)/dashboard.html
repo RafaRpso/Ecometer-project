@@ -93,8 +93,10 @@
 
                 </div>
             </div>
+     
             <!--Onde vão ficar todos os gráficos-->
             <div id="dashMain">
+                
                 <div id="fr1" class="colunasDash">
 
                     <div id="graficoPizza" class="cardGrafico">
@@ -108,13 +110,22 @@
                         <canvas id="tipo_lotacao_pie"></canvas>
                     </div>
                 </div>
+
                 <div id="fr2" class="colunasDash">
+        <!-- Gráfico que aparece quando a lixeira é selecionada no mapa-->
+            <div id="graphKit">
+                <div id="graficoKitAparece" >
+                    <h1> Kit X </h1>
+                    <div class="graficoKit">
+                        <canvas> </canvas>
+                    </div>
+                  <button onclick="ocultarKit() " class="botao"> Ocultar</button>
+                
 
+                </div>
 
+            </div>
                     <div id="mainGraph" class="cardGrafico">
-
-
-
                         <p id="textoParagrafo"><span id="intervalo_exib">Intervalo de Exibição:</span> <span
                                 id="piso_exib" style="display: none;">Andar:</span>
                             <select name="" id="slct_graph" onchange="troca()">
@@ -167,8 +178,10 @@
                 </div>
             </div>
         </div>
-
+            
     </div>
+           
+
     <footer id="footerDash">
         Todos os direitos reservados ao zap!
     </footer>

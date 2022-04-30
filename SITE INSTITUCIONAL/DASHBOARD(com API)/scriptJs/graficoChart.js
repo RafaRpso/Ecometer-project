@@ -454,4 +454,5 @@
 //funcao para mostrar os graficos do kit (chamada la em cima )
     function zap(){
         alert("Solteira?")
+      
     }

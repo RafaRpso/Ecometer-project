@@ -364,3 +364,35 @@ footer{
   
     padding: 5px;
 }
+
+
+#graphKit{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+#graficoKitAparece{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 5px 5px #b9b9b9;
+    border-radius: 10px;
+    width: 80%;
+    height: 50vh;
+    background-color: white;
+    text-align: center;
+    margin-bottom: 5%;
+
+}
+.graficoKit{ 
+    border: 2px solid purple; 
+    height: 60%; 
+    width:80%;
+    margin:5px;
+}
+
+.graficoKit .botao{ 
+    margin: 5px;
+}
