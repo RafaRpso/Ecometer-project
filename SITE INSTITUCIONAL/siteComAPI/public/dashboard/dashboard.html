@@ -129,6 +129,15 @@
                         <canvas id="mensal"></canvas>
                         <canvas id="semanal" style="display: none;"></canvas>
                         <canvas id="diario" style="display: none;"></canvas>
+                        <canvas id="mensal1" style="display: none;"></canvas>
+                        <canvas id="semanal1" style="display: none;"></canvas>
+                        <canvas id="diario1" style="display: none;"></canvas>
+                        <canvas id="mensal2" style="display: none;"></canvas>
+                        <canvas id="semanal2" style="display: none;"></canvas>
+                        <canvas id="diario2" style="display: none;"></canvas>
+                        <canvas id="mensal3" style="display: none;"></canvas>
+                        <canvas id="semanal3" style="display: none;"></canvas>
+                        <canvas id="diario3" style="display: none;"></canvas>
                     </div>
                     <!--este é o canvas do mapa-->
                     <div id="mapa" style="display: none;">
@@ -148,13 +157,14 @@
             <div id="fr3" class="colunasDash">
                 <div id="alertas" class="cardGrafico">
                     <h2>Selecione o Kit </h2>
-                   <select name="" id="qualKit" onchange="selecaoKitAlerta()">
-                        <option value="0">-- SELECIONAR O KIT --</option>
+                   <details>
+                       <summary>Kits</summary>
+                        <option value='4'>Todos</option>
                        <option value="1">Kit 1</option>
                        <option value="2">Kit 2 </option>
                        <option value="3">Kit 3</option>
-                       <option value='4'>Todos</option>
-                   </select>
+                       
+                   </details>
 
                    <div class="alinhamento"></div>
                 </div>

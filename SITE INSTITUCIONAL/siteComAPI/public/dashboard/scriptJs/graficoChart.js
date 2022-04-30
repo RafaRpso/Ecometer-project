@@ -70,7 +70,7 @@
         configSem
     );
 
-    //graph ultimas 24H
+    //graph ultimas 13H
 
     const labelsDia = [
         '09:00',
@@ -245,7 +245,6 @@
         type: 'scatter',
         data: dataPiso1,
         options: {
-            onClick: zap, 
             scales: {
                 
                 x: {
@@ -300,7 +299,6 @@
         type: 'scatter',
         data: dataPiso2,
         options: {
-            onClick: zap, 
             scales: {
                 x: {
                     type: 'linear',
@@ -354,7 +352,6 @@
         type: 'scatter',
         data: dataPiso3,
         options: {
-            onClick: zap, 
             scales: {
                 x: {
                     type: 'linear',
