@@ -431,10 +431,9 @@ function clickHandler(myChartPiso, userClick){
 //define o aparecimento dos gráficos no kit . 
 function verKit(kit) { 
     if (kit == 1)  { 
+        selecaoKitAlerta(1)
         graphKit.style.display=  'flex'
         textoKit.innerHTML = "Kit 1"
-        
-
         const labelsSem = [
 
             'Segunda',
@@ -470,7 +469,7 @@ function verKit(kit) {
 
     }
     else if (kit == 2 ){ 
-      
+        selecaoKitAlerta(2)
         graphKit.style.display=  'flex'
         textoKit.innerHTML = "Kit 2"
         const labelsSem = [
@@ -510,7 +509,7 @@ function verKit(kit) {
 
 
     else if (kit == 3){ 
-      
+        selecaoKitAlerta(3)
         graphKit.style.display=  'flex'
         textoKit.innerHTML = "Kit 3"
 
@@ -556,7 +555,7 @@ function alertKit(userx, usery) {
         verKit(piso)
         }
 
-       else if( ( piso == 2) &&  (userx>250&& userx<400) && (usery>40 && usery<160)) { 
+       else if( ( piso == 2) &&  (userx>210&& userx<480) && (usery>30 && usery<170)) { 
         verKit(piso)
         }
 

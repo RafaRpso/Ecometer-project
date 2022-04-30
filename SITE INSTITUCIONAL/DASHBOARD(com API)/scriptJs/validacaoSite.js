@@ -101,23 +101,24 @@ function vermelho() {
 
 // quando selecionar o kit de lixo, demonstrar o alerta abaixo e acima 
 
-function selecaoKitAlerta() {
-    kit = qualKit.value ; 
-    
+function selecaoKitAlerta(kit) {
+    var kitInput = qualKit.value 
     if (kit== 0) return alert("Selecione um kit válido ") //retorna e encerra a função
 
-    if (kit== "1") { // kit 1 - cheio  
-        
+    if (kit== "1" || kitInput == 1) { // kit 1 - cheio  
+        graphKit.style.display=  'flex'
+        textoKit.innerHTML = "Kit 1"
         alert("AVISO. ESTE KIT ESTÁ LOTADO.")
         condicaoKit.innerHTML = "<b> O Kit 1 está LOTADO! </b>"
         aviso1.style.display = 'none'
         aviso2.style.display = 'none'
         aviso3.style.display = 'none'
         aviso4.style.display = 'block'
-        verKit(kit)
+       
     }
-    else if (kit== "2") { // kit 2 - qUASE VAZIO  
-
+    else if (kit== "2" || kitInput == 2 ) { // kit 2 - qUASE VAZIO  
+        graphKit.style.display=  'flex'
+        textoKit.innerHTML = "Kit 2"
         condicaoKit.innerHTML = "<b> O kit 2 está quase vazio! </b>"
         aviso1.style.display = 'none'
         aviso2.style.display = 'block'
@@ -125,7 +126,9 @@ function selecaoKitAlerta() {
         aviso4.style.display = 'none'
         verKit(kit)
     }
-    else if (kit== "3") { //kit3  - vazio 
+    else if (kit== "3" || kitInput == 3) { //kit3  - vazio 
+        graphKit.style.display=  'flex'
+        textoKit.innerHTML = "Kit 3"
         condicaoKit.innerHTML = "<b> O kit 3 está vazio </b>"
         aviso1.style.display = 'block'
         aviso2.style.display = 'none'
