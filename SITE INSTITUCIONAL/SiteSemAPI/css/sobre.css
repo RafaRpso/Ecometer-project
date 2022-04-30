@@ -30,7 +30,7 @@ body::-webkit-scrollbar-thumb {
 
 }
 
-/* Isso aqui é pra deixar a scrollbar combinando */
+/* Isso aqui Ã© pra deixar a scrollbar combinando */
 body {
     margin: 0;
     padding: 0;
@@ -65,48 +65,43 @@ body {
 .header {
     background-color: rgb(255, 255, 255);
     display: flex;
-    align-items: center;
+    align-items:center;
     border-bottom: 1px solid grey;
     justify-content: space-between;
-    padding: 2vh;
+    padding:2vh;
 }
-
-.elementosNav li {
+.elementosNav li{
     font-size: 20px;
 }
 
-#ultimo {
-    margin: 0;
+#ultimo{
+    margin:0;
 }
-
-.alinhamento {
+.alinhamento{
     border-bottom: 1px solid rgb(107, 107, 107);
-    width: 50%;
-    margin: 20px;
-
+    width:50%;
+    margin:20px;
+    
 }
-
-.elementosNav {
+.elementosNav{
 
     display: flex;
-    width: 100%;
-    height: 100%;
+    width:100%;
+    height:100%;
     justify-content: center;
 }
-
-.login img {
-    width: 20px;
+.login img{
+    width:20px;
 }
+#imagemEntrar{
 
-#imagemEntrar {
     justify-content: right;
 }
-
 .navBar {
     display: flex;
     list-style: none;
     text-align: center;
-    width: 100%;
+    width:100%;
 
     justify-content: flex-end;
     font-weight: bold;
@@ -115,106 +110,112 @@ body {
 .liNav {
 
     margin-right: 50px;
+  
 
 }
 
 a {
     text-decoration: none;
-    color: rgb(61, 61, 61);
+    color:rgb(61, 61, 61);
 }
-
-a:hover {
+a:hover{
     color: var(--color_green);
     transition: 500ms;
 }
 
 
-.content {
-    width: 100%;
-    height: 100%;
-    padding: 0;
+.informacoes{
+    background-color: #a3e4aa;
+}
+
+.sobre {
     display: flex;
+    padding: 60px;
+    font-size: 50px;
     justify-content: center;
+}
+
+.textoSobre{
+    padding: 30px;
+    text-align: center;
+
+}
+
+/*/ fim sobre /*/
+
+.sobreEquipe{
+    padding: 60px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.equipeEnvolvida{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 5%;
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+.imagemEquipe{
+    height: 100px;
+}
+
+
+.pessoas{
+    display: flex;
+    margin-top: 40px;
+}
+
+.nuvemInfo{
+    margin-left: 30px;
+    width: 220px;
+    height: auto;
+    border: 2px solid rgb(107, 107, 107);
+    border-radius: 10px;
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+#imagemEquipe{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}   
+    /*/ fim equipe /*/
+
+.ajuda{
+    display: flex;
+    width: 100%;
+    height: 300px;
+    background-color: #a3e4aa;
+    justify-content: space-around;
     align-items: center;
-    background-image: linear-gradient(to right, #94D57B, #C1DA6C);
 }
 
-.alinhamento {
-    width: 60%;
-    border-bottom: 2px solid #b1b1b1;
-    margin: 15px;
-}
-
-.content .container {
-    margin-top: 5%;
-    border-radius: 20px;
+.nuvemAjuda{
     width: 40%;
     height: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    background-color: white;
-    margin-bottom: 5vh;
+    border-radius: 15px;
+    border: 2px solid black;
+    text-align: center;
+    padding: 20px;
+
 }
 
-.content .container input {
-    width: 50%;
-    padding: 10px;
-    border: none;
-    background-color: rgb(218, 218, 218);
-    border-radius: 25px;
-    margin-top: 10px;
-}
-
-#toneladaLixo {
-    margin-bottom: 5%;
-}
-
-.content .container button {
+#botaoAjuda {
+    width: 75%;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 45px;
     font-weight: bold;
-    font-size: 90%;
-    width: 25%;
-    height: 5vh;
-    border-radius: 25px;
+    color: rgb(255, 255, 255);
+    background-color: #000000;
     border: none;
-    background-color: var(--color_green);
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
-.content .container button:hover {
-    border: 1px solid black;
-    background-color: white;
-    transition: 300ms;
-}
 
-#planos {
-    padding: 5px;
-    border-radius: 20px;
-    background-color: white;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-#mensagem {
-
-    padding: 15px;
-    display: block;
-    border-radius: 25px;
-    border: none;
-    width: 40%;
-    margin-bottom: 5%;
-    background-color: rgb(221, 221, 221);
-    margin-top: 3%;
-    height: 20vh;
-    resize: none;
-
-
-}
 .footerBranco .footer {
     background-color: #f3f3f3;
 }
@@ -269,3 +270,5 @@ a {
     justify-content: space-between;
 }
 
+
+    

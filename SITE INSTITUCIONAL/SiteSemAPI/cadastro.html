@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-   
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/universal.css">
     <link rel="stylesheet" href="css/cadastro.css">
@@ -54,7 +54,7 @@
             <h2> Faça aqui o seu cadastro </h2>
             <div class="alinhamento"></div>
             <hr>
-      
+
             <div class="textoForms">Nome da empresa</div>
             <input type="text" name="" id="nomeEmpresaInp">
 
@@ -81,7 +81,7 @@
                 <option value="Plano anual PRO">Plano anual PRO/R$360</option>
             </select>
 
-            <button onclick="confirmarCadastro()">Cadastrar</button>
+            <button onclick="cadastrar()">Cadastrar</button>
         </div>
     </div>
 
@@ -128,56 +128,72 @@
 
 </html>
 <script>
-    var nomeUsuario = nomeRepresentante.value;
-    var nomeEmpresa = nomeEmpresaInp.value;
-    var cnpjEmpresa = cnpjEmpresaInp.value;
-    var emailContato = emailEmpresa.value;
 
-    function confirmarCadastro() {
-        nomeUsuario = nomeRepresentante.value;
-        nomeEmpresa = nomeEmpresaInp.value;
-        cnpjEmpresa = cnpjEmpresaInp.value;
-        emailContato = emailEmpresa.value;
-        planoEscolha = planos.value
-        if (nomeUsuario == '' || nomeEmpresa == '' || cnpjEmpresa == '' || emailContato == '') return alert(
-            "Campos vazios.")
-        if (nomeUsuario == Number(nomeUsuario)) return alert('Insira apenas letras no nome do usuário');
-        if (cnpjEmpresa != Number(cnpjEmpresa)) return alert('Insira apenas números no CNPJ')
-        if (emailContato.indexOf('@') == -1) return alert("Insira um email válido");
 
-        confirmarDados.innerHTML = `
+    function cadastrar() {
+        var nomeEmpresaVar = nomeEmpresaInp.value;
+        var cnpjEmpresaVar = cnpjEmpresaInp.value;
+        var telefoneVar = telefone.value;
+        var emailVar = emailEmpresa.value;
+        var senhaVar = senha.value;
+        var confirm = confSenha.value;
+        var planoEscolha = planos.value
+
+
+        if (nomeEmpresaVar != '' || cnpjEmpresaVar != '' || emailVar != '' || senhaVar != '' || confirm != '') {
+            if (emailVar.indexOf('@') == -1) {
+                alert('Insira um E-mail válido')
+                if (cnpjEmpresaVar != Number(cnpjEmpresaVar)) {
+                    alert('Apenas números no CNPJ')
+                    if (telefoneVar != Number(telefoneVar)) {
+                        alert('Apenas números no Telefone')
+                    }
+                } else if (telefoneVar != Number(telefoneVar)) {
+                    alert('Apenas números no Telefone')
+                }
+            } else if (cnpjEmpresaVar != Number(cnpjEmpresaVar)) {
+                alert('Apenas números no CNPJ')
+                if (telefoneVar != Number(telefoneVar)) {
+                    alert('Apenas números no Telefone')
+                }
+            } else if (telefoneVar != Number(telefoneVar)) {
+                alert('Apenas números no Telefone')
+            } else if (senhaVar != confirm) {
+                alert('As senhas devem ser iguais')
+                } else {
+
+                
+
+                confirmarDados.innerHTML = `
             <div class="content">
             <div class="container">
                 <h2> Confirme os seus dados cadastrais</h2>
                 <hr>
-                Nome da empresa: ${nomeEmpresa}<br><br>
+                Nome da empresa: ${nomeEmpresaVar}<br><br>
                 
-                Nome do representante: ${nomeUsuario}<br><br>
-            CNPJ da empresa: ${cnpjEmpresa} <br><br>
-                Email de contato: ${emailContato}<br><br>
+            CNPJ da empresa: ${cnpjEmpresaVar} <br><br>
+                Email de contato: ${emailVar}<br><br>
                 Plano escolhido: ${planoEscolha}
                 <br><br>
                <button onclick="efetuarCadastro()">
-                <a href='dashboard.html' id='finaliza'>   Finalizar cadastro </a>
+                <a href='login.html' id='finaliza'>   Finalizar cadastro </a>
                 </button>
             </div>
         </div>`
 
 
         dadosCadastrais.style.display = 'none';
-    }
+            }
 
-
-
-
-    function efetuarCadastro() {
-        if (cnpjEmpresa != Number(cnpjEmpresa)) {
-            alert("Use apenas números no CNPJ")
-        } else if (nomeRepresentante == Number(nomeRepresentante)) {
-            alert("O nome não pode ser algo numérico")
         } else {
-            alert('Cadastro feito! (:')
+            alert('Preencha todos os campos')
         }
 
+        
     }
+
+
+
+
+
 </script>

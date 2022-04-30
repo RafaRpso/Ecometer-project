@@ -12,20 +12,54 @@
 }
 
 
-
+.tudo{ 
+    display:flex;
+}
 body {
     margin: 0;
-    display: flex;
+    scroll-behavior: smooth;
     font-family: 'Poppins';
 }
+
+
+body::-webkit-scrollbar {
+    width: 12px;
+
+
+}
+
+body::-webkit-scrollbar-track {
+    background: rgb(224, 224, 224);
+
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #346751;
+    margin: 2 auto;
+    border-radius: 20px;
+
+
+}
+
 select{ 
     border-radius:15px;
     background-color:white;
+    margin: 5px;
+}
+footer{ 
+    margin-top:15px;
+    display:flex;
+    flex-direction: column;
+    margin-left: 7%;
+    text-align: center;
+    width:93%; /* subtrai a margen xd */ 
+    background-color: #252525;
+    color:white;
 }
 #main{ 
     margin-left: 7%;
+    height: 80%;
 }
-
 #mensal{ 
     width:100%
 }
@@ -79,8 +113,12 @@ select{
 #main {
     width: 100%;
 }
-
+.subtitulo{ 
+    font-weight: bold;
+    font-size: 26px;
+}
 .kapis{ 
+    margin-top:5%;
     display:flex;
     justify-content: space-around;
     height:25%;
@@ -108,7 +146,7 @@ select{
     padding: 8px ;
     border-radius: 10px;
     width: 100%;
-    height: 30%;
+    height: 20%;
     background-color: white;
     text-align: center;
     display: flex;
@@ -132,13 +170,22 @@ select{
     font-size: 24px;
 }
 #mainGraph{ 
-    display:block; 
-    height: 50%;
-
-    
-    
+    display:flex; 
+    height: 55%;
+    width:100%;
+    justify-content: center;
 }
+.botoesMapa{ 
+    display:flex;
+    flex-direction: row;
+    width: 60%;
+    justify-content: space-around;
+}
+#mapa{ 
+    
+    width:90%;
 
+}
 .botao{
     border: none;
     border-radius:15px;
@@ -183,18 +230,20 @@ select{
 .alinhar{ 
     display:flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .alinhamento{ 
+    margin: 12px;
     padding:5px;
     border-bottom: 2px solid rgb(132, 132, 132);
     width:30%;
 }
 .avisoGrafico{ 
-    display:flex;
+
     border: 2px solid rgb(129, 129, 129);
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+
+    text-align: center;
     width:15%;
 
     border-radius:25px;
@@ -222,7 +271,7 @@ select{
 }
 
 #fr2 {
-    width: 40%;
+    width: 60%;
 }
 
 
@@ -314,4 +363,36 @@ select{
     background-color: red;
   
     padding: 5px;
+}
+
+
+#graphKit{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+#graficoKitAparece{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 5px 5px #b9b9b9;
+    border-radius: 10px;
+    width: 80%;
+    height: 50vh;
+    background-color: white;
+    text-align: center;
+    margin-bottom: 5%;
+
+}
+.graficoKit{ 
+    border: 2px solid purple; 
+    height: 60%; 
+    width:80%;
+    margin:5px;
+}
+
+.graficoKit .botao{ 
+    margin: 5px;
 }
