@@ -78,10 +78,8 @@ body {
     margin:0;
 }
 .alinhamento{
-    border-bottom: 1px solid rgb(107, 107, 107);
-    width:50%;
-    margin:20px;
-    
+    border-bottom: 3px solid rgb(107, 107, 107);
+    width:50%;        
 }
 .elementosNav{
 
@@ -125,7 +123,13 @@ a:hover{
 
 
 .informacoes{
-    background-color: #a3e4aa;
+    background-image: linear-gradient(to top, rgb(154, 233, 134), #C1DA6C);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    
 }
 
 .sobre {
@@ -133,26 +137,34 @@ a:hover{
     padding: 60px;
     font-size: 50px;
     justify-content: center;
+    font-weight: bolder;
 }
 
 .textoSobre{
-    padding: 30px;
-
+   width: 50%;
+  margin-bottom: 5%;;
 }
 
 /*/ fim sobre /*/
 
 .sobreEquipe{
-    padding: 60px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sobreEquipe p{
+    padding: 10px;
     font-size: 50px;
     text-align: center;
+    font-weight: bold;
 }
 
 .equipeEnvolvida{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding-left: 10%;
-    padding-top: 30px;
+    padding-left: 5%;
     padding-bottom: 60px;
 }
 
@@ -185,17 +197,16 @@ a:hover{
 
 .ajuda{
     display: flex;
-    padding: 80px;
     background-color: #a3e4aa;
     justify-content: space-around;
+    padding:40px;
 }
 
 .nuvemAjuda{
     border-radius: 15px;
     border: 2px solid black;
     text-align: center;
-    padding: 20px;
-
+    width:35%;
 }
 
 #botaoAjuda {
