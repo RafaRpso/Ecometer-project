@@ -101,11 +101,10 @@ function vermelho() {
 
 // quando selecionar o kit de lixo, demonstrar o alerta abaixo e acima 
 
-function selecaoKitAlerta(kit) {
+function selecaoKitAlerta(kit) { // recebe o valor do kit de outra funcao, da funcao INTERMEDIARIA, de modo que é ela quem fornece para ambos
     var kitInput = qualKit.value; 
 
     if (kit== "1" || kitInput == 1) { // kit 1 - cheio  
-        graphKit.style.display=  'flex'
         textoKit.innerHTML = "Kit 1"
         alert("AVISO. ESTE KIT ESTÁ LOTADO.")
         condicaoKit.innerHTML = "<b> O Kit 1 está LOTADO! </b>"
@@ -113,17 +112,17 @@ function selecaoKitAlerta(kit) {
         aviso2.style.display = 'none'
         aviso3.style.display = 'none'
         aviso4.style.display = 'block'
-       
+      
     }
     else if (kit== "2" || kitInput == 2 ) { // kit 2 - qUASE VAZIO  
-        graphKit.style.display=  'flex'
+      
         textoKit.innerHTML = "Kit 2"
         condicaoKit.innerHTML = "<b> O kit 2 está quase vazio! </b>"
         aviso1.style.display = 'none'
         aviso2.style.display = 'block'
         aviso3.style.display = 'none'
         aviso4.style.display = 'none'
-        verKit(kit)
+   
     }
     else if (kit== "3" || kitInput == 3) { //kit3  - vazio 
         graphKit.style.display=  'flex'
@@ -133,7 +132,7 @@ function selecaoKitAlerta(kit) {
         aviso2.style.display = 'none'
         aviso3.style.display = 'none'
         aviso4.style.display = 'none'
-        verKit(kit)
+  
     }
     else if (kit== "4") { //kit3  - vazio 
         condicaoKit.innerHTML = null
@@ -141,7 +140,7 @@ function selecaoKitAlerta(kit) {
         aviso2.style.display = 'block'
         aviso3.style.display = 'block'
         aviso4.style.display = 'block'
-        verKit(kit)
+ 
     }
 }
 
@@ -154,11 +153,18 @@ function ocultarNavbar() {
     main.style.marginLeft = '0%'
 }
 
-
+// ocultar no botao ocultar
 function ocultarKit() { 
     graphKit.style.display = "none" ; 
 }
 
+// intermediaria pra caso vc mexer na lixeira ou caso vc mexa no mapa ambos funcionem
+//fornece a chave para ambas as funções efetuarem as coisas iguais, isto é: o mapa e o select button trocarem os kits
+function intermediaria(){ 
+    kit = qualKit.value ; 
+    verKit(kit)
+    selecaoKitAlerta(kit)
+}
 
 
 
