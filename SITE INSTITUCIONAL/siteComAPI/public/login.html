@@ -27,6 +27,7 @@
             <ul class="navBar">
                 <li class="liNav" id="sobre"><a href='sobre.html'>Sobre</a></li>
                 <li class="liNav" id="simulador"><a href="sim_financeiro.html">Simulador Financeiro</a></li>
+                <li class="liNav" id="preco"><a href="precos.html">Preços</a></li>
                 <li class="liNav" id="contato"><a href="contato.html">Contato</a></li>
                 <li class="login">
                     <a href="login.html">
@@ -39,7 +40,6 @@
 
     </div>
 
-
     <!-- fim navbar  -->
 
     </div>
@@ -47,14 +47,16 @@
         <div class="container">
             <h2> Faça aqui o seu Login </h2>
             <div class="alinhamento"></div>
+            <div id="loginForm">
 
-            Email<br>
-            <input type="email" name="" id="email_input">
-            <br>
-            Senha<br>
-            <input type="password" name="" id="senha_input">
-            <br>
-
+                Email<br>
+                <input type="email" name="" id="email_input">
+                <br>
+                Senha<br>
+                <input type="password" name="" id="senha_input">
+                <br>
+            </div>
+            <h6>Não tem conta? <a href="cadastro.html">Crie Uma</a></h6>
 
 
             <button onclick="entrar()">
@@ -73,7 +75,7 @@
 </html>
 <script>
     function entrar() {
-        
+
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -81,7 +83,7 @@
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            
+
             return false;
         }
         else {
@@ -125,8 +127,8 @@
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
-                    console.error(texto);   
-                    
+                    console.error(texto);
+
                 });
             }
 
