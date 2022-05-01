@@ -458,13 +458,13 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
                 label: 'Plástico',
                 backgroundColor: '#FFA1A1',
                 borderColor: '#FFA1A1',
-                data: [0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 4],
+                data: [0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4],
             },
             {
                 label: 'Papel',
                 backgroundColor: '#b1bbe7',
                 borderColor: '#b1bbe7',
-                data: [0, 0, 0, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 2.9, 3.2, 3.6, 3.7],
+                data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4],
             },
             {
                 label: 'Metal',
@@ -481,15 +481,15 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
             ]
         };
 
-        const configKit2 = {
+        const configKit1 = {
             type: 'line',
-            data: dataKit2,
+            data: dataKit1,
             options: {}
         };
 
         const myChartKit1 = new Chart(
             document.getElementById('kitIndividual'),
-            configKit2
+            configKit1
         );
 
     }
@@ -625,7 +625,9 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
 
 
     // insere graficos aqui
-    function alertKit(userx, usery) {
+    
+}
+function alertKit(userx, usery) {
         piso = slct_piso.value;  // qual o piso escolhido? 
         kit = qualKit.value;
 
@@ -644,4 +646,3 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
 
 
     }
-}
