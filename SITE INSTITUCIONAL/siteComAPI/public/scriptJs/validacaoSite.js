@@ -151,6 +151,17 @@ function ocultarNavbar() {
     footerDash.style.width = '100%'
     //arrumar main
     main.style.marginLeft = '0%'
+    mostrarMenu.style.display = 'block'
+}
+
+function mostrarNavBar() {
+    menuLateral.style.display = 'flex'
+    //arrumar footer
+    footerDash.style.marginLeft = '7%'
+    footerDash.style.width = '93%'
+    //arrumar main
+    main.style.marginLeft = '7%'
+    mostrarMenu.style.display = 'none'
 }
 
 // ocultar no botao ocultar

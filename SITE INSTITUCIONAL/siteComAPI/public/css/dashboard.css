@@ -11,6 +11,10 @@
     --hover-button-black: #252525;
 }
 
+canvas:hover{
+    cursor:crosshair;
+}
+
 
 .tudo{ 
     display:flex;
@@ -88,6 +92,10 @@ footer{
     width: 38px;
 }
 
+#menuBurger img:hover, #mostrarMenu:hover {
+    cursor: pointer;
+}
+
 #mainLateral {
     height: 90%;
     display: flex;
@@ -129,14 +137,21 @@ footer{
     height: 10%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: initial;
     border-bottom: 2px solid rgb(160, 160, 160);
 }
 
 #logo {
     display: flex;
     align-items: baseline;
+    margin: auto;
 }
+#mostrarMenu {
+    width: 38px;
+    margin-left: 20px;
+    
+} 
+
 
 /*parte dos graficos*/
 /* bordas e alterações nos cards da div */ 
