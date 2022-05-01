@@ -67,6 +67,7 @@ function cadastrar(req, res) {
    /*  var telefone = req.body.telefoneServer; */
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var plano = req.body.planoServer;
     
     // Faça as validações dos valores
     if (nomeEmpresa == undefined) {
@@ -75,9 +76,9 @@ function cadastrar(req, res) {
     else if (cnpj == undefined) {
         res.status(400).send("Seu CNPJ está undefined!");
     }
- /*    else if (telefone == undefined) {
-        res.status(400).send("Seu telefone está undefined!");
-    } */
+     else if (plano == undefined) {
+        res.status(400).send("Seu plano está undefined!");
+    } 
      else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } 
@@ -87,7 +88,7 @@ function cadastrar(req, res) {
     else {
        
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nomeEmpresa, cnpj, email, senha)
+        usuarioModel.cadastrar(nomeEmpresa, cnpj, email, senha, plano)
             .then(
                 function (resultado) {
                     res.json(resultado);

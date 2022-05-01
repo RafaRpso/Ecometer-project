@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-   
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/universal.css">
     <link rel="stylesheet" href="css/cadastro.css">
@@ -60,15 +60,13 @@
             <h2> Faça aqui o seu cadastro </h2>
             <div class="alinhamento"></div>
             <hr>
-      
+
             <div class="textoForms">Nome da empresa</div>
             <input type="text" name="" id="nomeEmpresaInp">
 
             <div class="textoForms">CNPJ da empresa</div>
             <input type="text" name="" id="cnpjEmpresaInp">
 
-            <div class="textoForms">Telefone </div>
-            <input type="text" name="" id="telefone">
 
             <div class="textoForms">Email de contato</div>
             <input type="email" name="" id="emailEmpresa">
@@ -81,6 +79,8 @@
 
             <div class="textoForms">Selecione o plano</div>
             <select name="" id="planos">
+
+                <option value="nada">Escolha um plano</option>
                 <option value="Plano Mensal">Plano mensal/R$360</option>
                 <option value="Plano Semestral">Plano semestral/R$360</option>
                 <option value="Plano anual">Plano anual/R$360</option>
@@ -187,44 +187,47 @@
         }
     }*/
     function cadastrar() {
-        
-    
+
+
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var nomeEmpresaVar = nomeEmpresaInp.value;
         var cnpjEmpresaVar = cnpjEmpresaInp.value;
-        var telefoneVar = telefone.value;
+        /* var telefoneVar = telefone.value; */
+        var telefoneVar = '1184739242';
         var emailVar = emailEmpresa.value;
         var senhaVar = senha.value;
         var confirm = confSenha.value;
-        var planoEscolha = planos.value
+        var planoVar = planos.value
 
 
         if (nomeEmpresaVar != '' && cnpjEmpresaVar != '' && emailVar != '' && senhaVar != '' && confirm != '') {
+           
             if (emailVar.indexOf('@') == -1) {
-                alert('Insira um E-mail válido')
+                alert('Insira um E-mail válido');
                 if (cnpjEmpresaVar != Number(cnpjEmpresaVar)) {
-                    alert('Apenas números no CNPJ')
+                    alert('Apenas números no CNPJ');
                     if (telefoneVar != Number(telefoneVar)) {
-                        alert('Apenas números no Telefone')
+                        alert('Apenas números no Telefone');
                     }
                 } else if (telefoneVar != Number(telefoneVar)) {
-                    alert('Apenas números no Telefone')
+                    alert('Apenas números no Telefone');
                 }
             } else if (cnpjEmpresaVar != Number(cnpjEmpresaVar)) {
-                alert('Apenas números no CNPJ')
+                alert('Apenas números no CNPJ');
                 if (telefoneVar != Number(telefoneVar)) {
-                    alert('Apenas números no Telefone')
+                    alert('Apenas números no Telefone');
                 }
             } else if (telefoneVar != Number(telefoneVar)) {
-                alert('Apenas números no Telefone')
+                alert('Apenas números no Telefone');
+            } else if (planoVar == 'nada') {
+
+                alert("Selecione um plano")
+
             } else if (senhaVar != confirm) {
                 alert('As senhas devem ser iguais')
-                } else {
-
-                
-
+            } else {
                 confirmarDados.innerHTML = `
             <div class="content">
             <div class="container">
@@ -234,16 +237,14 @@
                 
             CNPJ da empresa: ${cnpjEmpresaVar} <br><br>
                 Email de contato: ${emailVar}<br><br>
-                Plano escolhido: ${planoEscolha}
+                Plano escolhido: ${planoVar}
                 <br><br>
                <button onclick="efetuarCadastro()">
                 <a href='login.html' id='finaliza'>   Finalizar cadastro </a>
                 </button>
             </div>
         </div>`
-
-
-        dadosCadastrais.style.display = 'none';
+                dadosCadastrais.style.display = 'none';
             }
 
         } else {
@@ -260,9 +261,10 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeEmpresaServer: nomeEmpresaVar,
                 cnpjEmpresaServer: cnpjEmpresaVar,
+                planoServer: planoVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar
-                
+
             })
         }).then(function (resposta) {
 
@@ -273,13 +275,13 @@
                 mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
                 window.location = "login.html";
                 limparFormulario();
-                
+
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            
+
         });
 
         return false;
@@ -288,5 +290,4 @@
     function sumirMensagem() {
         cardErro.style.display = "none"
     }
-
 </script>
