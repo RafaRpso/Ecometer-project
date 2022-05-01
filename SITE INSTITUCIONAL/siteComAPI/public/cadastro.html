@@ -144,7 +144,7 @@
 
 </html>
 <script>
-    function validacao(nome, cnpj, email, senha, confirmacaoSenha){ 
+    /*function validacao(nome, cnpj, email, senha, confirmacaoSenha){ 
         //verificação nome 
         if(nome==""||senha==""|| email==""||senha==""||confirmacaoSenha=="") { 
             alert("Um dos campos está vazio. ")
@@ -185,7 +185,7 @@
         if(senha!=confirmacaoSenha){ 
             alert("A senha confirmada está diferente da senha inserida.")
         }
-    }
+    }*/
     function cadastrar() {
         
     
@@ -194,16 +194,61 @@
         // Agora vá para o método fetch logo abaixo
         var nomeEmpresaVar = nomeEmpresaInp.value;
         var cnpjEmpresaVar = cnpjEmpresaInp.value;
+        var telefoneVar = telefone.value;
         var emailVar = emailEmpresa.value;
         var senhaVar = senha.value;
-        var confirmacaoSenhaVar = confSenha.value;
-/* 
-        validacao(nomeEmpresaVar, cnpjEmpresaVar, telefoneVar,emailVar, senhaVar, confirmacaoSenhaVar )
-       */   
-        validacao(nomeEmpresaVar, cnpjEmpresaVar, emailVar, senhaVar, confirmacaoSenhaVar )
-      
+        var confirm = confSenha.value;
+        var planoEscolha = planos.value
 
 
+        if (nomeEmpresaVar != '' && cnpjEmpresaVar != '' && emailVar != '' && senhaVar != '' && confirm != '') {
+            if (emailVar.indexOf('@') == -1) {
+                alert('Insira um E-mail válido')
+                if (cnpjEmpresaVar != Number(cnpjEmpresaVar)) {
+                    alert('Apenas números no CNPJ')
+                    if (telefoneVar != Number(telefoneVar)) {
+                        alert('Apenas números no Telefone')
+                    }
+                } else if (telefoneVar != Number(telefoneVar)) {
+                    alert('Apenas números no Telefone')
+                }
+            } else if (cnpjEmpresaVar != Number(cnpjEmpresaVar)) {
+                alert('Apenas números no CNPJ')
+                if (telefoneVar != Number(telefoneVar)) {
+                    alert('Apenas números no Telefone')
+                }
+            } else if (telefoneVar != Number(telefoneVar)) {
+                alert('Apenas números no Telefone')
+            } else if (senhaVar != confirm) {
+                alert('As senhas devem ser iguais')
+                } else {
+
+                
+
+                confirmarDados.innerHTML = `
+            <div class="content">
+            <div class="container">
+                <h2> Confirme os seus dados cadastrais</h2>
+                <hr>
+                Nome da empresa: ${nomeEmpresaVar}<br><br>
+                
+            CNPJ da empresa: ${cnpjEmpresaVar} <br><br>
+                Email de contato: ${emailVar}<br><br>
+                Plano escolhido: ${planoEscolha}
+                <br><br>
+               <button onclick="efetuarCadastro()">
+                <a href='login.html' id='finaliza'>   Finalizar cadastro </a>
+                </button>
+            </div>
+        </div>`
+
+
+        dadosCadastrais.style.display = 'none';
+            }
+
+        } else {
+            alert('Preencha todos os campos')
+        }
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
             method: "POST",
@@ -243,4 +288,5 @@
     function sumirMensagem() {
         cardErro.style.display = "none"
     }
+
 </script>
