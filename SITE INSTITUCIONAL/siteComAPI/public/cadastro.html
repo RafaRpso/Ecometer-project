@@ -252,6 +252,7 @@
         }
         else if(nome.length<=3) { 
             alert("Insira mais de três caracteres.")
+            return 0 //encerra a função
         }
 
         //verificacao cnpj
@@ -260,6 +261,7 @@
         }
         else if(cnpj!=Number(cnpj)){ 
             alert("Insira apenas caractéres válidos no CNPJ: Hà um caractere inválido.")
+            return 0 //encerra a função
         }
 
         //verificacao email contato 
@@ -268,6 +270,7 @@
         }
         else if(email.indexOf('.com') == -1 ){ 
             alert("Insira um email válido: Faltando .com")
+            return 0 //encerra a função
         }
 
 
@@ -277,8 +280,9 @@
         } 
         // se eu por de caracteres vou ter que usar vetor, vai ficar mt complexo
 
-        if(senha!=confirmacaoSenha){ 
+        else if(senha!=confirmacaoSenha){ 
             alert("A senha confirmada está diferente da senha inserida.")
+            return 0 //encerra a função
         }
 
 

@@ -105,31 +105,35 @@ function selecaoKitAlerta(kit) { // recebe o valor do kit de outra funcao, da fu
     var kitInput = qualKit.value; 
 
 
-    
-    if (kit== "1" || kitInput == 1) { // kit 1 - cheio  
+
+    if (kit== "1") { // kit 1 - cheio  
+
         textoKit.innerHTML = "Kit 1"
         alert("AVISO. ESTE KIT ESTÁ LOTADO.")
         condicaoKit.innerHTML = "<b> O Kit 1 está LOTADO! </b>"
+        situacao.innerHTML = "<b> O Kit 1 está LOTADO! </b>"
         aviso1.style.display = 'none'
         aviso2.style.display = 'none'
         aviso3.style.display = 'none'
         aviso4.style.display = 'block'
       
     }
-    else if (kit== "2" || kitInput == 2 ) { // kit 2 - qUASE VAZIO  
+    else if (kit== "2" ) { // kit 2 - qUASE VAZIO  
       
         textoKit.innerHTML = "Kit 2"
         condicaoKit.innerHTML = "<b> O kit 2 está quase vazio! </b>"
+        situacao.innerHTML = "<b> O Kit 2 está LOTADO! </b>"
         aviso1.style.display = 'none'
         aviso2.style.display = 'block'
         aviso3.style.display = 'none'
         aviso4.style.display = 'none'
    
     }
-    else if (kit== "3" || kitInput == 3) { //kit3  - vazio 
+    else if (kit== "3") { //kit3  - vazio 
         graphKit.style.display=  'flex'
         textoKit.innerHTML = "Kit 3"
         condicaoKit.innerHTML = "<b> O kit 3 está vazio </b>"
+        situacao.innerHTML = "<b> O Kit 3 está LOTADO! </b>"
         aviso1.style.display = 'block'
         aviso2.style.display = 'none'
         aviso3.style.display = 'none'
@@ -175,8 +179,9 @@ function ocultarKit() {
 //fornece a chave para ambas as funções efetuarem as coisas iguais, isto é: o mapa e o select button trocarem os kits
 function intermediaria(){ 
     kit = qualKit.value ; 
-    verKit(kit)
-    selecaoKitAlerta(kit)
+    selecaoKitAlerta(kit) ; 
+    verKit(kit) ; 
+ 
     return 0 ;
 }
 
