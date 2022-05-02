@@ -122,7 +122,7 @@ function selecaoKitAlerta(kit) { // recebe o valor do kit de outra funcao, da fu
       
         textoKit.innerHTML = "Kit 2"
         condicaoKit.innerHTML = "<b> O kit 2 está quase vazio! </b>"
-        situacao.innerHTML = "<b> O Kit 2 está LOTADO! </b>"
+        situacao.innerHTML = "<b> O Kit 2 está quase vazio! </b>"
         aviso1.style.display = 'none'
         aviso2.style.display = 'block'
         aviso3.style.display = 'none'
@@ -133,7 +133,7 @@ function selecaoKitAlerta(kit) { // recebe o valor do kit de outra funcao, da fu
         graphKit.style.display=  'flex'
         textoKit.innerHTML = "Kit 3"
         condicaoKit.innerHTML = "<b> O kit 3 está vazio </b>"
-        situacao.innerHTML = "<b> O Kit 3 está LOTADO! </b>"
+        situacao.innerHTML = "<b> O Kit 3 está vazio! </b>"
         aviso1.style.display = 'block'
         aviso2.style.display = 'none'
         aviso3.style.display = 'none'
