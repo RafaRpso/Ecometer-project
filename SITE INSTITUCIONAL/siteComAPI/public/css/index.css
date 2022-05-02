@@ -299,14 +299,19 @@ a:hover{
 
 #elemento3 .box {
     margin-top: 5%;
-    
     width: 80%;
-
+    
 }
 
 #elemento3 .elementosContexto {
     border: none;
 }
+
+#elemento3.elementosContexto{
+    background: white;
+    color: black;
+}
+
 
 #elemento3 .box h3 {
     font-size: 80px;
@@ -319,6 +324,10 @@ a:hover{
     margin-bottom: 5%;
     padding: 0;
 
+}
+
+.container .elementosContexto p{
+    text-align: left;
 }
 
 .boxes {
@@ -390,6 +399,8 @@ a:hover{
 }
 
 .elementosCompra {
+    color: wheat;
+    background: black;
     display: flex;
     width: 100%;
     justify-content: center;
@@ -398,6 +409,7 @@ a:hover{
 .box {
    padding: 30px;
 }
+
 
 .elementosCompra .box button {
     width: 75%;
@@ -409,7 +421,7 @@ a:hover{
     background-color: #73e67d;
     border: none;
     margin-top: 10%;
-
+    
 }
 
 #gastos {
@@ -422,8 +434,8 @@ a:hover{
 }
 
 #simuladorBotao {
-    background-color: #000000;
-    color: white;
+    background-color: #73e67d;
+    color: black;
 }
 .footerBranco .footer {
     background-color: #f3f3f3;
