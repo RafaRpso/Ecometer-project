@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-   
+
     <title>Calculadora Financeira</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -16,8 +16,8 @@
 
 <body>
 
-       <!-- inicio navbar -->
-       <div class="header">
+    <!-- inicio navbar -->
+    <div class="header">
 
 
         <div class="logo">
@@ -46,32 +46,32 @@
     <div class="content">
 
 
-            <!-- Card de conteudo -->
-            <div class="container">
+        <!-- Card de conteudo -->
+        <div class="container">
 
 
-                <h4>Insira o volume de lixo coletado durante 1 ano</h4>
-                <input type="text" id="toneladaLixo" placeholder="Volume Lixo em Toneladas">
-                <button onclick="calc_money_vol()">Calcular</button>
-                <div class="alinhamento"></div>
-                <div class="apresentar">
-                
+            <h4>Entre com o volume de lixo coletado durante 1 ano</h4>
+            <input type="number" id="kgLixo" placeholder="Volume Lixo em kg">
+            <button onclick="calculo()">Calcular</button>
+            <div class="alinhamento"></div>
+            <div class="apresentar">
 
-                        <div id="apresentarResultado" style="display:none;">
-                         
-                            <b>O Valor que poderia ser Arrecadado é de cerca de:</b>
-                          <div class="resultado">
-                              <div id="divApresentar"></div>
-                          </div>
-                        </div>
+                <div id="apresentarResultado" style="display:none;">
+                    <b>Valor arrecadado:</b>
+                    <p>Atualmente o  seu lucro medio é:</p>
+                    <div class="resultado">
+                        <div id="divApresentar"></div>
                     </div>
-        
                 </div>
+
             </div>
 
         </div>
+    </div>
 
-       
+    </div>
+
+
 
     </div>
 
@@ -114,34 +114,28 @@
 
 </html>
 <script>
+    function calculo() {
+
+        var lx = Number(kgLixo.value);
+
+        // papel,vidro  metal, plastico
+        var media = (0.62 + 0.30 + 6 + 1.69) / 4
+
+        var valor = lx * media;
 
 
-    function calc_money_vol() {
-    
-        apresentarResultado.style.display='block'
-    
-        var semana = 0;
-        var mes = 0;
-        var ano = 0;
+        // 0.5 é o valor medio diario do lixo coletado em shoppings
+        var semanaValor = (valor * 0.5) * 7;
+        var mesValor = (valor * 0.5) * 30;
+        var anoValor = (mesValor * 0.5) * 12;
 
-        /* recebe o lixo em toneladas  e converte para kg*/
-        var tLixo = toneladaLixo.value;
-        var kgLixo = tLixo * 1000;
 
-        semana = (kgLixo * 0.5) * 7;
-        mes = (kgLixo * 0.5) * 30;
-        ano = (kgLixo * 0.5) * 365;
-       
-    
-        divApresentar.innerHTML = semana + " Por Semana<br>";
-        divApresentar.innerHTML += mes + " Por Mês<br>";
-        divApresentar.innerHTML += ano + " Por Ano";
+        apresentarResultado.style.display = 'block'
 
-        
-       /*  span_val_lixo1.innerHTML = `R$${(inp_vol_lixo.value * 0.5) *365} por ano!`;
-        */ 
-        divApresentar.style.display = 'block'
+        divApresentar.innerHTML = "R$" + semanaValor.toFixed(2) + " Por Semana<br>";
+        divApresentar.innerHTML += "R$" + mesValor.toFixed(2) + " Por Mês<br>";
+        divApresentar.innerHTML += "R$" + anoValor.toFixed(2) + " Por Ano";
+
     }
-
 
 </script>
