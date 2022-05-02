@@ -104,6 +104,8 @@ function vermelho() {
 function selecaoKitAlerta(kit) { // recebe o valor do kit de outra funcao, da funcao INTERMEDIARIA, de modo que é ela quem fornece para ambos
     var kitInput = qualKit.value; 
 
+
+    
     if (kit== "1" || kitInput == 1) { // kit 1 - cheio  
         textoKit.innerHTML = "Kit 1"
         alert("AVISO. ESTE KIT ESTÁ LOTADO.")
