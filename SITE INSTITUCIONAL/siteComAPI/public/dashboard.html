@@ -24,7 +24,7 @@
     <title>Dashboard</title>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <div class="tudo">
 
 
@@ -54,6 +54,12 @@
                     <p>dashboard</p>
                 </div>
             </div>
+
+            <!-- Mostra o nome cadastrado pelo usuario -->
+            <div class="">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
             <div class="kapis">
                 <div class="kapiGrafico" id="verKits" onclick="trocaMapa()">
                     <span class="tituloKapi"> Kits Ativos </span>
@@ -199,5 +205,14 @@
 //Tá tudo no scriptJS/, tava uma zona isso aqui. 
 </script>
 
+<script src="../js/funcoes.js">
+
+//mostra o nome do usuario que esta sendo recebido pelo funcoes.js
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+
+</script>
+
 <script src="scriptJs/validacaoSite.js">
+    
 </script>
