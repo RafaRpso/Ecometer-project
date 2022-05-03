@@ -64,11 +64,17 @@
 
     margin-right: 50px;
   
-}a{
+} 
+ a {
     text-decoration: none;
     color:rgb(61, 61, 61);
 }
-a:hover{
+.footerBranco a:hover{
     color: var(--color_green);
+    transition: 500ms;
+}
+
+.footerVerde a:hover{
+    color: grey;
     transition: 500ms;
 }

@@ -189,14 +189,21 @@ a:hover{
 
 }
 
-.botoesTexto button {
-
+.botoesTexto a {
+    text-decoration: none;
     width: 40%;
     height: 7vh;
     border-radius: 15px;
     border: none;
     font-size: 20px;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.botoesTexto a #textButtonCadastro{
+    color: black;
 
 }
 
@@ -434,9 +441,20 @@ a:hover{
 }
 
 #simuladorBotao {
+    margin-top: 20px;
     background-color: #73e67d;
     color: black;
+    width: 250px;
+    height: 50px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 }
+
+
+
 .footerBranco .footer {
     background-color: #f3f3f3;
 }
