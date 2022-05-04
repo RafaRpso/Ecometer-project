@@ -625,14 +625,14 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
     else if (kit == 2) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
         selecaoKitAlerta(kit) ; 
         graphKit.style.display = 'flex'
-        textoKit.innerHTML = "Kit 1"
+        textoKit.innerHTML = "Kit 2"
         kitIndividual1.style.display = 'none'
         kitIndividual2.style.display = 'block'
         kitIndividual3.style.display = 'none'
     } else if (kit == 3) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
         selecaoKitAlerta(kit) ; 
         graphKit.style.display = 'flex'
-        textoKit.innerHTML = "Kit 1"
+        textoKit.innerHTML = "Kit 3"
         kitIndividual1.style.display = 'none'
         kitIndividual2.style.display = 'none'
         kitIndividual3.style.display = 'block'
