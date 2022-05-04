@@ -156,7 +156,9 @@ footer{
 /*parte dos graficos*/
 
 .nomeUser {
-    margin-left: 20px;
+  display: flex ; 
+  justify-content: center;
+  font-size: 36px;
 }
 /* bordas e alterações nos cards da div */ 
 .cardGrafico{
