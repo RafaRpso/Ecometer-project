@@ -787,8 +787,8 @@ function selecaoKitAlerta(kit) { // recebe o valor do kit de outra funcao, da fu
     else if (kit== "2" ) { // kit 2 - qUASE VAZIO  
       
         textoKit.innerHTML = "Kit 2"
-        condicaoKit.innerHTML = "<b> O kit 2 está quase vazio! </b>"
-        situacao.innerHTML = "<b> O Kit 2 está quase vazio! </b>"
+        condicaoKit.innerHTML = "<b> O Kit 2 está quase cheio! </b>"
+        situacao.innerHTML = "<b> O Kit 2 está quase cheio! </b>"
         aviso1.style.display = 'none'
         aviso2.style.display = 'block'
         aviso3.style.display = 'none'
