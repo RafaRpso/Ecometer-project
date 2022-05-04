@@ -142,7 +142,6 @@ a:hover {
 
 .content {
     width: 100%;
-    height: 100%;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -230,6 +229,10 @@ a {
 
 } 
 
+#fundoSimulador{ 
+    padding:120px;
+}
+
 .footerBranco .footer {
     background-color: #f3f3f3;
 }
@@ -239,45 +242,35 @@ a {
 }
 
 .footer {
-
+    font-size: 12px;
     width: 100%;
-    height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between ; 
     
 }
-
+.footer h1{
+    text-align: center;
+    padding: 15px;
+}
 #navegar h2, #ouvidoria h2, #conta h2{
     text-decoration: underline ;
 }
 
-.footer h1 {
-    margin-left: 120px;
-}
 
 .footer ul {
     list-style: none;
-    margin-top: 30px;
 }
 
-.footer li {
-    
-    margin-top: 20px;
-}
 
 #elementosFooter {
     width: 100%;
     font-weight: bold;
     display: flex;
     justify-content: space-around;
-
-    
-
 }
 
 #alinhamento {
-    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
