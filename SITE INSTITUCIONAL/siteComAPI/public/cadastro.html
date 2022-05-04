@@ -64,7 +64,7 @@
             <input type="text" name="" id="nomeEmpresaInp">
 
             <div class="textoForms">CNPJ da empresa</div>
-            <input type="text" name="" id="cnpjEmpresaInp">
+            <input type="text" name="" id="cnpjEmpresaInp" placeholder="00000000/000000">
 
 
             <div class="textoForms">Email de contato</div>
@@ -80,10 +80,9 @@
             <select name="" id="planos">
 
                 <option value="">Escolha um plano</option>
-                <option value="Plano Mensal">Plano mensal/R$360</option>
-                <option value="Plano Semestral">Plano semestral/R$360</option>
-                <option value="Plano anual">Plano anual/R$360</option>
-                <option value="Plano anual PRO">Plano anual PRO/R$360</option>
+                <option value="Plano Mensal">Plano mensal/R$920</option>
+                <option value="Plano Semestral">Plano trimestral/R$2600</option>
+                <option value="Plano anual">Plano anual/R$10.000</option>
             </select>
 
             <button onclick="cadastrar()">Cadastrar</button>
@@ -210,7 +209,7 @@
         } 
 
         //verificacao cnpj
-        if(cnpjEmpresaVar.length!=11) {
+        if(cnpjEmpresaVar.length!=14) {
             alert("Insira todos os números do CNPJ: Há um número a mais ou a menos. ")
             finalizarAguardar();
             return false;
