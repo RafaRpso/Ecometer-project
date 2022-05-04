@@ -37,7 +37,6 @@ CREATE TABLE estabelecimento(
     idEstabelecimento INT PRIMARY KEY AUTO_INCREMENT,
     nomeEstabelecimento VARCHAR(45),
     rua VARCHAR(45),
-    andar VARCHAR(2),
     numero INT,
     referencia VARCHAR(65)
 )AUTO_INCREMENT = 100;
@@ -76,3 +75,88 @@ horário TIME,
 nivel cHAR(1),
 FOREIGN kEY (FkSensor) REFERENCES sensor (IdSensor)
 );
+
+--inserts(NÃO APLICAR POIS AINDA NÃO ESTÃO 100% PREPARADOS)
+
+insert into kitLixeira values (null, 1, 1, '4,3.4', 1, null),
+(null, 1, 1, '6,6.9', 2, null),
+(null, 1, 1, '4,2.5', 3, null);
+
+--obs: pq os tipos de lixeira estão setados como char(1) sendo que temos que escrever quais serão os kits
+insert into lixeira values (null, 1, 'Plástico'),
+(null, 1, 'Papel'),
+(null, 1, 'Metal'),
+(null, 1, 'Vidro'),
+(null, 2, 'Plástico'),
+(null, 2, 'Papel'),
+(null, 2, 'Metal'),
+(null, 2, 'Vidro'),
+(null, 3, 'Plástico'),
+(null, 3, 'Papel'),
+(null, 3, 'Metal'),
+(null, 3, 'Vidro');
+
+insert into registro values (null, 1, '2022-05-03', 12:00, 1),
+(null, 1, '2022-05-03', 13:00, 1),
+(null, 1, '2022-05-03', 14:00, 1),
+(null, 1, '2022-05-03', 15:00, 2),
+(null, 1, '2022-05-03', 16:00, 2),
+(null, 1, '2022-05-03', 17:00, 2),
+(null, 1, '2022-05-03', 18:00, 2),
+(null, 1, '2022-05-03', 19:00, 3),
+(null, 1, '2022-05-03', 20:00, 3),
+(null, 1, '2022-05-03', 21:00, 3),
+(null, 1, '2022-05-03', 22:00, 4),
+--lixeira 2 kit 1
+(null, 2, '2022-05-03', 13:00, 1),
+(null, 2, '2022-05-03', 14:00, 1),
+(null, 2, '2022-05-03', 15:00, 1),
+(null, 2, '2022-05-03', 16:00, 2),
+(null, 2, '2022-05-03', 17:00, 2),
+(null, 2, '2022-05-03', 18:00, 2),
+(null, 2, '2022-05-03', 19:00, 2),
+(null, 2, '2022-05-03', 20:00, 3),
+(null, 2, '2022-05-03', 21:00, 3),
+(null, 2, '2022-05-03', 22:00, 4),
+--lixeira 3 kit 1
+(null, 3, '2022-05-03', 14:00, 1),
+(null, 3, '2022-05-03', 15:00, 1),
+(null, 3, '2022-05-03', 16:00, 1),
+(null, 3, '2022-05-03', 17:00, 1),
+(null, 3, '2022-05-03', 18:00, 1),
+(null, 3, '2022-05-03', 19:00, 2),
+(null, 3, '2022-05-03', 20:00, 2),
+(null, 3, '2022-05-03', 21:00, 2),
+(null, 3, '2022-05-03', 22:00, 3),
+--lixeira 4 kit 1
+(null, 4, '2022-05-03', 19:00, 1),
+(null, 4, '2022-05-03', 20:00, 1),
+(null, 4, '2022-05-03', 21:00, 1),
+(null, 4, '2022-05-03', 22:00, 1),
+
+--obs: vendo agora a tabela sensor não faz sentido, pois nossos sensores 
+--servem como níveis e isso já ta identificado na tabela registro
+--além de que a data na tabela sensor não faz sentido pois o sensor não tem uma data nem um horário fixo
+
+--como eu acho que seria ideal a tabela registro
+
+CREATE TABLE registro(
+idRegistro INT PRIMARY KEY AUTO_INCREMENT,
+fkLixeira INT,
+dataRegistro DATE,
+horário TIME,
+nivel int,
+FOREIGN kEY (FkSensor) REFERENCES lixeira (idLixeira)
+);
+
+-
+
+
+
+
+ 
+
+
+
+ 
+
