@@ -62,8 +62,8 @@ FOREIGN KEY(fkKitLixeira) REFERENCES kitLixeira(idKitLixeira)
 CREATE TABLE sensor(
 fkLixeira INT,
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
-dataSensor DATE,
-nivel CHAR(1), 
+tipo varchar(15),
+descricao varchar(45), 
 FOREIGN KEY(fkLixeira) REFERENCES lixeira(idLixeira)
 );
 
@@ -72,7 +72,7 @@ idRegistro INT PRIMARY KEY AUTO_INCREMENT,
 fkSensor INT,
 dataSensor DATE,
 horário TIME,
-nivel cHAR(1),
+nivel int,
 FOREIGN kEY (FkSensor) REFERENCES sensor (IdSensor)
 );
 
@@ -81,6 +81,26 @@ FOREIGN kEY (FkSensor) REFERENCES sensor (IdSensor)
 insert into kitLixeira values (null, 1, 1, '4,3.4', 1, null),
 (null, 1, 1, '6,6.9', 2, null),
 (null, 1, 1, '4,2.5', 3, null);
+
+--insert da tabela sensor
+
+insert into sensor values
+(1, null, 'DRT5000', 'Sensor de bloqueio'),
+(1, null, 'DRT5000', 'Sensor de bloqueio'),
+(1, null, 'DRT5000', 'Sensor de bloqueio'),
+(1, null, 'DRT5000', 'Sensor de bloqueio'),
+(2, null, 'DRT5000', 'Sensor de bloqueio'),
+(2, null, 'DRT5000', 'Sensor de bloqueio'),
+(2, null, 'DRT5000', 'Sensor de bloqueio'),
+(2, null, 'DRT5000', 'Sensor de bloqueio'),
+(3, null, 'DRT5000', 'Sensor de bloqueio'),
+(3, null, 'DRT5000', 'Sensor de bloqueio'),
+(3, null, 'DRT5000', 'Sensor de bloqueio'),
+(3, null, 'DRT5000', 'Sensor de bloqueio'),
+(4, null, 'DRT5000', 'Sensor de bloqueio'),
+(4, null, 'DRT5000', 'Sensor de bloqueio'),
+(4, null, 'DRT5000', 'Sensor de bloqueio'),
+(4, null, 'DRT5000', 'Sensor de bloqueio');
 
 --obs: pq os tipos de lixeira estão setados como char(1) sendo que temos que escrever quais serão os kits
 insert into lixeira values (null, 1, 'Plástico'),
@@ -99,57 +119,43 @@ insert into lixeira values (null, 1, 'Plástico'),
 insert into registro values (null, 1, '2022-05-03', 12:00, 1),
 (null, 1, '2022-05-03', 13:00, 1),
 (null, 1, '2022-05-03', 14:00, 1),
-(null, 1, '2022-05-03', 15:00, 2),
-(null, 1, '2022-05-03', 16:00, 2),
-(null, 1, '2022-05-03', 17:00, 2),
-(null, 1, '2022-05-03', 18:00, 2),
-(null, 1, '2022-05-03', 19:00, 3),
-(null, 1, '2022-05-03', 20:00, 3),
-(null, 1, '2022-05-03', 21:00, 3),
-(null, 1, '2022-05-03', 22:00, 4),
---lixeira 2 kit 1
-(null, 2, '2022-05-03', 13:00, 1),
-(null, 2, '2022-05-03', 14:00, 1),
-(null, 2, '2022-05-03', 15:00, 1),
+(null, 2, '2022-05-03', 15:00, 2),
 (null, 2, '2022-05-03', 16:00, 2),
-(null, 2, '2022-05-03', 17:00, 2),
+(null, 2 '2022-05-03', 17:00, 2),
 (null, 2, '2022-05-03', 18:00, 2),
-(null, 2, '2022-05-03', 19:00, 2),
-(null, 2, '2022-05-03', 20:00, 3),
-(null, 2, '2022-05-03', 21:00, 3),
-(null, 2, '2022-05-03', 22:00, 4),
+(null, 3, '2022-05-03', 19:00, 3),
+(null, 3, '2022-05-03', 20:00, 3),
+(null, 3, '2022-05-03', 21:00, 3),
+(null, 4, '2022-05-03', 22:00, 4),
+--lixeira 2 kit 1
+(null, 5, '2022-05-03', 13:00, 1),
+(null, 5, '2022-05-03', 14:00, 1),
+(null, 5, '2022-05-03', 15:00, 1),
+(null, 6, '2022-05-03', 16:00, 2),
+(null, 6, '2022-05-03', 17:00, 2),
+(null, 6, '2022-05-03', 18:00, 2),
+(null, 6, '2022-05-03', 19:00, 2),
+(null, 7, '2022-05-03', 20:00, 3),
+(null, 7, '2022-05-03', 21:00, 3),
+(null, 8, '2022-05-03', 22:00, 4),
 --lixeira 3 kit 1
-(null, 3, '2022-05-03', 14:00, 1),
-(null, 3, '2022-05-03', 15:00, 1),
-(null, 3, '2022-05-03', 16:00, 1),
-(null, 3, '2022-05-03', 17:00, 1),
-(null, 3, '2022-05-03', 18:00, 1),
-(null, 3, '2022-05-03', 19:00, 2),
-(null, 3, '2022-05-03', 20:00, 2),
-(null, 3, '2022-05-03', 21:00, 2),
-(null, 3, '2022-05-03', 22:00, 3),
+(null, 9, '2022-05-03', 14:00, 1),
+(null, 9, '2022-05-03', 15:00, 1),
+(null, 9, '2022-05-03', 16:00, 1),
+(null, 9, '2022-05-03', 17:00, 1),
+(null, 9, '2022-05-03', 18:00, 1),
+(null, 10, '2022-05-03', 19:00, 2),
+(null, 10, '2022-05-03', 20:00, 2),
+(null, 10, '2022-05-03', 21:00, 2),
+(null, 11, '2022-05-03', 22:00, 3),
 --lixeira 4 kit 1
-(null, 4, '2022-05-03', 19:00, 1),
-(null, 4, '2022-05-03', 20:00, 1),
-(null, 4, '2022-05-03', 21:00, 1),
-(null, 4, '2022-05-03', 22:00, 1),
+(null, 12, '2022-05-03', 19:00, 1),
+(null, 12, '2022-05-03', 20:00, 1),
+(null, 12, '2022-05-03', 21:00, 1),
+(null, 12, '2022-05-03', 22:00, 1);
 
---obs: vendo agora a tabela sensor não faz sentido, pois nossos sensores 
---servem como níveis e isso já ta identificado na tabela registro
---além de que a data na tabela sensor não faz sentido pois o sensor não tem uma data nem um horário fixo
 
---como eu acho que seria ideal a tabela registro
 
-CREATE TABLE registro(
-idRegistro INT PRIMARY KEY AUTO_INCREMENT,
-fkLixeira INT,
-dataRegistro DATE,
-horário TIME,
-nivel int,
-FOREIGN kEY (FkSensor) REFERENCES lixeira (idLixeira)
-);
-
--
 
 
 
