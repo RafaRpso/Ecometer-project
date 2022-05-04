@@ -82,6 +82,26 @@ insert into kitLixeira values (null, 1, 1, '4,3.4', 1, null),
 (null, 1, 1, '6,6.9', 2, null),
 (null, 1, 1, '4,2.5', 3, null);
 
+--insert da tabela sensor
+
+insert into sensor values
+(1, null, 'DRT5000', 'Sensor de bloqueio'),
+(1, null, 'DRT5000', 'Sensor de bloqueio'),
+(1, null, 'DRT5000', 'Sensor de bloqueio'),
+(1, null, 'DRT5000', 'Sensor de bloqueio'),
+(2, null, 'DRT5000', 'Sensor de bloqueio'),
+(2, null, 'DRT5000', 'Sensor de bloqueio'),
+(2, null, 'DRT5000', 'Sensor de bloqueio'),
+(2, null, 'DRT5000', 'Sensor de bloqueio'),
+(3, null, 'DRT5000', 'Sensor de bloqueio'),
+(3, null, 'DRT5000', 'Sensor de bloqueio'),
+(3, null, 'DRT5000', 'Sensor de bloqueio'),
+(3, null, 'DRT5000', 'Sensor de bloqueio'),
+(4, null, 'DRT5000', 'Sensor de bloqueio'),
+(4, null, 'DRT5000', 'Sensor de bloqueio'),
+(4, null, 'DRT5000', 'Sensor de bloqueio'),
+(4, null, 'DRT5000', 'Sensor de bloqueio');
+
 --obs: pq os tipos de lixeira estão setados como char(1) sendo que temos que escrever quais serão os kits
 insert into lixeira values (null, 1, 'Plástico'),
 (null, 1, 'Papel'),
@@ -132,24 +152,10 @@ insert into registro values (null, 1, '2022-05-03', 12:00, 1),
 (null, 12, '2022-05-03', 19:00, 1),
 (null, 12, '2022-05-03', 20:00, 1),
 (null, 12, '2022-05-03', 21:00, 1),
-(null, 12, '2022-05-03', 22:00, 1),
+(null, 12, '2022-05-03', 22:00, 1);
 
---obs: vendo agora a tabela sensor não faz sentido, pois nossos sensores 
---servem como níveis e isso já ta identificado na tabela registro
---além de que a data na tabela sensor não faz sentido pois o sensor não tem uma data nem um horário fixo
 
---como eu acho que seria ideal a tabela registro
 
-CREATE TABLE registro(
-idRegistro INT PRIMARY KEY AUTO_INCREMENT,
-fkLixeira INT,
-dataRegistro DATE,
-horário TIME,
-nivel int,
-FOREIGN kEY (FkSensor) REFERENCES lixeira (idLixeira)
-);
-
--
 
 
 
