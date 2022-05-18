@@ -1,4 +1,9 @@
 
+
+var amarelo = '#FFD93D'
+var azul = '#4D96FF'
+var vermelho = '#FF6B6B'
+var verde = '#6BCB77'
 //grafico mensal
 const labelsMes = [
     'Janeiro',
@@ -94,26 +99,26 @@ const dataDia = {
     labels: labelsDia,
     datasets: [{
         label: 'Plástico',
-        backgroundColor: '#FFA1A1',
-        borderColor: '#FFA1A1',
+        backgroundColor: '#FF6B6B',
+        borderColor: '#FF6B6B',
         data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 3.5, 3.7],
     },
     {
         label: 'Papel',
-        backgroundColor: '#b1bbe7',
-        borderColor: '#b1bbe7',
+        backgroundColor: '#4D96FF',
+        borderColor: '#4D96FF',
         data: [0, 0, 0, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 2.9, 3.2, 3.6, 3.7],
     },
     {
         label: 'Metal',
-        backgroundColor: '#F9FFA4',
-        borderColor: '#F9FFA4',
+        backgroundColor: '#FFD93D',
+        borderColor: '#FFD93D',
         data: [0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1],
     },
     {
         label: 'Vidro',
-        backgroundColor: '#B4FF9F',
-        borderColor: '#B4FF9F',
+        backgroundColor: '#6BCB77',
+        borderColor: '#6BCB77',
         data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 1.2],
     }
     ]
@@ -143,10 +148,10 @@ const dataPie = {
         label: 'Tipos de lixo',
         data: [30, 40, 20, 10],
         backgroundColor: [
-            '#FFA1A1',
-            '#b1bbe7',
-            '#F9FFA4',
-            '#B4FF9F'
+            '#FF6B6B',
+            '#4D96FF',
+            '#FFD93D',
+            '#6BCB77'
         ],
         hoverOffset: 4
     }]
@@ -227,26 +232,26 @@ const dataKit1 = {
     labels: labelsKit1,
     datasets: [{
         label: 'Plástico',
-        backgroundColor: '#FFA1A1',
-        borderColor: '#FFA1A1',
+        backgroundColor: '#FF6B6B',
+        borderColor: '#FF6B6B',
         data: [0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4],
     },
     {
         label: 'Papel',
-        backgroundColor: '#b1bbe7',
-        borderColor: '#b1bbe7',
+        backgroundColor: '#4D96FF',
+        borderColor: '#4D96FF',
         data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4],
     },
     {
         label: 'Metal',
-        backgroundColor: '#F9FFA4',
-        borderColor: '#F9FFA4',
+        backgroundColor: '#FFD93D',
+        borderColor: '#FFD93D',
         data: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 3],
     },
     {
         label: 'Vidro',
-        backgroundColor: '#B4FF9F',
-        borderColor: '#B4FF9F',
+        backgroundColor: '#6BCB77',
+        borderColor: '#6BCB77',
         data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
     }
     ]
@@ -286,26 +291,26 @@ const dataKit2 = {
     labels: labelsKit2,
     datasets: [{
         label: 'Plástico',
-        backgroundColor: '#FFA1A1',
-        borderColor: '#FFA1A1',
+        backgroundColor: '#FF6B6B',
+        borderColor: '#FF6B6B',
         data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3],
     },
     {
         label: 'Papel',
-        backgroundColor: '#b1bbe7',
-        borderColor: '#b1bbe7',
+        backgroundColor: '#4D96FF',
+        borderColor: '#4D96FF',
         data: [0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3],
     },
     {
         label: 'Metal',
-        backgroundColor: '#F9FFA4',
-        borderColor: '#F9FFA4',
+        backgroundColor: '#FFD93D',
+        borderColor: '#FFD93D',
         data: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2],
     },
     {
         label: 'Vidro',
-        backgroundColor: '#B4FF9F',
-        borderColor: '#B4FF9F',
+        backgroundColor: '#6BCB77',
+        borderColor: '#6BCB77',
         data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
     }
     ]
@@ -345,26 +350,26 @@ const dataKit3 = {
     labels: labelsKit3,
     datasets: [{
         label: 'Plástico',
-        backgroundColor: '#FFA1A1',
-        borderColor: '#FFA1A1',
+        backgroundColor: '#FF6B6B',
+        borderColor: '#FF6B6B',
         data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4],
     },
     {
         label: 'Papel',
-        backgroundColor: '#b1bbe7',
-        borderColor: '#b1bbe7',
+        backgroundColor: '#4D96FF',
+        borderColor: '#4D96FF',
         data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3],
     },
     {
         label: 'Metal',
-        backgroundColor: '#F9FFA4',
-        borderColor: '#F9FFA4',
+        backgroundColor: '#FFD93D',
+        borderColor: '#FFD93D',
         data: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2],
     },
     {
         label: 'Vidro',
-        backgroundColor: '#B4FF9F',
-        borderColor: '#B4FF9F',
+        backgroundColor: '#6BCB77',
+        borderColor: '#6BCB77',
         data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
     }
     ]

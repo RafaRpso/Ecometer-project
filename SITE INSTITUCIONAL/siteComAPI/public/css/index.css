@@ -39,10 +39,14 @@ body::-webkit-scrollbar-thumb {
 body {
     margin: 0;
     padding: 0;
+    width: 100% ;
 }
+
 
 .container {
     margin-top: 0%;
+    width: 80%; 
+    
 }
 
 #finaliza:hover {
@@ -164,9 +168,11 @@ a:hover{
 }
 
 #elemento2 {
-    background-image: linear-gradient(to bottom, #94D57B, #C1DA6C);
+   
     margin-top: 5%;
     padding: 5%;
+    color: black;
+    border-top: 2px solid rgb(127,127,127);  
     
 }
 

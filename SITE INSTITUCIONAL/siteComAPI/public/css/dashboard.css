@@ -1,8 +1,8 @@
 :root {
 
-    --color-green: #73e67d;
-    --color-red: #f56b76;
-    --color-blue: #4f44ec;
+    --color-green: #5dbe6a;
+    --color-red: #FF6B6B;
+    --color-blue: #4D96FF;
     --color-nav: rgb(61, 61, 61);
     --color-scroll: #346751;
     --color-white: #f3f3f3;
@@ -219,21 +219,21 @@ footer{
 
 /* avisos */ 
 #aviso1{ 
-    background-color: #B4FF9F;
+    background-color: #6BCB77;
     
 }
 
 #aviso2{ 
-    background-color: #F9FFA4;
+    background-color: #FFD93D;
     
 }
 
 #aviso3{
-    background-color: #FFD59E;
+    background-color: #f79d37;
 }
 
 #aviso4{
-    background-color: #FFA1A1;
+    background-color: #EB5353;
 }
 
 .botao:hover{ 
@@ -261,7 +261,7 @@ footer{
 }
 .avisoGrafico{ 
 
-    border: 2px solid rgb(129, 129, 129);
+    border: 2px solid rgb(0, 0, 0);
 
     text-align: center;
     width:15%;
