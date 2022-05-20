@@ -58,10 +58,13 @@
             </div>
             <h6>Não tem conta? <a href="cadastro.html">Crie Uma</a></h6>
 
-
             <button onclick="entrar()">
                 Logar
             </button>
+
+            <div id="div_aguardar" class="loading-div">
+                <img src="Icones/loader.gif" id="loading-gif">
+            </div>
         </div>
     </div>
 
@@ -109,9 +112,10 @@
 </html>
 
 
+<script src="js/funcoes.js"></script>
 <script>
     function entrar() {
-
+        aguardar();
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -119,10 +123,9 @@
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-
+            finalizarAguardar();
             return false;
-        }
-        else {
+        } else {
             setInterval(sumirMensagem, 5000)
         }
 
@@ -152,17 +155,17 @@
                     sessionStorage.NOME_USUARIO = json.nomeEmpresa;
                     sessionStorage.ID_USUARIO = json.id;
 
-                    
+
                     setTimeout(function () {
                         //rota para o dash
                         window.location = "dashboard.html";
-                    
+
                     }, 1000); // apenas para exibir o loading
 
                 });
 
             } else {
-
+                finalizarAguardar();
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {

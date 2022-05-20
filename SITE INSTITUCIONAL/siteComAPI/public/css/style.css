@@ -107,8 +107,9 @@ body {
     border-bottom: 1px solid rgb(107, 107, 107);
     display: flex;
     flex-direction: column;
-    align-items: center ;
+    align-items: center;
 }
+
 #imagemEntrar {
     justify-content: right;
 }
@@ -193,6 +194,22 @@ a:hover {
     margin-top: 20px;
 }
 
+.content .container .loading-div {
+    justify-content: center;
+}
+.loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+}
+
+
+.content .container .loading-div img {
+    height: 100px;
+    width: 100px;
+}
+
+
 .content .container button:hover {
     border: 1px solid black;
     background-color: white;
@@ -227,17 +244,17 @@ a {
     height: 20vh;
 
 
-} 
+}
 
-#fundoSimulador{ 
-    padding:120px;
+#fundoSimulador {
+    padding: 120px;
 }
 
 .footerBranco .footer {
     background-color: #f3f3f3;
 }
 
-.footerVerde .footer{
+.footerVerde .footer {
     background-color: #73e67d;
 }
 
@@ -246,15 +263,19 @@ a {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between ; 
-    
+    justify-content: space-between;
+
 }
-.footer h1{
+
+.footer h1 {
     text-align: center;
     padding: 15px;
 }
-#navegar h2, #ouvidoria h2, #conta h2{
-    text-decoration: underline ;
+
+#navegar h2,
+#ouvidoria h2,
+#conta h2 {
+    text-decoration: underline;
 }
 
 

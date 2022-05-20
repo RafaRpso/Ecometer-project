@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/cadastro.css">
     <link rel="stylesheet" href="css/navbar.css">
     <title>Ecometer | Cadastre-se</title>
 
@@ -86,12 +85,13 @@
             </select>
 
             <button onclick="cadastrar()">Cadastrar</button>
+
+            <div id="div_aguardar" class="loading-div">
+                <img src="Icones/loader.gif" id="loading-gif">
+            </div>
         </div>
     </div>
 
-    <div id="div_aguardar" class="loading-div">
-        <img src="./assets/circle-loading.gif" id="loading-gif">
-    </div>
     <div id="div_erros_login"></div>
 
     <div id="confirmarDados">
@@ -141,6 +141,8 @@
 </body>
 
 </html>
+
+<script src="js/funcoes.js"></script>
 <script>
     /*function validacao(nome, cnpj, email, senha, confirmacaoSenha){ 
         //verificação nome 
@@ -185,8 +187,7 @@
         }
     }*/
     function cadastrar() {
-
-
+        aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
@@ -197,30 +198,30 @@
         var senhaVar = senha.value;
         var confirm = confSenha.value;
         var planoVar = planos.value;
-       
+
         //validação
-        
-        if (nomeEmpresaVar == "" || cnpjEmpresaVar == "" || planoVar == "" ||emailVar == "" || senhaVar == "" || confirm == "") {
-          
-           alert( "Preencha todos os campos para prosseguir!");
 
-            finalizarAguardar();
-            return false;
-        } 
+        if (nomeEmpresaVar == "" || cnpjEmpresaVar == "" || planoVar == "" || emailVar == "" || senhaVar == "" ||
+            confirm == "") {
 
-        //verificacao cnpj
-        if(cnpjEmpresaVar.length!=14) {
-            alert("Insira todos os números do CNPJ: Há um número a mais ou a menos. ")
+            alert("Preencha todos os campos para prosseguir!");
+
             finalizarAguardar();
             return false;
         }
-        else if(cnpjEmpresaVar!=Number(cnpjEmpresaVar)){ 
+
+        //verificacao cnpj
+        if (cnpjEmpresaVar.length != 14) {
+            alert("Insira todos os números do CNPJ: Há um número a mais ou a menos. ")
+            finalizarAguardar();
+            return false;
+        } else if (cnpjEmpresaVar != Number(cnpjEmpresaVar)) {
             alert("Insira apenas caractéres válidos no CNPJ: Hà um caractere inválido.")
             finalizarAguardar();
             return false;
         }
 
-        if(planoVar == ""){
+        if (planoVar == "") {
             alert("Escolha um plano")
             finalizarAguardar();
             return false;
@@ -228,24 +229,24 @@
 
 
         if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-          
-           alert( "Ops, e-mail inválido! Verifique e tente novamente.");
+
+            alert("Ops, e-mail inválido! Verifique e tente novamente.");
             finalizarAguardar();
             return false;
-        } 
+        }
 
         if (senhaVar != confirm) {
-          
-           alert( "As senhas inseridas devem ser iguais para prosseguir!");
+
+            alert("As senhas inseridas devem ser iguais para prosseguir!");
             finalizarAguardar();
             return false;
-            
-        } else if(senhaVar.length<8 ){ 
+
+        } else if (senhaVar.length < 8) {
             alert("Senha não preenche os requisitos de segurança: Tenha pelo menos algum 8 caracteres")
-        } 
+        }
 
 
-        
+
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
             method: "POST",
@@ -283,74 +284,74 @@
         return false;
     }
 
-/* 
-    function validacao(nomeEmpresaVar, cnpjEmpresaVar, emailVar, senhaVar, confirm,planoVar){ 
-        //verificação nome 
+    /* 
+        function validacao(nomeEmpresaVar, cnpjEmpresaVar, emailVar, senhaVar, confirm,planoVar){ 
+            //verificação nome 
 
-        if(nomeEmpresaVar==""||senhaVar==""|| emailVar==""||confirm=="" || planoVar == "") { 
-            alert("Um dos campos está vazio. ")
-        }
-        else if(nomeEmpresaVar==Number(nomeEmpresaVar)) { 
-            alert("Insira apenas letras no nome da empresa. ")
-        }
-        else if(nomeEmpresaVar.length<=3) { 
-            alert("Insira mais de três caracteres.")
-        }
-
-        //verificacao cnpj
-        if(cnpjEmpresaVar.length!=11) {
-            alert("Insira todos os números do CNPJ: Há um número a mais ou a menos. ")
-        }
-        else if(cnpjEmpresaVar!=Number(cnpjEmpresaVar)){ 
-            alert("Insira apenas caractéres válidos no CNPJ: Hà um caractere inválido.")
-        }
-
-        //verificacao email contato 
-        if(emailVar.indexOf('@') == -1 ){ 
-            alert("Insira um email válido: Faltando @")
-        }
-        else if(emailVar.indexOf('.com') == -1 ){ 
-            alert("Insira um email válido: Faltando .com")
-        }
-
-
-        //verificacao senha 
-        if(senhaVar.length<8 ){ 
-            alert("Senha não preenche os requisitos de segurança: Tenha pelo menos algum 8 caracteres")
-        } 
-        // se eu por de caracteres vou ter que usar vetor, vai ficar mt complexo
-
-        if(senhaVar!=confirm){ 
-            alert("A senha confirmada está diferente da senha inserida.")
-        }
-
-        //plano
-        if(planoVar == "nada"){
-            alert("Escolha um plano")
-        }
-        
-
-         else {
-                confirmarDados.innerHTML = `
-            <div class="content">
-            <div class="container">
-                <h2> Confirme os seus dados cadastrais</h2>
-                <hr>
-                Nome da empresa: ${nomeEmpresaVar}<br><br>
-                
-            CNPJ da empresa: ${cnpjEmpresaVar} <br><br>
-                Email de contato: ${emailVar}<br><br>
-                Plano escolhido: ${planoVar}
-                <br><br>
-               <button onclick="efetuarCadastro()">
-                <a href='login.html' id='finaliza'>   Finalizar cadastro </a>
-                </button>
-            </div>
-        </div>`
-                dadosCadastrais.style.display = 'none';
+            if(nomeEmpresaVar==""||senhaVar==""|| emailVar==""||confirm=="" || planoVar == "") { 
+                alert("Um dos campos está vazio. ")
             }
-        }
-    */ 
+            else if(nomeEmpresaVar==Number(nomeEmpresaVar)) { 
+                alert("Insira apenas letras no nome da empresa. ")
+            }
+            else if(nomeEmpresaVar.length<=3) { 
+                alert("Insira mais de três caracteres.")
+            }
+
+            //verificacao cnpj
+            if(cnpjEmpresaVar.length!=11) {
+                alert("Insira todos os números do CNPJ: Há um número a mais ou a menos. ")
+            }
+            else if(cnpjEmpresaVar!=Number(cnpjEmpresaVar)){ 
+                alert("Insira apenas caractéres válidos no CNPJ: Hà um caractere inválido.")
+            }
+
+            //verificacao email contato 
+            if(emailVar.indexOf('@') == -1 ){ 
+                alert("Insira um email válido: Faltando @")
+            }
+            else if(emailVar.indexOf('.com') == -1 ){ 
+                alert("Insira um email válido: Faltando .com")
+            }
+
+
+            //verificacao senha 
+            if(senhaVar.length<8 ){ 
+                alert("Senha não preenche os requisitos de segurança: Tenha pelo menos algum 8 caracteres")
+            } 
+            // se eu por de caracteres vou ter que usar vetor, vai ficar mt complexo
+
+            if(senhaVar!=confirm){ 
+                alert("A senha confirmada está diferente da senha inserida.")
+            }
+
+            //plano
+            if(planoVar == "nada"){
+                alert("Escolha um plano")
+            }
+            
+
+             else {
+                    confirmarDados.innerHTML = `
+                <div class="content">
+                <div class="container">
+                    <h2> Confirme os seus dados cadastrais</h2>
+                    <hr>
+                    Nome da empresa: ${nomeEmpresaVar}<br><br>
+                    
+                CNPJ da empresa: ${cnpjEmpresaVar} <br><br>
+                    Email de contato: ${emailVar}<br><br>
+                    Plano escolhido: ${planoVar}
+                    <br><br>
+                   <button onclick="efetuarCadastro()">
+                    <a href='login.html' id='finaliza'>   Finalizar cadastro </a>
+                    </button>
+                </div>
+            </div>`
+                    dadosCadastrais.style.display = 'none';
+                }
+            }
+        */
     function sumirMensagem() {
         cardErro.style.display = "none"
     }
