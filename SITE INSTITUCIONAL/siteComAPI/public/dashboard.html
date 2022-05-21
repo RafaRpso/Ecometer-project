@@ -59,36 +59,7 @@
             <div class="nomeUser">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
-
-            <div class="kapis">
-                <div class="kapiGrafico" id="verKits">
-                    <span class="tituloKapi"> Kits Ativos </span>
-                    <span class="subtitulo"> 3 </span>
-
-                </div>
-                <div class="kapiGrafico">
-                    <span class="tituloKapi"> Kits lotados</span>
-                    <span class="subtitulo"> 1 </span>
-                </div>
-                
-                <div class="kapiGrafico">
-                    <span class="tituloKapi"> Kits inativos </span>
-                    <span class="subtitulo"> 2 </span>
-                </div>
-            </div>
-
-            <div class="kapis">
-                <div class="kapiGrafico" >
-                    <span class=" horarioLixoKpi"> Horário com mais lixo </span>
-                    <span class="subtitulo"> 18:00 </span>
-
-                </div>
-                
-                <div class="kapiGrafico">
-                    <span class=" horarioLixoKpi"> Horário com menos lixo </span>
-                    <span class="subtitulo"> 10:00</span>
-                </div>
-            </div>
+       
             <div class="alinhar">
                 <div class="alinhamento"></div>
                 <h1> Alerta </h1>
@@ -122,13 +93,9 @@
                 <div id="fr1" class="colunasDash">
 
                     <div id="graficoPizza" class="cardGrafico">
-                        Selecione o gráfico
-                        <select id="slct_pie" onchange="trocaPie()">
-                            <option value="invalido">-- Escolha --</option>
-                            <option value="1">Barra</option>
-                            <option value="2">Pizza</option>
-                        </select>
-                        <canvas id="tipo_lotacao_bar" style="display: none;"></canvas>
+                       Gráfico 
+                       
+    
                         <canvas id="tipo_lotacao_pie"></canvas>
                     </div>
 
@@ -244,7 +211,7 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
         lixeira = Math.floor(Math.random() * (4 - 1 + 1 )) +1 ; 
         horas = Math.floor(Math.random() * (22 - 9 + 1) ) + 9 ; 
         fraseColeta.innerHTML += `A lixeira ${lixeira} foi coletada as ${horas}:00 <br>`
-    },5000)
+    },15000)
     function ocultaHistorico(){
         btnOcultaHistorico.style.display='none';
         fraseColeta.style.display='none'
