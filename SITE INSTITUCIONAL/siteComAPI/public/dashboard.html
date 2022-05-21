@@ -61,7 +61,7 @@
             </div>
 
             <div class="kapis">
-                <div class="kapiGrafico" id="verKits" onclick="trocaMapa()">
+                <div class="kapiGrafico" id="verKits">
                     <span class="tituloKapi"> Kits Ativos </span>
                     <span class="subtitulo"> 3 </span>
 
@@ -70,9 +70,23 @@
                     <span class="tituloKapi"> Kits lotados</span>
                     <span class="subtitulo"> 1 </span>
                 </div>
+                
                 <div class="kapiGrafico">
                     <span class="tituloKapi"> Kits inativos </span>
                     <span class="subtitulo"> 2 </span>
+                </div>
+            </div>
+
+            <div class="kapis">
+                <div class="kapiGrafico" >
+                    <span class=" horarioLixoKpi"> Horário com mais lixo </span>
+                    <span class="subtitulo"> 18:00 </span>
+
+                </div>
+                
+                <div class="kapiGrafico">
+                    <span class=" horarioLixoKpi"> Horário com menos lixo </span>
+                    <span class="subtitulo"> 10:00</span>
                 </div>
             </div>
             <div class="alinhar">
@@ -117,11 +131,26 @@
                         <canvas id="tipo_lotacao_bar" style="display: none;"></canvas>
                         <canvas id="tipo_lotacao_pie"></canvas>
                     </div>
+
+                    <div id="historico" class="cardGrafico">
+                       
+                            <button onclick="ocultaHistorico()" id="btnOcultaHistorico">Ocultar histórico</button>
+                            <button onclick="mostrarHistorico()" id="btnMostraHistorico" style="display:none;"> Mostrar histórico</button>
+                            <h3>Histórico de coleta</h3>
+                            <div class="texto">
+                                <span id="fraseColeta">
+            
+                                </span>
+                            </div>
+                  
+                    </div>
+                    
                 </div>
 
                 <div id="fr2" class="colunasDash">
         <!-- Gráfico que aparece quando a lixeira é selecionada no mapa-->
             <div id="graphKit" style="display: none;">
+
                 <div id="graficoKitAparece" >
                     <h1 id="textoKit"> Kit X </h1>
                     <div class="graficoKit">
@@ -170,6 +199,7 @@
                         </div>
 
                     </div>
+                  
 
                 </div>
                 <div id="fr3" class="colunasDash">
@@ -208,6 +238,25 @@
 b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 
+</script>
+<script>
+    setInterval( () =>{ 
+        lixeira = Math.floor(Math.random() * (4 - 1 + 1 )) +1 ; 
+        horas = Math.floor(Math.random() * (22 - 9 + 1) ) + 9 ; 
+        fraseColeta.innerHTML += `A lixeira ${lixeira} foi coletada as ${horas}:00 <br>`
+    },5000)
+    function ocultaHistorico(){
+        btnOcultaHistorico.style.display='none';
+        fraseColeta.style.display='none'
+        btnMostraHistorico.style.display='flex';
+    }
+    function mostrarHistorico(){ 
+        historico.style.display='flex';
+        fraseColeta.style.display='flex'
+        btnOcultaHistorico.style.display='flex'
+        btnMostraHistorico.style.display='none'
+
+    }
 </script>
 
 

@@ -216,7 +216,11 @@ footer{
     width:25%;
     
 }
-
+#historico{
+    width: 80%;
+    height: 45%;
+    margin-top: 5%;
+}
 /* avisos */ 
 #aviso1{ 
     background-color: #6BCB77;
