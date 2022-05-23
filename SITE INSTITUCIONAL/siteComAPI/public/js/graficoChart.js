@@ -1,9 +1,17 @@
 
-
+/* cores */ 
 var amarelo = '#FFD93D'
 var azul = '#4D96FF'
 var vermelho = '#FF6B6B'
 var verde = '#6BCB77'
+
+
+
+
+
+
+/* pegando o kit com maior valor entre os kits de dia */ 
+
 //grafico mensal
 const labelsMes = [
     'Janeiro',
@@ -30,6 +38,7 @@ const dataMes = {
     }]
 };
 
+
 const configMes = {
     type: 'line',
     data: dataMes,
@@ -41,7 +50,6 @@ const myChartMes = new Chart(
     configMes
 );
 //grafico semanal
-
 const labelsSem = [
 
     'Segunda',
@@ -99,9 +107,9 @@ const dataDia = {
     labels: labelsDia,
     datasets: [{
         label: 'Plástico',
-        backgroundColor: '#FF6B6B',
-        borderColor: '#FF6B6B',
-        data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 3.5, 3.7],
+        backgroundColor: vermelho,
+        borderColor: vermelho,
+        data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 3.5, 6.2],
     },
     {
         label: 'Papel',
@@ -111,18 +119,46 @@ const dataDia = {
     },
     {
         label: 'Metal',
-        backgroundColor: '#FFD93D',
-        borderColor: '#FFD93D',
+        backgroundColor: amarelo,
+        borderColor: amarelo,
         data: [0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1],
     },
     {
         label: 'Vidro',
         backgroundColor: '#6BCB77',
         borderColor: '#6BCB77',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 1.2],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2],
     }
     ]
 };
+
+
+/* procurando kit que mais enche na semana*/ 
+function buscarKitEnche(){ 
+
+    let sumArray =0 ;
+    let comparaMaior =0; 
+    let kitMaisEnche ='' ; 
+    
+    for ( i=0 ; i<dataDia.datasets.length;i++){ 
+        sumArray = 0; 
+        for (j=0 ; j<dataDia.datasets[i].data.length;j++){ 
+            sumArray += dataDia.datasets[i].data[j]; 
+        }
+        if (comparaMaior<sumArray){ 
+            console.log(comparaMaior)
+            comparaMaior = sumArray; 
+                        console.log(comparaMaior)
+            kitMaisEnche = dataDia.datasets[i].label;
+            console.log(kitMaisEnche)
+
+        }
+        
+    }
+    kitEncheMais.innerHTML = kitMaisEnche  ; 
+}
+buscarKitEnche();
+
 
 const configDia = {
     type: 'line',
@@ -148,9 +184,9 @@ const dataPie = {
         label: 'Tipos de lixo',
         data: [30, 40, 20, 10],
         backgroundColor: [
-            '#FF6B6B',
+            vermelho,
             '#4D96FF',
-            '#FFD93D',
+            amarelo,
             '#6BCB77'
         ],
         hoverOffset: 4
@@ -232,8 +268,8 @@ const dataKit1 = {
     labels: labelsKit1,
     datasets: [{
         label: 'Plástico',
-        backgroundColor: '#FF6B6B',
-        borderColor: '#FF6B6B',
+        backgroundColor: vermelho,
+        borderColor: vermelho,
         data: [0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4],
     },
     {
@@ -244,8 +280,8 @@ const dataKit1 = {
     },
     {
         label: 'Metal',
-        backgroundColor: '#FFD93D',
-        borderColor: '#FFD93D',
+        backgroundColor: amarelo,
+        borderColor: amarelo,
         data: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 3],
     },
     {
@@ -291,8 +327,8 @@ const dataKit2 = {
     labels: labelsKit2,
     datasets: [{
         label: 'Plástico',
-        backgroundColor: '#FF6B6B',
-        borderColor: '#FF6B6B',
+        backgroundColor: vermelho,
+        borderColor: vermelho,
         data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3],
     },
     {
@@ -303,8 +339,8 @@ const dataKit2 = {
     },
     {
         label: 'Metal',
-        backgroundColor: '#FFD93D',
-        borderColor: '#FFD93D',
+        backgroundColor: amarelo,
+        borderColor: amarelo,
         data: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2],
     },
     {
@@ -350,8 +386,8 @@ const dataKit3 = {
     labels: labelsKit3,
     datasets: [{
         label: 'Plástico',
-        backgroundColor: '#FF6B6B',
-        borderColor: '#FF6B6B',
+        backgroundColor: vermelho,
+        borderColor: vermelho,
         data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4],
     },
     {
@@ -362,8 +398,8 @@ const dataKit3 = {
     },
     {
         label: 'Metal',
-        backgroundColor: '#FFD93D',
-        borderColor: '#FFD93D',
+        backgroundColor: amarelo,
+        borderColor: amarelo,
         data: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2],
     },
     {

@@ -59,7 +59,36 @@
             <div class="nomeUser">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
-       
+            
+            <div class="kapis">
+                <div class="kapiGrafico" id="verKits">
+                    <span class="tituloKapi"> Kits Ativos </span>
+                    <span class="subtitulo"> 3 </span>
+
+                </div>
+                <div class="kapiGrafico">
+                    <span class="tituloKapi"> Kits lotados</span>
+                    <span class="subtitulo"> 1 </span>
+                </div>
+                
+                <div class="kapiGrafico">
+                    <span class="tituloKapi"> Kits inativos </span>
+                    <span class="subtitulo"> 2 </span>
+                </div>
+            </div>
+
+            <div class="kapis">
+                <div class="kapiGrafico" >
+                    <span class=" horarioLixoKpi"> Horário com mais lixo </span>
+                    <span class="subtitulo"> 18:00 </span>
+
+                </div>
+                
+                <div class="kapiGrafico">
+                    <span class=" horarioLixoKpi"> Horário com menos lixo </span>
+                    <span class="subtitulo"> 10:00</span>
+                </div>
+            </div>
             <div class="alinhar">
                 <div class="alinhamento"></div>
                 <h1> Alerta </h1>
@@ -166,10 +195,29 @@
                         </div>
 
                     </div>
-                  
+                    <div id="mainGraph" class="cardGrafico">
+                       
+                        <b id="mediaLocal"> Tempo médio de enchimento</b>
+                        <div id="graph">
+                           <canvas id="tempoEnche"></canvas>
+                        </div>
+                        <!--este é o canvas do mapa-->
+                    
+
+                    </div>
 
                 </div>
                 <div id="fr3" class="colunasDash">
+                    <div id="alertas" class="cardGrafico">
+                        <h2>Kit que mais enche: </h2>
+                        <span id="kitEncheMais"></span>
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
                     <div id="alertas" class="cardGrafico">
                         <h2>Selecione o Kit </h2>
                         <select name="" id="qualKit" onchange="intermediaria()">
@@ -199,7 +247,7 @@
 //Tá tudo no scriptJS/, tava uma zona isso aqui. 
 </script>
 
-<script src="../js/funcoes.js">
+<script src="js/funcoes.js">
 
 //mostra o nome do usuario que esta sendo recebido pelo funcoes.js
 b_usuario.innerHTML = sessionStorage.NOME_USUARIO;

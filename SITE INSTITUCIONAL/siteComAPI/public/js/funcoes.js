@@ -1,4 +1,7 @@
-// sessão
+
+// Comentei pq tava precisando logar pra alterar o site e isso é chato. - Rafael
+
+/*// sessão
 function validarSessao() {
     // aguardar();
 
@@ -54,4 +57,15 @@ function fecharModal() {
     var divModal = document.getElementById("div_modal");
     divModal.style.display = "none";
 }
+
+
+
+
+*/ 
+
+
+
+
+
+
 
