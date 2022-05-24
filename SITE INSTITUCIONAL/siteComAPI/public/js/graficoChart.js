@@ -109,7 +109,7 @@ const dataDia = {
         label: 'Plástico',
         backgroundColor: vermelho,
         borderColor: vermelho,
-        data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4],
+        data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6,1.9, 2.3, 2.7, 3.1, 4, 4],
     },
     {
         label: 'Papel',
@@ -141,7 +141,7 @@ function buscaTempoCheio() {
     let med = 0;
     for (i = 0; i < dataDia.datasets.length; i++) {
         for (j = 0; j < dataDia.datasets[i].data.length; j++) {
-            if (dataDia.datasets[i].data[j] == 4) {
+            if (dataDia.datasets[i].data[j] >=4) {
                 index.push(j + 9) // defini em qual horário se encontra as lixeiras lotadas, j+9 é para converter de 9 a 22  
             }
         }
@@ -449,7 +449,24 @@ const myChartKit3 = new Chart(
 
 // sempre que for chamar uma lixeira no onclick ou etc, coloque a constante da lixeira do ChartJS e o número que ela é, além de adicionar
 // um caso ali no switch case para o "QualKit " receber o nome dela. É Uma função de parametro que recebe o num da lixeira e sua constante
-relatorioLixeira(dataKit1,1)
+function intermedioRelatorio() { 
+    var valor = relatorioSelect.value ; 
+    switch(valor){
+        case '1' : 
+            relatorioLixeira(dataKit1,1) 
+            break;
+        case '2' : 
+            relatorioLixeira(dataKit2,2) 
+            break; 
+        case '3' : 
+            relatorioLixeira(dataKit3,3)
+            break;
+        default : 
+            alert("Selecione um kit válido");
+            break; 
+    }
+}
+   
 function relatorioLixeira(arr,numKit) {
 
     let kits = []
@@ -457,6 +474,9 @@ function relatorioLixeira(arr,numKit) {
     let tipoKit = '';
     let qualKit = ''
     let index=0
+
+
+    situacaoKits.innerHTML = ' '
     switch(numKit){
         case 1:
             qualKit = 'Kit 1'
@@ -485,7 +505,7 @@ function relatorioLixeira(arr,numKit) {
     situacaoKits.innerHTML += `<span class='subtitulo'> ${qualKit} </span> <div class='alinhador'> <div class='alinhamento'> </div> </div><br>`; 
     var i= 0 ;
     if(kits[0]==null){
-        situacaoKits.innerHTML += `Este kit não está lotado.`
+        situacaoKits.innerHTML += `Este kit não lotou nenhuma vez`
     }
     while (i<kits.length){
       
