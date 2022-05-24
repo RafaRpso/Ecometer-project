@@ -145,6 +145,12 @@
 
                 <div id="fr2" class="colunasDash">
         <!-- Gráfico que aparece quando a lixeira é selecionada no mapa-->
+        <div id="mainGraph" class="cardGrafico">
+            <b id="mediaLocal">Ver situação dos kits: </b>
+            <div id="situacaoKits">
+                
+            </div>
+        </div>
             <div id="graphKit" style="display: none;">
 
                 <div id="graficoKitAparece" >
@@ -160,6 +166,9 @@
                 </div>
 
             </div>
+
+           
+           
                     <div id="mainGraph" class="cardGrafico">
                         <p id="textoParagrafo"><span id="intervalo_exib">Intervalo de Exibição:</span> <span
                                 id="piso_exib" style="display: none;">Andar:</span>
@@ -195,20 +204,11 @@
                         </div>
 
                     </div>
-                    <div id="mainGraph" class="cardGrafico">
-                       
-                        <b id="mediaLocal"> Tempo médio de enchimento</b>
-                        <div id="graph">
-                           <canvas id="tempoEnche"></canvas>
-                        </div>
-                        <!--este é o canvas do mapa-->
-                    
-
-                    </div>
+                   
 
                 </div>
                 <div id="fr3" class="colunasDash">
-                    <div id="alertas" class="cardGrafico">
+                    <div id="alertas" class="cardGrafico alertafr3">
                         <h2>Kit que mais enche: </h2>
                         <span id="kitEncheMais"></span>
                         <div class="alinhamento"></div>
@@ -218,7 +218,8 @@
 
                         </div>
                     </div>
-                    <div id="alertas" class="cardGrafico">
+
+                    <div id="alertas" class="cardGrafico alertafr3">
                         <h2>Selecione o Kit </h2>
                         <select name="" id="qualKit" onchange="intermediaria()">
                             <option value="0">-- SELECIONAR O KIT --</option>
@@ -227,6 +228,16 @@
                             <option value="3">Kit 3</option>
                         </select>
 
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
+                    <div id="alertas" class="cardGrafico alertafr3">
+                        <h2>Horário médio que os kits lotam: </h2>
+                        <span id="lotaMedia"></span>
                         <div class="alinhamento"></div>
 
 

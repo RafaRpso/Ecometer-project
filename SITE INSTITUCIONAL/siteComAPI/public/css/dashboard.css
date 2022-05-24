@@ -190,6 +190,7 @@ footer{
     font-size: 24px;
 }
 #mainGraph{ 
+    margin-top: 5%;
     display:flex; 
     height: 55%;
     width:100%;
@@ -391,7 +392,7 @@ footer{
 
 
 #graphKit{ 
-    
+    margin-top:5%;
     justify-content: center;
     align-items: center;
     width:100%;
@@ -420,4 +421,8 @@ footer{
 
 .graficoKit .botao{ 
     margin: 5px;
+}
+
+.alertafr3{ 
+    margin-top: 5%;
 }
