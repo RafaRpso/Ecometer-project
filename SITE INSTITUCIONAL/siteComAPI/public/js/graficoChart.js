@@ -68,9 +68,10 @@ const dataSem = {
         label: 'Média Semanal',
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
-        data: [2.1, 2.1, 2.3, 2.2, 2.4, 2.5, 2.5],
+        data: [1, 2, 2, 2, 2, 3, 4],
     }]
 };
+
 
 const configSem = {
     type: 'line',
@@ -83,6 +84,30 @@ const myChartSem = new Chart(
     configSem
 );
 
+function diaMaisLixo() {
+    let maiorValor= 0 ;
+    let menorValor = dataSem.datasets[0].data[0] ;
+    let qualDia = [menorValor,maiorValor] ;   
+
+    for (i =0 ; i<dataSem.datasets.length;i++){ 
+        for (j=0; j<dataSem.datasets[i].data.length;j++){ 
+            if (maiorValor < dataSem.datasets[i].data[j] ){ 
+                maiorValor = dataSem.datasets[i].data[j] ; 
+                qualDia[1] = labelsSem[j] ; 
+            }
+            if ( menorValor >=  dataSem.datasets[i].data[j] ){ 
+                console.log('oii')
+                menorValor = dataSem.datasets[i].data[j] ; 
+                qualDia[0] = labelsSem[j] ; 
+            }
+            
+            diaLixoMais.innerHTML = qualDia[1];
+            diaLixoMenos.innerHTML = qualDia[0]
+        }
+    }
+    
+}
+diaMaisLixo()
 //graph ultimas 24H
 
 const labelsDia = [
@@ -515,30 +540,6 @@ function relatorioLixeira(arr,numKit) {
     console.log(kits)
 
 }
-/* 
-function kitIndividualLotado() { 
-    var kits = [dataKit1, dataKit2, dataKit3] 
-    let qualKit = []; // Pegando a situação de cada kit, de modo que cada ponto é reservado a um.
-    let tipoKit = []; 
-    
-    for ( i=0 ; i < kits.length; i++ ) { // Escolhe kit no vetor kits 
-        for (j=0;  j < kits[i].datasets.length; j++){ // Escolher o datasets
-            for (k=0 ; k< kits[i].datasets[j].data.length; j++){   // Rodar os dados do kit guardado no datakit 1
-                if ( kits[i].datasets[j].data[k] >=3 ){
-                    qualKit.push( kits[i]);
-                    tipoKit.push(kits[i].datasets[j].label) ;
-         
-                }
-            }
-
-        }
-    }  
-    console.log(kits)
-} */
-
-
-//grafico mapa
-//piso 1
 
 const dataPiso1 = {
 
@@ -923,7 +924,7 @@ function vermelho() {
 
 function selecaoKitAlerta(kit) { // recebe o valor do kit de outra funcao, da funcao INTERMEDIARIA, de modo que é ela quem fornece para ambos
     var kitInput = qualKit.value;
-
+    console.log('selecaoKitAlerta '+kit )
 
 
     if (kit == "1") { // kit 1 - cheio  
