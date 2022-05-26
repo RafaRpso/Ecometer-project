@@ -440,13 +440,22 @@ footer{
     margin: auto;
 }
 #funcionarios {
-    width: 1000px;
+    width: 990px;
     height: 400px;
+    padding: 10px;
     background-color: #cccccc;
     border-radius: 10px;
 }
 
-#funcionarios button {
+#funcionarios a {
     float: right;
     margin: 20px 20px 0px 0px;
+}
+
+.box_func {
+    background-color: white;
+    width: 60%;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
 }
