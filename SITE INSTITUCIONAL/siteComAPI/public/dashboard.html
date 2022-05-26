@@ -47,8 +47,9 @@
         </div>
         <div id="main">
             <div id="header">
-           
-                <img onclick="mostrarNavBar()" style="display: none;" id= "mostrarMenu" src="Icones/menu-hamburguer.png" alt="">
+
+                <img onclick="mostrarNavBar()" style="display: none;" id="mostrarMenu" src="Icones/menu-hamburguer.png"
+                    alt="">
                 <div id="logo">
                     <h1>Ecometer</h1>
                     <p>dashboard</p>
@@ -59,7 +60,7 @@
             <div class="nomeUser">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
-            
+
             <div class="kapis">
                 <div class="kapiGrafico" id="verKits">
                     <span class="tituloKapi"> Kits Ativos </span>
@@ -68,9 +69,9 @@
                 </div>
                 <div class="kapiGrafico">
                     <span class="tituloKapi"> Kits lotados</span>
-                    <span class="subtitulo"> 1 </span>
+                    <span class="subtitulo" id="kitsLotadosNumeros"> 1 </span>
                 </div>
-                
+
                 <div class="kapiGrafico">
                     <span class="tituloKapi"> Kits inativos </span>
                     <span class="subtitulo"> 2 </span>
@@ -78,12 +79,12 @@
             </div>
 
             <div class="kapis">
-                <div class="kapiGrafico" >
+                <div class="kapiGrafico">
                     <span class=" horarioLixoKpi"> Dia com mais lixo </span>
                     <span class="subtitulo" id="diaLixoMais"> </span>
 
                 </div>
-                
+
                 <div class="kapiGrafico">
                     <span class=" horarioLixoKpi"> Dia com menos lixo </span>
                     <span class="subtitulo" id="diaLixoMenos"> </span>
@@ -115,66 +116,75 @@
 
                 </div>
             </div>
-     
+
             <!--Onde vão ficar todos os gráficos-->
             <div id="dashMain">
-                
+
                 <div id="fr1" class="colunasDash">
 
                     <div id="graficoPizza" class="cardGrafico">
-                       Gráfico 
-                       
-    
+                        Gráfico
+
+
                         <canvas id="tipo_lotacao_pie"></canvas>
                     </div>
 
                     <div id="historico" class="cardGrafico">
-                       
-                            <button onclick="ocultaHistorico()" id="btnOcultaHistorico">Ocultar histórico</button>
-                            <button onclick="mostrarHistorico()" id="btnMostraHistorico" style="display:none;"> Mostrar histórico</button>
-                            <h3>Histórico de coleta</h3>
-                            <div class="texto">
-                                <span id="fraseColeta">
-            
-                                </span>
-                            </div>
-                  
+
+                        <button onclick="ocultaHistorico()" id="btnOcultaHistorico">Ocultar histórico</button>
+                        <button onclick="mostrarHistorico()" id="btnMostraHistorico" style="display:none;"> Mostrar
+                            histórico</button>
+                        <h3>Histórico de coleta</h3>
+                        <div class="texto">
+                            <span id="fraseColeta">
+
+                            </span>
+                        </div>
+
                     </div>
-                    
+
                 </div>
 
                 <div id="fr2" class="colunasDash">
-        <!-- Gráfico que aparece quando a lixeira é selecionada no mapa-->
-        <div id="mainGraph" class="cardGrafico">
-            <b id="mediaLocal">Ver situação dos kits: </b>
-            <select name="" id="relatorioSelect" onchange="intermedioRelatorio()">
-                <option value="0">-- SELECIONAR O KIT --</option>
-                <option value="1">Kit 1</option>
-                <option value="2">Kit 2 </option>
-                <option value="3">Kit 3</option>
-            </select>
-            <div id="situacaoKits">
-                
-            </div>
-        </div>
-            <div id="graphKit" style="display: none;">
+                    <!-- Gráfico que aparece quando a lixeira é selecionada no mapa-->
+                    <div id="mainGraph lixeirasLotadas" class="cardGrafico">
 
-                <div id="graficoKitAparece" >
-                    <h1 id="textoKit"> Kit X </h1>
-                    <div class="graficoKit">
-                        <canvas id="kitIndividual1" style="display: none;"> </canvas>
-                        <canvas id="kitIndividual2" style="display: none;"> </canvas>
-                        <canvas id="kitIndividual3" style="display: none;"> </canvas>
+                        <button class="botao"  id='botaoOcultarMostrados'onclick="ocultaKitsLotados()"> Ocultar</button>
+                        <button class="botao" onclick="mostraKitsLotados()" id='botaoMostrarLotados'style='display:none;'> Mostrar</button>
+                        <h3 id="h3KitsLotados">Kits lotados:</h3>
+                        <div id="conteudoDivLotados">
+                            <span id="kitsLotados"> </span> <br>
+                            <b id="mediaLocal">Ver relatório dos kits: </b>
+                            <select name="" id="relatorioSelect" onchange="intermedioRelatorio()">
+                                <option value="0">-- SELECIONAR O KIT --</option>
+                                <option value="1">Kit 1</option>
+                                <option value="2">Kit 2 </option>
+                                <option value="3">Kit 3</option>
+                            </select>
+                            <div id="situacaoKits">
+
+                            </div>
+                        </div>
+
                     </div>
-                  <button onclick="ocultarKit() " class="botao"> Ocultar</button>
-                
+                    <div id="graphKit" style="display: none;">
 
-                </div>
+                        <div id="graficoKitAparece">
+                            <h1 id="textoKit"> Kit X </h1>
+                            <div class="graficoKit">
+                                <canvas id="kitIndividual1" style="display: none;"> </canvas>
+                                <canvas id="kitIndividual2" style="display: none;"> </canvas>
+                                <canvas id="kitIndividual3" style="display: none;"> </canvas>
+                            </div>
+                            <button onclick="ocultarKit() " class="botao"> Ocultar</button>
 
-            </div>
 
-           
-           
+                        </div>
+
+                    </div>
+
+
+
                     <div id="mainGraph" class="cardGrafico">
                         <p id="textoParagrafo"><span id="intervalo_exib">Intervalo de Exibição:</span> <span
                                 id="piso_exib" style="display: none;">Andar:</span>
@@ -210,7 +220,7 @@
                         </div>
 
                     </div>
-                   
+
 
                 </div>
                 <div id="fr3" class="colunasDash">
@@ -254,7 +264,7 @@
                 </div>
             </div>
         </div>
-            
+
     </div>
 
 </body>
@@ -266,29 +276,27 @@
 
 <script src="js/funcoes.js">
 
-//mostra o nome do usuario que esta sendo recebido pelo funcoes.js
-b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    //mostra o nome do usuario que esta sendo recebido pelo funcoes.js
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 
 </script>
 <script>
-    setInterval( () =>{ 
-        lixeira = Math.floor(Math.random() * (4 - 1 + 1 )) +1 ; 
-        horas = Math.floor(Math.random() * (22 - 9 + 1) ) + 9 ; 
+    setInterval(() => {
+        lixeira = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+        horas = Math.floor(Math.random() * (22 - 9 + 1)) + 9;
         fraseColeta.innerHTML += `A lixeira ${lixeira} foi coletada as ${horas}:00 <br>`
-    },15000)
-    function ocultaHistorico(){
-        btnOcultaHistorico.style.display='none';
-        fraseColeta.style.display='none'
-        btnMostraHistorico.style.display='flex';
+    }, 15000)
+    function ocultaHistorico() {
+        btnOcultaHistorico.style.display = 'none';
+        fraseColeta.style.display = 'none'
+        btnMostraHistorico.style.display = 'flex';
     }
-    function mostrarHistorico(){ 
-        historico.style.display='flex';
-        fraseColeta.style.display='flex'
-        btnOcultaHistorico.style.display='flex'
-        btnMostraHistorico.style.display='none'
+    function mostrarHistorico() {
+        historico.style.display = 'flex';
+        fraseColeta.style.display = 'flex'
+        btnOcultaHistorico.style.display = 'flex'
+        btnMostraHistorico.style.display = 'none'
 
     }
 </script>
-
-
