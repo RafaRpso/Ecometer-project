@@ -61,8 +61,10 @@ footer{
 }
 #main{ 
     margin-left: 7%;
-    height: 80%;
+    height: 80%; 
+    text-align: center;
 }
+
 #mensal{ 
     width:100%
 }
@@ -429,4 +431,22 @@ footer{
 .kitsCheios{
     color:red;
     font-size:22px;
+} 
+
+/* config empresa*/
+.configFunc {
+    text-align: left;
+    width: 1000px;
+    margin: auto;
+}
+#funcionarios {
+    width: 1000px;
+    height: 400px;
+    background-color: #cccccc;
+    border-radius: 10px;
+}
+
+#funcionarios button {
+    float: right;
+    margin: 20px 20px 0px 0px;
 }
