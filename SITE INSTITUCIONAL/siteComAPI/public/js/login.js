@@ -21,7 +21,7 @@ function entrar() {
 
                 sessionStorage.LOGIN_USUARIO = json.login;
                 sessionStorage.NOME_USUARIO = json.nomeEmpresa;
-                sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.ID_USUARIO = json.idEmpresa;
 
                 setTimeout(function () {
                     window.location = "/index.html";
@@ -51,7 +51,8 @@ function validarSessao() {
 
     var login = sessionStorage.LOGIN_USUARIO;
     var nomeEmpresa = sessionStorage.NOME_USUARIO;
-
+    var idUsuario =  sessionStorage.ID_USUARIO;
+  
     var h1Titulo = document.getElementById("h1_titulo");
 
     if (login != null && nomeEmpresa != null) {

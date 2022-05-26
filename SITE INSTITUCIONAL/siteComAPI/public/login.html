@@ -121,8 +121,7 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            alert("Preencha todos os campos.");
             finalizarAguardar();
             return false;
         } else {
@@ -151,9 +150,10 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    sessionStorage.EMAIL_USUARIO = json.email;
+                    //Cria um armazenamento na sessão
+                    sessionStorage.EMAIL_USUARIO = json.emailEmpresa;
                     sessionStorage.NOME_USUARIO = json.nomeEmpresa;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.ID_USUARIO = json.idEmpresa;
 
 
                     setTimeout(function () {
@@ -167,7 +167,7 @@
             } else {
                 finalizarAguardar();
                 console.log("Houve um erro ao tentar realizar o login!");
-
+                alert("Email ou senha invalidos");
                 resposta.text().then(texto => {
                     console.error(texto);
 

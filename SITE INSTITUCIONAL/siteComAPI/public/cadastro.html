@@ -242,7 +242,9 @@
             return false;
 
         } else if (senhaVar.length < 8) {
-            alert("Senha não preenche os requisitos de segurança: Tenha pelo menos algum 8 caracteres")
+            alert("Senha não preenche os requisitos de segurança: Tenha pelo menos algum 8 caracteres");
+            finalizarAguardar();
+            return false;
         }
 
 

@@ -1,12 +1,13 @@
 
 // Comentei pq tava precisando logar pra alterar o site e isso é chato. - Rafael
-
-/*// sessão
+/* 
+// sessão
 function validarSessao() {
     // aguardar();
 
     var email = sessionStorage.EMAIL_USUARIO;
     var nomeEmpresa = sessionStorage.NOME_USUARIO;
+    var idEmpresa = sessionStorage.ID_USUARIO;
 
     var h1LoginUsuario = document.getElementById("h1_login_usuario");
 
@@ -16,7 +17,8 @@ function validarSessao() {
             h1LoginUsuario.innerHTML = email;
         }
         b_usuario.innerHTML = nomeEmpresa;
-
+        ib_usuario.innerHTML = idEmpresa;
+        
         // finalizarAguardar();
     } else {
         window.location = "../login.html";
@@ -58,10 +60,10 @@ function fecharModal() {
     divModal.style.display = "none";
 }
 
+ */
 
 
 
-*/ 
 
 
 
