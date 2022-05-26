@@ -85,27 +85,27 @@ const myChartSem = new Chart(
 );
 
 function diaMaisLixo() {
-    let maiorValor= 0 ;
-    let menorValor = dataSem.datasets[0].data[0] ;
-    let qualDia = [menorValor,maiorValor] ;   
+    let maiorValor = 0;
+    let menorValor = dataSem.datasets[0].data[0];
+    let qualDia = [menorValor, maiorValor];
 
-    for (i =0 ; i<dataSem.datasets.length;i++){ 
-        for (j=0; j<dataSem.datasets[i].data.length;j++){ 
-            if (maiorValor < dataSem.datasets[i].data[j] ){ 
-                maiorValor = dataSem.datasets[i].data[j] ; 
-                qualDia[1] = labelsSem[j] ; 
+    for (i = 0; i < dataSem.datasets.length; i++) {
+        for (j = 0; j < dataSem.datasets[i].data.length; j++) {
+            if (maiorValor < dataSem.datasets[i].data[j]) {
+                maiorValor = dataSem.datasets[i].data[j];
+                qualDia[1] = labelsSem[j];
             }
-            if ( menorValor >=  dataSem.datasets[i].data[j] ){ 
+            if (menorValor >= dataSem.datasets[i].data[j]) {
                 console.log('oii')
-                menorValor = dataSem.datasets[i].data[j] ; 
-                qualDia[0] = labelsSem[j] ; 
+                menorValor = dataSem.datasets[i].data[j];
+                qualDia[0] = labelsSem[j];
             }
-            
+
             diaLixoMais.innerHTML = qualDia[1];
             diaLixoMenos.innerHTML = qualDia[0]
         }
     }
-    
+
 }
 diaMaisLixo()
 //graph ultimas 24H
@@ -134,7 +134,7 @@ const dataDia = {
         label: 'Plástico',
         backgroundColor: vermelho,
         borderColor: vermelho,
-        data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6,1.9, 2.3, 2.7, 3.1, 4, 4],
+        data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4],
     },
     {
         label: 'Papel',
@@ -166,7 +166,7 @@ function buscaTempoCheio() {
     let med = 0;
     for (i = 0; i < dataDia.datasets.length; i++) {
         for (j = 0; j < dataDia.datasets[i].data.length; j++) {
-            if (dataDia.datasets[i].data[j] >=4) {
+            if (dataDia.datasets[i].data[j] >= 4) {
                 index.push(j + 9) // defini em qual horário se encontra as lixeiras lotadas, j+9 é para converter de 9 a 22  
             }
         }
@@ -320,25 +320,25 @@ const dataKit1 = {
         label: 'Plástico',
         backgroundColor: vermelho,
         borderColor: vermelho,
-        data: [0, 0, 0, 1, 1, 1, 2, 2,4, 2, 3, 3, 3, 4],
+        data: [0, 0, 0, 1, 1, 1, 2, 2, 4, 2, 3, 3, 3, 3],
     },
     {
         label: 'Papel',
         backgroundColor: '#4D96FF',
         borderColor: '#4D96FF',
-        data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4],
+        data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3],
     },
     {
         label: 'Metal',
         backgroundColor: amarelo,
         borderColor: amarelo,
-        data: [0, 0, 0, 0, 4, 1, 1, 1, 1, 1, 2, 2, 2, 3],
+        data: [0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 2, 2, 2, 3],
     },
     {
         label: 'Vidro',
         backgroundColor: '#6BCB77',
         borderColor: '#6BCB77',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 3],
     }
     ]
 };
@@ -379,7 +379,7 @@ const dataKit2 = {
         label: 'Plástico',
         backgroundColor: vermelho,
         borderColor: vermelho,
-        data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3],
+        data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4]
     },
     {
         label: 'Papel',
@@ -474,40 +474,70 @@ const myChartKit3 = new Chart(
 
 // sempre que for chamar uma lixeira no onclick ou etc, coloque a constante da lixeira do ChartJS e o número que ela é, além de adicionar
 // um caso ali no switch case para o "QualKit " receber o nome dela. É Uma função de parametro que recebe o num da lixeira e sua constante
-function intermedioRelatorio() { 
-    var valor = relatorioSelect.value ; 
-    switch(valor){
-        case '1' : 
-            relatorioLixeira(dataKit1,1) 
+function intermedioRelatorio() {
+    var valor = relatorioSelect.value;
+    switch (valor) {
+        case '1':
+            relatorioLixeira(dataKit1, 1)
             break;
-        case '2' : 
-            relatorioLixeira(dataKit2,2) 
-            break; 
-        case '3' : 
-            relatorioLixeira(dataKit3,3)
+        case '2':
+            relatorioLixeira(dataKit2, 2)
             break;
-        default : 
+        case '3':
+            relatorioLixeira(dataKit3, 3)
+            break;
+        default:
             alert("Selecione um kit válido");
-            break; 
+            break;
     }
 }
-   
-function relatorioLixeira(arr,numKit) {
+/* 
+const dataKit3 = {
+    labels: labelsKit3,
+    datasets: [{
+        label: 'Plástico',
+        backgroundColor: vermelho,
+        borderColor: vermelho,
+        data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3],
+    },
+    {
+        label: 'Papel',
+        backgroundColor: '#4D96FF',
+        borderColor: '#4D96FF',
+        data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4],
+    },
+    {
+        label: 'Metal',
+        backgroundColor: amarelo,
+        borderColor: amarelo,
+        data: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2],
+    },
+    {
+        label: 'Vidro',
+        backgroundColor: '#6BCB77',
+        borderColor: '#6BCB77',
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4],
+    }
+    ]
+};
+*/
+function relatorioLixeira(arr, numKit) {
 
     let kits = []
     let situacaoLixeira = '';
     let tipoKit = '';
     let qualKit = ''
-    let index=0
+    let index = 0
 
 
     situacaoKits.innerHTML = ' '
-    switch(numKit){
+    // ve qual lixeira é pq nao consegui pegar o nome do parametro arr
+    switch (numKit) {
         case 1:
             qualKit = 'Kit 1'
-            break; 
-        case 2: 
-            qualKit = 'Kit 2'   
+            break;
+        case 2:
+            qualKit = 'Kit 2'
             break;
         case 3:
             qualKit = 'Kit 3'
@@ -516,27 +546,30 @@ function relatorioLixeira(arr,numKit) {
             qualKit = 'Kit inexistente'
     }
 
-
+    // recebe dados 
     for (i = 0; i < arr.datasets.length; i++) {
         for (j = 0; j < arr.datasets[i].data.length; j++) {
             if (arr.datasets[i].data[j] == 4) {
                 situacaoLixeira = 'Lotado'
                 tipoKit = arr.datasets[i].label;
-                index = j+9 ; 
-                kits.push(tipoKit,situacaoLixeira, index) 
+                index = j + 9;
+                kits.push(tipoKit, situacaoLixeira, index)
+
             }
-        } 
+        }
     }
-    situacaoKits.innerHTML += `<span class='subtitulo'> ${qualKit} </span> <div class='alinhador'> <div class='alinhamento'> </div> </div><br>`; 
-    var i= 0 ;
-    if(kits[0]==null){
+    //imprime dados
+    situacaoKits.innerHTML += `<span class='subtitulo'> ${qualKit} </span> <div class='alinhador'> <div class='alinhamento'> </div> </div><br>`;
+    var i = 0;
+    if (kits[0] == null) {
         situacaoKits.innerHTML += `Este kit não lotou nenhuma vez`
     }
-    while (i<kits.length){
-      
-        situacaoKits.innerHTML += `Tipo da lixeira: ${kits[i]} - Hora: ${kits[i+2]}:00<br> Situação: ${kits[i+1]} <br><br>`
-        i += 3; 
+    while (i < kits.length) {
+
+        situacaoKits.innerHTML += `Tipo da lixeira: ${kits[i]} - Hora: ${kits[i + 2]}:00<br> Situação: ${kits[i + 1]} <br><br>`
+        i += 3;
     }
+
     console.log(kits)
 
 }
@@ -770,7 +803,7 @@ function clickHandler(myChartPiso, userClick) {
 //define o aparecimento dos gráficos no kit . 
 function verKit(kit) {     // pega o valor do kit que é fornecido pela função intermediaria, ou seja, o kit dessa função é o do select
     if (kit == 1) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
-        selecaoKitAlerta(kit);
+      
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 1"
         kitIndividual1.style.display = 'block'
@@ -778,14 +811,14 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
         kitIndividual3.style.display = 'none'
     }
     else if (kit == 2) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
-        selecaoKitAlerta(kit);
+      
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 2"
         kitIndividual1.style.display = 'none'
         kitIndividual2.style.display = 'block'
         kitIndividual3.style.display = 'none'
     } else if (kit == 3) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
-        selecaoKitAlerta(kit);
+     
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 3"
         kitIndividual1.style.display = 'none'
@@ -920,57 +953,78 @@ function vermelho() {
 }
 
 
-// quando selecionar o kit de lixo, demonstrar o alerta abaixo e acima 
-
-function selecaoKitAlerta(kit) { // recebe o valor do kit de outra funcao, da funcao INTERMEDIARIA, de modo que é ela quem fornece para ambos
-    var kitInput = qualKit.value;
-    console.log('selecaoKitAlerta '+kit )
 
 
-    if (kit == "1") { // kit 1 - cheio  
+var quaisKitLotado = []
+var contadorLixeirasLotadas=0; 
+function kitsLotadosAssicronos(arr, idKit) {
+    let a = '';
+    contadorLixeirasLotadas ++; 
+    quaisKitLotado = []
 
-        textoKit.innerHTML = "Kit 1"
-        alert("AVISO. ESTE KIT ESTÁ LOTADO.")
-        condicaoKit.innerHTML = "<b> O Kit 1 está LOTADO! </b>"
-        situacao.innerHTML = "<b> O Kit 1 está LOTADO! </b>"
-        aviso1.style.display = 'none'
-        aviso2.style.display = 'none'
-        aviso3.style.display = 'none'
-        aviso4.style.display = 'block'
-
+    for (i = 0; i < arr.datasets.length; i++) {
+        for (j = 0; j <= arr.datasets[i].data.length; j++) {
+            if (arr.datasets[i].data[j] == 4 && j == arr.datasets[i].data.length - 1) {
+                a = 'Kit ' + idKit
+            }
+        }
     }
-    else if (kit == "2") { // kit 2 - qUASE VAZIO  
-
-        textoKit.innerHTML = "Kit 2"
-        condicaoKit.innerHTML = "<b> O Kit 2 está pouco cheio! </b>"
-        situacao.innerHTML = "<b> O Kit 2 está pouco cheio! </b>"
-        aviso1.style.display = 'none'
-        aviso2.style.display = 'block'
-        aviso3.style.display = 'none'
-        aviso4.style.display = 'none'
-
+    if (a == 'Kit ' + idKit) {
+        quaisKitLotado.push(a)
     }
-    else if (kit == "3") { //kit3  - vazio 
-        graphKit.style.display = 'flex'
-        textoKit.innerHTML = "Kit 3"
-        condicaoKit.innerHTML = "<b> O kit 3 está vazio </b>"
-        situacao.innerHTML = "<b> O Kit 3 está vazio! </b>"
-        aviso1.style.display = 'block'
-        aviso2.style.display = 'none'
-        aviso3.style.display = 'none'
-        aviso4.style.display = 'none'
-
+    for (i = 0; i < quaisKitLotado.length; i++) { 
+        kitsLotados.innerHTML += `<b class='kitsCheios'> ${quaisKitLotado[i]}</b> &nbsp;&nbsp;`;
     }
-    else if (kit == "4") { //kit3  - vazio 
-        condicaoKit.innerHTML = null
-        aviso1.style.display = 'block'
-        aviso2.style.display = 'block'
-        aviso3.style.display = 'block'
-        aviso4.style.display = 'block'
+    kitsLotadosNumeros.innerHTML = contadorLixeirasLotadas;
+    console.log(quaisKitLotado.length)
 
-    }
+    
 }
 
+
+
+function ocultaKitsLotados() { 
+    conteudoDivLotados.style.display='none';
+    h3KitsLotados.innerHTML = 'Kits Lotados (oculto)'
+    botaoMostrarLotados.style.display='block';
+    botaoOcultarMostrados.style.display='none';
+}
+function mostraKitsLotados() { 
+    conteudoDivLotados.style.display='block';
+    h3KitsLotados.innerHTML = 'Kits Lotados: '
+    botaoMostrarLotados.style.display='none';
+    botaoOcultarMostrados.style.display='block';
+}
+// função que vê quais estão lotados 
+setInterval(() => {
+    // Sempre que adicionar uma lixeira nova, inserir ela aqui
+    // ou seja, inserior sua constante, e logo após o seu 'id', ou seja, qual lixeira é (1,2,3,4,5)
+    // depois disso, o algorítmo trata de fazer todo o trabalho sujo rsrsrs
+    kitsLotadosAssicronos(dataKit1, 1)
+    kitsLotadosAssicronos(dataKit2, 2)
+    kitsLotadosAssicronos(dataKit3, 3)
+    kitsLotados = []
+    contadorLixeirasLotadas=0;
+
+}, 1000)
+
+// quando selecionar o kit de lixo, demonstrar o alerta abaixo e acima 
+function selecionaAutomaticoAlerta(arr,idKit){
+    for (i = 0; i < arr.datasets.length; i++) {
+        for (j = 0; j <= arr.datasets[i].data.length; j++) {
+            if (arr.datasets[i].data[j] == 4 && j == arr.datasets[i].data.length - 1) {
+                textoKit.innerHTML = "Kit " + idKit
+                alert("AVISO. ESTE KIT ESTÁ LOTADO.")
+                condicaoKit.innerHTML = "<b> O Kit "+idKit+"está LOTADO! </b>"
+                situacao.innerHTML = "<b> O Kit "+idKit+"está LOTADO! </b>"
+                aviso1.style.display = 'none'
+                aviso2.style.display = 'none'
+                aviso3.style.display = 'none'
+                aviso4.style.display = 'block'
+            }
+        }
+    }
+}
 function ocultarNavbar() {
     menuLateral.style.display = 'none'
     //arrumar footer
@@ -1001,7 +1055,9 @@ function ocultarKit() {
 //fornece a chave para ambas as funções efetuarem as coisas iguais, isto é: o mapa e o select button trocarem os kits
 function intermediaria() {
     kit = qualKit.value;
-    selecaoKitAlerta(kit);
+    kitEscolhido = eval('dataKit'+kit)
+    console.log(kitEscolhido)
+    selecionaAutomaticoAlerta(kitEscolhido,kit)
     verKit(kit);
 
     return 0;
