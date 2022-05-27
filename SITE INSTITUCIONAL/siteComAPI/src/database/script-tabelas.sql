@@ -11,7 +11,7 @@ senha VARCHAR(45)
 );
 
 CREATE TABLE Funcionario(
-    idFuncionario INT AUTO_INCREMENT,
+    idFuncionario INT,
     fkEmpresa INT,
     FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa),
     nomeFuncionario VARCHAR(45),
@@ -21,7 +21,7 @@ CREATE TABLE Funcionario(
 );
 
 CREATE TABLE Contato(
-    idContato INT,
+    idContato INT AUTO_INCREMENT,
     fkEmpresa INT,
     numeroEmpresa CHAR(13),
     emailComercial VARCHAR(45),
@@ -32,32 +32,30 @@ CREATE TABLE estabelecimento(
     idEstabelecimento INT PRIMARY KEY AUTO_INCREMENT,
     nomeEstabelecimento VARCHAR(45),
     rua VARCHAR(45),
-    numero INT,
-    referencia VARCHAR(65)
-)AUTO_INCREMENT = 100;
+    numero INT
+);
 
 CREATE TABLE kitLixeira(
-    idKitLixeira INT PRIMARY KEY,
+    idKitLixeira INT PRIMARY KEY AUTO_INCREMENT,
     fkEmpresa INT,
     fkEstabelecimento INT,
     coordenada VARCHAR(100),
     andar VARCHAR(2),
-    referencia VARCHAR(65),
     FOREIGN KEY(fkEmpresa) REFERENCES empresa (idEmpresa),
     FOREIGN KEY(fkEstabelecimento) REFERENCES estabelecimento (idEstabelecimento)
 );
 
 CREATE TABLE lixeira(
-idLixeira INT PRIMARY KEY, 
+idLixeira INT PRIMARY KEY AUTO_INCREMENT, 
 fkKitLixeira INT,
-tipoLixeira CHAR(1),
+tipoLixeira VARCHAR(20),
 FOREIGN KEY(fkKitLixeira) REFERENCES kitLixeira(idKitLixeira)
 );
 
 CREATE TABLE sensor(
-fkLixeira INT,
 idSensor INT PRIMARY KEY AUTO_INCREMENT,
-tipo varchar(15),
+fkLixeira INT,
+tipo varchar(25),
 nivel int, 
 FOREIGN KEY(fkLixeira) REFERENCES lixeira(idLixeira)
 );
@@ -72,47 +70,71 @@ FOREIGN kEY (FkSensor) REFERENCES sensor (IdSensor)
 
 -- inserts(NÃO APLICAR POIS AINDA NÃO ESTÃO 100% PREPARADOS)
 
-INSERT INTO Empresa(nomeEmpresa, cnpj, plano,emailEmpresa, senha )
-        VALUE('Corpus','87644937541','Plano Trimestral','contato@corpus.com','abc123');
+INSERT INTO Empresa VALUES 
+(null,'Ecometer','87644937541','Plano Trimestral','contato@ecometer.com','abc123'),
+(null,'SoninPlay','87644937532','Plano Trimestral','contato@soninplay.com','abc123');
 
-INSERT INTO Funcionario(idFuncionario,fkEmpresa,nomeFuncionario,emailFuncionario,senhaFuncionario)
-        VALUES(1,1,'Matheus Gomes', 'matheus.gomes@gmail.com', 'Matheus123');
+INSERT INTO Funcionario VALUES
+(1,1,'Matheus Gomes', 'matheus.gomes@gmail.com', 'Matheus123'),
+(2,2,'Kelvin Guimaraes', 'kelvin.gomes@gmail.com', 'Kelvin123'),
+(3,1,'Rafael Raposo', 'rafael.raposo@gmail.com', 'Rafael123'),
+(4,2,'João Gabriel', 'joao.gabriel@gmail.com', 'Joao123');
 
-INSERT INTO Contato(idContato,fkEmpresa,numeroEmpresa, emailComercial)
-            VALUES(1,1,'11956359201','contato@corpus.com');
+INSERT INTO Contato VALUES
+(NULL, 1,'11956359201','contato@corpus.com'),
+(NULL, 2,'11956359201','contato@corpus.com');
 
-INSERT INTO  estabelecimento( nomeEstabelecimento, rua, numero)
-            VALUES('Shopping Morumbi Town', 'Av. Giovanni Gronchi', 5930);
+INSERT INTO Estabelecimento VALUES
+(NULL, 'Shopping Morumbi Town', 'Av. Giovanni Gronchi', 5930),
+(NULL, 'Shopping Plaza Town', 'Av. Rodolfo Pirani', 5931);
 
-INSERT INTO kitLixeira(idKitLixeira, fkEmpresa, fkEstabelecimento, coordenada, andar) VALUES 
-(1, 1, 1, '4, 3.4', 1),
-(2, 1, 1, '6, 6.9', 2),
-(3, 1, 1, '4, 2.5', 1);
+INSERT INTO kitLixeira VALUES 
+(NULL, 1, 1, '4, 3.4', 1),
+(NULL, 2, 2, '2, 1.2', 1);
 
-INSERT INTO lixeira(idLixeira, fkKitLixeira, tipoLixeira) VALUES 
-(1, 1, Plástico),
-(2, 1, Vidro),
-(3, 1, Organicos),
-(4, 1, Papel);
+INSERT INTO lixeira VALUES 
+(NULL, 1, 'Plástico'),
+(NULL, 1, 'Vidro'),
+(NULL, 1, 'Organicos'),
+(NULL, 1, 'Papel'),
+(NULL, 2, 'Plástico'),
+(NULL, 2, 'Vidro'),
+(NULL, 2, 'Organicos'),
+(NULL, 2, 'Papel');
 
-
-INSERT INTO sensor(idSensor, fkLixeira, tipo, nivel) VALUES 
-(1, 1, 'TCRT5000', 1),
-(2, 1, 'TCRT5000', 2),
-(3, 1, 'TCRT5000', 3),
-(4, 1, 'TCRT5000', 4),
-(5, 2, 'TCRT5000', 1),
-(6, 2, 'TCRT5000', 2),
-(7, 2, 'TCRT5000', 3),
-(8, 2, 'TCRT5000', 4),
-(9, 3, 'TCRT5000', 1),
-(10, 3, 'TCRT5000', 2),
-(11, 3, 'TCRT5000', 3),
-(12, 3, 'TCRT5000', 4),
-(13, 4, 'TCRT5000', 1),
-(14, 4, 'TCRT5000', 2),
-(15, 4, 'TCRT5000', 3),
-(16, 4, 'TCRT5000', 4);
+INSERT INTO sensor VALUES 
+(NULL, 1, 'TCRT5000', 1),
+(NULL, 1, 'TCRT5000', 2),
+(NULL, 1, 'TCRT5000', 3),
+(NULL, 1, 'TCRT5000', 4),
+(NULL, 2, 'TCRT5000', 1),
+(NULL, 2, 'TCRT5000', 2),
+(NULL, 2, 'TCRT5000', 3),
+(NULL, 2, 'TCRT5000', 4),
+(NULL, 3, 'TCRT5000', 1),
+(NULL, 3, 'TCRT5000', 2),
+(NULL, 3, 'TCRT5000', 3),
+(NULL, 3, 'TCRT5000', 4),
+(NULL, 4, 'TCRT5000', 1),
+(NULL, 4, 'TCRT5000', 2),
+(NULL, 4, 'TCRT5000', 3),
+(NULL, 4, 'TCRT5000', 4),
+(NULL, 5, 'TCRT5000', 1),
+(NULL, 5, 'TCRT5000', 2),
+(NULL, 5, 'TCRT5000', 3),
+(NULL, 5, 'TCRT5000', 4),
+(NULL, 6, 'TCRT5000', 1),
+(NULL, 6, 'TCRT5000', 2),
+(NULL, 6, 'TCRT5000', 3),
+(NULL, 6, 'TCRT5000', 4),
+(NULL, 7, 'TCRT5000', 1),
+(NULL, 7, 'TCRT5000', 2),
+(NULL, 7, 'TCRT5000', 3),
+(NULL, 7, 'TCRT5000', 4),
+(NULL, 8, 'TCRT5000', 1),
+(NULL, 8, 'TCRT5000', 2),
+(NULL, 8, 'TCRT5000', 3),
+(NULL, 8, 'TCRT5000', 4);
 
 -- Utilizar somente para testar os select --
 
@@ -132,6 +154,42 @@ INSERT INTO registro VALUES
 (NULL, 13, '2022-05-25 09:00:00', 1),
 (NULL, 14, '2022-05-25 09:00:00', 1),
 (NULL, 15, '2022-05-25 09:00:00', 1),
-(NULL, 16, '2022-05-25 09:00:00', 1);
+(NULL, 16, '2022-05-25 09:00:00', 1),
+(NULL, 17, '2022-05-25 09:00:00', 1),
+(NULL, 18, '2022-05-25 09:00:00', 1),
+(NULL, 19, '2022-05-25 09:00:00', 1),
+(NULL, 20, '2022-05-25 09:00:00', 0),
+(NULL, 21, '2022-05-25 09:00:00', 1),
+(NULL, 22, '2022-05-25 09:00:00', 0),
+(NULL, 23, '2022-05-25 09:00:00', 0),
+(NULL, 24, '2022-05-25 09:00:00', 0),
+(NULL, 25, '2022-05-25 09:00:00', 1),
+(NULL, 26, '2022-05-25 09:00:00', 1),
+(NULL, 27, '2022-05-25 09:00:00', 0),
+(NULL, 28, '2022-05-25 09:00:00', 0),
+(NULL, 29, '2022-05-25 09:00:00', 1),
+(NULL, 30, '2022-05-25 09:00:00', 1),
+(NULL, 31, '2022-05-25 09:00:00', 1),
+(NULL, 32, '2022-05-25 09:00:00', 1);
 
+-- SELECT que mostra todos os Registros de uma determinada lixeira --
+SELECT idLixeira, idSensor, nivel, dataHoraSensor, sinal FROM Lixeira, Sensor, Registro WHERE fkLixeira = idLixeira AND fkSensor = idSensor AND idLixeira = 1; 
+
+-- SELECT que mostra todos os Registros de todas lixeiras --
+SELECT idLixeira, idSensor, nivel, dataHoraSensor, sinal FROM Lixeira, Sensor, Registro WHERE fkLixeira = idLixeira AND fkSensor = idSensor;
+
+-- SELECT que mostra todos os Registros de todas lixeiras de um Estabelecimento --
+SELECT idLixeira, idSensor, nivel, dataHoraSensor, sinal, idEstabelecimento FROM Lixeira, Sensor, Registro, Estabelecimento WHERE fkLixeira = idLixeira AND fkSensor = idSensor AND idEstabelecimento = 1;
+
+-- SELECT que mostra a Empresa e seus Funcionarios --
+SELECT idEmpresa, nomeEmpresa, idFuncionario, nomeFuncionario FROM Empresa, Funcionario WHERE idEmpresa = fkEmpresa;
+
+-- SELECT que mostra os dados da Empresa até os Registros --
+SELECT idRegistro, idLixeira, dataHoraSensor, idSensor, nivel, sinal, idEmpresa, nomeEmpresa, idEstabelecimento, nomeEstabelecimento FROM Empresa, Estabelecimento, Lixeira, Sensor, Registro WHERE idLixeira = fkLixeira AND idSensor = fkSensor;
+
+-- SELECT que mostrar os dados dos sensores de determinado Estabelecimento de determinada Empresa --
+SELECT fkEmpresa, fkEstabelecimento, idKitLixeira, idLixeira, IdSensor, nivel, idRegistro, dataHoraSensor, sinal FROM kitLixeira, Lixeira, Sensor, Registro WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND fkEmpresa = 1;
+
+-- SELECT que mostrar as Empresas e seus Estabelecimentos --
+SELECT fkEmpresa, nomeEmpresa, fkEstabelecimento, nomeEstabelecimento FROM Empresa, kitLixeira, Estabelecimento WHERE idEmpresa = fkEmpresa AND idEstabelecimento = fkEstabelecimento AND fkEmpresa = 2;
 
