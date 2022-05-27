@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <title>Ecometer | Cadastro Funcionario</title>
 </head>
@@ -22,24 +22,24 @@
         <div id="menuLateral">
             <div id="alignLateral">
                 <div id="menuBurger">
-                    <img onclick="ocultarNavbar()" src="Icones/menu-burger-free-icon-font.png" alt="">
+                    <img onclick="ocultarNavbar()" src="../Icones/menu-burger-free-icon-font.png" alt="">
                 </div>
                 <div id="mainLateral">
-                    <a href="dashboard/configEmpresa.html"><img src="Icones/user-free-icon-font.png" alt=""></a>
-                    <a href=""><img src="Icones/settings-free-icon-font.png" alt=""></a>
-                    <a href=""><img src="Icones/comment-alt-free-icon-font.png" alt=""></a>
-                    <a href=""><img src="Icones/bell-free-icon-font.png" alt=""></a>
+                    <a href="configEmpresa.html"><img src="../Icones/user-free-icon-font.png" alt=""></a>
+                    <a href=""><img src="../Icones/settings-free-icon-font.png" alt=""></a>
+                    <a href=""><img src="../Icones/comment-alt-free-icon-font.png" alt=""></a>
+                    <a href=""><img src="../Icones/bell-free-icon-font.png" alt=""></a>
                 </div>
 
             </div>
             <div id="signout">
-                <a href="index.html"><img src="Icones/sign-out-free-icon-font.png" alt="" onclick="limparSessao()"></a>
+                <a href="index.html"><img src="../Icones/sign-out-free-icon-font.png" alt="" onclick="limparSessao()"></a>
             </div>
         </div>
         <div id="main">
             <div id="header">
 
-                <img onclick="mostrarNavBar()" style="display: none;" id="mostrarMenu" src="Icones/menu-hamburguer.png"
+                <img onclick="mostrarNavBar()" style="display: none;" id="mostrarMenu" src="../Icones/menu-hamburguer.png"
                     alt="">
                 <div id="logo">
                     <h1>Ecometer</h1>
@@ -71,7 +71,7 @@
                     <button onclick="cadastrar()">Cadastrar</button>
 
                     <div id="div_aguardar" class="loading-div">
-                        <img src="Icones/loader.gif" id="loading-gif">
+                        <img src="../Icones/loader.gif" id="loading-gif">
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
 
 </html>
 
-<script src="js/funcoes.js"></script>
+<script src="../js/funcoes.js"></script>
 
 <script>
     function cadastrar() {
