@@ -183,7 +183,6 @@ const dataDia = {
 };
 
 
-
 /* Busca a hora média que o kit enche */
 function buscaTempoCheio() {
     let index = []
@@ -264,11 +263,14 @@ const dataPie = {
             amarelo,
             '#6BCB77'
         ],
+        circumference: 180,
+        rotation: 270,
         hoverOffset: 4
     }]
 };
 
 const configPie = {
+
     type: 'doughnut',
     data: dataPie,
 };

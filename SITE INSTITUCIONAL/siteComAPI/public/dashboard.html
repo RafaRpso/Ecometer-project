@@ -64,28 +64,31 @@
 
 
 
-            <div class="avisos">
-
-                <div class="avisoGrafico" id="aviso1">
-                    <h3>Vazio</h3>
-
-                </div>
-                <div class="avisoGrafico" id="aviso2">
-                    <h3>Pouco cheio</h3>
-
-                </div>
-                <div class="avisoGrafico" id="aviso3">
-                    <h3>Quase cheio</h3>
-
-                </div>
-                <div class="avisoGrafico" id="aviso4">
-                    <h3>Lotado!</h3>
-
-                </div>
-            </div>
-
 
             <div class="kapis">
+
+                <div class="avisos avisoMetrica">
+
+                    <div class="avisoGrafico AvGrafMg" id="aviso1">
+                        <h3>Vazio</h3>
+
+                    </div>
+                    <div class="avisoGrafico AvGrafMg" id="aviso2">
+                        <h3>Baixo</h3>
+
+                    </div>
+                    <div class="avisoGrafico AvGrafMg" id="aviso3">
+                        <h3>Ideal</h3>
+
+                    </div>
+                    <div class="avisoGrafico AvGrafMg" id="aviso4">
+                        <h3>Lotado!</h3>
+
+                    </div>
+                </div>
+                <div class="alinhar">
+                    <div class="alinhamento vertical"></div>
+                </div>
                 <div class="kapiGrafico" id="verKits">
                     <span class="tituloKapi"> Kits Ativos </span>
                     <span class="subtitulo"> 3 </span>
@@ -101,28 +104,19 @@
                     <span class="subtitulo"> 2 </span>
                 </div>
             </div>
-
-            <div class="kapis">
-               
-
-               
-            </div>
-          
-
             <div class="alinhar">
                 <div class="alinhamento"></div>
-                
             </div>
-            <div class="avisos">
+            <div class="avisos" id="avisosPrazo">
 
-                <div class="avisoGrafico escolherTipo" onclick="curtoPrazo()" >
+                <div class="avisoGrafico escolherTipo" onclick="curtoPrazo()">
                     <h3>Curto-prazo</h3>
                 </div>
-                <div class="avisoGrafico escolherTipo"  onclick="medioPrazo()" >
+                <div class="avisoGrafico escolherTipo" onclick="medioPrazo()">
                     <h3>Médio-prazo</h3>
 
                 </div>
-                <div class="avisoGrafico escolherTipo"  onclick="longoPrazo()" >
+                <div class="avisoGrafico escolherTipo" onclick="longoPrazo()">
                     <h3>Longo-prazo</h3>
 
                 </div>
@@ -134,16 +128,16 @@
                 <div id="fr1" class="colunasDash">
 
                     <div id="graficoPizza" class="cardGrafico">
-                        Gráfico
+                        % Média de tipo de lixo
 
 
                         <canvas id="tipo_lotacao_pie"></canvas>
                     </div>
 
-                   
 
-                   
-                   
+
+
+
                     <div id="historico" class="cardGrafico">
 
                         <button onclick="ocultaHistorico()" id="btnOcultaHistorico">Ocultar histórico</button>
@@ -157,9 +151,9 @@
                         </div>
 
                     </div>
-                   
-                  
-                  
+
+
+
                 </div>
 
                 <div id="fr2" class="colunasDash">
@@ -184,7 +178,7 @@
 
 
                     <div id="mainGraph" class="cardGrafico">
-                    
+
                         <b id="mediaLocal"> Média de lotação</b>
                         <select name="" id="slct_piso" onclick="trocaPiso()">
                             <option value="1">Piso 1</option>
@@ -211,8 +205,9 @@
                     </div>
                     <div id="mainGraph lixeirasLotadas" class="cardGrafico">
 
-                        <button class="botao"  id='botaoOcultarMostrados'onclick="ocultaKitsLotados()"> Ocultar</button>
-                        <button class="botao" onclick="mostraKitsLotados()" id='botaoMostrarLotados'style='display:none;'> Mostrar</button>
+                        <button class="botao" id='botaoOcultarMostrados' onclick="ocultaKitsLotados()"> Ocultar</button>
+                        <button class="botao" onclick="mostraKitsLotados()" id='botaoMostrarLotados'
+                            style='display:none;'> Mostrar</button>
                         <h3 id="h3KitsLotados">Kits lotados:</h3>
                         <div id="conteudoDivLotados">
                             <span id="kitsLotados"> </span> <br>
@@ -246,7 +241,7 @@
 
                     <div id="horarioMedio" class="cardGrafico alertas  alertafr3">
                         <h2>Horário médio que os kits lotam: </h2>
-                        
+
                         <span id="lotaMedia"></span>
                         <div class="alinhamento"></div>
 
@@ -255,12 +250,12 @@
 
                         </div>
                     </div>
-                  
-                   
+
+
                     <div id="cardLixo" class="cardGrafico alertas  alertafr3" style="display:none;">
-                        <span id='diaMesMaisLixo'class="horarioLixoKpi"> Dia com mais lixo </span>
-                        
-                        <span class="subtitulo" id="diaLixoMais"> </span> 
+                        <span id='diaMesMaisLixo' class="horarioLixoKpi"> Dia com mais lixo </span>
+
+                        <span class="subtitulo" id="diaLixoMais"> </span>
                         <div class="alinhamento"></div>
 
 
@@ -270,9 +265,9 @@
                     </div>
 
                     <div id="cardLixo" class="cardGrafico alertas alertafr3" style="display:none;">
-  
-                        
-                        <span class="subtitulo" id="diaLixoMais"> </span> 
+
+
+                        <span class="subtitulo" id="diaLixoMais"> </span>
                         <div class="alinhamento"></div>
 
 
@@ -281,8 +276,8 @@
                         </div>
                     </div>
                     <div id="cardMenosLixo" class="cardGrafico alertas  alertafr3" style="display:none;">
-                    
-        
+
+
                         <span id='diaMesMenosLixo' class=" horarioLixoKpi"> Dia com menos lixo </span>
                         <span class="subtitulo" id="diaLixoMenos"> </span>
                         <div class="alinhamento"></div>
@@ -292,8 +287,8 @@
 
                         </div>
                     </div>
-                    
-                   
+
+
                 </div>
             </div>
         </div>
@@ -310,18 +305,18 @@
 <script src="js/funcoes.js"></script>
 <script>
 
-var contadorHistorico= 0 ;
+    var contadorHistorico = 0;
     setInterval(() => {
-   
+
         lixeira = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
         horas = Math.floor(Math.random() * (22 - 9 + 1)) + 9;
         fraseColeta.innerHTML += `A lixeira ${lixeira} foi coletada | ${horas}:00 <br> `
- 
-        if( contadorHistorico>=5 ){ 
+
+        if (contadorHistorico >= 5) {
             fraseColeta.innerHTML = '   '
-            contadorHistorico=0;
+            contadorHistorico = 0;
         }
-             contadorHistorico++;
+        contadorHistorico++;
     }, 1500)
     function ocultaHistorico() {
         btnOcultaHistorico.style.display = 'none';
