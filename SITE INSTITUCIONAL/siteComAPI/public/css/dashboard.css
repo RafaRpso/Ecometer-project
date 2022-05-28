@@ -192,7 +192,7 @@ footer{
     font-size: 24px;
 }
 #mainGraph{ 
-    margin-top: 5%;
+    margin-bottom: 5%;
     display:flex; 
     height: 55%;
     width:100%;
@@ -371,10 +371,9 @@ footer{
 }
 
 
-#alertas {
+.alertas {
     width: 80%;
-    background-color: white;
-  
+    background-color: white; 
     display: flex;
     flex-direction: column;
     align-items: center;

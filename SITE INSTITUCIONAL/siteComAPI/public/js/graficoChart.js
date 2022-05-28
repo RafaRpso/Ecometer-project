@@ -140,7 +140,7 @@ const dataDia = {
         label: 'Papel',
         backgroundColor: '#4D96FF',
         borderColor: '#4D96FF',
-        data: [0, 0, 0, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4],
+        data: [0, 0, 0.5, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4],
     },
     {
         label: 'Metal',
@@ -336,7 +336,7 @@ const dataKit1 = {
     },
     {
         label: 'Vidro',
-        backgroundColor: '#6BCB77',
+        backgroundColor: verde,
         borderColor: '#6BCB77',
         data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 3],
     }
@@ -803,7 +803,7 @@ function clickHandler(myChartPiso, userClick) {
 //define o aparecimento dos gráficos no kit . 
 function verKit(kit) {     // pega o valor do kit que é fornecido pela função intermediaria, ou seja, o kit dessa função é o do select
     if (kit == 1) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
-      
+
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 1"
         kitIndividual1.style.display = 'block'
@@ -811,14 +811,14 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
         kitIndividual3.style.display = 'none'
     }
     else if (kit == 2) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
-      
+
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 2"
         kitIndividual1.style.display = 'none'
         kitIndividual2.style.display = 'block'
         kitIndividual3.style.display = 'none'
     } else if (kit == 3) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
-     
+
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 3"
         kitIndividual1.style.display = 'none'
@@ -855,26 +855,7 @@ function alertKit(userx, usery) {
 
 
 
-function troca() {
 
-    if (slct_graph.value == 1) {
-        mensal.style.display = 'block'
-        semanal.style.display = 'none'
-        diario.style.display = 'none'
-    }
-
-    if (slct_graph.value == 2) {
-        mensal.style.display = 'none'
-        semanal.style.display = 'block'
-        diario.style.display = 'none'
-    }
-
-    if (slct_graph.value == 3) {
-        mensal.style.display = 'none'
-        semanal.style.display = 'none'
-        diario.style.display = 'block'
-    }
-}
 
 function trocaMapa() {
 
@@ -956,10 +937,10 @@ function vermelho() {
 
 
 var quaisKitLotado = []
-var contadorLixeirasLotadas=0; 
+var contadorLixeirasLotadas = 0;
 function kitsLotadosAssicronos(arr, idKit) {
     let a = '';
-    contadorLixeirasLotadas ++; 
+    contadorLixeirasLotadas++;
     quaisKitLotado = []
 
     for (i = 0; i < arr.datasets.length; i++) {
@@ -972,28 +953,28 @@ function kitsLotadosAssicronos(arr, idKit) {
     if (a == 'Kit ' + idKit) {
         quaisKitLotado.push(a)
     }
-    for (i = 0; i < quaisKitLotado.length; i++) { 
+    for (i = 0; i < quaisKitLotado.length; i++) {
         kitsLotados.innerHTML += `<b class='kitsCheios'> ${quaisKitLotado[i]}</b> &nbsp;&nbsp;`;
     }
     kitsLotadosNumeros.innerHTML = contadorLixeirasLotadas;
     console.log(quaisKitLotado.length)
 
-    
+
 }
 
 
 
-function ocultaKitsLotados() { 
-    conteudoDivLotados.style.display='none';
+function ocultaKitsLotados() {
+    conteudoDivLotados.style.display = 'none';
     h3KitsLotados.innerHTML = 'Kits Lotados (oculto)'
-    botaoMostrarLotados.style.display='block';
-    botaoOcultarMostrados.style.display='none';
+    botaoMostrarLotados.style.display = 'block';
+    botaoOcultarMostrados.style.display = 'none';
 }
-function mostraKitsLotados() { 
-    conteudoDivLotados.style.display='block';
+function mostraKitsLotados() {
+    conteudoDivLotados.style.display = 'block';
     h3KitsLotados.innerHTML = 'Kits Lotados: '
-    botaoMostrarLotados.style.display='none';
-    botaoOcultarMostrados.style.display='block';
+    botaoMostrarLotados.style.display = 'none';
+    botaoOcultarMostrados.style.display = 'block';
 }
 // função que vê quais estão lotados 
 setInterval(() => {
@@ -1004,19 +985,19 @@ setInterval(() => {
     kitsLotadosAssicronos(dataKit2, 2)
     kitsLotadosAssicronos(dataKit3, 3)
     kitsLotados = []
-    contadorLixeirasLotadas=0;
+    contadorLixeirasLotadas = 0;
 
 }, 1000)
 
 // quando selecionar o kit de lixo, demonstrar o alerta abaixo e acima 
-function selecionaAutomaticoAlerta(arr,idKit){
+function selecionaAutomaticoAlerta(arr, idKit) {
     for (i = 0; i < arr.datasets.length; i++) {
         for (j = 0; j <= arr.datasets[i].data.length; j++) {
             if (arr.datasets[i].data[j] == 4 && j == arr.datasets[i].data.length - 1) {
                 textoKit.innerHTML = "Kit " + idKit
                 alert("AVISO. ESTE KIT ESTÁ LOTADO.")
-                condicaoKit.innerHTML = "<b> O Kit "+idKit+"está LOTADO! </b>"
-                situacao.innerHTML = "<b> O Kit "+idKit+"está LOTADO! </b>"
+                condicaoKit.innerHTML = "<b> O Kit " + idKit + "está LOTADO! </b>"
+                situacao.innerHTML = "<b> O Kit " + idKit + "está LOTADO! </b>"
                 aviso1.style.display = 'none'
                 aviso2.style.display = 'none'
                 aviso3.style.display = 'none'
@@ -1055,9 +1036,9 @@ function ocultarKit() {
 //fornece a chave para ambas as funções efetuarem as coisas iguais, isto é: o mapa e o select button trocarem os kits
 function intermediaria() {
     kit = qualKit.value;
-    kitEscolhido = eval('dataKit'+kit)
+    kitEscolhido = eval('dataKit' + kit)
     console.log(kitEscolhido)
-    selecionaAutomaticoAlerta(kitEscolhido,kit)
+    selecionaAutomaticoAlerta(kitEscolhido, kit)
     verKit(kit);
 
     return 0;
@@ -1065,4 +1046,40 @@ function intermediaria() {
 
 
 
+
+
+
+function troca(qual){
+    switch(qual){
+        case 'longo':
+            mensal.style.display = 'block'
+            semanal.style.display = 'none'
+            diario.style.display = 'none'
+            break;
+        case 'medio':
+            mensal.style.display = 'none'
+            semanal.style.display = 'block'
+            diario.style.display = 'none'
+            break;
+        case 'curto':
+            mensal.style.display = 'none'
+            semanal.style.display = 'none'
+            diario.style.display = 'block'
+            break;
+    
+    }
+
+}
+function curtoPrazo() { 
+    troca('curto')
+    graficoPizza.style.display='block'
+    horarioMedio.style.display='flex'
+    cardLixo.style.display='none'
+}
+function medioPrazo(){
+    troca('medio')
+    graficoPizza.style.display='block'
+    horarioMedio.style.display='none'
+    cardLixo.style.display='flex'
+}
 

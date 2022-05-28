@@ -61,40 +61,7 @@
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="kapis">
-                <div class="kapiGrafico" id="verKits">
-                    <span class="tituloKapi"> Kits Ativos </span>
-                    <span class="subtitulo"> 3 </span>
 
-                </div>
-                <div class="kapiGrafico">
-                    <span class="tituloKapi"> Kits lotados</span>
-                    <span class="subtitulo" id="kitsLotadosNumeros"> 1 </span>
-                </div>
-
-                <div class="kapiGrafico">
-                    <span class="tituloKapi"> Kits inativos </span>
-                    <span class="subtitulo"> 2 </span>
-                </div>
-            </div>
-
-            <div class="kapis">
-                <div class="kapiGrafico">
-                    <span class=" horarioLixoKpi"> Dia com mais lixo </span>
-                    <span class="subtitulo" id="diaLixoMais"> </span>
-
-                </div>
-
-                <div class="kapiGrafico">
-                    <span class=" horarioLixoKpi"> Dia com menos lixo </span>
-                    <span class="subtitulo" id="diaLixoMenos"> </span>
-                </div>
-            </div>
-            <div class="alinhar">
-                <div class="alinhamento"></div>
-                <h1> Alerta </h1>
-                <p id="condicaoKit"> </p>
-            </div>
 
 
             <div class="avisos">
@@ -117,6 +84,53 @@
                 </div>
             </div>
 
+
+            <div class="kapis">
+                <div class="kapiGrafico" id="verKits">
+                    <span class="tituloKapi"> Kits Ativos </span>
+                    <span class="subtitulo"> 3 </span>
+
+                </div>
+                <div class="kapiGrafico">
+                    <span class="tituloKapi"> Kits lotados</span>
+                    <span class="subtitulo" id="kitsLotadosNumeros"> 1 </span>
+                </div>
+
+                <div class="kapiGrafico">
+                    <span class="tituloKapi"> Kits inativos </span>
+                    <span class="subtitulo"> 2 </span>
+                </div>
+            </div>
+
+            <div class="kapis">
+               
+
+                <div class="kapiGrafico">
+                    <span class=" horarioLixoKpi"> Dia com menos lixo </span>
+                    <span class="subtitulo" id="diaLixoMenos"> </span>
+                </div>
+            </div>
+          
+
+            <div class="alinhar">
+                <div class="alinhamento"></div>
+                
+            </div>
+            <div class="avisos">
+
+                <div class="avisoGrafico" onclick="curtoPrazo()" id="aviso1">
+                    <h3>Curto-prazo</h3>
+                </div>
+                <div class="avisoGrafico"  onclick="medioPrazo()" id="aviso3">
+                    <h3>Médio-prazo</h3>
+
+                </div>
+                <div class="avisoGrafico"  onclick="longoPrazo()" id="aviso4">
+                    <h3>Longo-prazo</h3>
+
+                </div>
+            </div>
+
             <!--Onde vão ficar todos os gráficos-->
             <div id="dashMain">
 
@@ -129,6 +143,20 @@
                         <canvas id="tipo_lotacao_pie"></canvas>
                     </div>
 
+                   
+
+                   
+                    <div id="horarioMedio" class="cardGrafico alertas  alertafr3">
+                        <h2>Horário médio que os kits lotam: </h2>
+                        
+                        <span id="lotaMedia"></span>
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
                     <div id="historico" class="cardGrafico">
 
                         <button onclick="ocultaHistorico()" id="btnOcultaHistorico">Ocultar histórico</button>
@@ -142,31 +170,24 @@
                         </div>
 
                     </div>
+                    <div id="cardLixo" class="cardGrafico alertas  alertafr3" style="display:none;">
+                        <h2>Dia com mais lixo: </h2>
+                        
+                        <span class="subtitulo" id="diaLixoMais"> </span> 
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
+                    
 
                 </div>
 
                 <div id="fr2" class="colunasDash">
                     <!-- Gráfico que aparece quando a lixeira é selecionada no mapa-->
-                    <div id="mainGraph lixeirasLotadas" class="cardGrafico">
 
-                        <button class="botao"  id='botaoOcultarMostrados'onclick="ocultaKitsLotados()"> Ocultar</button>
-                        <button class="botao" onclick="mostraKitsLotados()" id='botaoMostrarLotados'style='display:none;'> Mostrar</button>
-                        <h3 id="h3KitsLotados">Kits lotados:</h3>
-                        <div id="conteudoDivLotados">
-                            <span id="kitsLotados"> </span> <br>
-                            <b id="mediaLocal">Ver relatório dos kits: </b>
-                            <select name="" id="relatorioSelect" onchange="intermedioRelatorio()">
-                                <option value="0">-- SELECIONAR O KIT --</option>
-                                <option value="1">Kit 1</option>
-                                <option value="2">Kit 2 </option>
-                                <option value="3">Kit 3</option>
-                            </select>
-                            <div id="situacaoKits">
-
-                            </div>
-                        </div>
-
-                    </div>
                     <div id="graphKit" style="display: none;">
 
                         <div id="graficoKitAparece">
@@ -188,10 +209,10 @@
                     <div id="mainGraph" class="cardGrafico">
                         <p id="textoParagrafo"><span id="intervalo_exib">Intervalo de Exibição:</span> <span
                                 id="piso_exib" style="display: none;">Andar:</span>
-                            <select name="" id="slct_graph" onchange="troca()">
-                                <option value="1">Mensal</option>
-                                <option value="2">Semanal</option>
-                                <option value="3">Ultimas 13H</option>
+                            <select name="" id="slct_graph" onchange="troca(slct_graph.value)">
+                                <option value="longo">Mensal</option>
+                                <option value="medio">Semanal</option>
+                                <option value="curto">Ultimas 13H</option>
                             </select>
 
                             <select name="" id="slct_piso" onchange="trocaPiso()" style="display: none;">
@@ -220,11 +241,31 @@
                         </div>
 
                     </div>
+                    <div id="mainGraph lixeirasLotadas" class="cardGrafico">
 
+                        <button class="botao"  id='botaoOcultarMostrados'onclick="ocultaKitsLotados()"> Ocultar</button>
+                        <button class="botao" onclick="mostraKitsLotados()" id='botaoMostrarLotados'style='display:none;'> Mostrar</button>
+                        <h3 id="h3KitsLotados">Kits lotados:</h3>
+                        <div id="conteudoDivLotados">
+                            <span id="kitsLotados"> </span> <br>
+                            <b id="mediaLocal">Ver relatório dos kits: </b>
+                            <select name="" id="relatorioSelect" onchange="intermedioRelatorio()">
+                                <option value="0">-- SELECIONAR O KIT --</option>
+                                <option value="1">Kit 1</option>
+                                <option value="2">Kit 2 </option>
+                                <option value="3">Kit 3</option>
+                            </select>
+                            <div id="situacaoKits">
+
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
+
                 <div id="fr3" class="colunasDash">
-                    <div id="alertas" class="cardGrafico alertafr3">
+                    <div id="" class="cardGrafico alertas  alertafr3">
                         <h2>Kit que mais enche: </h2>
                         <span id="kitEncheMais"></span>
                         <div class="alinhamento"></div>
@@ -235,15 +276,12 @@
                         </div>
                     </div>
 
-                    <div id="alertas" class="cardGrafico alertafr3">
-                        <h2>Selecione o Kit </h2>
-                        <select name="" id="qualKit" onchange="intermediaria()">
-                            <option value="0">-- SELECIONAR O KIT --</option>
-                            <option value="1">Kit 1</option>
-                            <option value="2">Kit 2 </option>
-                            <option value="3">Kit 3</option>
-                        </select>
-
+                  
+                   
+                    <div id="cardLixo" class="cardGrafico alertas  alertafr3" style="display:none;">
+                        <h2>Dia com mais lixo: </h2>
+                        
+                        <span class="subtitulo" id="diaLixoMais"> </span> 
                         <div class="alinhamento"></div>
 
 
@@ -251,16 +289,7 @@
 
                         </div>
                     </div>
-                    <div id="alertas" class="cardGrafico alertafr3">
-                        <h2>Horário médio que os kits lotam: </h2>
-                        <span id="lotaMedia"></span>
-                        <div class="alinhamento"></div>
-
-
-                        <div id="situacao">
-
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </div>
