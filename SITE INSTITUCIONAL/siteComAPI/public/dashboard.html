@@ -105,10 +105,7 @@
             <div class="kapis">
                
 
-                <div class="kapiGrafico">
-                    <span class=" horarioLixoKpi"> Dia com menos lixo </span>
-                    <span class="subtitulo" id="diaLixoMenos"> </span>
-                </div>
+               
             </div>
           
 
@@ -146,17 +143,7 @@
                    
 
                    
-                    <div id="horarioMedio" class="cardGrafico alertas  alertafr3">
-                        <h2>Horário médio que os kits lotam: </h2>
-                        
-                        <span id="lotaMedia"></span>
-                        <div class="alinhamento"></div>
-
-
-                        <div id="situacao">
-
-                        </div>
-                    </div>
+                   
                     <div id="historico" class="cardGrafico">
 
                         <button onclick="ocultaHistorico()" id="btnOcultaHistorico">Ocultar histórico</button>
@@ -170,19 +157,9 @@
                         </div>
 
                     </div>
-                    <div id="cardLixo" class="cardGrafico alertas  alertafr3" style="display:none;">
-                        <h2>Dia com mais lixo: </h2>
-                        
-                        <span class="subtitulo" id="diaLixoMais"> </span> 
-                        <div class="alinhamento"></div>
-
-
-                        <div id="situacao">
-
-                        </div>
-                    </div>
-                    
-
+                   
+                  
+                  
                 </div>
 
                 <div id="fr2" class="colunasDash">
@@ -207,21 +184,7 @@
 
 
                     <div id="mainGraph" class="cardGrafico">
-                        <p id="textoParagrafo"><span id="intervalo_exib">Intervalo de Exibição:</span> <span
-                                id="piso_exib" style="display: none;">Andar:</span>
-                            <select name="" id="slct_graph" onchange="troca(slct_graph.value)">
-                                <option value="longo">Mensal</option>
-                                <option value="medio">Semanal</option>
-                                <option value="curto">Ultimas 13H</option>
-                            </select>
-
-                            <select name="" id="slct_piso" onchange="trocaPiso()" style="display: none;">
-                                <option value="1">Piso 1</option>
-                                <option value="2">Piso 2</option>
-                                <option value="3">Piso 3</option>
-                            </select>
-
-                        </p>
+                    
                         <b id="mediaLocal"> Média de lotação</b>
                         <div id="graph">
                             <canvas id="mensal"></canvas>
@@ -265,7 +228,7 @@
                 </div>
 
                 <div id="fr3" class="colunasDash">
-                    <div id="" class="cardGrafico alertas  alertafr3">
+                    <div id="kitEnche" class="cardGrafico alertas  alertafr3" style="display:none;">
                         <h2>Kit que mais enche: </h2>
                         <span id="kitEncheMais"></span>
                         <div class="alinhamento"></div>
@@ -276,10 +239,21 @@
                         </div>
                     </div>
 
+                    <div id="horarioMedio" class="cardGrafico alertas  alertafr3">
+                        <h2>Horário médio que os kits lotam: </h2>
+                        
+                        <span id="lotaMedia"></span>
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
                   
                    
                     <div id="cardLixo" class="cardGrafico alertas  alertafr3" style="display:none;">
-                        <h2>Dia com mais lixo: </h2>
+                        <span class=" horarioLixoKpi"> Dia com menos lixo </span>
                         
                         <span class="subtitulo" id="diaLixoMais"> </span> 
                         <div class="alinhamento"></div>
@@ -289,6 +263,31 @@
 
                         </div>
                     </div>
+
+                    <div id="cardLixo" class="cardGrafico alertas alertafr3" style="display:none;">
+  
+                        
+                        <span class="subtitulo" id="diaLixoMais"> </span> 
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
+                    <div id="cardMenosLixo" class="cardGrafico alertas  alertafr3" style="display:none;">
+                    
+        
+                        <span class=" horarioLixoKpi"> Dia com menos lixo </span>
+                        <span class="subtitulo" id="diaLixoMenos"> </span>
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
+                    
                    
                 </div>
             </div>
@@ -305,11 +304,19 @@
 
 <script src="js/funcoes.js"></script>
 <script>
+
+var contadorHistorico= 0 ;
     setInterval(() => {
+   
         lixeira = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
         horas = Math.floor(Math.random() * (22 - 9 + 1)) + 9;
-        fraseColeta.innerHTML += `A lixeira ${lixeira} foi coletada as ${horas}:00 <br>`
-    }, 15000)
+        fraseColeta.innerHTML += `A lixeira ${lixeira} foi coletada as ${horas}:00 <br> `
+ 
+        if( contadorHistorico==5 ){ 
+            fraseColeta.innerHTML = '   '
+        }
+             contadorHistorico++;
+    }, 1500)
     function ocultaHistorico() {
         btnOcultaHistorico.style.display = 'none';
         fraseColeta.style.display = 'none'

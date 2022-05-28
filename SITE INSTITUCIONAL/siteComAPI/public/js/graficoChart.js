@@ -834,7 +834,7 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
 }
 function alertKit(userx, usery) {
     piso = slct_piso.value;  // qual o piso escolhido? 
-    kit = qualKit.value;
+ 
 
     // ver se as coordenadas do mapa BATEM IGUAL a do mouse, com um range para correção
     if ((piso == 1) && (userx > 100 && userx < 300) && (usery > 90 && usery < 190)) {
@@ -1072,14 +1072,24 @@ function troca(qual){
 }
 function curtoPrazo() { 
     troca('curto')
+    mediaLocal.textContent='Média diária'
     graficoPizza.style.display='block'
     horarioMedio.style.display='flex'
     cardLixo.style.display='none'
+    cardMenosLixo.style.display='none'
+    kitEnche.style.display='flex'
 }
 function medioPrazo(){
     troca('medio')
+    mediaLocal.textContent='Média semanal'
     graficoPizza.style.display='block'
     horarioMedio.style.display='none'
     cardLixo.style.display='flex'
+    cardMenosLixo.style.display='flex'
+    kitEnche.style.display='none'
+}
+function longoPrazo(){
+    mediaLocal.textContent='Média mensal'
+    troca('longo')
 }
 
