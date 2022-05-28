@@ -78,6 +78,7 @@ footer{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    border-right: 2px solid black;
 
 }
 
@@ -164,7 +165,8 @@ footer{
 }
 /* bordas e alterações nos cards da div */ 
 .cardGrafico{
-    box-shadow: 0px 5px 5px #b9b9b9;
+    border: 2px solid black;
+    box-shadow: 0px 5px 5px #93bf8e;
     padding: 8px ;
     border-radius: 10px;
     width: 100%;
@@ -279,9 +281,8 @@ footer{
     display: flex;
     width: 100%;
     height: 90%;
-    background-color: var(--color-white);
+    background-color: #aae393;
 }
-
 .colunasDash{
     height: 100%;
     width: 30%;
@@ -290,6 +291,7 @@ footer{
     justify-content:space-between;
     align-items: center;
     margin-top:5%;
+
 }
 
 #verKits:hover{
@@ -425,7 +427,7 @@ footer{
 }
 
 .alertafr3{ 
-    margin-top: 5%;
+    margin-bottom: 5%;
 }
 .kitsCheios{
     color:red;
@@ -457,4 +459,9 @@ footer{
     margin-bottom: 10px;
     padding: 5px;
     border-radius: 5px;
+}
+
+.escolherTipo{ 
+    background-color:var(--color-green);
+    color:black;
 }

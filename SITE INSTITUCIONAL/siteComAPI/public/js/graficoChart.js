@@ -100,14 +100,39 @@ function diaMaisLixo() {
                 menorValor = dataSem.datasets[i].data[j];
                 qualDia[0] = labelsSem[j];
             }
-
+            diaMesMenosLixo.textContent = 'Dia com menos lixo'
+            diaMesMaisLixo.textContent = 'Dia com mais lixo'
             diaLixoMais.innerHTML = qualDia[1];
             diaLixoMenos.innerHTML = qualDia[0]
         }
     }
 
 }
-diaMaisLixo()
+function mesMaisLixo() {
+    let maiorValor = 0;
+    let menorValor = dataMes.datasets[0].data[0];
+    let qualDia = [menorValor, maiorValor];
+
+    for (i = 0; i < dataMes.datasets.length; i++) {
+        for (j = 0; j < dataMes.datasets[i].data.length; j++) {
+            if (maiorValor < dataMes.datasets[i].data[j]) {
+                maiorValor = dataMes.datasets[i].data[j];
+                console.log(maiorValor)
+                qualDia[1] = labelsMes[j];
+            }
+            if (menorValor >= dataMes.datasets[i].data[j]) {
+                console.log('oii')
+                menorValor = dataMes.datasets[i].data[j];
+                qualDia[0] = labelsMes[j];
+            }
+            diaMesMenosLixo.textContent = 'Mês com menos lixo'
+            diaMesMaisLixo.textContent = 'Mês com mais lixo'
+            diaLixoMais.innerHTML = qualDia[1];
+            diaLixoMenos.innerHTML = qualDia[0]
+        }
+    }
+}
+
 //graph ultimas 24H
 
 const labelsDia = [
@@ -834,7 +859,7 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
 }
 function alertKit(userx, usery) {
     piso = slct_piso.value;  // qual o piso escolhido? 
- 
+
 
     // ver se as coordenadas do mapa BATEM IGUAL a do mouse, com um range para correção
     if ((piso == 1) && (userx > 100 && userx < 300) && (usery > 90 && usery < 190)) {
@@ -859,9 +884,8 @@ function alertKit(userx, usery) {
 
 function trocaMapa() {
 
-    intervalo_exib.style.display = 'none';
-    piso_exib.style.display = 'block';
-    slct_graph.style.display = 'none'
+
+
     slct_piso.style.display = 'block';
     graph.style.display = 'none'
     mapa.style.display = 'block'
@@ -872,14 +896,10 @@ function trocaMapa() {
 }
 
 function trocaGraph() {
-
-    intervalo_exib.style.display = 'block';
-    piso_exib.style.display = 'none';
-    slct_graph.style.display = 'block'
     slct_piso.style.display = 'none';
     graph.style.display = 'block'
     mapa.style.display = 'none'
-    mediaLocal.innerHTML = 'Média de lotação '
+    mediaLocal.innerHTML = 'Média de lotação'
 
 }
 
@@ -1049,8 +1069,8 @@ function intermediaria() {
 
 
 
-function troca(qual){
-    switch(qual){
+function troca(qual) {
+    switch (qual) {
         case 'longo':
             mensal.style.display = 'block'
             semanal.style.display = 'none'
@@ -1066,30 +1086,38 @@ function troca(qual){
             semanal.style.display = 'none'
             diario.style.display = 'block'
             break;
-    
+
     }
 
 }
-function curtoPrazo() { 
+curtoPrazo()
+function curtoPrazo() {
     troca('curto')
-    mediaLocal.textContent='Média diária'
-    graficoPizza.style.display='block'
-    horarioMedio.style.display='flex'
-    cardLixo.style.display='none'
-    cardMenosLixo.style.display='none'
-    kitEnche.style.display='flex'
+    mediaLocal.textContent = 'Média diária'
+    graficoPizza.style.display = 'block'
+    horarioMedio.style.display = 'flex'
+    cardLixo.style.display = 'none'
+    cardMenosLixo.style.display = 'none'
+    kitEnche.style.display = 'flex'
 }
-function medioPrazo(){
+function medioPrazo() {
+    diaMaisLixo()
     troca('medio')
-    mediaLocal.textContent='Média semanal'
-    graficoPizza.style.display='block'
-    horarioMedio.style.display='none'
-    cardLixo.style.display='flex'
-    cardMenosLixo.style.display='flex'
-    kitEnche.style.display='none'
+    mediaLocal.textContent = 'Média semanal'
+    graficoPizza.style.display = 'block'
+    horarioMedio.style.display = 'none'
+    cardLixo.style.display = 'flex'
+    cardMenosLixo.style.display = 'flex'
+    kitEnche.style.display = 'none'
 }
-function longoPrazo(){
-    mediaLocal.textContent='Média mensal'
+function longoPrazo() {
+    mesMaisLixo()
+    graficoPizza.style.display = 'block'
+    horarioMedio.style.display = 'none'
+    cardLixo.style.display = 'flex'
+    cardMenosLixo.style.display = 'flex'
+    kitEnche.style.display = 'none'
+    mediaLocal.textContent = 'Média mensal'
     troca('longo')
 }
 
