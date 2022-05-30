@@ -22,7 +22,7 @@ var mySqlConfig = {
     host: "localhost",
     user: "root",
     database: "ecometer",
-    password: "pjTw&XK^tmkA",
+    password: "akemih32",
 };//colocar o usuario e a senha do seu WORKBENCH
 
 function executar(instrucao) {
