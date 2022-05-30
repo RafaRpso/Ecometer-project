@@ -2,7 +2,7 @@
 // Comentei pq tava precisando logar pra alterar o site e isso é chato. - Rafael
 
 // sessão
-/*
+
 function validarSessao() {
     // aguardar();
 
@@ -61,7 +61,7 @@ function fecharModal() {
     divModal.style.display = "none";
 }
 
- */ 
+ 
 
 
 

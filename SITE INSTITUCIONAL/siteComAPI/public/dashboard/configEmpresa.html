@@ -74,36 +74,42 @@
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
-            }
-        })
-    }
+            },
+            body: JSON.stringify({
+                idFuncionario: idFuncionario
+            })
+        }).then(function (resposta) {
+                if (resposta.ok) {
+                    document.location.reload(true)
+                }
+            })
 
+        }
+    
 
-    fetch("../funcionarios/pegarFunc", {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idEmpresa: idEmpresa
-        })
-    }).then(function (resposta) {
-        if (resposta.ok) {
-            for (var index = 0; index < 10; index++) {
-                resposta.json().then(json => {
-                    for (var index = 0; index < json.length; index++) {
-                        idFunc = Number(json[index].idFuncionario);
-                        nome = json[index].nomeFuncionario;
-                        email = json[index].emailFuncionario;
-
-                        div_func.innerHTML += `<div class="box_func">
+        fetch("../funcionarios/pegarFunc", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idEmpresa: idEmpresa
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                for (var index = 0; index < 10; index++) {
+                    resposta.json().then(json => {
+                        for (var index = 0; index < json.length; index++) {
+                            idFunc = json[index].idFuncionario;
+                            nome = json[index].nomeFuncionario;
+                            email = json[index].emailFuncionario;
+                            console.log(`${idFunc}`)
+                            div_func.innerHTML += `<div class="box_func">
                                                     ID: ${idFunc} <b>|</b> Nome: ${nome} <b>|</b> E-Mail: ${email} <button onclick="excluirFunc(${idFunc})" style="float: right">[x]</button>
                                                 </div>`
-                    }
-                })
+                        }
+                    })
+                }
             }
-        }
-    })
-
-
+        })
 </script>
