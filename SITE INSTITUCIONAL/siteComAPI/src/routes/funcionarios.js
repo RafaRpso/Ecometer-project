@@ -8,4 +8,9 @@ router.post("/pegarFunc", function (req, res) {
     funcionarioController.buscarFuncionarios(req, res);
 });
 
+router.post("/deleteFunc", function (req, res) {
+    console.log('Cheguei na rota!')
+    funcionarioController.deletarFuncionarios(req, res);
+});
+
 module.exports = router;

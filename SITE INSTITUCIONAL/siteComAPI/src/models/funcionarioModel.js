@@ -5,9 +5,16 @@ function buscarFuncionarios(idEmpresa) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function deletarFuncionarios(idFuncionario) {
+    instrucaoSql = `delete from funcionario where idFuncionario = ${idFuncionario}`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 
 
 module.exports = {
-    buscarFuncionarios
+    buscarFuncionarios,
+    deletarFuncionarios
 }

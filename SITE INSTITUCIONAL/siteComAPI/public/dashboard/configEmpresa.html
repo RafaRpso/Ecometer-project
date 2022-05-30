@@ -69,7 +69,14 @@
     var idEmpresa = sessionStorage.ID_USUARIO;
     var email = '';
 
-    
+    function excluirFunc(idFuncionario) {
+        fetch("../funcionarios/deleteFunc", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+    }
 
 
     fetch("../funcionarios/pegarFunc", {
@@ -90,7 +97,7 @@
                         email = json[index].emailFuncionario;
 
                         div_func.innerHTML += `<div class="box_func">
-                                                    ID: ${idFunc} <b>|</b> Nome: ${nome} <b>|</b> E-Mail: ${email} <button onclick="removerFunc(${idFunc})">[x]</button>
+                                                    ID: ${idFunc} <b>|</b> Nome: ${nome} <b>|</b> E-Mail: ${email} <button onclick="excluirFunc(${idFunc})" style="float: right">[x]</button>
                                                 </div>`
                     }
                 })
@@ -98,7 +105,5 @@
         }
     })
 
-    
 
-    
 </script>
