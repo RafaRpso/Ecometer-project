@@ -597,7 +597,7 @@ function relatorioLixeira(arr, numKit) {
         i += 3;
     }
 
-    console.log(kits)
+
 
 }
 
@@ -979,7 +979,7 @@ function kitsLotadosAssicronos(arr, idKit) {
         kitsLotados.innerHTML += `<b class='kitsCheios'> ${quaisKitLotado[i]}</b> &nbsp;&nbsp;`;
     }
     kitsLotadosNumeros.innerHTML = contadorLixeirasLotadas;
-    console.log(quaisKitLotado.length)
+
 
 
 }
@@ -1059,7 +1059,6 @@ function ocultarKit() {
 function intermediaria() {
     kit = qualKit.value;
     kitEscolhido = eval('dataKit' + kit)
-    console.log(kitEscolhido)
     selecionaAutomaticoAlerta(kitEscolhido, kit)
     verKit(kit);
 
