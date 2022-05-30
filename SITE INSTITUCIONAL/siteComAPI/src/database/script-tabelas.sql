@@ -193,3 +193,20 @@ SELECT fkEmpresa, fkEstabelecimento, idKitLixeira, idLixeira, IdSensor, nivel, i
 -- SELECT que mostrar as Empresas e seus Estabelecimentos --
 SELECT fkEmpresa, nomeEmpresa, fkEstabelecimento, nomeEstabelecimento FROM Empresa, kitLixeira, Estabelecimento WHERE idEmpresa = fkEmpresa AND idEstabelecimento = fkEstabelecimento AND fkEmpresa = 2;
 
+-- SELECT que mostrar todos os registros que deram sinal = 1 de todas as lixeiras em ordem desc --
+SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, nivel, idRegistro, dataHoraSensor, sinal FROM kitLixeira, lixeira, sensor, registro  WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' ORDER BY NIVEL DESC; 
+
+
+-- SELECT que mostra os ultimos dados de uma lixeira especifica em ordem desc --
+SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, nivel, idRegistro, dataHoraSensor, sinal FROM kitLixeira, lixeira, sensor, registro  WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND idLixeira = 1 ORDER BY NIVEL DESC; 
+
+-- SELECT que mostra o ultimo dado de uma lixeira especifica em ordem desc e limitado em 1 -- 
+SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, nivel, idRegistro, dataHoraSensor, sinal FROM kitLixeira, lixeira, sensor, registro  WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND idLixeira = 1 ORDER BY NIVEL DESC LIMIT 1;
+
+-- SELECT que conta os registros que deram sinal = 1 de uma determinada lixeira --
+SELECT count(idLixeira) FROM kitLixeira, lixeira, sensor, registro WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND idLixeira = (1);
+
+-- ESSE É O MAIS IMPORTANTE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --
+-- SELECT que conta os registros que deram sinal = 1 de todas as lixeiras de um determinado kit --
+SELECT idLixeira, count(idLixeira) AS 'Nivel'  FROM kitLixeira, lixeira, sensor, registro WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND idKitLixeira = '1' GROUP BY idLixeira;
+
