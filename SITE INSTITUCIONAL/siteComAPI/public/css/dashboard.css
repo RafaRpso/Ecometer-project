@@ -454,6 +454,10 @@ footer{
 } 
 
 /* config empresa*/
+#logo a {
+    text-decoration: none;
+    color: black;
+}
 .configFunc {
     text-align: left;
     width: 1000px;
@@ -484,3 +488,5 @@ footer{
     background-color:var(--color-green);
     color:black;
 }
+
+

@@ -134,7 +134,23 @@ INSERT INTO sensor VALUES
 (NULL, 8, 'TCRT5000', 1),
 (NULL, 8, 'TCRT5000', 2),
 (NULL, 8, 'TCRT5000', 3),
-(NULL, 8, 'TCRT5000', 4);
+(NULL, 8, 'TCRT5000', 4),
+(NULL, 9, 'TCRT5000', 1),
+(NULL, 9, 'TCRT5000', 2),
+(NULL, 9, 'TCRT5000', 3),
+(NULL, 9, 'TCRT5000', 4),
+(NULL, 10, 'TCRT5000', 1),
+(NULL, 10, 'TCRT5000', 2),
+(NULL, 10, 'TCRT5000', 3),
+(NULL, 10, 'TCRT5000', 4),
+(NULL, 11, 'TCRT5000', 1),
+(NULL, 11, 'TCRT5000', 2),
+(NULL, 11, 'TCRT5000', 3),
+(NULL, 11, 'TCRT5000', 4),
+(NULL, 12, 'TCRT5000', 1),
+(NULL, 12, 'TCRT5000', 2),
+(NULL, 12, 'TCRT5000', 3),
+(NULL, 12, 'TCRT5000', 4);
 
 -- Utilizar somente para testar os select --
 
@@ -211,6 +227,6 @@ SELECT count(idLixeira) FROM kitLixeira, lixeira, sensor, registro WHERE idKitLi
 SELECT idLixeira, count(idLixeira) AS 'Nivel'  FROM kitLixeira, lixeira, sensor, registro WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND idKitLixeira = '1' GROUP BY idLixeira;
 
 --SELECT PARA PEGAR A MÉDIA
-select tipoLixeira, dataHoraSensor, sum(sinal) / (select count(idLixeira) from lixeira where tipoLixeira = 'Plástico') from lixeira join sensor on idLixeira = fkLixeira
+select tipoLixeira, dataHoraSensor, round(sum(sinal) / (select count(idLixeira) from lixeira where tipoLixeira = 'Plástico'), 2) from lixeira join sensor on idLixeira = fkLixeira
 join registro on idSensor = fkSensor where tipoLixeira = 'Plástico' group by tipoLixeira;
 

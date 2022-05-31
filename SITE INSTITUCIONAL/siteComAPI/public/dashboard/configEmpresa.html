@@ -40,7 +40,7 @@
                 <img onclick="mostrarNavBar()" style="display: none;" id="mostrarMenu"
                     src="../Icones/menu-hamburguer.png" alt="">
                 <div id="logo">
-                    <h1>Ecometer</h1>
+                    <a href="../dashboard.html"><h1>Ecometer</h1></a>
                     <p>dashboard</p>
                 </div>
             </div>
@@ -54,6 +54,8 @@
                     <div id="div_func">
 
                     </div>
+
+                   
                 </div>
             </div>
         </div>
@@ -70,6 +72,7 @@
     var email = '';
 
     function excluirFunc(idFuncionario) {
+        
         fetch("../funcionarios/deleteFunc", {
             method: 'POST',
             headers: {
