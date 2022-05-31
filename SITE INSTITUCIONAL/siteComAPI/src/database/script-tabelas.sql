@@ -11,7 +11,7 @@ senha VARCHAR(45)
 );
 
 CREATE TABLE Funcionario(
-    idFuncionario INT,
+    idFuncionario INT AUTO_INCREMENT,
     fkEmpresa INT,
     FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa),
     nomeFuncionario VARCHAR(45),
