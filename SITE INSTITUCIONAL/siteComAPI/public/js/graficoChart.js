@@ -219,7 +219,17 @@ function plotarGrafico(resposta) {
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2],
         }
         ]
-    }
+    };
+    const configDia = {
+    type: 'line',
+    data: dataDia,
+    options: {}
+};
+
+const myChartDia = new Chart(
+    document.getElementById('diario'),
+    configDia
+);
 };
 
 
@@ -274,16 +284,7 @@ function buscarKitEnche() {
 buscarKitEnche();
 buscaTempoCheio()
 
-const configDia = {
-    type: 'line',
-    data: dataDia,
-    options: {}
-};
 
-const myChartDia = new Chart(
-    document.getElementById('diario'),
-    configDia
-);
 
 //gráfico pizza
 
