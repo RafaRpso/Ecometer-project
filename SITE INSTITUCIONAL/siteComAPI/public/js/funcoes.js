@@ -3,7 +3,7 @@
 
 // sessão
 
-/*function validarSessao() {
+function validarSessao() {
     // aguardar();
 
     var email = sessionStorage.EMAIL_USUARIO;
@@ -61,7 +61,7 @@ function fecharModal() {
     divModal.style.display = "none";
 }
 
- */
+ 
 
 
 
