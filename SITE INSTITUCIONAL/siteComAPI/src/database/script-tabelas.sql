@@ -11,7 +11,7 @@ senha VARCHAR(45)
 );
 
 CREATE TABLE Funcionario(
-    idFuncionario INT,
+    idFuncionario INT AUTO_INCREMENT,
     fkEmpresa INT,
     FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa),
     nomeFuncionario VARCHAR(45),
@@ -134,7 +134,23 @@ INSERT INTO sensor VALUES
 (NULL, 8, 'TCRT5000', 1),
 (NULL, 8, 'TCRT5000', 2),
 (NULL, 8, 'TCRT5000', 3),
-(NULL, 8, 'TCRT5000', 4);
+(NULL, 8, 'TCRT5000', 4),
+(NULL, 9, 'TCRT5000', 1),
+(NULL, 9, 'TCRT5000', 2),
+(NULL, 9, 'TCRT5000', 3),
+(NULL, 9, 'TCRT5000', 4),
+(NULL, 10, 'TCRT5000', 1),
+(NULL, 10, 'TCRT5000', 2),
+(NULL, 10, 'TCRT5000', 3),
+(NULL, 10, 'TCRT5000', 4),
+(NULL, 11, 'TCRT5000', 1),
+(NULL, 11, 'TCRT5000', 2),
+(NULL, 11, 'TCRT5000', 3),
+(NULL, 11, 'TCRT5000', 4),
+(NULL, 12, 'TCRT5000', 1),
+(NULL, 12, 'TCRT5000', 2),
+(NULL, 12, 'TCRT5000', 3),
+(NULL, 12, 'TCRT5000', 4);
 
 -- Utilizar somente para testar os select --
 
@@ -192,4 +208,25 @@ SELECT fkEmpresa, fkEstabelecimento, idKitLixeira, idLixeira, IdSensor, nivel, i
 
 -- SELECT que mostrar as Empresas e seus Estabelecimentos --
 SELECT fkEmpresa, nomeEmpresa, fkEstabelecimento, nomeEstabelecimento FROM Empresa, kitLixeira, Estabelecimento WHERE idEmpresa = fkEmpresa AND idEstabelecimento = fkEstabelecimento AND fkEmpresa = 2;
+
+-- SELECT que mostrar todos os registros que deram sinal = 1 de todas as lixeiras em ordem desc --
+SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, nivel, idRegistro, dataHoraSensor, sinal FROM kitLixeira, lixeira, sensor, registro  WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' ORDER BY NIVEL DESC; 
+
+
+-- SELECT que mostra os ultimos dados de uma lixeira especifica em ordem desc --
+SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, nivel, idRegistro, dataHoraSensor, sinal FROM kitLixeira, lixeira, sensor, registro  WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND idLixeira = 1 ORDER BY NIVEL DESC; 
+
+-- SELECT que mostra o ultimo dado de uma lixeira especifica em ordem desc e limitado em 1 -- 
+SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, nivel, idRegistro, dataHoraSensor, sinal FROM kitLixeira, lixeira, sensor, registro  WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND idLixeira = 1 ORDER BY NIVEL DESC LIMIT 1;
+
+-- SELECT que conta os registros que deram sinal = 1 de uma determinada lixeira --
+SELECT count(idLixeira) FROM kitLixeira, lixeira, sensor, registro WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND idLixeira = (1);
+
+-- ESSE É O MAIS IMPORTANTE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! --
+-- SELECT que conta os registros que deram sinal = 1 de todas as lixeiras de um determinado kit --
+SELECT idLixeira, count(idLixeira) AS 'Nivel'  FROM kitLixeira, lixeira, sensor, registro WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND idKitLixeira = '1' GROUP BY idLixeira;
+
+--SELECT PARA PEGAR A MÉDIA
+select tipoLixeira, dataHoraSensor, round(sum(sinal) / (select count(idLixeira) from lixeira where tipoLixeira = 'Plástico'), 2) from lixeira join sensor on idLixeira = fkLixeira
+join registro on idSensor = fkSensor where tipoLixeira = 'Plástico' group by tipoLixeira;
 

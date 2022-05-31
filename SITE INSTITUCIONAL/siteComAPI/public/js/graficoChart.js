@@ -100,31 +100,93 @@ function diaMaisLixo() {
                 menorValor = dataSem.datasets[i].data[j];
                 qualDia[0] = labelsSem[j];
             }
-
+            diaMesMenosLixo.textContent = 'Dia com menos lixo'
+            diaMesMaisLixo.textContent = 'Dia com mais lixo'
             diaLixoMais.innerHTML = qualDia[1];
             diaLixoMenos.innerHTML = qualDia[0]
         }
     }
 
 }
-diaMaisLixo()
-//graph ultimas 24H
+function mesMaisLixo() {
+    let maiorValor = 0;
+    let menorValor = dataMes.datasets[0].data[0];
+    let qualDia = [menorValor, maiorValor];
 
+    for (i = 0; i < dataMes.datasets.length; i++) {
+        for (j = 0; j < dataMes.datasets[i].data.length; j++) {
+            if (maiorValor < dataMes.datasets[i].data[j]) {
+                maiorValor = dataMes.datasets[i].data[j];
+                console.log(maiorValor)
+                qualDia[1] = labelsMes[j];
+            }
+            if (menorValor >= dataMes.datasets[i].data[j]) {
+                console.log('oii')
+                menorValor = dataMes.datasets[i].data[j];
+                qualDia[0] = labelsMes[j];
+            }
+            diaMesMenosLixo.textContent = 'Mês com menos lixo'
+            diaMesMaisLixo.textContent = 'Mês com mais lixo'
+            diaLixoMais.innerHTML = qualDia[1];
+            diaLixoMenos.innerHTML = qualDia[0]
+        }
+    }
+}
+
+//graph ultimas 24H
+// O gráfico é construído com três funções:
+// 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+// 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+// 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+// Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+// para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+// A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+//     Para ajustar o "select", ajuste o comando sql em src/models
+
+function obterDadosGrafico(idEmpresa) {
+console.log(`fazendo conexão com o banco para obter dados; id: ${idEmpresa}`)
+    fetch(`/medidas/ultimas/buscarMedia`, {
+        cache: 'no-store',
+        body: JSON.stringify({
+            idEmpresa: idEmpresa
+        })
+    }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                plotarGrafico(resposta);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+// Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+// A função *plotarGrafico* também invoca a função *atualizarGrafico*
 const labelsDia = [
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-    '22:00'
+     /*'09:00',
+     '10:00',
+     '11:00',
+     '12:00',
+     '13:00',
+     '14:00',
+     '15:00',
+     '16:00',
+     '17:00',
+     '18:00',
+     '19:00',
+     '20:00',
+     '21:00',
+     '22:00'*/
 
 ];
 
@@ -134,29 +196,53 @@ const dataDia = {
         label: 'Plástico',
         backgroundColor: vermelho,
         borderColor: vermelho,
-        data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4],
+        data: [/*0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4*/],
     },
     {
         label: 'Papel',
         backgroundColor: '#4D96FF',
         borderColor: '#4D96FF',
-        data: [0, 0, 0, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4],
+        data: [/*0, 0, 0.5, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4*/],
     },
     {
         label: 'Metal',
         backgroundColor: amarelo,
         borderColor: amarelo,
-        data: [0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1],
+        data: [/*0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1*/],
     },
     {
         label: 'Vidro',
         backgroundColor: '#6BCB77',
         borderColor: '#6BCB77',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2],
+        data: [/*0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2*/],
     }
     ]
 };
+const configDia = {
+        type: 'line',
+        data: dataDia,
+        options: {}
+    };
 
+    const myChartDia = new Chart(
+        document.getElementById('diario'),
+        configDia
+    );
+function plotarGrafico(resposta) {
+    console.log('iniciando plotagem do gráfico...');
+
+    
+
+    for(index = 0; index < resposta.length; index++){
+        var registro = resposta[index];
+            dataDia.labels.push(registro.dataHoraSensor);
+            dataDia.datasets[0].data.push(registro.tipoLixeira);
+            
+    }
+    
+};
+
+obterDadosGrafico(sessionStorage.ID_USUARIO);
 
 
 /* Busca a hora média que o kit enche */
@@ -210,16 +296,7 @@ function buscarKitEnche() {
 buscarKitEnche();
 buscaTempoCheio()
 
-const configDia = {
-    type: 'line',
-    data: dataDia,
-    options: {}
-};
 
-const myChartDia = new Chart(
-    document.getElementById('diario'),
-    configDia
-);
 
 //gráfico pizza
 
@@ -239,11 +316,14 @@ const dataPie = {
             amarelo,
             '#6BCB77'
         ],
+        circumference: 180,
+        rotation: 270,
         hoverOffset: 4
     }]
 };
 
 const configPie = {
+
     type: 'doughnut',
     data: dataPie,
 };
@@ -336,7 +416,7 @@ const dataKit1 = {
     },
     {
         label: 'Vidro',
-        backgroundColor: '#6BCB77',
+        backgroundColor: verde,
         borderColor: '#6BCB77',
         data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 3],
     }
@@ -570,7 +650,7 @@ function relatorioLixeira(arr, numKit) {
         i += 3;
     }
 
-    console.log(kits)
+
 
 }
 
@@ -803,7 +883,7 @@ function clickHandler(myChartPiso, userClick) {
 //define o aparecimento dos gráficos no kit . 
 function verKit(kit) {     // pega o valor do kit que é fornecido pela função intermediaria, ou seja, o kit dessa função é o do select
     if (kit == 1) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
-      
+
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 1"
         kitIndividual1.style.display = 'block'
@@ -811,14 +891,14 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
         kitIndividual3.style.display = 'none'
     }
     else if (kit == 2) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
-      
+
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 2"
         kitIndividual1.style.display = 'none'
         kitIndividual2.style.display = 'block'
         kitIndividual3.style.display = 'none'
     } else if (kit == 3) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
-     
+
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 3"
         kitIndividual1.style.display = 'none'
@@ -834,7 +914,7 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
 }
 function alertKit(userx, usery) {
     piso = slct_piso.value;  // qual o piso escolhido? 
-    kit = qualKit.value;
+
 
     // ver se as coordenadas do mapa BATEM IGUAL a do mouse, com um range para correção
     if ((piso == 1) && (userx > 100 && userx < 300) && (usery > 90 && usery < 190)) {
@@ -855,32 +935,12 @@ function alertKit(userx, usery) {
 
 
 
-function troca() {
 
-    if (slct_graph.value == 1) {
-        mensal.style.display = 'block'
-        semanal.style.display = 'none'
-        diario.style.display = 'none'
-    }
-
-    if (slct_graph.value == 2) {
-        mensal.style.display = 'none'
-        semanal.style.display = 'block'
-        diario.style.display = 'none'
-    }
-
-    if (slct_graph.value == 3) {
-        mensal.style.display = 'none'
-        semanal.style.display = 'none'
-        diario.style.display = 'block'
-    }
-}
 
 function trocaMapa() {
 
-    intervalo_exib.style.display = 'none';
-    piso_exib.style.display = 'block';
-    slct_graph.style.display = 'none'
+
+
     slct_piso.style.display = 'block';
     graph.style.display = 'none'
     mapa.style.display = 'block'
@@ -891,14 +951,10 @@ function trocaMapa() {
 }
 
 function trocaGraph() {
-
-    intervalo_exib.style.display = 'block';
-    piso_exib.style.display = 'none';
-    slct_graph.style.display = 'block'
     slct_piso.style.display = 'none';
     graph.style.display = 'block'
     mapa.style.display = 'none'
-    mediaLocal.innerHTML = 'Média de lotação '
+    mediaLocal.innerHTML = 'Média de lotação'
 
 }
 
@@ -956,10 +1012,10 @@ function vermelho() {
 
 
 var quaisKitLotado = []
-var contadorLixeirasLotadas=0; 
+var contadorLixeirasLotadas = 0;
 function kitsLotadosAssicronos(arr, idKit) {
     let a = '';
-    contadorLixeirasLotadas ++; 
+    contadorLixeirasLotadas++;
     quaisKitLotado = []
 
     for (i = 0; i < arr.datasets.length; i++) {
@@ -972,28 +1028,28 @@ function kitsLotadosAssicronos(arr, idKit) {
     if (a == 'Kit ' + idKit) {
         quaisKitLotado.push(a)
     }
-    for (i = 0; i < quaisKitLotado.length; i++) { 
+    for (i = 0; i < quaisKitLotado.length; i++) {
         kitsLotados.innerHTML += `<b class='kitsCheios'> ${quaisKitLotado[i]}</b> &nbsp;&nbsp;`;
     }
     kitsLotadosNumeros.innerHTML = contadorLixeirasLotadas;
-    console.log(quaisKitLotado.length)
 
-    
+
+
 }
 
 
 
-function ocultaKitsLotados() { 
-    conteudoDivLotados.style.display='none';
+function ocultaKitsLotados() {
+    conteudoDivLotados.style.display = 'none';
     h3KitsLotados.innerHTML = 'Kits Lotados (oculto)'
-    botaoMostrarLotados.style.display='block';
-    botaoOcultarMostrados.style.display='none';
+    botaoMostrarLotados.style.display = 'block';
+    botaoOcultarMostrados.style.display = 'none';
 }
-function mostraKitsLotados() { 
-    conteudoDivLotados.style.display='block';
+function mostraKitsLotados() {
+    conteudoDivLotados.style.display = 'block';
     h3KitsLotados.innerHTML = 'Kits Lotados: '
-    botaoMostrarLotados.style.display='none';
-    botaoOcultarMostrados.style.display='block';
+    botaoMostrarLotados.style.display = 'none';
+    botaoOcultarMostrados.style.display = 'block';
 }
 // função que vê quais estão lotados 
 setInterval(() => {
@@ -1004,19 +1060,19 @@ setInterval(() => {
     kitsLotadosAssicronos(dataKit2, 2)
     kitsLotadosAssicronos(dataKit3, 3)
     kitsLotados = []
-    contadorLixeirasLotadas=0;
+    contadorLixeirasLotadas = 0;
 
 }, 1000)
 
 // quando selecionar o kit de lixo, demonstrar o alerta abaixo e acima 
-function selecionaAutomaticoAlerta(arr,idKit){
+function selecionaAutomaticoAlerta(arr, idKit) {
     for (i = 0; i < arr.datasets.length; i++) {
         for (j = 0; j <= arr.datasets[i].data.length; j++) {
             if (arr.datasets[i].data[j] == 4 && j == arr.datasets[i].data.length - 1) {
                 textoKit.innerHTML = "Kit " + idKit
                 alert("AVISO. ESTE KIT ESTÁ LOTADO.")
-                condicaoKit.innerHTML = "<b> O Kit "+idKit+"está LOTADO! </b>"
-                situacao.innerHTML = "<b> O Kit "+idKit+"está LOTADO! </b>"
+                condicaoKit.innerHTML = "<b> O Kit " + idKit + "está LOTADO! </b>"
+                situacao.innerHTML = "<b> O Kit " + idKit + "está LOTADO! </b>"
                 aviso1.style.display = 'none'
                 aviso2.style.display = 'none'
                 aviso3.style.display = 'none'
@@ -1055,9 +1111,8 @@ function ocultarKit() {
 //fornece a chave para ambas as funções efetuarem as coisas iguais, isto é: o mapa e o select button trocarem os kits
 function intermediaria() {
     kit = qualKit.value;
-    kitEscolhido = eval('dataKit'+kit)
-    console.log(kitEscolhido)
-    selecionaAutomaticoAlerta(kitEscolhido,kit)
+    kitEscolhido = eval('dataKit' + kit)
+    selecionaAutomaticoAlerta(kitEscolhido, kit)
     verKit(kit);
 
     return 0;
@@ -1065,4 +1120,58 @@ function intermediaria() {
 
 
 
+
+
+
+function troca(qual) {
+    switch (qual) {
+        case 'longo':
+            mensal.style.display = 'block'
+            semanal.style.display = 'none'
+            diario.style.display = 'none'
+            break;
+        case 'medio':
+            mensal.style.display = 'none'
+            semanal.style.display = 'block'
+            diario.style.display = 'none'
+            break;
+        case 'curto':
+            mensal.style.display = 'none'
+            semanal.style.display = 'none'
+            diario.style.display = 'block'
+            break;
+
+    }
+
+}
+curtoPrazo()
+function curtoPrazo() {
+    troca('curto')
+    mediaLocal.textContent = 'Média diária'
+    graficoPizza.style.display = 'block'
+    horarioMedio.style.display = 'flex'
+    cardLixo.style.display = 'none'
+    cardMenosLixo.style.display = 'none'
+    kitEnche.style.display = 'flex'
+}
+function medioPrazo() {
+    diaMaisLixo()
+    troca('medio')
+    mediaLocal.textContent = 'Média semanal'
+    graficoPizza.style.display = 'block'
+    horarioMedio.style.display = 'none'
+    cardLixo.style.display = 'flex'
+    cardMenosLixo.style.display = 'flex'
+    kitEnche.style.display = 'none'
+}
+function longoPrazo() {
+    mesMaisLixo()
+    graficoPizza.style.display = 'block'
+    horarioMedio.style.display = 'none'
+    cardLixo.style.display = 'flex'
+    cardMenosLixo.style.display = 'flex'
+    kitEnche.style.display = 'none'
+    mediaLocal.textContent = 'Média mensal'
+    troca('longo')
+}
 

@@ -37,10 +37,10 @@
         <div id="main">
             <div id="header">
 
-                <img onclick="mostrarNavBar()" style="display: none;" id="mostrarMenu" src="../Icones/menu-hamburguer.png"
-                    alt="">
+                <img onclick="mostrarNavBar()" style="display: none;" id="mostrarMenu"
+                    src="../Icones/menu-hamburguer.png" alt="">
                 <div id="logo">
-                    <h1>Ecometer</h1>
+                    <a href="../dashboard.html"><h1>Ecometer</h1></a>
                     <p>dashboard</p>
                 </div>
             </div>
@@ -49,12 +49,13 @@
             <div class="configFunc">
                 <h3>Funcionarios</h3>
                 <div id="funcionarios">
-                    <a href="../cad_funcionario.html">Adicionar Funcionario</a>
-                    <a href="">Gerenciar Funcionarios</a>
+                    <a href="cad_funcionario.html">Adicionar Funcionario</a>
 
                     <div id="div_func">
-                
+
                     </div>
+
+                   
                 </div>
             </div>
         </div>
@@ -65,38 +66,53 @@
 </html>
 
 <script>
-    var idFunc = 0
+    var idFunc = 0;
     var nome = '';
     var idEmpresa = sessionStorage.ID_USUARIO;
     var email = '';
 
-
-   fetch("../funcionarios/pegarFunc", {
-       method: 'POST',
-       headers: {
-           "Content-Type": "application/json"
-       }, 
-       body: JSON.stringify ({
-           idEmpresa: idEmpresa
-       })
-    }).then (function(resposta){
-           if(resposta.ok) {
-               for (var index =0; index < 2; index++) {
-                   resposta.json().then(json=> {
-                    for(var index =0; index < json.length; index++) {
-                        idFunc = json[index].idFuncionario;
-                        nome = json[index].nomeFuncionario;
-                        email = json[index].emailFuncionario;
-
-                        div_func.innerHTML += `<div class="box_func">
-                                                    id: ${idFunc}; nome: ${nome}; email: ${email}
-                                                </div><br>`
-                    }
-                   })
-               }
-           }
-       })
+    function excluirFunc(idFuncionario) {
         
-       
-   
+        fetch("../funcionarios/deleteFunc", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idFuncionario: idFuncionario
+            })
+        }).then(function (resposta) {
+                if (resposta.ok) {
+                    document.location.reload(true)
+                }
+            })
+
+        }
+    
+
+        fetch("../funcionarios/pegarFunc", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idEmpresa: idEmpresa
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                for (var index = 0; index < 10; index++) {
+                    resposta.json().then(json => {
+                        for (var index = 0; index < json.length; index++) {
+                            idFunc = json[index].idFuncionario;
+                            nome = json[index].nomeFuncionario;
+                            email = json[index].emailFuncionario;
+                            console.log(`${idFunc}`)
+                            div_func.innerHTML += `<div class="box_func">
+                                                    ID: ${idFunc} <b>|</b> Nome: ${nome} <b>|</b> E-Mail: ${email} <button onclick="excluirFunc(${idFunc})" style="float: right">[x]</button>
+                                                </div>`
+                        }
+                    })
+                }
+            }
+        })
 </script>

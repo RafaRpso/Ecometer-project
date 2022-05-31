@@ -1,14 +1,11 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
-    instrucaoSql = `select 
-                        temperatura, 
-                        umidade, 
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
-                    order by id desc limit ${limite_linhas}`;
+function buscarMediaDasMedidas(idEmpresa) {
+    instrucaoSql = `select tipoLixeira, dataHoraSensor, round(sum(sinal) / (select count(idkitLixeira) from kitlixeira where fkEmpresa = ${idEmpresa}), 2) as media from lixeira 
+    join sensor on idLixeira = fkLixeira
+    join registro on idSensor = fkSensor 
+    join kitLixeira on idKitLixeira = fkKitLixeira
+    where fkEmpresa = ${idEmpresa}  group by tipoLixeira;`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -27,6 +24,6 @@ function buscarMedidasEmTempoReal(idAquario) {
 
 
 module.exports = {
-    buscarUltimasMedidas,
+    buscarMediaDasMedidas,
     buscarMedidasEmTempoReal
 }
