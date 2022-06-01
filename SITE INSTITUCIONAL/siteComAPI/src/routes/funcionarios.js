@@ -14,4 +14,9 @@ router.post("/deleteFunc", function (req, res) {
     
 });
 
+router.post("/autenticarF", function (req, res) {
+    funcionarioController.entrarFuncionario(req, res);
+});
+
+
 module.exports = router;

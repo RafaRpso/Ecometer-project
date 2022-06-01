@@ -8,9 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/universal.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Ecometer | Login</title>
 
 </head>
@@ -42,31 +41,65 @@
 
     <!-- fim navbar  -->
 
-    </div>
-    <div class="content" id="dadosCadastrais">
-        <div class="container">
-            <h2> Faça aqui o seu Login </h2>
-            <div class="alinhamento"></div>
-            <div id="loginForm">
+    <span class="divLoginEmpresa" id="divLoginEmpresa" >
+        <div class="content" id="dadosCadastrais">
+            <div class="container">
+                <h2> Faça aqui o seu Login </h2>
+                <div class="alinhamento"></div>
+                <div id="loginForm">
 
-                Email<br>
-                <input type="email" name="" id="email_input">
-                <br>
-                Senha<br>
-                <input type="password" name="" id="senha_input">
-                <br>
-            </div>
-            <h6>Não tem conta? <a href="cadastro.html">Crie Uma</a></h6>
+                    Email<br>
+                    <input type="email" name="" id="email_input">
+                    <br>
+                    Senha<br>
+                    <input type="password" name="" id="senha_input">
+                    <br>
+                </div>
+                <h6>Não tem conta? <a href="cadastro.html">Crie Uma</a></h6>
+                <h6>Entrar como funcionario
+                    <span class="clique" onclick="trocarLogin()">Clique aqui</span>
+               </h6>
 
-            <button onclick="entrar()">
-                Logar
-            </button>
+                <button onclick="entrar()">
+                    Logar
+                </button>
+                <div id="div_aguardar" class="loading-div">
+                    <img src="Icones/loader.gif" id="loading-gif">
+                </div>
 
-            <div id="div_aguardar" class="loading-div">
-                <img src="Icones/loader.gif" id="loading-gif">
             </div>
         </div>
-    </div>
+    </span>
+
+    <span class="divLoginFuncionario" id="divLoginFuncionario" style="display: none;">
+        <div class="content" id="dadosCadastrais">
+            <div class="container">
+                <h2> Funcionario Login </h2>
+                <div class="alinhamento"></div>
+                <div id="loginForm">
+
+                    Email<br>
+                    <input type="email" name="" id="emailInput">
+                    <br>
+                    Senha<br>
+                    <input type="password" name="" id="senhaInput">
+                    <br>
+                </div>
+                <h6>Não tem conta? <a href="cadastro.html">Crie Uma</a></h6>
+                <h6>Entrar como empresa
+                     <span class="clique" onclick="trocarLogin()">Clique aqui</span>
+                </h6>
+
+                <button onclick="entrarFunc()">
+                    Logar
+                </button>
+                <div id="div_aguardar" class="loading-div">
+                    <img src="Icones/loader.gif" id="loading-gif">
+                </div>
+
+            </div>
+        </div>
+    </span>
 
     <div id="confirmarDados">
 
@@ -114,18 +147,34 @@
 
 <script src="js/funcoes.js"></script>
 <script>
+    /* Função que faz o login da empresa */
+    var trocar = true;
+
+    function trocarLogin() {
+
+        if (trocar == true) {
+            divLoginEmpresa.style ="display: none;"
+            divLoginFuncionario.style ="display: block;"
+
+            trocar = false;
+        } else {
+            divLoginEmpresa.style ="display: block;"
+            divLoginFuncionario.style ="display: none;"
+            trocar = true;
+        }
+
+    }
+
     function entrar() {
-        //aguardar();
+        /*  aguardar(); */
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
             alert("Preencha todos os campos.");
-            finalizarAguardar();
+            /*    finalizarAguardar(); */
             return false;
-        } else {
-            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -165,7 +214,7 @@
                 });
 
             } else {
-                finalizarAguardar();
+                /*    finalizarAguardar(); */
                 console.log("Houve um erro ao tentar realizar o login!");
                 alert("Email ou senha invalidos");
                 resposta.text().then(texto => {
@@ -181,7 +230,69 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
+    /* Função que faz o login do funcionario */
+    function entrarFunc() {
+        /*  aguardar(); */
+
+        var emailVar = emailInput.value;
+        var senhaVar = senhaInput.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            alert("Preencha todos os campos.");
+            /*    finalizarAguardar(); */
+            return false;
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/funcionarios/autenticarF", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    //Cria um armazenamento na sessão
+                    sessionStorage.EMAIL_USUARIO = json.emailFuncionario;
+                    sessionStorage.NOME_USUARIO = json.nomeFuncionario;
+                    sessionStorage.ID_USUARIO = json.idFuncionario;
+
+
+                    setTimeout(function () {
+                        //rota para o dash
+                        window.location = "dashboard.html";
+
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+                /*    finalizarAguardar(); */
+                console.log("Houve um erro ao tentar realizar o login!");
+                alert("Email ou senha invalidos");
+                resposta.text().then(texto => {
+                    console.error(texto);
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
 </script>
