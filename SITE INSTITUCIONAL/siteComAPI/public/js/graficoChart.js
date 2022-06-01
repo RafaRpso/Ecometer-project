@@ -148,11 +148,8 @@ function mesMaisLixo() {
 
 function obterDadosGrafico(idEmpresa) {
 console.log(`fazendo conexão com o banco para obter dados; id: ${idEmpresa}`)
-    fetch(`/medidas/ultimas/buscarMedia`, {
-        cache: 'no-store',
-        body: JSON.stringify({
-            idEmpresa: idEmpresa
-        })
+    fetch(`/medidas/ultimas/${idEmpresa}`, {
+        cache: 'no-store'
     }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {

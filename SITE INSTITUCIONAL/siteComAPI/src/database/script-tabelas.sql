@@ -345,7 +345,7 @@ SELECT count(idLixeira) FROM kitLixeira, lixeira, sensor, registro WHERE idKitLi
 -- SELECT que conta os registros que deram sinal = 1 de todas as lixeiras de um determinado kit --
 SELECT idLixeira, count(idLixeira) AS 'Nivel'  FROM kitLixeira, lixeira, sensor, registro WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND idKitLixeira = '1' GROUP BY idLixeira;
 
--- SELECT PARA PEGAR A MÉDIA --
+-- SELECT PARA PEGAR A MÉDIA DE TODAS AS LIXEIRAS DE UM DETERMINADO KIT--
 select tipoLixeira, dataHoraSensor, round(sum(sinal) / (select count(idLixeira) from lixeira where tipoLixeira = 'Plástico'), 2) from lixeira join sensor on idLixeira = fkLixeira
 join registro on idSensor = fkSensor where tipoLixeira = 'Plástico' group by tipoLixeira;
 

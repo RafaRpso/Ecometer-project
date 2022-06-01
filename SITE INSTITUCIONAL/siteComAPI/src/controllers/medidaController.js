@@ -2,7 +2,7 @@ var medidaModel = require("../models/medidaModel");
 
 function buscarMediaDasMedidas(req, res) {
 
-    var idEmpresa = req.body.idEmpresa
+    var idEmpresa = req.params.idEmpresa
 
     console.log(`Recuperando as medidas`);
 
