@@ -62,9 +62,9 @@ FOREIGN KEY(fkLixeira) REFERENCES lixeira(idLixeira)
 
 CREATE TABLE registro(
 idRegistro INT PRIMARY KEY AUTO_INCREMENT,
-fkSensor INT,
-dataHoraSensor DATETIME, 
 sinal int,
+fkSensor INT,
+dataHoraSensor DATETIME,
 FOREIGN kEY (FkSensor) REFERENCES sensor (IdSensor)
 );
 
@@ -158,155 +158,6 @@ INSERT INTO sensor VALUES
 (NULL, 12, 'TCRT5000', 3),
 (NULL, 12, 'TCRT5000', 4);
 
--- Utilizar somente para testar os select --
-
-INSERT INTO registro VALUES 
-(NULL, 1, '2022-05-25 09:00:00', 1),
-(NULL, 2, '2022-05-25 09:00:00', 1),
-(NULL, 3, '2022-05-25 09:00:00', 1),
-(NULL, 4, '2022-05-25 09:00:00', 0),
-(NULL, 5, '2022-05-25 09:00:00', 1),
-(NULL, 6, '2022-05-25 09:00:00', 0),
-(NULL, 7, '2022-05-25 09:00:00', 0),
-(NULL, 8, '2022-05-25 09:00:00', 0),
-(NULL, 9, '2022-05-25 09:00:00', 1),
-(NULL, 10, '2022-05-25 09:00:00', 1),
-(NULL, 11, '2022-05-25 09:00:00', 0),
-(NULL, 12, '2022-05-25 09:00:00', 0),
-(NULL, 13, '2022-05-25 09:00:00', 1),
-(NULL, 14, '2022-05-25 09:00:00', 1),
-(NULL, 15, '2022-05-25 09:00:00', 1),
-(NULL, 16, '2022-05-25 09:00:00', 1),
-(NULL, 17, '2022-05-25 09:00:00', 1),
-(NULL, 18, '2022-05-25 09:00:00', 1),
-(NULL, 19, '2022-05-25 09:00:00', 1),
-(NULL, 20, '2022-05-25 09:00:00', 0),
-(NULL, 21, '2022-05-25 09:00:00', 1),
-(NULL, 22, '2022-05-25 09:00:00', 0),
-(NULL, 23, '2022-05-25 09:00:00', 0),
-(NULL, 24, '2022-05-25 09:00:00', 0),
-(NULL, 25, '2022-05-25 09:00:00', 1),
-(NULL, 26, '2022-05-25 09:00:00', 1),
-(NULL, 27, '2022-05-25 09:00:00', 0),
-(NULL, 28, '2022-05-25 09:00:00', 0),
-(NULL, 29, '2022-05-25 09:00:00', 1),
-(NULL, 30, '2022-05-25 09:00:00', 1),
-(NULL, 31, '2022-05-25 09:00:00', 1),
-(NULL, 32, '2022-05-25 09:00:00', 1),
-(NULL, 33, '2022-05-25 09:00:00', 1),
-(NULL, 34, '2022-05-25 09:00:00', 1),
-(NULL, 35, '2022-05-25 09:00:00', 1),
-(NULL, 36, '2022-05-25 09:00:00', 1),
-(NULL, 37, '2022-05-25 09:00:00', 1),
-(NULL, 38, '2022-05-25 09:00:00', 1),
-(NULL, 39, '2022-05-25 09:00:00', 0),
-(NULL, 40, '2022-05-25 09:00:00', 0),
-(NULL, 41, '2022-05-25 09:00:00', 1),
-(NULL, 42, '2022-05-25 09:00:00', 0),
-(NULL, 43, '2022-05-25 09:00:00', 0),
-(NULL, 44, '2022-05-25 09:00:00', 0),
-(NULL, 45, '2022-05-25 09:00:00', 1),
-(NULL, 46, '2022-05-25 09:00:00', 1),
-(NULL, 47, '2022-05-25 09:00:00', 1),
-(NULL, 48, '2022-05-25 09:00:00', 1),
-(NULL, 1, '2022-05-25 10:00:00', 1),
-(NULL, 2, '2022-05-25 10:00:00', 1),
-(NULL, 3, '2022-05-25 10:00:00', 1),
-(NULL, 4, '2022-05-25 10:00:00', 1),
-(NULL, 5, '2022-05-25 10:00:00', 1),
-(NULL, 6, '2022-05-25 10:00:00', 1),
-(NULL, 7, '2022-05-25 10:00:00', 1),
-(NULL, 8, '2022-05-25 10:00:00', 0),
-(NULL, 9, '2022-05-25 10:00:00', 1),
-(NULL, 10, '2022-05-25 10:00:00', 1),
-(NULL, 11, '2022-05-25 10:00:00', 1),
-(NULL, 12, '2022-05-25 10:00:00', 0),
-(NULL, 13, '2022-05-25 10:00:00', 1),
-(NULL, 14, '2022-05-25 10:00:00', 1),
-(NULL, 15, '2022-05-25 10:00:00', 1),
-(NULL, 16, '2022-05-25 10:00:00', 1),
-(NULL, 17, '2022-05-25 10:00:00', 1),
-(NULL, 18, '2022-05-25 10:00:00', 1),
-(NULL, 19, '2022-05-25 10:00:00', 1),
-(NULL, 20, '2022-05-25 10:00:00', 0),
-(NULL, 21, '2022-05-25 10:00:00', 1),
-(NULL, 22, '2022-05-25 10:00:00', 1),
-(NULL, 23, '2022-05-25 10:00:00', 0),
-(NULL, 24, '2022-05-25 10:00:00', 0),
-(NULL, 25, '2022-05-25 10:00:00', 1),
-(NULL, 26, '2022-05-25 10:00:00', 1),
-(NULL, 27, '2022-05-25 10:00:00', 1),
-(NULL, 28, '2022-05-25 10:00:00', 0),
-(NULL, 29, '2022-05-25 10:00:00', 1),
-(NULL, 30, '2022-05-25 10:00:00', 1),
-(NULL, 31, '2022-05-25 10:00:00', 1),
-(NULL, 32, '2022-05-25 10:00:00', 1),
-(NULL, 33, '2022-05-25 10:00:00', 1),
-(NULL, 34, '2022-05-25 10:00:00', 1),
-(NULL, 35, '2022-05-25 10:00:00', 1),
-(NULL, 36, '2022-05-25 10:00:00', 1),
-(NULL, 37, '2022-05-25 10:00:00', 1),
-(NULL, 38, '2022-05-25 10:00:00', 1),
-(NULL, 39, '2022-05-25 10:00:00', 1),
-(NULL, 40, '2022-05-25 10:00:00', 0),
-(NULL, 41, '2022-05-25 10:00:00', 1),
-(NULL, 42, '2022-05-25 10:00:00', 1),
-(NULL, 43, '2022-05-25 10:00:00', 1),
-(NULL, 44, '2022-05-25 10:00:00', 0),
-(NULL, 45, '2022-05-25 10:00:00', 1),
-(NULL, 46, '2022-05-25 10:00:00', 1),
-(NULL, 47, '2022-05-25 10:00:00', 1),
-(NULL, 48, '2022-05-25 10:00:00', 1),
-(NULL, 1, '2022-05-25 11:00:00', 1),
-(NULL, 2, '2022-05-25 11:00:00', 1),
-(NULL, 3, '2022-05-25 11:00:00', 0),
-(NULL, 4, '2022-05-25 11:00:00', 0),
-(NULL, 5, '2022-05-25 11:00:00', 1),
-(NULL, 6, '2022-05-25 11:00:00', 0),
-(NULL, 7, '2022-05-25 11:00:00', 0),
-(NULL, 8, '2022-05-25 11:00:00', 0),
-(NULL, 9, '2022-05-25 11:00:00', 1),
-(NULL, 10, '2022-05-25 11:00:00', 0),
-(NULL, 11, '2022-05-25 11:00:00', 0),
-(NULL, 12, '2022-05-25 11:00:00', 0),
-(NULL, 13, '2022-05-25 11:00:00', 1),
-(NULL, 14, '2022-05-25 11:00:00', 1),
-(NULL, 15, '2022-05-25 11:00:00', 0),
-(NULL, 16, '2022-05-25 11:00:00', 0),
-(NULL, 17, '2022-05-25 11:00:00', 1),
-(NULL, 18, '2022-05-25 11:00:00', 0),
-(NULL, 19, '2022-05-25 11:00:00', 0),
-(NULL, 20, '2022-05-25 11:00:00', 0),
-(NULL, 21, '2022-05-25 11:00:00', 1),
-(NULL, 22, '2022-05-25 11:00:00', 0),
-(NULL, 23, '2022-05-25 11:00:00', 0),
-(NULL, 24, '2022-05-25 11:00:00', 0),
-(NULL, 25, '2022-05-25 11:00:00', 1),
-(NULL, 26, '2022-05-25 11:00:00', 0),
-(NULL, 27, '2022-05-25 11:00:00', 0),
-(NULL, 28, '2022-05-25 11:00:00', 0),
-(NULL, 29, '2022-05-25 11:00:00', 1),
-(NULL, 30, '2022-05-25 11:00:00', 0),
-(NULL, 31, '2022-05-25 11:00:00', 0),
-(NULL, 32, '2022-05-25 11:00:00', 0),
-(NULL, 33, '2022-05-25 11:00:00', 1),
-(NULL, 34, '2022-05-25 11:00:00', 0),
-(NULL, 35, '2022-05-25 11:00:00', 0),
-(NULL, 36, '2022-05-25 11:00:00', 0),
-(NULL, 37, '2022-05-25 11:00:00', 1),
-(NULL, 38, '2022-05-25 11:00:00', 0),
-(NULL, 39, '2022-05-25 11:00:00', 0),
-(NULL, 40, '2022-05-25 11:00:00', 0),
-(NULL, 41, '2022-05-25 11:00:00', 1),
-(NULL, 42, '2022-05-25 11:00:00', 1),
-(NULL, 43, '2022-05-25 11:00:00', 0),
-(NULL, 44, '2022-05-25 11:00:00', 0),
-(NULL, 45, '2022-05-25 11:00:00', 0),
-(NULL, 46, '2022-05-25 11:00:00', 0),
-(NULL, 47, '2022-05-25 11:00:00', 0),
-(NULL, 48, '2022-05-25 11:00:00', 0);
-
-
 -- SELECT que mostra todos os Registros de uma determinada lixeira --
 SELECT idLixeira, idSensor, nivel, dataHoraSensor, sinal FROM Lixeira, Sensor, Registro WHERE fkLixeira = idLixeira AND fkSensor = idSensor AND idLixeira = 1; 
 
@@ -359,27 +210,13 @@ SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, sum(sinal) as nivel, idRe
 -- PAPEL -- 
 SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, sum(sinal) as nivel, idRegistro, dataHoraSensor FROM kitLixeira, lixeira, sensor, registro  WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND tipoLixeira = 'Papel' AND idKitLixeira = 1 AND dataHoraSensor = (SELECT max(dataHoraSensor) FROM registro ORDER BY dataHoraSensor DESC);
 
--- SELECT para mostrar os ultimos niveis de uma lixeira especifica de um derminado kit em todas horas de um periodo no shopping -- 
-SELECT * FROM (SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, nivel, idRegistro, dataHoraSensor FROM kitLixeira, lixeira, sensor, registro  WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND tipoLixeira = 'Vidro' AND idKitLixeira = 1 ORDER BY dataHoraSensor,nivel DESC LIMIT 14) AS tabela GROUP BY dataHoraSensor;
-
--- SELECT PARA PEGAR A MÉDIA DE TODAS AS LIXEIRA DE UM DETERMINADO KIT NA ULTIMA HORAS --
-
-select tipoLixeira, max(dataHoraSensor), round(sum(sinal) / (select count(idKitLixeira) from kitLixeira where tipoLixeira = 'Plástico'), 2) AS 'Média' from lixeira join sensor on idLixeira = fkLixeira
-join registro on idSensor = fkSensor JOIN kitLixeira ON idKitLixeira = fkKitLixeira where tipoLixeira = 'Plástico' AND dataHoraSensor = (SELECT max(dataHoraSensor) FROM registro) group by tipoLixeira;
-
-
--- SELECT PARA PEGAR A MÉDIA DE TODAS AS LIXEIRAS DE UM DETERMINADO KIT EM TODAS HORAS --
-select tipoLixeira, dataHoraSensor, round(sum(sinal) / (select count(idKitLixeira) from kitLixeira where tipoLixeira = 'Plástico'), 2) from lixeira join sensor on idLixeira = fkLixeira
-join registro on idSensor = fkSensor where tipoLixeira = 'Plástico' group by tipoLixeira;
-
--- SELECT PARA PEGAR O HISTÓRICO DE CADA LIXEIRA --
+-- SELECT para mostrar o historico
 
 SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, sum(sinal) as nivel, idRegistro, dataHoraSensor 
 FROM kitLixeira, lixeira, sensor, registro  
 WHERE idKitLixeira = fkKitLixeira 
 AND idLixeira = fkLixeira 
 AND idSensor = fkSensor 
-AND tipoLixeira = 'INSERIR TIPO' 
+AND tipoLixeira = 'Plástico' 
 AND idKitLixeira = 1
 group by datahorasensor;
-
