@@ -297,3 +297,17 @@ a {
     align-items: center;
     justify-content: space-between;
 }
+
+
+.clique {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    
+}
+
+.clique:hover {
+    color: var(--color_green);
+    transition: 500ms;
+}
+ 

@@ -25,6 +25,6 @@ function buscarMedidasEmTempoReal(idAquario) {
 
 
 module.exports = {
-    buscarUltimasMedidas,
+    buscarMediaDasMedidas,
     buscarMedidasEmTempoReal
 }

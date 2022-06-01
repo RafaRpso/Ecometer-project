@@ -134,22 +134,56 @@ function mesMaisLixo() {
 }
 
 //graph ultimas 24H
+// O gráfico é construído com três funções:
+// 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+// 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+// 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
 
+// Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+// para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+// A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+//     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+//     Para ajustar o "select", ajuste o comando sql em src/models
+
+function obterDadosGrafico(idEmpresa) {
+console.log(`fazendo conexão com o banco para obter dados; id: ${idEmpresa}`)
+    fetch(`/medidas/ultimas/${idEmpresa}`, {
+        cache: 'no-store'
+    }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                plotarGrafico(resposta);
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+}
+
+// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+// Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+// A função *plotarGrafico* também invoca a função *atualizarGrafico*
 const labelsDia = [
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-    '22:00'
+     /*'09:00',
+     '10:00',
+     '11:00',
+     '12:00',
+     '13:00',
+     '14:00',
+     '15:00',
+     '16:00',
+     '17:00',
+     '18:00',
+     '19:00',
+     '20:00',
+     '21:00',
+     '22:00'*/
 
 ];
 
@@ -159,28 +193,53 @@ const dataDia = {
         label: 'Plástico',
         backgroundColor: vermelho,
         borderColor: vermelho,
-        data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4],
+        data: [/*0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4*/],
     },
     {
         label: 'Papel',
         backgroundColor: '#4D96FF',
         borderColor: '#4D96FF',
-        data: [0, 0, 0.5, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4],
+        data: [/*0, 0, 0.5, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4*/],
     },
     {
         label: 'Metal',
         backgroundColor: amarelo,
         borderColor: amarelo,
-        data: [0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1],
+        data: [/*0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1*/],
     },
     {
         label: 'Vidro',
         backgroundColor: '#6BCB77',
         borderColor: '#6BCB77',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2],
+        data: [/*0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2*/],
     }
     ]
 };
+const configDia = {
+        type: 'line',
+        data: dataDia,
+        options: {}
+    };
+
+    const myChartDia = new Chart(
+        document.getElementById('diario'),
+        configDia
+    );
+function plotarGrafico(resposta) {
+    console.log('iniciando plotagem do gráfico...');
+
+    
+
+    for(index = 0; index < resposta.length; index++){
+        var registro = resposta[index];
+            dataDia.labels.push(registro.dataHoraSensor);
+            dataDia.datasets[0].data.push(registro.tipoLixeira);
+            
+    }
+    
+};
+
+obterDadosGrafico(sessionStorage.ID_USUARIO);
 
 
 /* Busca a hora média que o kit enche */
@@ -234,16 +293,7 @@ function buscarKitEnche() {
 buscarKitEnche();
 buscaTempoCheio()
 
-const configDia = {
-    type: 'line',
-    data: dataDia,
-    options: {}
-};
 
-const myChartDia = new Chart(
-    document.getElementById('diario'),
-    configDia
-);
 
 //gráfico pizza
 
