@@ -1,34 +1,17 @@
 var medidaModel = require("../models/medidaModel");
-
-function buscarMediaDasMedidas(req, res) {
-
-    var idEmpresa = req.params.idEmpresa
-
-    console.log(`Recuperando as medidas`);
-
-    medidaModel.buscarMediaDasMedidas(idEmpresa).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
+var dadosInRealTime = 0 ; 
 
 function buscarMedidasEmTempoReal(req, res) {
 
-    var idAquario = req.params.idAquario;
-
+    var idEmpresa = req.params.idEmpresa;
+    dadosInRealTime = resultado ; 
     console.log(`Recuperando medidas em tempo real`);
-
-    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
+  
+    medidaModel.buscarMedidasEmTempoReal(idEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
+            
+            
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -37,10 +20,10 @@ function buscarMedidasEmTempoReal(req, res) {
         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
+   
 }
 
 module.exports = {
-    buscarMediaDasMedidas,
     buscarMedidasEmTempoReal
 
 }

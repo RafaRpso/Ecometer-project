@@ -170,7 +170,7 @@ console.log(`fazendo conexão com o banco para obter dados; id: ${idEmpresa}`)
 // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
 // A função *plotarGrafico* também invoca a função *atualizarGrafico*
 const labelsDia = [
-     /*'09:00',
+     '09:00',
      '10:00',
      '11:00',
      '12:00',
@@ -183,7 +183,7 @@ const labelsDia = [
      '19:00',
      '20:00',
      '21:00',
-     '22:00'*/
+     '22:00'
 
 ];
 
@@ -193,25 +193,25 @@ const dataDia = {
         label: 'Plástico',
         backgroundColor: vermelho,
         borderColor: vermelho,
-        data: [/*0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4*/],
+        data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4],
     },
     {
         label: 'Papel',
         backgroundColor: '#4D96FF',
         borderColor: '#4D96FF',
-        data: [/*0, 0, 0.5, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4*/],
+        data: [0, 0, 0.5, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4],
     },
     {
         label: 'Metal',
         backgroundColor: amarelo,
         borderColor: amarelo,
-        data: [/*0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1*/],
+        data: [0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1],
     },
     {
         label: 'Vidro',
         backgroundColor: '#6BCB77',
         borderColor: '#6BCB77',
-        data: [/*0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2*/],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2],
     }
     ]
 };
@@ -1171,4 +1171,3 @@ function longoPrazo() {
     mediaLocal.textContent = 'Média mensal'
     troca('longo')
 }
-
