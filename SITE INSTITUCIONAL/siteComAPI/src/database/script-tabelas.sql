@@ -62,9 +62,9 @@ FOREIGN KEY(fkLixeira) REFERENCES lixeira(idLixeira)
 
 CREATE TABLE registro(
 idRegistro INT PRIMARY KEY AUTO_INCREMENT,
-fkSensor INT,
-dataHoraSensor DATETIME, 
 sinal int,
+fkSensor INT,
+dataHoraSensor DATETIME,
 FOREIGN kEY (FkSensor) REFERENCES sensor (IdSensor)
 );
 
@@ -158,43 +158,6 @@ INSERT INTO sensor VALUES
 (NULL, 12, 'TCRT5000', 3),
 (NULL, 12, 'TCRT5000', 4);
 
--- Utilizar somente para testar os select --
-
-INSERT INTO sensor VALUES 
-(1, 1, 'TCRT5000', 1),
-(2, 1, 'TCRT5000', 2),
-(3, 1, 'TCRT5000', 3),
-(4, 1, 'TCRT5000', 4),
-(5, 2, 'TCRT5000', 1),
-(6, 2, 'TCRT5000', 2),
-(7, 2, 'TCRT5000', 3),
-(8, 2, 'TCRT5000', 4),
-(9, 3, 'TCRT5000', 1),
-(10, 3, 'TCRT5000', 2),
-(11, 3, 'TCRT5000', 3),
-(12, 3, 'TCRT5000', 4),
-(13, 4, 'TCRT5000', 1),
-(14, 4, 'TCRT5000', 2),
-(15, 4, 'TCRT5000', 3),
-(16, 4, 'TCRT5000', 4),
-(17, 5, 'TCRT5000', 1),
-(18, 5, 'TCRT5000', 2),
-(19, 5, 'TCRT5000', 3),
-(20, 5, 'TCRT5000', 4),
-(21, 6, 'TCRT5000', 1),
-(22, 6, 'TCRT5000', 2),
-(23, 6, 'TCRT5000', 3),
-(24, 6, 'TCRT5000', 4),
-(25, 7, 'TCRT5000', 1),
-(26, 7, 'TCRT5000', 2),
-(27, 7, 'TCRT5000', 3),
-(28, 7, 'TCRT5000', 4),
-(29, 8, 'TCRT5000', 1),
-(30, 8, 'TCRT5000', 2),
-(31, 8, 'TCRT5000', 3),
-(32, 8, 'TCRT5000', 4);
-
-
 -- SELECT que mostra todos os Registros de uma determinada lixeira --
 SELECT idLixeira, idSensor, nivel, dataHoraSensor, sinal FROM Lixeira, Sensor, Registro WHERE fkLixeira = idLixeira AND fkSensor = idSensor AND idLixeira = 1; 
 
@@ -247,7 +210,13 @@ SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, sum(sinal) as nivel, idRe
 -- PAPEL -- 
 SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, sum(sinal) as nivel, idRegistro, dataHoraSensor FROM kitLixeira, lixeira, sensor, registro  WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND tipoLixeira = 'Papel' AND idKitLixeira = 1 AND dataHoraSensor = (SELECT max(dataHoraSensor) FROM registro ORDER BY dataHoraSensor DESC);
 
--- SELECT para mostrar os ultimos niveis de uma lixeira especifica de um derminado kit em todas horas de um periodo no shopping -- 
-SELECT * FROM (SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, nivel, idRegistro, dataHoraSensor FROM kitLixeira, lixeira, sensor, registro  WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira AND idSensor = fkSensor AND sinal = '1' AND tipoLixeira = 'Vidro' AND idKitLixeira = 1 ORDER BY dataHoraSensor,nivel DESC LIMIT 14) AS tabela GROUP BY dataHoraSensor;
+-- SELECT para mostrar o historico
 
-
+SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, sum(sinal) as nivel, idRegistro, dataHoraSensor 
+FROM kitLixeira, lixeira, sensor, registro  
+WHERE idKitLixeira = fkKitLixeira 
+AND idLixeira = fkLixeira 
+AND idSensor = fkSensor 
+AND tipoLixeira = 'Plástico' 
+AND idKitLixeira = 1
+group by datahorasensor;
