@@ -1,11 +1,16 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
-    instrucaoSql = `SELECT idLixeira, count(idLixeira)
-    FROM kitLixeira, lixeira, sensor, registro 
-    WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira 
-    AND idSensor = fkSensor AND sinal = '1' AND idKitLixeira = ${idAquario}
-    GROUP BY idLixeira;
+function buscarMedidasKit(idEmpresa) {
+    instrucaoSql = `
+    SELECT idLixeira, idKitLixeira, tipoLixeira, idSensor, sum(sinal) as nivel, idRegistro, dataHoraSensor 
+    FROM kitLixeira, lixeira, sensor, registro  
+    WHERE idKitLixeira = fkKitLixeira 
+    AND idLixeira = fkLixeira 
+    AND idSensor = fkSensor 
+    AND tipoLixeira = 'Plástico' 
+    AND idKitLixeira = 1
+    group by datahorasensor;
+
 `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

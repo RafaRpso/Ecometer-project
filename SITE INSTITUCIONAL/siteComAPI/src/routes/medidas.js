@@ -3,8 +3,8 @@ var router = express.Router();
 
 var medidaController = require("../controllers/medidaController");
  
-router.get("/ultimas/:idEmpresa", function (req, res) {
-    medidaController.buscarMediaDasMedidas(req, res);
+router.get("/ultimas/:idEmpresa", function (req, res)  {
+    medidaController.buscarMedidasKit(req, res);
 });
 
 router.get("/tempo-real/:idEmpresa", function (req, res) {

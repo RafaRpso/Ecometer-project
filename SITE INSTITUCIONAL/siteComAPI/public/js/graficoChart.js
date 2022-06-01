@@ -1,4 +1,3 @@
-
 /* cores */
 var amarelo = '#FFD93D'
 var azul = '#4D96FF'
@@ -108,6 +107,7 @@ function diaMaisLixo() {
     }
 
 }
+
 function mesMaisLixo() {
     let maiorValor = 0;
     let menorValor = dataMes.datasets[0].data[0];
@@ -147,20 +147,20 @@ function mesMaisLixo() {
 //     Para ajustar o "select", ajuste o comando sql em src/models
 
 function obterDadosGrafico(idEmpresa) {
-console.log(`fazendo conexão com o banco para obter dados; id: ${idEmpresa}`)
+    console.log(`fazendo conexão com o banco para obter dados; id: ${idEmpresa}`)
     fetch(`/medidas/ultimas/${idEmpresa}`, {
-        cache: 'no-store'
-    }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                plotarGrafico(resposta);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    })
+            cache: 'no-store'
+        }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    
+                    plotarGrafico(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
@@ -170,73 +170,74 @@ console.log(`fazendo conexão com o banco para obter dados; id: ${idEmpresa}`)
 // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
 // A função *plotarGrafico* também invoca a função *atualizarGrafico*
 const labelsDia = [
-     '09:00',
-     '10:00',
-     '11:00',
-     '12:00',
-     '13:00',
-     '14:00',
-     '15:00',
-     '16:00',
-     '17:00',
-     '18:00',
-     '19:00',
-     '20:00',
-     '21:00',
-     '22:00'
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    '19:00',
+    '20:00',
+    '21:00',
+    '22:00'
 
 ];
 
 const dataDia = {
     labels: labelsDia,
     datasets: [{
-        label: 'Plástico',
-        backgroundColor: vermelho,
-        borderColor: vermelho,
-        data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4],
-    },
-    {
-        label: 'Papel',
-        backgroundColor: '#4D96FF',
-        borderColor: '#4D96FF',
-        data: [0, 0, 0.5, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4],
-    },
-    {
-        label: 'Metal',
-        backgroundColor: amarelo,
-        borderColor: amarelo,
-        data: [0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1],
-    },
-    {
-        label: 'Vidro',
-        backgroundColor: '#6BCB77',
-        borderColor: '#6BCB77',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2],
-    }
+            label: 'Plástico',
+            backgroundColor: vermelho,
+            borderColor: vermelho,
+            data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4],
+        },
+        {
+            label: 'Papel',
+            backgroundColor: '#4D96FF',
+            borderColor: '#4D96FF',
+            data: [0, 0, 0.5, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4],
+        },
+        {
+            label: 'Metal',
+            backgroundColor: amarelo,
+            borderColor: amarelo,
+            data: [0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1],
+        },
+        {
+            label: 'Vidro',
+            backgroundColor: '#6BCB77',
+            borderColor: '#6BCB77',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2],
+        }
     ]
 };
 const configDia = {
-        type: 'line',
-        data: dataDia,
-        options: {}
-    };
+    type: 'line',
+    data: dataDia,
+    options: {}
+};
 
-    const myChartDia = new Chart(
-        document.getElementById('diario'),
-        configDia
-    );
+const myChartDia = new Chart(
+    document.getElementById('diario'),
+    configDia
+);
+
 function plotarGrafico(resposta) {
     console.log('iniciando plotagem do gráfico...');
 
-    
 
-    for(index = 0; index < resposta.length; index++){
+
+    for (index = 0; index < resposta.length; index++) {
         var registro = resposta[index];
-            dataDia.labels.push(registro.dataHoraSensor);
-            dataDia.datasets[0].data.push(registro.tipoLixeira);
-            
+        dataDia.labels.push(registro.dataHoraSensor);
+        dataDia.datasets[0].data.push(registro.tipoLixeira);
+
     }
-    
+
 };
 
 obterDadosGrafico(sessionStorage.ID_USUARIO);
@@ -348,8 +349,7 @@ const dataBar = {
             '#B4FF9F'
         ],
         hoverOffset: 4
-    }
-    ],
+    }],
 
 
 };
@@ -374,49 +374,50 @@ const myChartBar = new Chart(
 //grafico individual
 
 const labelsKit1 = [
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-    '22:00'
+    /*
+        '09:00',
+        '10:00',
+        '11:00',
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+        '20:00',
+        '21:00',
+        '22:00'*/
 
 ];
 
 const dataKit1 = {
     labels: labelsKit1,
     datasets: [{
-        label: 'Plástico',
-        backgroundColor: vermelho,
-        borderColor: vermelho,
-        data: [0, 0, 0, 1, 1, 1, 2, 2, 4, 2, 3, 3, 3, 3],
-    },
-    {
-        label: 'Papel',
-        backgroundColor: '#4D96FF',
-        borderColor: '#4D96FF',
-        data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3],
-    },
-    {
-        label: 'Metal',
-        backgroundColor: amarelo,
-        borderColor: amarelo,
-        data: [0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 2, 2, 2, 3],
-    },
-    {
-        label: 'Vidro',
-        backgroundColor: verde,
-        borderColor: '#6BCB77',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 3],
-    }
+            label: 'Plástico',
+            backgroundColor: vermelho,
+            borderColor: vermelho,
+            data: [ /*0, 0, 0, 1, 1, 1, 2, 2, 4, 2, 3, 3, 3, 3*/ ],
+        },
+        {
+            label: 'Papel',
+            backgroundColor: '#4D96FF',
+            borderColor: '#4D96FF',
+            data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3],
+        },
+        {
+            label: 'Metal',
+            backgroundColor: amarelo,
+            borderColor: amarelo,
+            data: [0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 2, 2, 2, 3],
+        },
+        {
+            label: 'Vidro',
+            backgroundColor: verde,
+            borderColor: '#6BCB77',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 3],
+        }
     ]
 };
 
@@ -453,29 +454,29 @@ const labelsKit2 = [
 const dataKit2 = {
     labels: labelsKit2,
     datasets: [{
-        label: 'Plástico',
-        backgroundColor: vermelho,
-        borderColor: vermelho,
-        data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4]
-    },
-    {
-        label: 'Papel',
-        backgroundColor: '#4D96FF',
-        borderColor: '#4D96FF',
-        data: [0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3],
-    },
-    {
-        label: 'Metal',
-        backgroundColor: amarelo,
-        borderColor: amarelo,
-        data: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2],
-    },
-    {
-        label: 'Vidro',
-        backgroundColor: '#6BCB77',
-        borderColor: '#6BCB77',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
-    }
+            label: 'Plástico',
+            backgroundColor: vermelho,
+            borderColor: vermelho,
+            data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4]
+        },
+        {
+            label: 'Papel',
+            backgroundColor: '#4D96FF',
+            borderColor: '#4D96FF',
+            data: [0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3],
+        },
+        {
+            label: 'Metal',
+            backgroundColor: amarelo,
+            borderColor: amarelo,
+            data: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2],
+        },
+        {
+            label: 'Vidro',
+            backgroundColor: '#6BCB77',
+            borderColor: '#6BCB77',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+        }
     ]
 };
 
@@ -512,29 +513,29 @@ const labelsKit3 = [
 const dataKit3 = {
     labels: labelsKit3,
     datasets: [{
-        label: 'Plástico',
-        backgroundColor: vermelho,
-        borderColor: vermelho,
-        data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3],
-    },
-    {
-        label: 'Papel',
-        backgroundColor: '#4D96FF',
-        borderColor: '#4D96FF',
-        data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4],
-    },
-    {
-        label: 'Metal',
-        backgroundColor: amarelo,
-        borderColor: amarelo,
-        data: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2],
-    },
-    {
-        label: 'Vidro',
-        backgroundColor: '#6BCB77',
-        borderColor: '#6BCB77',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4],
-    }
+            label: 'Plástico',
+            backgroundColor: vermelho,
+            borderColor: vermelho,
+            data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3],
+        },
+        {
+            label: 'Papel',
+            backgroundColor: '#4D96FF',
+            borderColor: '#4D96FF',
+            data: [0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 3, 4, 4],
+        },
+        {
+            label: 'Metal',
+            backgroundColor: amarelo,
+            borderColor: amarelo,
+            data: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2],
+        },
+        {
+            label: 'Vidro',
+            backgroundColor: '#6BCB77',
+            borderColor: '#6BCB77',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 4],
+        }
     ]
 };
 
@@ -654,38 +655,38 @@ function relatorioLixeira(arr, numKit) {
 const dataPiso1 = {
 
     datasets: [{
-        label: 'Limites',
-        data: [{
-            x: 0,
-            y: 0
-        }, {
-            x: 0,
-            y: 10
-        }, {
-            x: 10,
-            y: 10
-        }, {
-            x: 10,
-            y: 0
+            label: 'Limites',
+            data: [{
+                    x: 0,
+                    y: 0
+                }, {
+                    x: 0,
+                    y: 10
+                }, {
+                    x: 10,
+                    y: 10
+                }, {
+                    x: 10,
+                    y: 0
+                },
+
+            ],
+            backgroundColor: 'black'
         },
+        {
 
-        ],
-        backgroundColor: 'black'
-    },
-    {
+            label: 'Kits',
+            data: [{
 
-        label: 'Kits',
-        data: [{
-
-            x: 4,
-            y: 3.4
-        },
-        ],  /* alterar ponteiro do lixo */
-        backgroundColor: '#101099',
-        pointRadius: 7,
+                x: 4,
+                y: 3.4
+            }, ],
+            /* alterar ponteiro do lixo */
+            backgroundColor: '#101099',
+            pointRadius: 7,
 
 
-    }
+        }
     ],
 };
 const configPiso1 = {
@@ -718,35 +719,34 @@ myChartPiso1.canvas.addEventListener('click', (e) => {
 
 const dataPiso2 = {
     datasets: [{
-        label: 'Limites',
-        data: [{
-            x: 0,
-            y: 0
-        }, {
-            x: 0,
-            y: 10
-        }, {
-            x: 10,
-            y: 10
-        }, {
-            x: 10,
-            y: 0
+            label: 'Limites',
+            data: [{
+                x: 0,
+                y: 0
+            }, {
+                x: 0,
+                y: 10
+            }, {
+                x: 10,
+                y: 10
+            }, {
+                x: 10,
+                y: 0
+            }, ],
+            backgroundColor: 'black'
         },
-        ],
-        backgroundColor: 'black'
-    },
-    {
-        label: 'Kits',
-        data: [{
-            x: 6,
-            y: 6.9
+        {
+            label: 'Kits',
+            data: [{
+                    x: 6,
+                    y: 6.9
+                }
+
+            ],
+            backgroundColor: '#101099',
+            pointRadius: 7,
+
         }
-
-        ],
-        backgroundColor: '#101099',
-        pointRadius: 7,
-
-    }
     ],
 };
 const configPiso2 = {
@@ -778,35 +778,35 @@ myChartPiso2.canvas.addEventListener('click', (e) => {
 
 const dataPiso3 = {
     datasets: [{
-        label: 'Limites',
-        data: [{
-            x: 0,
-            y: 0
-        }, {
-            x: 0,
-            y: 10
-        }, {
-            x: 10,
-            y: 10
-        }, {
-            x: 10,
-            y: 0
+            label: 'Limites',
+            data: [{
+                    x: 0,
+                    y: 0
+                }, {
+                    x: 0,
+                    y: 10
+                }, {
+                    x: 10,
+                    y: 10
+                }, {
+                    x: 10,
+                    y: 0
+                },
+
+            ],
+            backgroundColor: 'black'
         },
+        {
+            label: 'Kits',
+            data: [{
+                    x: 4,
+                    y: 2.5
+                }
 
-        ],
-        backgroundColor: 'black'
-    },
-    {
-        label: 'Kits',
-        data: [{
-            x: 4,
-            y: 2.5
+            ],
+            backgroundColor: '#101099',
+            pointRadius: 7,
         }
-
-        ],
-        backgroundColor: '#101099',
-        pointRadius: 7,
-    }
     ],
 };
 const configPiso3 = {
@@ -839,6 +839,7 @@ myChartPiso3.canvas.addEventListener('click', (e) => {
 
 var paginacao = {};
 var tempo = {};
+
 function obterDados(grafico, endpoint) {
     var http = new XMLHttpRequest();
     http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
@@ -864,11 +865,13 @@ function obterDados(grafico, endpoint) {
 //ffuncao que pega coordenada do mapa 
 function clickHandler(myChartPiso, userClick) {
 
-    var { canvas } = myChartPiso;  // faz com que canvas receba todos os valores do chartpiso1
+    var {
+        canvas
+    } = myChartPiso; // faz com que canvas receba todos os valores do chartpiso1
     console.log(canvas)
-    var distancia = canvas.getBoundingClientRect();  // pega a distancia das bordas da tela inteira, de modo que so pega o ocmponente per si https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+    var distancia = canvas.getBoundingClientRect(); // pega a distancia das bordas da tela inteira, de modo que so pega o ocmponente per si https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
     var x = userClick.clientX - distancia.left; // valor x recebe o click da funcao abaixo menos a distancia da margin left
-    var y = userClick.clientY - distancia.top;   // valor y recebe o click da funcao abaixo menos a distancia da margin top 
+    var y = userClick.clientY - distancia.top; // valor y recebe o click da funcao abaixo menos a distancia da margin top 
     console.log("X: " + x)
     console.log("Y: " + y)
     alertKit(x, y)
@@ -878,23 +881,22 @@ function clickHandler(myChartPiso, userClick) {
 
 
 //define o aparecimento dos gráficos no kit . 
-function verKit(kit) {     // pega o valor do kit que é fornecido pela função intermediaria, ou seja, o kit dessa função é o do select
-    if (kit == 1) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
+function verKit(kit) { // pega o valor do kit que é fornecido pela função intermediaria, ou seja, o kit dessa função é o do select
+    if (kit == 1) { // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
 
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 1"
         kitIndividual1.style.display = 'block'
         kitIndividual2.style.display = 'none'
         kitIndividual3.style.display = 'none'
-    }
-    else if (kit == 2) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
+    } else if (kit == 2) { // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
 
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 2"
         kitIndividual1.style.display = 'none'
         kitIndividual2.style.display = 'block'
         kitIndividual3.style.display = 'none'
-    } else if (kit == 3) {        // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
+    } else if (kit == 3) { // isso acontece pq o valor do kit é chamado por outra função, essa função serve apenas pra fazer com que apareça os arquivos
 
         graphKit.style.display = 'flex'
         textoKit.innerHTML = "Kit 3"
@@ -909,20 +911,17 @@ function verKit(kit) {     // pega o valor do kit que é fornecido pela função
 
 
 }
+
 function alertKit(userx, usery) {
-    piso = slct_piso.value;  // qual o piso escolhido? 
+    piso = slct_piso.value; // qual o piso escolhido? 
 
 
     // ver se as coordenadas do mapa BATEM IGUAL a do mouse, com um range para correção
     if ((piso == 1) && (userx > 100 && userx < 300) && (usery > 90 && usery < 190)) {
         verKit(piso)
-    }
-
-    else if ((piso == 2) && (userx > 210 && userx < 480) && (usery > 30 && usery < 170)) {
+    } else if ((piso == 2) && (userx > 210 && userx < 480) && (usery > 30 && usery < 170)) {
         verKit(piso)
-    }
-
-    else if ((piso == 3) && (userx > 160 && userx < 300) && (usery > 90 && usery < 200)) {
+    } else if ((piso == 3) && (userx > 160 && userx < 300) && (usery > 90 && usery < 200)) {
         verKit(piso)
     }
 
@@ -981,14 +980,11 @@ function trocaPiso() {
 function trocaPie() {
     if (slct_pie.value == "invalido") {
         alert('Selecione um valor válido. Barra ou Pizza.')
-    }
-    else if (slct_pie.value == 1) {
+    } else if (slct_pie.value == 1) {
         graficoPizza.style.height = "25%"
         tipo_lotacao_bar.style.display = 'block'
         tipo_lotacao_pie.style.display = 'none'
-    }
-
-    else if (slct_pie.value == 2) {
+    } else if (slct_pie.value == 2) {
         graficoPizza.style.height = "45%"
         tipo_lotacao_bar.style.display = 'none'
         tipo_lotacao_pie.style.display = 'block'
@@ -1010,6 +1006,7 @@ function vermelho() {
 
 var quaisKitLotado = []
 var contadorLixeirasLotadas = 0;
+
 function kitsLotadosAssicronos(arr, idKit) {
     let a = '';
     contadorLixeirasLotadas++;
@@ -1042,6 +1039,7 @@ function ocultaKitsLotados() {
     botaoMostrarLotados.style.display = 'block';
     botaoOcultarMostrados.style.display = 'none';
 }
+
 function mostraKitsLotados() {
     conteudoDivLotados.style.display = 'block';
     h3KitsLotados.innerHTML = 'Kits Lotados: '
@@ -1078,6 +1076,7 @@ function selecionaAutomaticoAlerta(arr, idKit) {
         }
     }
 }
+
 function ocultarNavbar() {
     menuLateral.style.display = 'none'
     //arrumar footer
@@ -1142,6 +1141,7 @@ function troca(qual) {
 
 }
 curtoPrazo()
+
 function curtoPrazo() {
     troca('curto')
     mediaLocal.textContent = 'Média diária'
@@ -1151,6 +1151,7 @@ function curtoPrazo() {
     cardMenosLixo.style.display = 'none'
     kitEnche.style.display = 'flex'
 }
+
 function medioPrazo() {
     diaMaisLixo()
     troca('medio')
@@ -1161,6 +1162,7 @@ function medioPrazo() {
     cardMenosLixo.style.display = 'flex'
     kitEnche.style.display = 'none'
 }
+
 function longoPrazo() {
     mesMaisLixo()
     graficoPizza.style.display = 'block'
