@@ -1,25 +1,23 @@
 var database = require("../database/config");
 
 function buscarUltimasMedidas(idAquario, limite_linhas) {
-    instrucaoSql = `select 
-                        temperatura, 
-                        umidade, 
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
-                    order by id desc limit ${limite_linhas}`;
+    instrucaoSql = `SELECT idLixeira, count(idLixeira)
+    FROM kitLixeira, lixeira, sensor, registro 
+    WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira 
+    AND idSensor = fkSensor AND sinal = '1' AND idKitLixeira = ${idAquario}
+    GROUP BY idLixeira;
+`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-
+buscarMedidasEmTempoReal(1)
 function buscarMedidasEmTempoReal(idAquario) {
-    instrucaoSql = `select 
-                        temperatura, 
-                        umidade, DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc limit 1`;
+    instrucaoSql = `SELECT idLixeira, count(idLixeira)
+    FROM kitLixeira, lixeira, sensor, registro 
+    WHERE idKitLixeira = fkKitLixeira AND idLixeira = fkLixeira 
+    AND idSensor = fkSensor AND sinal = '1' AND idKitLixeira = ${idAquario}
+    GROUP BY idLixeira;
+`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
