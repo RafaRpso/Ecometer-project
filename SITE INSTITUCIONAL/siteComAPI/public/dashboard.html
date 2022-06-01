@@ -344,22 +344,6 @@ function obterDadosGrafico(idAquario) {
     if (proximaAtualizacao != undefined) {
         clearTimeout(proximaAtualizacao);
     }
-
-    fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (resposta) {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                resposta.reverse();
-
-                plotarGrafico(resposta, idAquario);
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
-    })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
 }
 
 // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
@@ -485,4 +469,25 @@ function atualizarGrafico(idAquario, dados) {
         });
 
     }
+
+    var dadosInRealTime=0;
+    setInterval( () => { 
+
+console.log(dadosInRealTime + "oi")
+    fetch(`/medidas/tempo-real/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                dadosInRealTime = json[0].nivel;
+               /* plotarGrafico(resposta, idAquario);*/
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+    },5000) 
+
 </script>
