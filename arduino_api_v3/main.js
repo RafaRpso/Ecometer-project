@@ -4,12 +4,19 @@ const mysql = require('mysql2'); // chamo módulo mysql2
 const SERIAL_BAUD_RATE = 9600; //delay
 const SERVIDOR_PORTA = 3000; //porta para localhost
 const HABILITAR_OPERACAO_INSERIR = true; //proteção para inserção de dados
-var numAleatorio = 0 ; 
-
+var   numAleatorio = (Math.floor( (  Math.random() * 15 ) ) ) + 1  ; 
+var horario = new Date();
+var aux  = 0 ; 
 
 setInterval( () => { 
-    numAleatorio = (Math.floor( (  Math.random() * 15 ) ) ) + 1  ; 
-},2000 )
+    aux = numAleatorio 
+    if(numAleatorio > aux ) { 
+        console.log('numero menor')
+    }
+    else { 
+        numAleatorio = (Math.floor( (  Math.random() * 15 ) ) ) + 1  ;
+    } 
+},200 )
 /*  BANCO MYSQL2 */ 
 const serial = async ( 
     /* A variable that stores the values of the humidity sensor. */
@@ -69,9 +76,10 @@ const serial = async (
         valoresLm35Temperatura.push(lm35Temperatura);
         valoresChave.push(chave);
         if (HABILITAR_OPERACAO_INSERIR) { // se voce trocar a variavel para TRUE ao inves de FALSE ele insere os valores no Banco. 
+            console.log(chave, numAleatorio, horario);
             await poolBancoDados.execute(
-                'INSERT INTO registro (idRegistro, sinal, fkSensor, dataHoraSensor) VALUES (?,?,?,?)',
-                [null,chave, numAleatorio, '2022-06-01-10:51']
+                'INSERT INTO registro (idRegistro, sinal, fkSensor, dataHoraSensor) VALUES (?,?,?,NOW())',
+                [null,chave, numAleatorio]
             );
         }
 
