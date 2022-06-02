@@ -1,13 +1,13 @@
 var medidaModel = require("../models/medidaModel");
-var dadosInRealTime = 0 ;
+var dadosInRealTime = 0;
 
 function buscarMedidasKit(req, res) {
 
-    var idEmpresa = req.params.idEmpresa;
-  
+    var idAquario = req.params.idAquario;
+
     console.log(`Recuperando medidas de um kit`);
-  
-    medidaModel.buscarMedidasKit(idEmpresa).then(function (resultado) {
+
+    medidaModel.buscarMedidasKit(idAquario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -18,20 +18,18 @@ function buscarMedidasKit(req, res) {
         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
-   
+
 }
 
 function buscarMedidasEmTempoReal(req, res) {
 
-    var idEmpresa = req.params.idEmpresa;
-    dadosInRealTime = resultado ; 
+    var idAquario = req.params.idAquario;
+
     console.log(`Recuperando medidas em tempo real`);
-  
-    medidaModel.buscarMedidasEmTempoReal(idEmpresa).then(function (resultado) {
+
+    medidaModel.buscarMedidasEmTempoReal(idAquario).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
-            
-            
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -40,10 +38,10 @@ function buscarMedidasEmTempoReal(req, res) {
         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
-   
 }
 
 module.exports = {
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    buscarMedidasKit,
 
 }

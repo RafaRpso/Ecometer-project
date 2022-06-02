@@ -146,16 +146,16 @@ function mesMaisLixo() {
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
 
-function obterDadosGrafico(idEmpresa) {
-    console.log(`fazendo conexão com o banco para obter dados; id: ${idEmpresa}`)
-    fetch(`/medidas/ultimas/${idEmpresa}`, {
+function obterDadosGrafico(idAquario) {
+    console.log(`fazendo conexão com o banco para obter dados; id: ${idAquario}`)
+    fetch(`/medidas/ultimas/${idAquario}`, {
             cache: 'no-store'
         }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     
-                    plotarGrafico(resposta);
+                    plotarGrafico(resposta, idAquario);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -215,7 +215,7 @@ const dataDia = {
         }
     ]
 };
-const configDia = {
+/* const configDia = {
     type: 'line',
     data: dataDia,
     options: {}
@@ -224,7 +224,7 @@ const configDia = {
 const myChartDia = new Chart(
     document.getElementById('diario'),
     configDia
-);
+);  */
 
 function plotarGrafico(resposta) {
     console.log('iniciando plotagem do gráfico...');
@@ -239,9 +239,9 @@ function plotarGrafico(resposta) {
     }
 
 };
-
+/* 
 obterDadosGrafico(sessionStorage.ID_USUARIO);
-
+ */
 
 /* Busca a hora média que o kit enche */
 function buscaTempoCheio() {
