@@ -2,7 +2,7 @@ const serialport = require('serialport'); // chamo módulo serialport
 const express = require('express'); //chamo módulo express
 const mysql = require('mysql2'); // chamo módulo mysql2
 const SERIAL_BAUD_RATE = 9600; //delay
-const SERVIDOR_PORTA = 3000; //porta para localhost
+const SERVIDOR_PORTA = 3001; //porta para localhost
 const HABILITAR_OPERACAO_INSERIR = true; //proteção para inserção de dados
 var   numAleatorio = (Math.floor( (  Math.random() * 15 ) ) ) + 1  ; 
 var horario = new Date();
@@ -16,7 +16,7 @@ setInterval( () => {
     else { 
         numAleatorio = (Math.floor( (  Math.random() * 15 ) ) ) + 1  ;
     } 
-},200 )
+},1000 )
 /*  BANCO MYSQL2 */ 
 const serial = async ( 
     /* A variable that stores the values of the humidity sensor. */
