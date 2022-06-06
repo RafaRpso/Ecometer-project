@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node SITE_INSTITUCIONAL/siteComAPI/app.js",
-    "postinstall": "cd /SITE_INSTITUCIONAL/siteComAPI && npm install",
+    "postinstall": "cd ./SITE_INSTITUCIONAL/siteComAPI && npm install",
     "dev": "nodemon --exec node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
