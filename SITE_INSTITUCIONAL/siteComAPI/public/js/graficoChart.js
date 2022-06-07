@@ -215,7 +215,7 @@ const dataDia = {
         }
     ]
 };
-/* const configDia = {
+const configDia = {
     type: 'line',
     data: dataDia,
     options: {}
@@ -224,7 +224,7 @@ const dataDia = {
 const myChartDia = new Chart(
     document.getElementById('diario'),
     configDia
-);  */
+);  
 
 function plotarGrafico(resposta) {
     console.log('iniciando plotagem do gráfico...');
@@ -426,12 +426,12 @@ const configKit1 = {
     data: dataKit1,
     options: {}
 };
-
+ 
 const myChartKit1 = new Chart(
     document.getElementById('kitIndividual1'),
     configKit1
 );
-
+ 
 
 const labelsKit2 = [
     '09:00',
@@ -485,12 +485,12 @@ const configKit2 = {
     data: dataKit2,
     options: {}
 };
-
+ /* 
 const myChartKit2 = new Chart(
     document.getElementById('kitIndividual2'),
     configKit2
-);
-
+); */
+ 
 
 const labelsKit3 = [
     '09:00',
