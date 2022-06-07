@@ -270,3 +270,164 @@ AND tipoLixeira = 'Plástico'
 AND idKitLixeira = 1
 group by datahorasensor;
 SELECT * FROM empresa;
+
+
+-- BANCO PARA AZURE
+
+CREATE DATABASE ecometer;
+USE ecometer;
+
+CREATE TABLE Empresa (
+idEmpresa INT PRIMARY KEY IDENTITY (0 , 1),
+nomeEmpresa VARCHAR(45),
+cnpj VARCHAR(20),
+plano VARCHAR(20),
+emailEmpresa VARCHAR(45),
+senha VARCHAR(45)
+);
+
+CREATE TABLE Funcionario(
+idFuncionario INT IDENTITY (0 , 1),
+fkEmpresa INT FOREIGN KEY REFERENCES empresa(idEmpresa),
+nomeFuncionario VARCHAR(45),
+emailFuncionario VARCHAR(45),
+senhaFuncionario VARCHAR(45),
+PRIMARY KEY(idFuncionario, fkEmpresa)
+);
+
+CREATE TABLE Contato(
+idContato INT IDENTITY (0 , 1),
+fkEmpresa INT,
+numeroEmpresa CHAR(13),
+emailComercial VARCHAR(45),
+PRIMARY KEY(idContato, fkEmpresa)
+);
+
+CREATE TABLE estabelecimento(
+idEstabelecimento INT PRIMARY KEY IDENTITY (0 , 1),
+nomeEstabelecimento VARCHAR(45),
+rua VARCHAR(45),
+numero INT
+);
+
+CREATE TABLE kitLixeira(
+idKitLixeira INT PRIMARY KEY IDENTITY (0 , 1),
+fkEmpresa INT FOREIGN KEY REFERENCES empresa (idEmpresa),,
+fkEstabelecimento INT FOREIGN KEY REFERENCES estabelecimento(idEstabelecimento),
+coordenada VARCHAR(100),
+andar VARCHAR(2)
+
+);
+
+CREATE TABLE lixeira(
+idLixeira INT PRIMARY KEY IDENTITY (0 , 1),
+fkKitLixeira INT FOREIGN KEY REFERENCES kitLixeira(idKitLixeira),
+tipoLixeira VARCHAR(20),
+
+);
+
+CREATE TABLE sensor(
+idSensor INT PRIMARY KEY IDENTITY (0 , 1),
+fkLixeira INT FOREIGN KEY REFERENCES lixeira(idLixeira),
+tipo varchar(25),
+nivel int,
+
+);
+
+CREATE TABLE registro(
+idRegistro INT PRIMARY KEY IDENTITY (0 , 1),
+sinal int,
+fkSensor INT FOREIGN kEY REFERENCES sensor (IdSensor)
+dataHoraSensor DATETIME,
+
+);
+
+-- inserts(NÃO APLICAR POIS AINDA NÃO ESTÃO 100% PREPARADOS)
+
+INSERT INTO Empresa VALUES
+(null,'Ecometer','87644937541','Plano Trimestral','contato@ecometer.com','abc123'),
+(null,'SoninPlay','87644937532','Plano Trimestral','contato@soninplay.com','abc123');
+
+INSERT INTO Funcionario VALUES
+(1,1,'Matheus Gomes', 'matheus.gomes@gmail.com', 'Matheus123'),
+(2,2,'Kelvin Guimaraes', 'kelvin.gomes@gmail.com', 'Kelvin123'),
+(3,1,'Rafael Raposo', 'rafael.raposo@gmail.com', 'Rafael123'),
+(4,2,'João Gabriel', 'joao.gabriel@gmail.com', 'Joao123');
+
+INSERT INTO Contato VALUES
+(NULL, 1,'11956359201','contato@corpus.com'),
+(NULL, 2,'11956359201','contato@corpus.com');
+
+INSERT INTO Estabelecimento VALUES
+(NULL, 'Shopping Morumbi Town', 'Av. Giovanni Gronchi', 5930),
+(NULL, 'Shopping Plaza Town', 'Av. Rodolfo Pirani', 5931);
+
+INSERT INTO kitLixeira VALUES
+(NULL, 1, 1, '4, 3.4', 1),
+(NULL, 1, 1, '2, 1.2', 1),
+(NULL, 1, 1, '4, 4.8', 1);
+
+INSERT INTO lixeira VALUES
+(NULL, 1, 'Plástico'),
+(NULL, 1, 'Vidro'),
+(NULL, 1, 'Metal'),
+(NULL, 1, 'Papel'),
+(NULL, 2, 'Plástico'),
+(NULL, 2, 'Vidro'),
+(NULL, 2, 'Metal'),
+(NULL, 2, 'Papel'),
+(NULL, 3, 'Plástico'),
+(NULL, 3, 'Vidro'),
+(NULL, 3, 'Metal'),
+(NULL, 3, 'Papel');
+
+
+INSERT INTO sensor VALUES
+(NULL, 1, 'TCRT5000', 1),
+(NULL, 1, 'TCRT5000', 2),
+(NULL, 1, 'TCRT5000', 3),
+(NULL, 1, 'TCRT5000', 4),
+(NULL, 2, 'TCRT5000', 1),
+(NULL, 2, 'TCRT5000', 2),
+(NULL, 2, 'TCRT5000', 3),
+(NULL, 2, 'TCRT5000', 4),
+(NULL, 3, 'TCRT5000', 1),
+(NULL, 3, 'TCRT5000', 2),
+(NULL, 3, 'TCRT5000', 3),
+(NULL, 3, 'TCRT5000', 4),
+(NULL, 4, 'TCRT5000', 1),
+(NULL, 4, 'TCRT5000', 2),
+(NULL, 4, 'TCRT5000', 3),
+(NULL, 4, 'TCRT5000', 4),
+(NULL, 5, 'TCRT5000', 1),
+(NULL, 5, 'TCRT5000', 2),
+(NULL, 5, 'TCRT5000', 3),
+(NULL, 5, 'TCRT5000', 4),
+(NULL, 6, 'TCRT5000', 1),
+(NULL, 6, 'TCRT5000', 2),
+(NULL, 6, 'TCRT5000', 3),
+(NULL, 6, 'TCRT5000', 4),
+(NULL, 7, 'TCRT5000', 1),
+(NULL, 7, 'TCRT5000', 2),
+(NULL, 7, 'TCRT5000', 3),
+(NULL, 7, 'TCRT5000', 4),
+(NULL, 8, 'TCRT5000', 1),
+(NULL, 8, 'TCRT5000', 2),
+(NULL, 8, 'TCRT5000', 3),
+(NULL, 8, 'TCRT5000', 4),
+(NULL, 9, 'TCRT5000', 1),
+(NULL, 9, 'TCRT5000', 2),
+(NULL, 9, 'TCRT5000', 3),
+(NULL, 9, 'TCRT5000', 4),
+(NULL, 10, 'TCRT5000', 1),
+(NULL, 10, 'TCRT5000', 2),
+(NULL, 10, 'TCRT5000', 3),
+(NULL, 10, 'TCRT5000', 4),
+(NULL, 11, 'TCRT5000', 1),
+(NULL, 11, 'TCRT5000', 2),
+(NULL, 11, 'TCRT5000', 3),
+(NULL, 11, 'TCRT5000', 4),
+(NULL, 12, 'TCRT5000', 1),
+(NULL, 12, 'TCRT5000', 2),
+(NULL, 12, 'TCRT5000', 3),
+(NULL, 12, 'TCRT5000', 4);
