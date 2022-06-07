@@ -13,7 +13,7 @@ senha VARCHAR(45)
 CREATE TABLE Funcionario(
 idFuncionario INT AUTO_INCREMENT,
 fkEmpresa INT,
-FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa),
+FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
 nomeFuncionario VARCHAR(45),
 emailFuncionario VARCHAR(45),
 senhaFuncionario VARCHAR(45),
