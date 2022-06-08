@@ -489,4 +489,9 @@ footer{
     color:black;
 }
 
+.kitsIdeal{
+    color:var(--color-scroll);
+    font-weight: bolder;
+    font-size:26px;
 
+}

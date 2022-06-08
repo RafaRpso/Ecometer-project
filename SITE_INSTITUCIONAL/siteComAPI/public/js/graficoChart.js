@@ -1030,8 +1030,28 @@ function kitsLotadosAssicronos(arr, idKit) {
 
 
 }
+function kitIdealAssicrono(arr,id) { 
+    a = ''
+    quaisKitLotado = []
+    for( i=0; i < arr.datasets.length ; i++){ 
+            if (arr.datasets[i].data[13] == 3 ){
+                a += 'Kit ' + id+" " ; 
+        }
+     
+    }
+    if(a == 'Kit ' + id ) { 
+
+    }
+    console.log(quaisKitLotado)
+    kitsParaColeta.innerHTML = `<br> <b class='kitsIdeal'> ${a}</b> &nbsp;&nbsp;`;
 
 
+}
+setInterval( () => { 
+    kitIdealAssicrono(dataKit1,1)
+    kitIdealAssicrono(dataKit2,2)
+    kitIdealAssicrono(dataKit3,3)
+},1000);
 
 function ocultaKitsLotados() {
     conteudoDivLotados.style.display = 'none';
