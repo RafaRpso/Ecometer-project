@@ -2,10 +2,21 @@ const serialport = require('serialport'); // chamo módulo serialport
 const express = require('express'); //chamo módulo express
 const mysql = require('mysql2'); // chamo módulo mysql2
 const SERIAL_BAUD_RATE = 9600; //delay
-const SERVIDOR_PORTA = 3000; //porta para localhost
-const HABILITAR_OPERACAO_INSERIR = false; //proteção para inserção de dados
+const SERVIDOR_PORTA = 3001; //porta para localhost
+const HABILITAR_OPERACAO_INSERIR = true; //proteção para inserção de dados
+var   numAleatorio = (Math.floor( (  Math.random() * 15 ) ) ) + 1  ; 
+var horario = new Date();
+var aux  = 0 ; 
 
-
+setInterval( () => { 
+    aux = numAleatorio 
+    if(numAleatorio > aux ) { 
+        console.log('numero menor')
+    }
+    else { 
+        numAleatorio = (Math.floor( (  Math.random() * 15 ) ) ) + 1  ;
+    } 
+},1000 )
 /*  BANCO MYSQL2 */ 
 const serial = async ( 
     /* A variable that stores the values of the humidity sensor. */
@@ -20,8 +31,8 @@ const serial = async (
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: 'urubu100',
-            database: 'metricas'
+            password: 'Brayan2812!!',
+            database: 'ecometer'
         }
     ).promise(); //confirmacao banco
 
@@ -64,11 +75,11 @@ const serial = async (
         valoresLuminosidade.push(luminosidade);
         valoresLm35Temperatura.push(lm35Temperatura);
         valoresChave.push(chave);
-
         if (HABILITAR_OPERACAO_INSERIR) { // se voce trocar a variavel para TRUE ao inves de FALSE ele insere os valores no Banco. 
+            console.log(chave, numAleatorio, horario);
             await poolBancoDados.execute(
-                'INSERT INTO sensores (dht11_umidade, dht11_temperatura, luminosidade, lm35_temperatura, chave) VALUES (?, ?, ?, ?, ?)',
-                [dht11Umidade, dht11Temperatura, luminosidade, lm35Temperatura, chave]
+                'INSERT INTO registro (idRegistro, sinal, fkSensor, dataHoraSensor) VALUES (?,?,?,NOW())',
+                [null,chave, numAleatorio]
             );
         }
 

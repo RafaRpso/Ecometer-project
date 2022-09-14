@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<!--
+  grafico estatico = valor de todas as lixeiras / numero de lixeiras
+  grafico em tempo real = vai utilizar apenas um valor: o do alerta
+  grafico em pizza = vai indicar qual tipo de lixeira tem certa quantidade de lixo
+  grafico de localização = vai indicar aonde estão cada lixeira
+-->
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Ecometer | Dashboard</title>
+</head>
+
+<body onload="validarSessao(1)">
+    <div class="tudo">
+
+
+        <div id="menuLateral">
+            <div id="alignLateral">
+                <div id="menuBurger">
+                    <img onclick="ocultarNavbar()" src="Icones/menu-burger-free-icon-font.png" alt="">
+                </div>
+                <div id="mainLateral">
+                    <a href="dashboard/configEmpresa.html"><img src="Icones/user-free-icon-font.png" alt=""></a>
+                    <a href=""><img src="Icones/settings-free-icon-font.png" alt=""></a>
+                    <a href=""><img src="Icones/comment-alt-free-icon-font.png" alt=""></a>
+                    <a href=""><img src="Icones/bell-free-icon-font.png" alt=""></a>
+                </div>
+
+            </div>
+            <div id="signout">
+                <a href="index.html" onclick="limparSessao()"><img src="Icones/sign-out-free-icon-font.png" alt="" onclick="limparSessao()"></a>
+            </div>
+        </div>
+        <div id="main">
+            <div id="header">
+
+                <img onclick="mostrarNavBar()" style="display: none;" id="mostrarMenu" src="Icones/menu-hamburguer.png"
+                    alt="">
+                <div id="logo">
+                    <h1>Ecometer</h1>
+                    <p>dashboard</p>
+                </div>
+            </div>
+
+            <!-- Mostra o nome cadastrado pelo usuario -->
+            <div class="nomeUser">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+
+
+
+
+            <div class="kapis">
+
+                <div class="avisos avisoMetrica">
+
+                    <div class="avisoGrafico AvGrafMg" id="aviso1">
+                        <h3>Vazio</h3>
+
+                    </div>
+                    <div class="avisoGrafico AvGrafMg" id="aviso2">
+                        <h3>Baixo</h3>
+
+                    </div>
+                    <div class="avisoGrafico AvGrafMg" id="aviso3">
+                        <h3>Ideal</h3>
+
+                    </div>
+                    <div class="avisoGrafico AvGrafMg" id="aviso4">
+                        <h3>Lotado!</h3>
+
+                    </div>
+                </div>
+                <div class="alinhar">
+                    <div class="alinhamento vertical"></div>
+                </div>
+                <div class="kapiGrafico" id="verKits">
+                    <span class="tituloKapi"> Kits Ativos </span>
+                    <span class="subtitulo"> 3 </span>
+
+                </div>
+                <div class="kapiGrafico">
+                    <span class="tituloKapi"> Kits lotados</span>
+                    <span class="subtitulo" id="kitsLotadosNumeros"> 1 </span>
+                </div>
+
+                <div class="kapiGrafico">
+                    <span class="tituloKapi"> Kits inativos </span>
+                    <span class="subtitulo"> 2 </span>
+                </div>
+            </div>
+            <div class="alinhar">
+                <div class="alinhamento"></div>
+            </div>
+            <div class="avisos" id="avisosPrazo">
+
+                <div class="avisoGrafico escolherTipo" onclick="curtoPrazo()">
+                    <h3>Curto-prazo</h3>
+                </div>
+                <div class="avisoGrafico escolherTipo" onclick="medioPrazo()">
+                    <h3>Médio-prazo</h3>
+
+                </div>
+                <div class="avisoGrafico escolherTipo" onclick="longoPrazo()">
+                    <h3>Longo-prazo</h3>
+
+                </div>
+            </div>
+            
+            <!--Onde vão ficar todos os gráficos-->
+            <div id="dashMain">
+
+                <div id="fr1" class="colunasDash">
+
+                    <div id="graficoPizza" class="cardGrafico">
+                        % Média de tipo de lixo
+
+
+                        <canvas id="tipo_lotacao_pie"></canvas>
+                    </div>
+
+
+
+
+
+                    <div id="historico" class="cardGrafico">
+
+                        <button onclick="ocultaHistorico()" id="btnOcultaHistorico">Ocultar histórico</button>
+                        <button onclick="mostrarHistorico()" id="btnMostraHistorico" style="display:none;"> Mostrar
+                            histórico</button>
+                        <h3>Histórico de coleta</h3>
+                        <div class="texto">
+                            <span id="fraseColeta">
+
+                            </span>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                <div id="fr2" class="colunasDash">
+                    <!-- Gráfico que aparece quando a lixeira é selecionada no mapa-->
+
+                    <div id="graphKit" style="display: none;">
+
+                        <div id="graficoKitAparece">
+                            <h1 id="textoKit"> Kit X </h1>
+                            <div class="graficoKit">
+                                <canvas id="kitIndividual1" style="display: none;"> </canvas>
+                                <canvas id="kitIndividual2" style="display: none;"> </canvas>
+                                <canvas id="kitIndividual3" style="display: none;"> </canvas>
+                            </div>
+                            <button onclick="ocultarKit() " class="botao"> Ocultar</button>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div id="mainGraph" class="cardGrafico">
+
+                        <b id="mediaLocal"> Média de lotação</b>
+                        <select name="" id="slct_piso" onclick="trocaPiso()">
+                            <option value="1">Piso 1</option>
+                            <option value="2">Piso 2</option>
+                            <option value="3">Piso 3</option>
+                        </select>
+                        <div id="graph">
+                            <canvas id="mensal"></canvas>
+                            <canvas id="semanal" style="display: none;"></canvas>
+                            <canvas id="diario" style="display: none;"></canvas>
+                        </div>
+                        <!--este é o canvas do mapa-->
+                        <div id="mapa" style="display: none;">
+                            <canvas id="piso1"></canvas>
+                            <canvas id="piso2" style="display:none; "></canvas>
+                            <canvas id="piso3" style="display:none; "></canvas>
+                        </div>
+                        <div class="alinhamento"></div>
+                        <div class="botoesMapa">
+                            <button onclick="trocaGraph()" class="botao">Gráfico</button>
+                            <button onclick="trocaMapa()" class="botao">Mapa</button>
+                        </div>
+
+                    </div>
+                    <div id="mainGraph lixeirasLotadas" class="cardGrafico">
+
+                        <button class="botao" id='botaoOcultarMostrados' onclick="ocultaKitsLotados()"> Ocultar</button>
+                        <button class="botao" onclick="mostraKitsLotados()" id='botaoMostrarLotados'
+                            style='display:none;'> Mostrar</button>
+                            <div class="kitsideais">
+                                <b> Ideal para coleta: </b>
+                                <span id="kitsParaColeta"></span>
+                            </div>
+                            <h3 id="h3KitsLotados">Kits lotados:</h3>
+                        
+                        <div id="conteudoDivLotados">
+                            <span id="kitsLotados"> </span> <br>
+                            <b id="mediaLocal">Ver relatório dos kits: </b>
+                            <select name="" id="relatorioSelect" onchange="intermedioRelatorio()">
+                                <option value="0">-- SELECIONAR O KIT --</option>
+                                <option value="1">Kit 1</option>
+                                <option value="2">Kit 2 </option>
+                                <option value="3">Kit 3</option>
+                            </select>
+                            <div id="situacaoKits">
+
+                            </div>
+                        </div>
+                       
+
+                    </div>
+
+                </div>
+
+                <div id="fr3" class="colunasDash">
+                    <div id="kitEnche" class="cardGrafico alertas  alertafr3" style="display:none;">
+                        <h2>Kit que mais enche: </h2>
+                        <span id="kitEncheMais"></span>
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
+
+                    <div id="horarioMedio" class="cardGrafico alertas  alertafr3">
+                        <h2>Horário médio que os kits lotam: </h2>
+
+                        <span id="lotaMedia"></span>
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
+
+
+                    <div id="cardLixo" class="cardGrafico alertas  alertafr3" style="display:none;">
+                        <span id='diaMesMaisLixo' class="horarioLixoKpi"> Dia com mais lixo </span>
+
+                        <span class="subtitulo" id="diaLixoMais"> </span>
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
+
+                    <div id="cardMenosLixo" class="cardGrafico alertas  alertafr3" style="display:none;">
+
+
+                        <span id='diaMesMenosLixo' class=" horarioLixoKpi"> Dia com menos lixo </span>
+                        <span class="subtitulo" id="diaLixoMenos"> </span>
+                        <div class="alinhamento"></div>
+
+
+                        <div id="situacao">
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script src="js/graficoChart.js">
+    //Tá tudo no scriptJS/, tava uma zona isso aqui. 
+</script>
+
+<!--<script src="js/funcoes.js"></script>-->
+<script>
+    var contadorHistorico = 0;
+    setInterval(() => {
+
+        lixeira = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+        horas = Math.floor(Math.random() * (22 - 9 + 1)) + 9;
+        fraseColeta.innerHTML += `A lixeira ${lixeira} foi coletada | ${horas}:00 <br> `
+
+        if (contadorHistorico >= 5) {
+            fraseColeta.innerHTML = '   '
+            contadorHistorico = 0;
+        }
+        contadorHistorico++;
+    }, 1500)
+
+    function ocultaHistorico() {
+        btnOcultaHistorico.style.display = 'none';
+        fraseColeta.style.display = 'none'
+        btnMostraHistorico.style.display = 'flex';
+    }
+
+    function mostrarHistorico() {
+        historico.style.display = 'flex';
+        fraseColeta.style.display = 'flex'
+        btnOcultaHistorico.style.display = 'flex'
+        btnMostraHistorico.style.display = 'none'
+
+    }
+    let proximaAtualizacao;
+
+    window.onload = obterDadosGrafico(1);
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+
+
+    // O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function obterDadosGrafico(idAquario) {
+        //LEIA LEIA LEIA LEIA LEIA-- o idAquario é o idEmpresa em nosso banco de dados
+        //caso você queira mudar por favor mude em todos os aquivos :)
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/ultimas/${idAquario}`, {
+                cache: 'no-store'
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+
+
+                        plotarGrafico(resposta, idAquario);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, idAquario) {
+        console.log('iniciando plotagem do gráfico...');
+        /* 
+            var dados = {
+                labels: [],
+                datasets: [
+                    {
+                        yAxisID: 'y-umidade',
+                        label: 'Umidade',
+                        borderColor: '#32B9CD',
+                        backgroundColor: '#32b9cd8f',
+                        fill: true,
+                        data: []
+                    },
+                    {
+                        yAxisID: 'y-temperatura',
+                        label: 'Temperatura',
+                        borderColor: '#FFF',
+                        backgroundColor: '#32b9cd8f',
+                        fill: true,
+                        data: []
+                    }
+                ]
+            }; */
+
+        var dados = {
+            labels: [],
+            datasets: [{
+                    label: 'Plástico',
+                    backgroundColor: '#ff0000',
+                    borderColor: '#ff0000',
+                    data: [0, 0, 0, 0.3, 0.5, 1, 1.4, 1.6, 1.9, 2.3, 2.7, 3.1, 4, 4],
+                },
+                {
+                    label: 'Papel',
+                    backgroundColor: '#4D96FF',
+                    borderColor: '#4D96FF',
+                    data: [0, 0, 0.5, 0.5, 0.7, 0.9, 1.3, 1.7, 2, 2.4, 3.2, 4, 4, 4],
+                },
+                {
+                    label: 'Metal',
+                    backgroundColor: '#ffff00',
+                    borderColor: '#ffff00',
+                    data: [0, 0, 0, 0, 0.3, 0.5, 0.8, 1, 1.2, 1.4, 1.5, 1.8, 2, 2.1],
+                },
+                {
+                    label: 'Vidro',
+                    backgroundColor: '#6BCB77',
+                    borderColor: '#6BCB77',
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.7, 0.9, 1, 2.2],
+                }
+            ]
+        };
+
+
+        //Esse for insere os dados do grafico apartir do horario e do nivel
+        for (index = 0; index < resposta.length; index++) {
+            var registro = resposta[index];
+            dados.labels.push(registro.momento_grafico);
+            dados.datasets[0].data.push(registro.nivel);
+
+        }
+
+        console.log(JSON.stringify(dados));
+
+        //constroi o grafico 
+        const configTeste = {
+            type: 'line',
+            data: dados,
+            options: {}
+        };
+
+        //alterar o local para mudar aonde os graficos vão aparecer
+        var local = document.getElementById('kitIndividual1');
+        var ChartDia = new Chart(
+            local,
+            configTeste
+        );
+        window.grafico_linha = ChartDia;
+
+        //chama a função para atualizar os graficos
+        setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+    }
+
+
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(idAquario, dados) {
+
+        fetch(`/medidas/tempo-real/${idAquario}`, {
+                cache: 'no-store'
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (novoRegistro) {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                        console.log(`Dados atuais do gráfico: ${dados}`);
+
+                        // tirando e colocando valores no gráfico
+
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0]
+                        .momento_grafico); // incluir um novo registro utilizando o horario
+
+                        dados.datasets[0].data.shift(); // apagar o primeiro de 
+                        dados.datasets[0].data.push(novoRegistro[0].tipoLixeira ==
+                        'Plástico');; // incluir uma nova medida de 
+                        dados.datasets[1].data.shift(); // apagar o primeiro de umidade
+                        dados.datasets[1].data.push(novoRegistro[0].tipoLixeira ==
+                        'Papel');; // incluir uma nova medida 
+                        dados.datasets[2].data.shift(); // apagar o primeiro de umidade
+                        dados.datasets[2].data.push(novoRegistro[0].tipoLixeira ==
+                        'Metal');; // incluir uma nova medida 
+                        dados.datasets[3].data.shift(); // apagar o primeiro de umidade
+                        dados.datasets[3].data.push(novoRegistro[0].tipoLixeira ==
+                        'Vidro');; // incluir uma nova medida 
+                        /* 
+                                                dados.datasets[1].data.shift(); // apagar o primeiro de temperatura
+                                                dados.datasets[1].data.push(novoRegistro[0]
+                                                .temperatura); // incluir uma nova medida de temperatura
+                         */
+                        window.grafico_linha.update();
+
+                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+
+    function randomizar(arr,chart){
+        let a = (Math.random() * 4) ;
+        a = Number(a.toFixed(1)) 
+        arr.datasets[0].data.shift();
+        arr.datasets[0].data.push(a)
+        window.grafico = chart;
+        window.grafico.update();
+    }
+    
+    setInterval( () => { 
+        randomizar(dataMes,myChartMes)
+        randomizar(dataSem,myChartSem)
+        mesMaisLixo()
+        diaMaisLixo()
+    },12000);
+  
+    function verifica(arr1,arr2){ 
+        if (arr1.datasets[0].data[arr1.datasets[0].data-1] == 3 ) { 
+
+        }
+    }
+ 
+</script>

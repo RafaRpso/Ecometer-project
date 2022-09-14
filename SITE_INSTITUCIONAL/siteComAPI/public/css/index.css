@@ -1,0 +1,511 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+
+    --color_green: #73e67d;
+    --color_red: #f56b76;
+    --color_yellow: #ecea44;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --color_green: #73e67d;
+    --color_red: #f56b76;
+    --color_yellow: #ecea44;
+    font-size: 20px;
+
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+
+
+}
+
+body::-webkit-scrollbar-track {
+    background: rgb(224, 224, 224);
+
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #346751;
+    margin: 2 auto;
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+
+}
+
+/* Isso aqui é pra deixar a scrollbar combinando */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100% ;
+}
+
+
+.container {
+    margin-top: 0%;
+    width: 80%; 
+    
+}
+
+#finaliza:hover {
+    color: black;
+
+}
+
+.corpoPagina {
+    display: flex;
+    flex-direction: column;
+}
+
+#sobre {
+    color: var(--color_red)
+}
+
+#simulador {
+    color: #264413;
+}
+
+#contato {
+    color: #6e5d2d
+}
+
+/* 
+.header {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items:center;
+    border-bottom: 1px solid grey;
+    justify-content: space-between;
+    padding:2vh;
+}
+.elementosNav li{
+    font-size: 20px;
+}
+
+#ultimo{
+    margin:0;
+}
+.alinhamento{
+    border-bottom: 1px solid rgb(107, 107, 107);
+    width:50%;
+    margin:20px;
+    
+}
+.elementosNav{
+
+    display: flex;
+    width:100%;
+    height:100%;
+    justify-content: center;
+}
+.login img{
+    width:20px;
+}
+#imagemEntrar{
+    justify-content: right;
+}
+.navBar {
+    display: flex;
+    list-style: none;
+    text-align: center;
+    width:100%;
+
+    justify-content: flex-end;
+    font-weight: bold;
+}
+
+.liNav {
+
+    margin-right: 50px;
+  
+}a{
+    text-decoration: none;
+    color:rgb(61, 61, 61);
+}
+a:hover{
+    color: var(--color_green);
+    transition: 500ms;
+}
+ */
+
+.elementosBanner {
+    background-image: url("https://w0.peakpx.com/wallpaper/557/875/HD-wallpaper-green-leaves-texture-background-with-green-leaves-ecology-environment-green-leaves-leaves-background.jpg");
+    width: 100%;
+    height: 80%;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 2px solid rgb(110, 119, 111);
+
+}
+
+.blocoTexto {
+    width: 45%;
+    height: 80%;
+    justify-content: left;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.23);
+    border-radius: 10px;
+    box-shadow: 2px 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.5px);
+    -webkit-backdrop-filter: blur(8.5px);
+    color: rgb(243, 243, 243);
+}
+
+.blocoTexto p {
+    color: rgb(209, 209, 209);
+    margin: 8%;
+    font-size: 25px;
+}
+
+.blocoTexto h1 {
+    font-size: 50px;
+    text-align: center;
+}
+
+#elemento2 {
+   
+    margin-top: 5%;
+    padding: 5%;
+    color: black;
+    border-top: 2px solid rgb(127,127,127);  
+    
+}
+
+#elemento2 img {
+    height: 30%;
+}
+
+.areaTexto {
+    border: 2px solid green;
+    height: 100%;
+}
+
+.botoesTexto {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5%;
+
+
+}
+
+.botoesTexto a {
+    text-decoration: none;
+    width: 40%;
+    height: 7vh;
+    border-radius: 15px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.botoesTexto a #textButtonCadastro{
+    color: black;
+
+}
+
+.destaque {
+    color: #73e67d;
+}
+
+#botaoCadastro {
+    background-color: rgb(115, 230, 125);
+}
+
+#botaoLogin {
+    background-color: black;
+    color: white;
+}
+
+.ajusteTamanho img {
+    width: 25vw;
+    border-radius: 90px;
+}
+
+.sobre {
+    color: #B22126;
+    font-family: arial;
+    font-size: 17px;
+}
+
+.simulador {
+    color: #2B3F98;
+    font-family: arial;
+    font-size: 17px;
+}
+
+.contato {
+    color: #15562C;
+    font-family: arial;
+    font-size: 17px;
+}
+
+.entrar {
+    color: white;
+    background-color: rgb(9, 9, 9);
+    border-radius: 35%;
+    width: 5%;
+    height: 5vh;
+    border-bottom: 15px;
+
+    font-weight: bold;
+}
+
+.elementosCorpo {
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: 80%;
+   
+}
+
+.elementosCorpo h3 {
+    font-size: 60px;
+}
+
+.elementosCorpo p {
+    font-size: 25px;
+}
+
+.elementosCorpo img {
+    width: 35%;
+    height: 20vw;
+    border-radius: 20px;
+}
+
+.textoCorpo {
+    width: 35%;
+    padding: 30px;
+    text-align: center;
+
+}
+
+.textoCorpo p {
+    font-size: 3vh;
+    margin-top: 5%;
+}
+
+.textoCorpo h3 {
+    font-size: 6vh;
+    margin-top: 5%;
+}
+
+.box h3 {
+    text-align: center;
+}
+
+.box p {
+    text-align: center;
+
+
+}
+
+#elemento3 .box {
+    margin-top: 5%;
+    width: 80%;
+    
+}
+
+#elemento3 .elementosContexto {
+    border: none;
+}
+
+#elemento3.elementosContexto{
+    background: white;
+    color: black;
+}
+
+
+#elemento3 .box h3 {
+    font-size: 80px;
+
+}
+
+#elemento3 .box p {
+    font-size: 25px;
+    border: none;
+    margin-bottom: 5%;
+    padding: 0;
+
+}
+
+.container .elementosContexto p{
+    text-align: left;
+}
+
+.boxes {
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+
+}
+.box {
+    width: 25%;
+    border-radius: 15px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    height: 80%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.elementosContexto {
+    border-bottom: 2px solid white;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
+
+}
+
+#elemento1 {
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+     
+}
+
+
+
+.box h3 {
+    font-size: 45px;
+}
+
+/* Tentativa de alinhamento */
+#alinhar1.box h3 {
+    text-align: center;
+    padding-top: 60px;
+}
+
+#gastos.box h3{
+    padding-top: 0px;
+}
+
+#alinhar2.box h3{
+    padding-top: 30px;
+}
+
+.elementosCompra {
+    color: wheat;
+    background: black;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.box {
+   padding: 30px;
+}
+
+
+.elementosCompra .box button {
+    width: 75%;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 45px;
+    font-weight: bold;
+    color: black;
+    background-color: #73e67d;
+    border: none;
+    margin-top: 10%;
+    
+}
+
+#gastos {
+    background-image: linear-gradient(to top, rgb(90, 158, 73), #C1DA6C);
+    color: black;
+}
+
+#gastos p {
+    border: none;
+}
+
+#simuladorBotao {
+    margin-top: 20px;
+    background-color: #73e67d;
+    color: black;
+    width: 250px;
+    height: 50px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+
+
+
+.footerVerde .footer{
+    background-color: #73e67d;
+}
+.footerBranco .footer {
+    background-color: #f3f3f3;
+}
+
+.footerVerde .footer{
+    background-color: #73e67d;
+}
+
+.footer {
+    font-size: 12px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between ; 
+    
+}
+.footer h1{
+    text-align: center;
+    padding: 15px;
+}
+#navegar h2, #ouvidoria h2, #conta h2{
+    text-decoration: underline ;
+}
+
+
+.footer ul {
+    list-style: none;
+}
+
+
+#elementosFooter {
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+}
+
+#alinhamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}

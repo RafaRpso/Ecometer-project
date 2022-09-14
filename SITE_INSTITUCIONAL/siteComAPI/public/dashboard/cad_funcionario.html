@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <title>Ecometer | Cadastro Funcionario</title>
+</head>
+<!-- Para realizar o cadastro retire os comentarios de funcoes.js -->
+<body onload="validarSessao()">
+
+    <div class="tudo">
+
+
+        <div id="menuLateral">
+            <div id="alignLateral">
+                <div id="menuBurger">
+                    <img onclick="ocultarNavbar()" src="../Icones/menu-burger-free-icon-font.png" alt="">
+                </div>
+                <div id="mainLateral">
+                    <a href="configEmpresa.html"><img src="../Icones/user-free-icon-font.png" alt=""></a>
+                    <a href=""><img src="../Icones/settings-free-icon-font.png" alt=""></a>
+                    <a href=""><img src="../Icones/comment-alt-free-icon-font.png" alt=""></a>
+                    <a href=""><img src="../Icones/bell-free-icon-font.png" alt=""></a>
+                </div>
+
+            </div>
+            <div id="signout">
+                <a href="../index.html" onclick="limparSessao()"><img src="../Icones/sign-out-free-icon-font.png" alt="" onclick="limparSessao()"></a>
+            </div>
+        </div>
+        <div id="main">
+            <div id="header">
+
+                <img onclick="mostrarNavBar()" style="display: none;" id="mostrarMenu" src="../Icones/menu-hamburguer.png"
+                    alt="">
+                <div id="logo">
+                    <h1>Ecometer</h1>
+                    <p>Cadastro</p>
+                </div>
+            </div>
+
+
+            <div class="content" id="dadosCadastrais">
+                <div class="container">
+                    <!-- (EMP)Cadastro com Nome empresa, CNPJ, Email contato, telefone, senha, Método de pagamento (SELECT) -->
+
+                    <h2> Cadastro Funcionario</h2>
+                    <div class="alinhamento"></div>
+                    <hr>
+
+                    <div class="textoForms">Nome Funcionario</div>
+                    <input type="text" name="" id="nomeFuncionario">
+
+                    <div class="textoForms">Email</div>
+                    <input type="email" name="" id="emailFuncionario">
+
+                    <div class="textoForms">Senha</div>
+                    <input type="password" name="" id="senha">
+
+                    <div class="textoForms">Confirmar Senha</div>
+                    <input type="password" name="" id="confSenha">
+
+                    <button onclick="cadastrar()">Cadastrar</button>
+
+                    <div id="div_aguardar" class="loading-div">
+                        <img src="../Icones/loader.gif" id="loading-gif">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+
+<script src="../js/funcoes.js"></script>
+
+<script>
+    function cadastrar() {
+
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeFuncionarioVar = nomeFuncionario.value;
+        var emailFuncionarioVar = emailFuncionario.value;
+        var senhaFuncionarioVar = senha.value;
+        var idEmpresaVar = sessionStorage.ID_USUARIO;
+        var confirm = confSenha.value;
+        console.log("resposta: ", idEmpresaVar);
+
+        //validação
+        if (nomeFuncionarioVar == "" || emailFuncionarioVar == "" || senhaFuncionarioVar == "" || confirm == "") {
+
+            alert("Preencha todos os campos para prosseguir!");
+            return false;
+        }
+
+        if (emailFuncionarioVar.indexOf("@") == -1 || emailFuncionarioVar.indexOf(".com") == -1) {
+
+            alert("Ops, e-mail inválido! Verifique e tente novamente.");
+
+            return false;
+        }
+
+        if (senhaFuncionarioVar != confirm) {
+
+            alert("As senhas inseridas devem ser iguais para prosseguir!");
+
+            return false;
+
+        } else if (senhaFuncionarioVar.length < 8) {
+            alert("Senha não preenche os requisitos de segurança: Tenha pelo menos algum 8 caracteres")
+            return false;
+        }
+        // Fim validação
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrarUser", {
+
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                idEmpresaServer: idEmpresaVar,
+                nomeFuncionarioServer: nomeFuncionarioVar,
+                emailFuncionarioServer: emailFuncionarioVar,
+                senhaFuncionarioServer: senhaFuncionarioVar
+
+
+
+
+            })
+
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                /*    cardErro.style.display = "block"
+                   mensagem_erro.innerHTML = "Cadastro realizado com sucesso!"; */
+                /* window.location = "login.html"; */
+                alert("Funcionario cadastrado com suscesso");
+
+                nomeFuncionario.value = "";
+                emailFuncionario.value = "";
+                senha.value = "";
+                confSenha.value = "";
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+        });
+
+        return false;
+    }
+
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+</script>

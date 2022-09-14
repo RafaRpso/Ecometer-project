@@ -1,0 +1,497 @@
+:root {
+
+    --color-green: #5dbe6a;
+    --color-red: #FF6B6B;
+    --color-blue: #4D96FF;
+    --color-nav: rgb(61, 61, 61);
+    --color-scroll: #346751;
+    --color-white: #f3f3f3;
+    --color-black: rgb(7, 7, 7);
+    --hover-button-green: #4a9e51;
+    --hover-button-black: #252525;
+}
+
+canvas:hover{
+    cursor:crosshair;
+}
+
+
+.tudo{ 
+    display:flex;
+}
+body {
+    margin: 0;
+    scroll-behavior: smooth;
+    font-family: 'Poppins';
+}
+
+body::-webkit-scrollbar {
+    width: 12px;
+
+
+}
+
+body::-webkit-scrollbar-track {
+    background: rgb(224, 224, 224);
+
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #346751;
+    margin: 2 auto;
+    border-radius: 20px;
+
+
+}
+
+select{ 
+    border-radius:15px;
+    background-color:white;
+    margin: 5px;
+}
+footer{ 
+    margin-top:15px;
+    display:flex;
+    flex-direction: column;
+    margin-left: 7%;
+    text-align: center;
+    width:93%; /* subtrai a margen xd */ 
+    background-color: #252525;
+    color:white;
+}
+#main{ 
+    margin-left: 7%;
+    height: 80%; 
+    text-align: center;
+}
+
+#mensal{ 
+    width:100%
+}
+/*Configurações menu lateral*/
+#menuLateral {
+    position: fixed;
+    width: 7%;
+    height: 100vh;
+    background-color: var(--color-green);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 2px solid black;
+
+}
+
+
+#alignLateral {
+    padding-top: 20px;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#menuBurger img {
+    width: 38px;
+}
+
+#menuBurger img:hover, #mostrarMenu:hover {
+    cursor: pointer;
+}
+
+#mainLateral {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#mainLateral img {
+    width: 30px;
+}
+
+#signout {
+    padding-bottom: 20px;
+}
+
+#signout img {
+    width: 38px;
+}
+
+/*fim menu lateral*/
+
+#main {
+    width: 100%;
+}
+.subtitulo{ 
+    font-weight: bold;
+    font-size: 26px;
+}
+.kapis{ 
+    display:flex;
+    justify-content: space-around;
+    height:25%;
+
+}
+/*header config*/
+#header {
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: initial;
+    border-bottom: 2px solid rgb(160, 160, 160);
+}
+
+#logo {
+    display: flex;
+    align-items: baseline;
+    margin: auto;
+}
+#mostrarMenu {
+    width: 38px;
+    margin-left: 20px;
+    
+} 
+
+
+/*parte dos graficos*/
+
+.nomeUser {
+  display: flex ; 
+  justify-content: center;
+  font-size: 36px;
+}
+/* bordas e alterações nos cards da div */ 
+.cardGrafico{
+    border: 2px solid black;
+    box-shadow: 0px 5px 5px #93bf8e;
+    padding: 8px ;
+    border-radius: 10px;
+    width: 100%;
+    height: 20%;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.kapiGrafico{ 
+    display: flex;
+    flex-direction: column;
+    padding:5px;
+    width:20%;
+    height:12vh;
+    text-align: center;
+    border-radius: 25px;
+    border: 2px solid rgb(0, 0, 0);
+}
+.tituloKapi{ 
+    font-weight: bold;
+    font-size: 24px;
+}
+#mainGraph{ 
+    margin-bottom: 5%;
+    display:flex; 
+    height: 55%;
+    width:100%;
+    justify-content: center;
+}
+.botoesMapa{ 
+    display:flex;
+    flex-direction: row;
+    width: 60%;
+    justify-content: space-around;
+}
+#mapa{ 
+    
+    width:90%;
+
+}
+.botao{
+    border: none;
+    border-radius:15px;
+    background-color: var(--color-green);
+    color:black; 
+    border: 2px solid rgb(68, 68, 68);
+    font-weight: bold;
+    width:25%;
+    
+}
+#historico{
+    width: 80%;
+    height: 45%;
+    margin-top: 5%;
+}
+/* avisos */ 
+#aviso1{ 
+    background-color: #6BCB77;
+    
+}
+
+#aviso2{ 
+    background-color: #FFD93D;
+    
+}
+
+#aviso3{
+    background-color: #f79d37;
+}
+
+#aviso4{
+    background-color: #EB5353;
+}
+
+.botao:hover{ 
+    transition: 300ms;
+    color:black;
+    background-color: var(--color-green);
+}
+
+.avisos{
+    display:flex;
+    flex-direction: row;
+    padding:15px;
+    display:flex;
+
+    justify-content: space-around;
+
+}
+#avisosPrazo{
+    flex-direction: row;
+}
+.alinhar{ 
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.alinhamento{ 
+    margin: 12px;
+
+    border-bottom: 2px solid rgb(132, 132, 132);
+    width:30%;
+}
+.vertical{
+    height:30%;
+    border-bottom: 0;
+    margin-right: 2px;
+    border-left: 2px solid rgb(0, 0, 0);
+}
+.avisoGrafico{ 
+    border: 2px solid rgb(0, 0, 0);
+    text-align: center;
+    width:20%;
+    border-radius:25px;
+}
+.AvGrafMg{
+    height: 20%;
+    margin-left:5px;
+    margin-right:5px;
+    width:100%;
+    
+}
+.avisoMetrica{
+    border:2px solid black;
+    border-radius:10px;
+}
+#dashMain {
+    margin-top:2%;
+    display: flex;
+    width: 100%;
+    height: 90%;
+    background-color: #aae393;
+}
+.colunasDash{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    margin-top:5%;
+
+}
+
+#verKits:hover{
+    background-color: #e3e3e3;
+    transition:500ms;
+}
+
+#fr2 {
+    width: 60%;
+}
+
+
+/*fr1*/
+#lixeirasAtivas {
+    width: 80%;
+    height: 30%;
+}
+
+#graficoPizza {
+    width: 80%;
+    height: 45%;
+}
+#textoParagrafo{ 
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/*fr2*/
+#graph{
+   width:90%;
+}
+#liveGraph {
+    margin-top:5%;
+    width: 100%;
+    height: 40%;
+}
+
+#piso1, #piso2, #piso3 {
+    background-image: url('assets/planta\ 1.jpg');
+    background-size: 420px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: right;
+}
+
+#piso1 {
+    background-image: url('assets/planta\ 2.jpg');
+}
+#piso2 {
+    background-image: url('assets/planta\ 1.jpg');
+}
+#piso3 {
+    background-image: url('assets/planta\ 3.jpg');
+}
+
+
+/*fr3*/
+
+#change {
+    width: 80%;
+    height: 30%;
+    background-color: white;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#change button {
+    height: 50px;
+    width: 80%;
+  
+
+
+}
+
+
+.alertas {
+    width: 80%;
+    background-color: white; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#amarelo {
+    background-color: yellow;
+  
+    padding: 5px;
+}
+
+#vermelho {
+    background-color: red;
+  
+    padding: 5px;
+}
+
+
+#graphKit{ 
+    margin-top:5%;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    
+}
+#graficoKitAparece{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 5px 5px #b9b9b9;
+    border-radius: 10px;
+    width: 80%;
+    height: 50vh;
+    background-color: white;
+    text-align: center;
+    margin-bottom: 5%;
+
+}
+.graficoKit{ 
+    
+    height: 60%; 
+    width:80%;
+    margin:5px;
+}
+
+.graficoKit .botao{ 
+    margin: 5px;
+}
+
+.alertafr3{ 
+    margin-bottom: 5%;
+}
+.kitsCheios{
+    color:red;
+    font-size:22px;
+} 
+
+/* config empresa*/
+#logo a {
+    text-decoration: none;
+    color: black;
+}
+.configFunc {
+    text-align: left;
+    width: 1000px;
+    margin: auto;
+}
+#funcionarios {
+    width: 990px;
+    height: 400px;
+    padding: 10px;
+    background-color: #cccccc;
+    border-radius: 10px;
+}
+
+#funcionarios a {
+    float: right;
+    margin: 20px 20px 0px 0px;
+}
+
+.box_func {
+    background-color: white;
+    width: 60%;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.escolherTipo{ 
+    background-color:var(--color-green);
+    color:black;
+}
+
+.kitsIdeal{
+    color:var(--color-scroll);
+    font-weight: bolder;
+    font-size:26px;
+
+}
